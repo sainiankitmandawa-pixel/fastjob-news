@@ -3,53 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FastJob News - 24/7 Live News Portal</title>
+    <title>FastJob News - 24/7 Global & Local News Portal</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-gray-100 font-sans text-gray-900">
+<body class="bg-gray-50 font-sans text-gray-900 flex flex-col min-h-screen">
 
-    <header class="bg-red-700 text-white shadow-md sticky top-0 z-50">
+    <!-- Header -->
+    <header class="bg-red-700 text-white shadow-lg sticky top-0 z-50">
         <div class="container mx-auto px-4 py-2 flex justify-between items-center text-xs border-b border-red-600">
             <div class="flex items-center space-x-4">
                 <span><i class="fa-solid fa-calendar-days"></i> <span id="current-date"></span></span>
                 <span><i class="fa-solid fa-location-dot text-yellow-300"></i> Jaipur, India</span>
             </div>
-            <div class="font-bold tracking-wider">fastjob.online</div>
+            <div class="font-bold tracking-wider uppercase">fastjob.online</div>
         </div>
 
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="#" class="text-3xl font-black tracking-tight flex items-center gap-2">
-                <i class="fa-solid fa-bolt text-yellow-300"></i> FASTJOB <span class="bg-white text-red-700 px-2 py-0.5 rounded text-xl">NEWS</span>
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-black tracking-tight flex items-center gap-2">
+                <i class="fa-solid fa-bolt text-yellow-300"></i> FASTJOB <span class="bg-white text-red-700 px-2 py-0.5 rounded text-xl shadow">NEWS</span>
             </a>
+            <div class="hidden md:flex items-center space-x-3 text-sm font-semibold">
+                <span class="bg-red-800 px-3 py-1 rounded-full text-xs border border-red-600"><i class="fa-solid fa-globe text-yellow-300"></i> Global Edition</span>
+            </div>
         </div>
 
-        <nav class="bg-red-800 text-white shadow-inner">
-            <div class="container mx-auto px-4 flex space-x-6 overflow-x-auto py-2.5 text-sm font-bold whitespace-nowrap">
+        <nav class="bg-red-900 text-white shadow-inner">
+            <div class="container mx-auto px-4 flex space-x-6 overflow-x-auto py-3 text-sm font-bold whitespace-nowrap">
                 <button onclick="filterCategory('All')" class="hover:text-yellow-300 transition cursor-pointer">Home</button>
+                <button onclick="filterCategory('World')" class="hover:text-yellow-300 transition cursor-pointer">World</button>
                 <button onclick="filterCategory('National')" class="hover:text-yellow-300 transition cursor-pointer">National</button>
                 <button onclick="filterCategory('Technology')" class="hover:text-yellow-300 transition cursor-pointer">Technology</button>
                 <button onclick="filterCategory('Business')" class="hover:text-yellow-300 transition cursor-pointer">Business</button>
-                <button onclick="filterCategory('Entertainment')" class="hover:text-yellow-300 transition cursor-pointer">Entertainment</button>
                 <button onclick="filterCategory('Sports')" class="hover:text-yellow-300 transition cursor-pointer">Sports</button>
+                <button onclick="filterCategory('Entertainment')" class="hover:text-yellow-300 transition cursor-pointer">Entertainment</button>
             </div>
         </nav>
     </header>
 
-    <main class="container mx-auto px-4 py-6">
-        <div id="status-box" class="bg-yellow-50 border border-yellow-200 text-yellow-800 p-3 rounded-lg mb-4 text-sm font-semibold">
-            Status: Initializing script...
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8 flex-grow">
+        
+        <!-- Detailed Article View (Hidden by default) -->
+        <div id="article-view" class="hidden bg-white rounded-2xl shadow-xl p-6 md:p-10 border max-w-4xl mx-auto">
+            <button onclick="goBackHome()" class="mb-6 bg-red-700 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-red-800 transition shadow flex items-center gap-2 w-max cursor-pointer">
+                <i class="fa-solid fa-arrow-left"></i> Back to News
+            </button>
+            <span id="detail-category" class="bg-red-100 text-red-800 text-xs px-3 py-1 rounded-full font-bold uppercase"></span>
+            <h1 id="detail-title" class="text-3xl md:text-4xl font-black text-gray-900 mt-3 mb-4 leading-tight"></h1>
+            <div class="text-xs text-gray-500 mb-6 flex items-center gap-4 border-b pb-4">
+                <span><i class="fa-regular fa-clock"></i> Published Live</span>
+                <span><i class="fa-solid fa-shield-halved text-green-600"></i> Verified Source</span>
+            </div>
+            <img id="detail-image" src="" class="w-full h-96 object-cover rounded-xl shadow-md mb-6">
+            <div id="detail-content" class="text-gray-700 text-lg leading-relaxed space-y-4"></div>
         </div>
 
-        <div id="main-layout" class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div id="lead-story" class="lg:col-span-2 bg-white rounded-xl shadow-md p-6 border text-center text-gray-700 font-bold">
-                Loading live news...
+        <!-- Home Grid View -->
+        <div id="home-view">
+            <div id="main-layout" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Lead Story -->
+                <div id="lead-story" class="lg:col-span-2 bg-white rounded-2xl shadow-md p-6 border text-center text-gray-500 font-bold">
+                    Loading live global news...
+                </div>
+                <!-- Sidebar Stories -->
+                <div id="sidebar-news" class="space-y-4">
+                    <div class="bg-white rounded-2xl shadow-md p-6 text-center text-gray-500">Loading top stories...</div>
+                </div>
             </div>
-            <div id="sidebar-news" class="space-y-4">
-                <div class="bg-white rounded-xl shadow-md p-4 text-center text-gray-500">Loading stories...</div>
+
+            <!-- More News Grid Section -->
+            <div class="mt-12">
+                <h3 class="text-2xl font-black text-gray-800 mb-6 border-l-4 border-red-700 pl-3">More Breaking Stories</h3>
+                <div id="grid-news" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Dynamic Grid Cards -->
+                </div>
             </div>
         </div>
     </main>
+
+    <!-- Professional Footer -->
+    <footer class="bg-gray-900 text-white pt-12 pb-8 mt-16 border-t-4 border-red-700">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div>
+                <h3 class="text-2xl font-black tracking-tight flex items-center gap-2 mb-4">
+                    <i class="fa-solid fa-bolt text-yellow-300"></i> FASTJOB <span class="bg-white text-red-700 px-2 py-0.5 rounded text-lg">NEWS</span>
+                </h3>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Aapka apna 24/7 automated global aur local news portal. Sabse tez aur sachhi khabren seedhe database se.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-4 border-b border-gray-800 pb-2">Top Categories</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><button onclick="filterCategory('World')" class="hover:text-white transition">World News</button></li>
+                    <li><button onclick="filterCategory('National')" class="hover:text-white transition">National</button></li>
+                    <li><button onclick="filterCategory('Technology')" class="hover:text-white transition">Technology</button></li>
+                    <li><button onclick="filterCategory('Business')" class="hover:text-white transition">Business</button></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-4 border-b border-gray-800 pb-2">Quick Links</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="#" class="hover:text-white transition">About Us</a></li>
+                    <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
+                    <li><a href="#" class="hover:text-white transition">Contact Desk</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-4 border-b border-gray-800 pb-2">Location & Support</h4>
+                <p class="text-sm text-gray-400 mb-2"><i class="fa-solid fa-location-dot text-yellow-300"></i> Jaipur, Rajasthan, India</p>
+                <p class="text-sm text-gray-400"><i class="fa-solid fa-envelope text-red-500"></i> support@fastjob.online</p>
+            </div>
+        </div>
+        <div class="container mx-auto px-4 border-t border-gray-800 pt-6 text-center text-xs text-gray-500">
+            &copy; 2026 FastJob News Portal. All rights reserved. Powered by Supabase & Cloudflare Pages.
+        </div>
+    </footer>
 
     <script>
         document.getElementById('current-date').innerText = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
@@ -60,90 +131,129 @@
         let allNews = [];
 
         async function loadNews() {
-            const statusBox = document.getElementById('status-box');
-            const leadContainer = document.getElementById('lead-story');
-            
             try {
-                statusBox.innerText = "Status: Fetching from Supabase API...";
-                
-                const response = await fetch(SUPABASE_URL + "/rest/v1/posts?select=*&order=id.desc&limit=30", {
+                const response = await fetch(SUPABASE_URL + "/rest/v1/posts?select=*&order=id.desc&limit=40", {
                     headers: {
                         "apikey": SUPABASE_KEY,
                         "Authorization": "Bearer " + SUPABASE_KEY
                     }
                 });
 
-                if (!response.ok) {
-                    const errText = await response.text();
-                    statusBox.className = "bg-red-50 border border-red-200 text-red-800 p-3 rounded-lg mb-4 text-sm font-semibold";
-                    statusBox.innerText = "API Error (" + response.status + "): " + errText;
-                    return;
-                }
-
+                if (!response.ok) return;
                 const data = await response.json();
-
-                if (!data || data.length === 0) {
-                    statusBox.className = "bg-orange-50 border border-orange-200 text-orange-800 p-3 rounded-lg mb-4 text-sm font-semibold";
-                    statusBox.innerText = "Status: Connected, but table 'posts' is empty!";
-                    return;
-                }
-
-                statusBox.className = "bg-green-50 border border-green-200 text-green-800 p-3 rounded-lg mb-4 text-sm font-semibold";
-                statusBox.innerText = "Status: Success! Loaded " + data.length + " posts.";
+                if (!data || data.length === 0) return;
 
                 allNews = data;
                 renderNews(allNews);
 
+                // Check if URL has a specific article slug
+                const urlParams = new URLSearchParams(window.location.search);
+                const postSlug = urlParams.get('slug');
+                if (postSlug) {
+                    const found = allNews.find(item => item.slug === postSlug);
+                    if (found) showArticleDetail(found);
+                }
+
             } catch (err) {
-                statusBox.className = "bg-red-50 border border-red-200 text-red-800 p-3 rounded-lg mb-4 text-sm font-semibold";
-                statusBox.innerText = "Exception: " + err.message;
+                console.error(err);
             }
         }
 
         function renderNews(newsList) {
             const leadContainer = document.getElementById('lead-story');
             const sidebarContainer = document.getElementById('sidebar-news');
+            const gridContainer = document.getElementById('grid-news');
+
+            if (newsList.length === 0) {
+                leadContainer.innerHTML = `<p class="p-6 text-center text-gray-500">No news found.</p>`;
+                sidebarContainer.innerHTML = '';
+                gridContainer.innerHTML = '';
+                return;
+            }
 
             const lead = newsList[0];
             leadContainer.innerHTML = `
-                <div class="relative overflow-hidden rounded-lg mb-4">
-                    <img src="${lead.image_url || 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167'}" class="w-full h-80 object-cover">
-                    <span class="absolute top-4 left-4 bg-red-700 text-white text-xs px-3 py-1 rounded font-bold uppercase">${lead.category || 'Top Story'}</span>
-                </div>
-                <h2 class="font-black text-2xl text-gray-900 mb-2 text-left">${lead.title}</h2>
-                <p class="text-gray-600 text-sm text-left mb-4">${lead.content || ''}</p>
-                <div class="text-left text-xs text-gray-500 border-t pt-3 flex justify-between">
-                    <span>Source: Live RSS Feed</span>
-                    <span class="text-red-700 font-bold">Read More &rarr;</span>
+                <div onclick="openArticle('${lead.slug}')" class="cursor-pointer group">
+                    <div class="relative overflow-hidden rounded-xl mb-4 shadow-md">
+                        <img src="${lead.image_url}" class="w-full h-80 object-cover group-hover:scale-105 transition duration-300">
+                        <span class="absolute top-4 left-4 bg-red-700 text-white text-xs px-3 py-1 rounded-full font-bold uppercase shadow">${lead.category || 'Top Story'}</span>
+                    </div>
+                    <h2 class="font-black text-2xl md:text-3xl text-gray-900 mb-3 text-left group-hover:text-red-700 transition">${lead.title}</h2>
+                    <p class="text-gray-600 text-sm text-left mb-4 line-clamp-3">${lead.content || ''}</p>
+                    <div class="text-left text-xs text-gray-500 border-t pt-3 flex justify-between items-center font-bold">
+                        <span><i class="fa-regular fa-clock"></i> Global Live Wire</span>
+                        <span class="text-red-700 bg-red-50 px-3 py-1 rounded-lg">Read Full Story &rarr;</span>
+                    </div>
                 </div>
             `;
 
             sidebarContainer.innerHTML = '';
-            for (let i = 1; i < Math.min(newsList.length, 6); i++) {
+            for (let i = 1; i < Math.min(newsList.length, 5); i++) {
                 const item = newsList[i];
                 sidebarContainer.innerHTML += `
-                    <div class="bg-white rounded-xl shadow-sm p-3 border flex gap-3 items-center text-left hover:shadow-md transition cursor-pointer">
-                        <img src="${item.image_url || 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167'}" class="w-20 h-16 object-cover rounded flex-shrink-0">
+                    <div onclick="openArticle('${item.slug}')" class="bg-white rounded-xl shadow-sm p-4 border flex gap-4 items-center text-left hover:shadow-md transition cursor-pointer group">
+                        <img src="${item.image_url}" class="w-24 h-20 object-cover rounded-lg flex-shrink-0 group-hover:opacity-90">
                         <div>
-                            <span class="text-[10px] font-bold text-red-700 uppercase">${item.category || 'News'}</span>
-                            <h4 class="font-bold text-xs text-gray-900 line-clamp-2">${item.title}</h4>
+                            <span class="text-[10px] font-extrabold text-red-700 uppercase bg-red-50 px-2 py-0.5 rounded">${item.category}</span>
+                            <h4 class="font-bold text-xs text-gray-900 line-clamp-2 mt-1 group-hover:text-red-700 transition">${item.title}</h4>
+                        </div>
+                    </div>
+                `;
+            }
+
+            gridContainer.innerHTML = '';
+            for (let i = 5; i < newsList.length; i++) {
+                const item = newsList[i];
+                gridContainer.innerHTML += `
+                    <div onclick="openArticle('${item.slug}')" class="bg-white rounded-xl shadow-sm p-5 border flex flex-col justify-between hover:shadow-md transition cursor-pointer group">
+                        <div>
+                            <img src="${item.image_url}" class="w-full h-48 object-cover rounded-lg mb-4 group-hover:scale-[1.02] transition duration-300">
+                            <span class="text-[10px] font-bold text-red-700 uppercase bg-red-50 px-2 py-0.5 rounded">${item.category}</span>
+                            <h4 class="font-bold text-base text-gray-900 line-clamp-2 mt-2 group-hover:text-red-700 transition">${item.title}</h4>
+                            <p class="text-gray-600 text-xs mt-2 line-clamp-2">${item.content}</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t text-xs font-bold text-red-700 flex justify-between items-center">
+                            <span>Read Full Story</span>
+                            <i class="fa-solid fa-arrow-right"></i>
                         </div>
                     </div>
                 `;
             }
         }
 
+        function openArticle(slug) {
+            const post = allNews.find(item => item.slug === slug);
+            if (post) {
+                history.pushState({slug: slug}, "", "?slug=" + slug);
+                showArticleDetail(post);
+            }
+        }
+
+        function showArticleDetail(post) {
+            document.getElementById('home-view').classList.add('hidden');
+            document.getElementById('article-view').classList.remove('hidden');
+
+            document.getElementById('detail-category').innerText = post.category || 'News';
+            document.getElementById('detail-title').innerText = post.title;
+            document.getElementById('detail-image').src = post.image_url;
+            document.getElementById('detail-content').innerHTML = `<p>${post.content}</p><p class="mt-4 text-gray-500 italic text-sm">Source: Automated Global RSS Intelligence Feed &bull; Verified via FastJob News Desk.</p>`;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function goBackHome() {
+            history.pushState({}, "", window.location.pathname);
+            document.getElementById('article-view').classList.add('hidden');
+            document.getElementById('home-view').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
         function filterCategory(cat) {
+            goBackHome();
             if (cat === 'All') {
                 renderNews(allNews);
             } else {
                 const filtered = allNews.filter(item => item.category && item.category.toLowerCase() === cat.toLowerCase());
-                if(filtered.length > 0) {
-                    renderNews(filtered);
-                } else {
-                    document.getElementById('lead-story').innerHTML = `<p class="p-6 text-center text-gray-500">No news found in ${cat} category.</p>`;
-                    document.getElementById('sidebar-news').innerHTML = '';
-                }
+                renderNews(filtered);
             }
         }
 
