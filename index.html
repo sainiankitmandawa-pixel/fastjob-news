@@ -3,7 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FastJob News - 24/7 Global & Local News Portal</title>
+    <title id="page-title">FastJob News - 24/7 Global & Local News Portal</title>
+    <meta name="description" id="page-desc" content="FastJob News provides breaking world news, national headlines, technology updates, and business insights live 24/7.">
+    <meta name="keywords" content="world news, breaking news, fastjob news, latest news updates, technology news, india news">
+    
+    <!-- Open Graph for Social & Google Discover -->
+    <meta property="og:title" content="FastJob News Portal">
+    <meta property="og:description" content="Get live breaking news and in-depth stories.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fastjob.online">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -24,7 +33,7 @@
                 <i class="fa-solid fa-bolt text-yellow-300"></i> FASTJOB <span class="bg-white text-red-700 px-2 py-0.5 rounded text-xl shadow">NEWS</span>
             </a>
             <div class="hidden md:flex items-center space-x-3 text-sm font-semibold">
-                <span class="bg-red-800 px-3 py-1 rounded-full text-xs border border-red-600"><i class="fa-solid fa-globe text-yellow-300"></i> Global Edition</span>
+                <span class="bg-red-800 px-3 py-1 rounded-full text-xs border border-red-600"><i class="fa-solid fa-globe text-yellow-300"></i> SEO Optimized Edition</span>
             </div>
         </div>
 
@@ -35,8 +44,6 @@
                 <button onclick="filterCategory('National')" class="hover:text-yellow-300 transition cursor-pointer">National</button>
                 <button onclick="filterCategory('Technology')" class="hover:text-yellow-300 transition cursor-pointer">Technology</button>
                 <button onclick="filterCategory('Business')" class="hover:text-yellow-300 transition cursor-pointer">Business</button>
-                <button onclick="filterCategory('Sports')" class="hover:text-yellow-300 transition cursor-pointer">Sports</button>
-                <button onclick="filterCategory('Entertainment')" class="hover:text-yellow-300 transition cursor-pointer">Entertainment</button>
             </div>
         </nav>
     </header>
@@ -44,40 +51,36 @@
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-8 flex-grow">
         
-        <!-- Detailed Article View (Hidden by default) -->
-        <div id="article-view" class="hidden bg-white rounded-2xl shadow-xl p-6 md:p-10 border max-w-4xl mx-auto">
+        <!-- Detailed Article View -->
+        <div id="article-view" class="hidden bg-white rounded-2xl shadow-xl p-6 md:p-12 border max-w-4xl mx-auto">
             <button onclick="goBackHome()" class="mb-6 bg-red-700 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-red-800 transition shadow flex items-center gap-2 w-max cursor-pointer">
                 <i class="fa-solid fa-arrow-left"></i> Back to News
             </button>
             <span id="detail-category" class="bg-red-100 text-red-800 text-xs px-3 py-1 rounded-full font-bold uppercase"></span>
-            <h1 id="detail-title" class="text-3xl md:text-4xl font-black text-gray-900 mt-3 mb-4 leading-tight"></h1>
-            <div class="text-xs text-gray-500 mb-6 flex items-center gap-4 border-b pb-4">
+            <h1 id="detail-title" class="text-3xl md:text-5xl font-black text-gray-900 mt-3 mb-4 leading-tight"></h1>
+            <div class="text-xs text-gray-500 mb-6 flex items-center gap-6 border-b pb-4 font-semibold">
                 <span><i class="fa-regular fa-clock"></i> Published Live</span>
-                <span><i class="fa-solid fa-shield-halved text-green-600"></i> Verified Source</span>
+                <span><i class="fa-solid fa-shield-halved text-green-600"></i> Verified SEO Source</span>
+                <span><i class="fa-solid fa-globe text-blue-600"></i> Global News Desk</span>
             </div>
-            <img id="detail-image" src="" class="w-full h-96 object-cover rounded-xl shadow-md mb-6">
-            <div id="detail-content" class="text-gray-700 text-lg leading-relaxed space-y-4"></div>
+            <img id="detail-image" src="" class="w-full h-[400px] md:h-[450px] object-cover rounded-xl shadow-md mb-8">
+            <div id="detail-content" class="text-gray-800 text-lg md:text-xl leading-relaxed space-y-6 font-normal"></div>
         </div>
 
         <!-- Home Grid View -->
         <div id="home-view">
             <div id="main-layout" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <!-- Lead Story -->
                 <div id="lead-story" class="lg:col-span-2 bg-white rounded-2xl shadow-md p-6 border text-center text-gray-500 font-bold">
-                    Loading live global news...
+                    Loading live breaking news...
                 </div>
-                <!-- Sidebar Stories -->
                 <div id="sidebar-news" class="space-y-4">
                     <div class="bg-white rounded-2xl shadow-md p-6 text-center text-gray-500">Loading top stories...</div>
                 </div>
             </div>
 
-            <!-- More News Grid Section -->
             <div class="mt-12">
-                <h3 class="text-2xl font-black text-gray-800 mb-6 border-l-4 border-red-700 pl-3">More Breaking Stories</h3>
-                <div id="grid-news" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Dynamic Grid Cards -->
-                </div>
+                <h3 class="text-2xl font-black text-gray-800 mb-6 border-l-4 border-red-700 pl-3">Complete Global Coverage</h3>
+                <div id="grid-news" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
             </div>
         </div>
     </main>
@@ -90,11 +93,11 @@
                     <i class="fa-solid fa-bolt text-yellow-300"></i> FASTJOB <span class="bg-white text-red-700 px-2 py-0.5 rounded text-lg">NEWS</span>
                 </h3>
                 <p class="text-gray-400 text-sm leading-relaxed">
-                    Aapka apna 24/7 automated global aur local news portal. Sabse tez aur sachhi khabren seedhe database se.
+                    FastJob News is your 24/7 automated global news portal delivering in-depth reports, verified analysis, and real-time updates.
                 </p>
             </div>
             <div>
-                <h4 class="text-lg font-bold mb-4 border-b border-gray-800 pb-2">Top Categories</h4>
+                <h4 class="text-lg font-bold mb-4 border-b border-gray-800 pb-2">Categories</h4>
                 <ul class="space-y-2 text-sm text-gray-400">
                     <li><button onclick="filterCategory('World')" class="hover:text-white transition">World News</button></li>
                     <li><button onclick="filterCategory('National')" class="hover:text-white transition">National</button></li>
@@ -108,11 +111,10 @@
                     <li><a href="#" class="hover:text-white transition">About Us</a></li>
                     <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
                     <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
-                    <li><a href="#" class="hover:text-white transition">Contact Desk</a></li>
                 </ul>
             </div>
             <div>
-                <h4 class="text-lg font-bold mb-4 border-b border-gray-800 pb-2">Location & Support</h4>
+                <h4 class="text-lg font-bold mb-4 border-b border-gray-800 pb-2">Headquarters</h4>
                 <p class="text-sm text-gray-400 mb-2"><i class="fa-solid fa-location-dot text-yellow-300"></i> Jaipur, Rajasthan, India</p>
                 <p class="text-sm text-gray-400"><i class="fa-solid fa-envelope text-red-500"></i> support@fastjob.online</p>
             </div>
@@ -146,7 +148,6 @@
                 allNews = data;
                 renderNews(allNews);
 
-                // Check if URL has a specific article slug
                 const urlParams = new URLSearchParams(window.location.search);
                 const postSlug = urlParams.get('slug');
                 if (postSlug) {
@@ -164,12 +165,7 @@
             const sidebarContainer = document.getElementById('sidebar-news');
             const gridContainer = document.getElementById('grid-news');
 
-            if (newsList.length === 0) {
-                leadContainer.innerHTML = `<p class="p-6 text-center text-gray-500">No news found.</p>`;
-                sidebarContainer.innerHTML = '';
-                gridContainer.innerHTML = '';
-                return;
-            }
+            if (newsList.length === 0) return;
 
             const lead = newsList[0];
             leadContainer.innerHTML = `
@@ -179,10 +175,10 @@
                         <span class="absolute top-4 left-4 bg-red-700 text-white text-xs px-3 py-1 rounded-full font-bold uppercase shadow">${lead.category || 'Top Story'}</span>
                     </div>
                     <h2 class="font-black text-2xl md:text-3xl text-gray-900 mb-3 text-left group-hover:text-red-700 transition">${lead.title}</h2>
-                    <p class="text-gray-600 text-sm text-left mb-4 line-clamp-3">${lead.content || ''}</p>
+                    <p class="text-gray-600 text-sm text-left mb-4 line-clamp-3">${lead.content.replace(/<[^>]*>/g, '')}</p>
                     <div class="text-left text-xs text-gray-500 border-t pt-3 flex justify-between items-center font-bold">
-                        <span><i class="fa-regular fa-clock"></i> Global Live Wire</span>
-                        <span class="text-red-700 bg-red-50 px-3 py-1 rounded-lg">Read Full Story &rarr;</span>
+                        <span><i class="fa-regular fa-clock"></i> Live Global Report</span>
+                        <span class="text-red-700 bg-red-50 px-3 py-1 rounded-lg">Read Complete Story &rarr;</span>
                     </div>
                 </div>
             `;
@@ -210,10 +206,10 @@
                             <img src="${item.image_url}" class="w-full h-48 object-cover rounded-lg mb-4 group-hover:scale-[1.02] transition duration-300">
                             <span class="text-[10px] font-bold text-red-700 uppercase bg-red-50 px-2 py-0.5 rounded">${item.category}</span>
                             <h4 class="font-bold text-base text-gray-900 line-clamp-2 mt-2 group-hover:text-red-700 transition">${item.title}</h4>
-                            <p class="text-gray-600 text-xs mt-2 line-clamp-2">${item.content}</p>
+                            <p class="text-gray-600 text-xs mt-2 line-clamp-2">${item.content.replace(/<[^>]*>/g, '')}</p>
                         </div>
                         <div class="mt-4 pt-3 border-t text-xs font-bold text-red-700 flex justify-between items-center">
-                            <span>Read Full Story</span>
+                            <span>Read Complete Article</span>
                             <i class="fa-solid fa-arrow-right"></i>
                         </div>
                     </div>
@@ -233,15 +229,19 @@
             document.getElementById('home-view').classList.add('hidden');
             document.getElementById('article-view').classList.remove('hidden');
 
+            document.getElementById('page-title').innerText = post.title + " - FastJob News";
+            document.getElementById('page-desc').content = post.content.replace(/<[^>]*>/g, '').substring(0, 160);
+
             document.getElementById('detail-category').innerText = post.category || 'News';
             document.getElementById('detail-title').innerText = post.title;
             document.getElementById('detail-image').src = post.image_url;
-            document.getElementById('detail-content').innerHTML = `<p>${post.content}</p><p class="mt-4 text-gray-500 italic text-sm">Source: Automated Global RSS Intelligence Feed &bull; Verified via FastJob News Desk.</p>`;
+            document.getElementById('detail-content').innerHTML = post.content;
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function goBackHome() {
             history.pushState({}, "", window.location.pathname);
+            document.getElementById('page-title').innerText = "FastJob News - 24/7 Global & Local News Portal";
             document.getElementById('article-view').classList.add('hidden');
             document.getElementById('home-view').classList.remove('hidden');
             window.scrollTo({ top: 0, behavior: 'smooth' });
