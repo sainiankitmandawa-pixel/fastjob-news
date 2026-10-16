@@ -37,6 +37,11 @@
     </header>
 
     <main class="container mx-auto px-4 py-6">
+        <!-- Debug Status Box -->
+        <div id="status-box" class="bg-yellow-50 border border-yellow-200 text-yellow-800 p-3 rounded-lg mb-4 text-sm font-semibold">
+            Status: Initializing script...
+        </div>
+
         <div id="main-layout" class="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div id="lead-story" class="lg:col-span-2 bg-white rounded-xl shadow-md p-6 border text-center text-gray-700 font-bold">
                 Loading live news...
@@ -56,9 +61,12 @@
         let allNews = [];
 
         async function loadNews() {
+            const statusBox = document.getElementById('status-box');
             const leadContainer = document.getElementById('lead-story');
             
             try {
+                statusBox.innerText = "Status: Fetching from Supabase API...";
+                
                 const response = await fetch(${SUPABASE_URL}/rest/v1/posts?select=*&order=id.desc&limit=30, {
                     headers: {
                         "apikey": SUPABASE_KEY,
@@ -67,22 +75,29 @@
                 });
 
                 if (!response.ok) {
-                    leadContainer.innerHTML = <p class="text-red-600 font-bold">Error loading news</p>;
+                    const errText = await response.text();
+                    statusBox.className = "bg-red-50 border border-red-200 text-red-800 p-3 rounded-lg mb-4 text-sm font-semibold";
+                    statusBox.innerText = API Error (): ;
                     return;
                 }
 
                 const data = await response.json();
 
                 if (!data || data.length === 0) {
-                    leadContainer.innerHTML = <p class="text-orange-600 font-bold">Database is empty!</p>;
+                    statusBox.className = "bg-orange-50 border border-orange-200 text-orange-800 p-3 rounded-lg mb-4 text-sm font-semibold";
+                    statusBox.innerText = "Status: Connected, but table 'posts' is empty!";
                     return;
                 }
+
+                statusBox.className = "bg-green-50 border border-green-200 text-green-800 p-3 rounded-lg mb-4 text-sm font-semibold";
+                statusBox.innerText = Status: Success! Loaded  posts.;
 
                 allNews = data;
                 renderNews(allNews);
 
             } catch (err) {
-                leadContainer.innerHTML = <p class="text-red-600 font-bold">Connection Failed</p>;
+                statusBox.className = "bg-red-50 border border-red-200 text-red-800 p-3 rounded-lg mb-4 text-sm font-semibold";
+                statusBox.innerText = Exception: ;
             }
         }
 
