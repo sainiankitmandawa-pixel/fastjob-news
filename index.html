@@ -37,7 +37,6 @@
     </header>
 
     <main class="container mx-auto px-4 py-6">
-        <!-- Debug Status Box -->
         <div id="status-box" class="bg-yellow-50 border border-yellow-200 text-yellow-800 p-3 rounded-lg mb-4 text-sm font-semibold">
             Status: Initializing script...
         </div>
@@ -67,17 +66,17 @@
             try {
                 statusBox.innerText = "Status: Fetching from Supabase API...";
                 
-                const response = await fetch(${SUPABASE_URL}/rest/v1/posts?select=*&order=id.desc&limit=30, {
+                const response = await fetch(SUPABASE_URL + "/rest/v1/posts?select=*&order=id.desc&limit=30", {
                     headers: {
                         "apikey": SUPABASE_KEY,
-                        "Authorization": Bearer 
+                        "Authorization": "Bearer " + SUPABASE_KEY
                     }
                 });
 
                 if (!response.ok) {
                     const errText = await response.text();
                     statusBox.className = "bg-red-50 border border-red-200 text-red-800 p-3 rounded-lg mb-4 text-sm font-semibold";
-                    statusBox.innerText = API Error (): ;
+                    statusBox.innerText = "API Error (" + response.status + "): " + errText;
                     return;
                 }
 
@@ -90,14 +89,14 @@
                 }
 
                 statusBox.className = "bg-green-50 border border-green-200 text-green-800 p-3 rounded-lg mb-4 text-sm font-semibold";
-                statusBox.innerText = Status: Success! Loaded  posts.;
+                statusBox.innerText = "Status: Success! Loaded " + data.length + " posts.";
 
                 allNews = data;
                 renderNews(allNews);
 
             } catch (err) {
                 statusBox.className = "bg-red-50 border border-red-200 text-red-800 p-3 rounded-lg mb-4 text-sm font-semibold";
-                statusBox.innerText = Exception: ;
+                statusBox.innerText = "Exception: " + err.message;
             }
         }
 
@@ -106,31 +105,31 @@
             const sidebarContainer = document.getElementById('sidebar-news');
 
             const lead = newsList[0];
-            leadContainer.innerHTML = 
+            leadContainer.innerHTML = `
                 <div class="relative overflow-hidden rounded-lg mb-4">
-                    <img src="" class="w-full h-80 object-cover">
-                    <span class="absolute top-4 left-4 bg-red-700 text-white text-xs px-3 py-1 rounded font-bold uppercase"></span>
+                    <img src="${lead.image_url || 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167'}" class="w-full h-80 object-cover">
+                    <span class="absolute top-4 left-4 bg-red-700 text-white text-xs px-3 py-1 rounded font-bold uppercase">${lead.category || 'Top Story'}</span>
                 </div>
-                <h2 class="font-black text-2xl text-gray-900 mb-2 text-left"></h2>
-                <p class="text-gray-600 text-sm text-left mb-4"></p>
+                <h2 class="font-black text-2xl text-gray-900 mb-2 text-left">${lead.title}</h2>
+                <p class="text-gray-600 text-sm text-left mb-4">${lead.content || ''}</p>
                 <div class="text-left text-xs text-gray-500 border-t pt-3 flex justify-between">
                     <span>Source: Live RSS Feed</span>
                     <span class="text-red-700 font-bold">Read More &rarr;</span>
                 </div>
-            ;
+            `;
 
             sidebarContainer.innerHTML = '';
             for (let i = 1; i < Math.min(newsList.length, 6); i++) {
                 const item = newsList[i];
-                sidebarContainer.innerHTML += 
+                sidebarContainer.innerHTML += `
                     <div class="bg-white rounded-xl shadow-sm p-3 border flex gap-3 items-center text-left hover:shadow-md transition cursor-pointer">
-                        <img src="" class="w-20 h-16 object-cover rounded flex-shrink-0">
+                        <img src="${item.image_url || 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167'}" class="w-20 h-16 object-cover rounded flex-shrink-0">
                         <div>
-                            <span class="text-[10px] font-bold text-red-700 uppercase"></span>
-                            <h4 class="font-bold text-xs text-gray-900 line-clamp-2"></h4>
+                            <span class="text-[10px] font-bold text-red-700 uppercase">${item.category || 'News'}</span>
+                            <h4 class="font-bold text-xs text-gray-900 line-clamp-2">${item.title}</h4>
                         </div>
                     </div>
-                ;
+                `;
             }
         }
 
@@ -142,7 +141,7 @@
                 if(filtered.length > 0) {
                     renderNews(filtered);
                 } else {
-                    document.getElementById('lead-story').innerHTML = <p class="p-6 text-center text-gray-500">No news found in  category.</p>;
+                    document.getElementById('lead-story').innerHTML = `<p class="p-6 text-center text-gray-500">No news found in ${cat} category.</p>`;
                     document.getElementById('sidebar-news').innerHTML = '';
                 }
             }
