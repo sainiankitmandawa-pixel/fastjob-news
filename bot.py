@@ -6,7 +6,7 @@ import requests
 from bs4 import BeautifulSoup
 import os
 
-# Secure Cloud Environment Variables (Keys GitHub Secrets se aayengi)
+# Secure Cloud Environment Variables
 SUPABASE_URL = "https://wioheljpjdcprozqumpv.supabase.co"
 SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
@@ -78,7 +78,8 @@ def fetch_and_insert():
             added_in_category = 0
             
             for entry in feed.entries:
-                if added_in_category >= 4: break 
+                # HAR GHANTE 2 POST PER CATEGORY (Daily 336 posts total)
+                if added_in_category >= 2: break 
                 
                 image_url = extract_real_image(entry)
                 if not image_url: continue 
