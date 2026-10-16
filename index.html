@@ -67,7 +67,7 @@
                 });
 
                 if (!response.ok) {
-                    leadContainer.innerHTML = <p class="text-red-600 font-bold">Error loading news: </p>;
+                    leadContainer.innerHTML = <p class="text-red-600 font-bold">Error loading news</p>;
                     return;
                 }
 
@@ -82,7 +82,7 @@
                 renderNews(allNews);
 
             } catch (err) {
-                leadContainer.innerHTML = <p class="text-red-600 font-bold">Connection Failed: </p>;
+                leadContainer.innerHTML = <p class="text-red-600 font-bold">Connection Failed</p>;
             }
         }
 
