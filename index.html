@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">FastJob News - ??? ?? ?????? ?? ????? ??????</title>
+    <title id="page-title">FastJob News - 24/7 Live Global Coverage</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Mukta', sans-serif; }
-        /* Article Rich Content Styling (Matching Screenshot) */
         #detail-content { color: #333; line-height: 1.8; font-size: 1.125rem; }
         #detail-content p { margin-bottom: 1.5rem; }
         #detail-content .intro-text { font-weight: 600; font-size: 1.2rem; }
@@ -17,7 +16,6 @@
         #detail-content .read-also { color: #d32f2f; font-weight: 700; border-left: 4px solid #d32f2f; padding-left: 10px; background: #fdf2f2; padding-top: 5px; padding-bottom: 5px; }
         #detail-content .read-also a { color: #111; text-decoration: none; }
         #detail-content .read-also a:hover { text-decoration: underline; }
-        /* Table Styling */
         .article-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 1rem; }
         .article-table th, .article-table td { border: 1px solid #ddd; padding: 12px; text-align: left; }
         .article-table th { background-color: #f5f5f5; font-weight: 700; color: #333; }
@@ -25,7 +23,6 @@
 </head>
 <body class="bg-gray-100 text-gray-900 flex flex-col min-h-screen">
 
-    <!-- Top Bar -->
     <div class="bg-white border-b py-1">
         <div class="container mx-auto px-4 flex justify-between items-center text-xs text-gray-600">
             <div class="flex items-center gap-2 font-bold">
@@ -41,51 +38,43 @@
         </div>
     </div>
 
-    <!-- Main Header -->
     <header class="bg-[#cc0000] text-white sticky top-0 z-50 shadow-md">
         <div class="container mx-auto px-4 flex items-center justify-between py-2">
-            <!-- Logo -->
             <a href="index.html" class="flex items-center bg-white px-3 py-1 rounded">
                 <i class="fa-solid fa-bolt text-yellow-500 text-2xl mr-1"></i>
                 <span class="text-2xl font-black text-[#cc0000] tracking-tighter">FASTJOB</span>
                 <span class="text-sm font-bold text-gray-800 ml-1 mt-1">NEWS</span>
             </a>
             
-            <!-- Desktop Nav -->
             <nav class="hidden md:flex space-x-6 text-sm font-bold">
-                <button onclick="filterCategory('All')" class="hover:text-yellow-300 transition uppercase">???</button>
-                <button onclick="filterCategory('National')" class="hover:text-yellow-300 transition uppercase">???</button>
-                <button onclick="filterCategory('World')" class="hover:text-yellow-300 transition uppercase">??????</button>
-                <button onclick="filterCategory('Business')" class="hover:text-yellow-300 transition uppercase">???????</button>
+                <button onclick="filterCategory('All')" class="hover:text-yellow-300 transition uppercase">Home</button>
+                <button onclick="filterCategory('National')" class="hover:text-yellow-300 transition uppercase">National</button>
+                <button onclick="filterCategory('World')" class="hover:text-yellow-300 transition uppercase">World</button>
+                <button onclick="filterCategory('Business')" class="hover:text-yellow-300 transition uppercase">Business</button>
             </nav>
             
-            <!-- Search Icon -->
             <div class="bg-white rounded px-2 py-1 flex items-center w-48">
-                <input type="text" placeholder="?????? ?????..." class="w-full text-xs text-black outline-none">
+                <input type="text" placeholder="Search News..." class="w-full text-xs text-black outline-none">
                 <i class="fa-solid fa-magnifying-glass text-[#cc0000]"></i>
             </div>
         </div>
         
-        <!-- Breaking News Ticker -->
         <div class="bg-[#a30000] py-1 border-t border-red-500 text-xs font-bold px-4 flex items-center">
-            <span class="bg-white text-red-700 px-2 py-0.5 rounded mr-3 whitespace-nowrap">???????? ??????</span>
-            <marquee class="text-white">FastJob News ?? ????? ??? ?? ?????? ?? 10 ???? ???? ?? ????? ?????? ??????? ??...</marquee>
+            <span class="bg-white text-red-700 px-2 py-0.5 rounded mr-3 whitespace-nowrap">BREAKING NEWS</span>
+            <marquee class="text-white">Stay updated with FastJob News: Read the top 10 breaking headlines and live updates from around the globe...</marquee>
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="container mx-auto px-4 py-6 flex-grow">
         
-        <!-- Article View (Matches IDBI Screenshot) -->
         <div id="article-view" class="hidden bg-white p-4 md:p-8 max-w-4xl mx-auto shadow-sm border-t-4 border-[#cc0000]">
             <h1 id="detail-title" class="text-3xl md:text-[40px] font-black text-gray-900 leading-tight mb-4"></h1>
             
-            <!-- Author & Share Row -->
             <div class="flex flex-col md:flex-row md:items-center justify-between border-b pb-3 mb-6 gap-4">
                 <div class="flex items-center gap-3">
                     <img src="https://ui-avatars.com/api/?name=Fast+Job&background=cc0000&color=fff" class="w-10 h-10 rounded-full">
                     <div>
-                        <p class="font-bold text-sm text-gray-900">FastJob Desk</p>
+                        <p class="font-bold text-sm text-gray-900">FastJob News Desk</p>
                         <p id="detail-date" class="text-xs text-gray-500"></p>
                     </div>
                 </div>
@@ -97,30 +86,24 @@
                 </div>
             </div>
 
-            <!-- Big Image -->
             <img id="detail-image" src="" class="w-full h-auto object-contain max-h-[500px] mb-6">
             
-            <!-- Rich Content -->
             <div id="detail-content"></div>
         </div>
 
-        <!-- Home Grid View -->
         <div id="home-view">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
-                <!-- Main Lead -->
                 <div id="lead-story" class="lg:col-span-8 bg-white border shadow-sm">
-                    <p class="p-10 text-center text-gray-500 font-bold">?????? ??? ?? ??? ???...</p>
+                    <p class="p-10 text-center text-gray-500 font-bold">Loading Live News...</p>
                 </div>
-                <!-- Sidebar List -->
                 <div id="sidebar-news" class="lg:col-span-4 bg-white border shadow-sm flex flex-col">
-                    <h3 class="bg-[#cc0000] text-white font-bold p-2 text-sm">????? ??????</h3>
+                    <h3 class="bg-[#cc0000] text-white font-bold p-2 text-sm">LATEST NEWS</h3>
                     <div id="sidebar-content" class="flex-grow flex flex-col p-2 space-y-2"></div>
                 </div>
             </div>
 
-            <!-- Grid Section -->
             <div class="mt-6">
-                <h3 class="text-xl font-black text-gray-900 mb-4 border-l-4 border-[#cc0000] pl-2">?? ?????? ?????</h3>
+                <h3 class="text-xl font-black text-gray-900 mb-4 border-l-4 border-[#cc0000] pl-2">More Stories</h3>
                 <div id="grid-news" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
             </div>
         </div>
@@ -208,10 +191,9 @@
             document.getElementById('page-title').innerText = post.title;
             document.getElementById('detail-title').innerText = post.title;
             
-            // Set dynamic date like screenshot
             const today = new Date();
             const options = { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' };
-            document.getElementById('detail-date').innerText = today.toLocaleDateString('hi-IN', options);
+            document.getElementById('detail-date').innerText = today.toLocaleDateString('en-IN', options);
             
             document.getElementById('detail-image').src = post.image_url;
             document.getElementById('detail-content').innerHTML = post.content;
