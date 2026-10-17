@@ -2,8 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">FastJob Alert - Live Global & Verified Coverage</title>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4ECBSC962B"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-4ECBSC962B');
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -25,56 +35,70 @@
         @keyframes fade { from { opacity: 0.8; } to { opacity: 1; } }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-900 flex flex-col min-h-screen">
+<body class="bg-gray-100 text-gray-900 flex flex-col min-h-screen overflow-x-hidden">
 
-    <!-- Top Bar & Header (Same as before) -->
+    <!-- Main Header -->
     <header class="bg-[#cc0000] text-white sticky top-0 z-40 shadow-md">
-        <div class="container mx-auto px-4 flex items-center justify-between py-2 gap-4">
-            <a href="index.html" class="flex items-center bg-white px-2 py-1 rounded shrink-0 cursor-pointer">
-                <i class="fa-solid fa-bolt text-yellow-500 text-xl md:text-2xl mr-1"></i>
-                <span class="text-lg md:text-xl font-black text-[#cc0000] tracking-tighter">FASTJOB</span>
-                <span class="text-[10px] md:text-xs font-bold text-gray-800 ml-1 mt-1">ALERT</span>
+        <!-- PADDING REDUCED FOR MOBILE FULL WIDTH -->
+        <div class="px-2 md:container md:mx-auto md:px-4 flex items-center justify-between py-2 gap-2">
+            
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center bg-white px-1.5 py-1 rounded shrink-0 cursor-pointer">
+                <i class="fa-solid fa-bolt text-yellow-500 text-base md:text-2xl mr-1"></i>
+                <span class="text-sm md:text-xl font-black text-[#cc0000] tracking-tighter">FASTJOB</span>
+                <span class="text-[8px] md:text-xs font-bold text-gray-800 ml-0.5 mt-1">ALERT</span>
             </a>
-            <div class="bg-white rounded px-3 py-1.5 flex items-center w-full max-w-2xl shadow-inner flex-grow hidden md:flex">
-                <input type="text" id="searchInput" onkeyup="searchNews()" placeholder="Search latest news..." class="w-full text-sm text-black outline-none font-semibold">
-                <i class="fa-solid fa-magnifying-glass text-[#cc0000] cursor-pointer"></i>
+            
+            <!-- Search Box (Visible on ALL screens now) -->
+            <div class="bg-white rounded px-2 py-1 flex items-center w-full max-w-2xl shadow-inner flex-grow">
+                <input type="text" id="searchInput" onkeyup="searchNews()" placeholder="Search news..." class="w-full text-xs md:text-sm text-black outline-none font-semibold bg-transparent">
+                <i class="fa-solid fa-magnifying-glass text-[#cc0000] cursor-pointer text-xs md:text-base"></i>
             </div>
-            <button onclick="toggleMobileMenu()" class="text-white text-2xl hover:text-yellow-300 transition focus:outline-none shrink-0 pl-2">
+
+            <!-- Menu Button -->
+            <button onclick="toggleMobileMenu()" class="text-white text-xl md:text-2xl hover:text-yellow-300 transition focus:outline-none shrink-0 pl-1">
                 <i class="fa-solid fa-bars"></i>
             </button>
+            
         </div>
     </header>
 
     <!-- Mobile Menu -->
     <div id="mobileMenu" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex justify-end">
-        <div class="w-64 bg-white h-full shadow-2xl flex flex-col p-4">
+        <div class="w-64 bg-white h-full shadow-2xl flex flex-col p-4 overflow-y-auto">
             <button onclick="toggleMobileMenu()" class="self-end text-gray-500 hover:text-red-600 text-2xl mb-4"><i class="fa-solid fa-xmark"></i></button>
-            <input type="text" id="mobileSearchInput" onkeyup="searchNewsMobile()" placeholder="Search..." class="w-full bg-gray-100 p-2 mb-4 rounded outline-none border">
             <nav class="flex flex-col space-y-4 font-bold text-gray-800">
-                <button onclick="filterCategoryAndClose('All')" class="text-left border-b pb-2">HOME</button>
-                <button onclick="filterCategoryAndClose('Politics')" class="text-left border-b pb-2">POLITICS</button>
-                <button onclick="filterCategoryAndClose('Economy')" class="text-left border-b pb-2">ECONOMY</button>
-                <button onclick="filterCategoryAndClose('Business')" class="text-left border-b pb-2">BUSINESS</button>
-                <button onclick="filterCategoryAndClose('Sports')" class="text-left border-b pb-2">SPORTS</button>
-                <button onclick="filterCategoryAndClose('Automobile')" class="text-left border-b pb-2">AUTO</button>
-                <button onclick="filterCategoryAndClose('Tech & AI')" class="text-left border-b pb-2">TECH & AI</button>
+                <button onclick="filterCategoryAndClose('All')" class="text-left border-b pb-2 hover:text-red-600">HOME</button>
+                <button onclick="filterCategoryAndClose('Politics')" class="text-left border-b pb-2 hover:text-red-600">POLITICS</button>
+                <button onclick="filterCategoryAndClose('Economy')" class="text-left border-b pb-2 hover:text-red-600">ECONOMY</button>
+                <button onclick="filterCategoryAndClose('Business')" class="text-left border-b pb-2 hover:text-red-600">BUSINESS</button>
+                <button onclick="filterCategoryAndClose('Sports')" class="text-left border-b pb-2 hover:text-red-600">SPORTS</button>
+                <button onclick="filterCategoryAndClose('Automobile')" class="text-left border-b pb-2 hover:text-red-600">AUTO</button>
+                <button onclick="filterCategoryAndClose('Tech & AI')" class="text-left border-b pb-2 hover:text-red-600">TECH & AI</button>
                 <button onclick="filterCategoryAndClose('Jobs')" class="text-left text-[#cc0000] border-b pb-2">JOBS</button>
             </nav>
         </div>
     </div>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-4 py-6 flex-grow w-full overflow-hidden">
+    <!-- Mobile margins fully reduced (px-1) to cover left/right gap -->
+    <main class="px-1 md:container md:mx-auto md:px-4 py-4 flex-grow w-full overflow-hidden">
         
         <!-- Detailed Article View -->
-        <div id="article-view" class="hidden bg-white p-4 md:p-8 max-w-4xl mx-auto shadow-sm border-t-4 border-[#cc0000]">
+        <div id="article-view" class="hidden bg-white p-3 md:p-8 max-w-4xl mx-auto shadow-sm border-t-4 border-[#cc0000]">
             <button onclick="goBackHome()" class="mb-4 bg-gray-100 font-bold py-2 px-4 rounded inline-flex items-center text-sm"><i class="fa-solid fa-arrow-left mr-2"></i> Back to News</button>
             <h1 id="detail-title" class="text-2xl md:text-[40px] font-black text-gray-900 leading-tight mb-4"></h1>
-            <div class="flex items-center gap-3 border-b pb-4 mb-4">
-                <img src="https://ui-avatars.com/api/?name=News+Desk&background=cc0000&color=fff" class="w-10 h-10 rounded-full shadow">
-                <div>
-                    <p class="font-bold text-sm">FastJob Alert Desk</p>
-                    <p id="detail-date" class="text-xs text-gray-500"></p>
+            <div class="flex items-center justify-between border-b pb-4 mb-4">
+                <div class="flex items-center gap-3">
+                    <img src="https://ui-avatars.com/api/?name=News+Desk&background=cc0000&color=fff" class="w-10 h-10 rounded-full shadow">
+                    <div>
+                        <p class="font-bold text-sm">FastJob Alert Desk</p>
+                        <p id="detail-date" class="text-xs text-gray-500"></p>
+                    </div>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="shareWebsite('whatsapp')" class="bg-[#25d366] text-white w-8 h-8 rounded-full"><i class="fa-brands fa-whatsapp"></i></button>
+                    <button onclick="shareWebsite('facebook')" class="bg-[#1877f2] text-white w-8 h-8 rounded-full"><i class="fa-brands fa-facebook-f"></i></button>
                 </div>
             </div>
             <img id="detail-image" src="" class="w-full h-auto object-cover max-h-[400px] mb-6 rounded">
@@ -84,14 +108,71 @@
         <!-- Home Grid View -->
         <div id="home-view">
             <!-- Top 5 Auto Slider -->
-            <div id="slider-wrapper" class="slider-container bg-white border shadow-sm min-h-[300px] md:min-h-[450px] mb-8">
+            <div id="slider-wrapper" class="slider-container bg-white border shadow-sm min-h-[220px] md:min-h-[450px] mb-6 md:mb-8">
                 <p class="p-10 text-center text-gray-500 font-bold"><i class="fa-solid fa-spinner fa-spin mr-2"></i> Loading Latest Updates...</p>
             </div>
 
             <!-- Category Wise Sections -->
-            <div id="category-sections" class="space-y-10"></div>
+            <div id="category-sections" class="space-y-8 md:space-y-10"></div>
         </div>
     </main>
+
+    <!-- Professional Footer Restored -->
+    <footer class="bg-gray-900 text-white pt-10 pb-6 mt-12 border-t-4 border-[#cc0000]">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div>
+                <a href="index.html" class="flex items-center bg-white px-2 py-1 rounded w-max mb-4">
+                    <i class="fa-solid fa-bolt text-yellow-500 text-xl mr-1"></i>
+                    <span class="text-xl font-black text-[#cc0000] tracking-tighter">FASTJOB</span>
+                    <span class="text-xs font-bold text-gray-800 ml-1 mt-1">ALERT</span>
+                </a>
+                <p class="text-gray-400 text-sm leading-relaxed">Delivering 24/7 real-time, verified news, and comprehensive coverage from across the globe directly to your screen.</p>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-4 border-b border-gray-700 pb-2">Quick Links</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><button onclick="openModal('About Us', 'FastJob Alert is a leading digital news platform powered by advanced AI and dedicated to bringing you verified, in-depth coverage of global events.')" class="hover:text-[#cc0000] transition">About Us</button></li>
+                    <li><button onclick="openModal('Privacy Policy', 'We value your privacy. We use standard tracking to improve experience. Data is never sold.')" class="hover:text-[#cc0000] transition">Privacy Policy</button></li>
+                    <li><button onclick="openModal('Terms & Conditions', 'By accessing FastJob Alert, you agree to our terms. Republishing requires proper credit.')" class="hover:text-[#cc0000] transition">Terms & Conditions</button></li>
+                    <li><button onclick="openModal('Contact Desk', 'Email: info@fastjob.online <br> WhatsApp: Join our channel for instant updates.')" class="hover:text-[#cc0000] transition">Contact Desk</button></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-4 border-b border-gray-700 pb-2">Categories</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><button onclick="filterCategory('Politics')" class="hover:text-[#cc0000]">Politics</button></li>
+                    <li><button onclick="filterCategory('Business')" class="hover:text-[#cc0000]">Business & Economy</button></li>
+                    <li><button onclick="filterCategory('Tech & AI')" class="hover:text-[#cc0000]">Technology & AI</button></li>
+                    <li><button onclick="filterCategory('Jobs')" class="hover:text-[#cc0000]">Job Updates</button></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-4 border-b border-gray-700 pb-2">Connect With Us</h4>
+                <div class="flex gap-3 mb-4">
+                    <a href="https://whatsapp.com/channel/0029VbDajQV8PgsNA1lLhW0i" target="_blank" class="bg-gray-800 text-white w-10 h-10 flex items-center justify-center rounded hover:bg-[#25d366] transition"><i class="fa-brands fa-whatsapp"></i></a>
+                    <button onclick="shareWebsite('facebook')" class="bg-gray-800 text-white w-10 h-10 flex items-center justify-center rounded hover:bg-[#1877f2] transition"><i class="fa-brands fa-facebook-f"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="container mx-auto px-4 border-t border-gray-800 pt-6 text-center text-sm text-gray-500 font-semibold">
+            &copy; 2026 FastJob Alert Portal. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Fixed WhatsApp Button -->
+    <a href="https://whatsapp.com/channel/0029VbDajQV8PgsNA1lLhW0i" target="_blank" class="fixed bottom-6 right-6 bg-[#25d366] text-white rounded-full w-14 h-14 flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition z-50 animate-bounce">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer Modal -->
+    <div id="infoModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center z-[100] px-4">
+        <div class="bg-white rounded-xl shadow-2xl max-w-lg w-full p-6 relative">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-red-600 text-xl"><i class="fa-solid fa-xmark"></i></button>
+            <h2 id="modalTitle" class="text-2xl font-black text-[#cc0000] mb-4 border-b pb-2">Title</h2>
+            <div id="modalContent" class="text-gray-700 leading-relaxed text-sm">Content</div>
+            <button onclick="closeModal()" class="mt-6 w-full bg-[#cc0000] text-white py-2 rounded font-bold">Close</button>
+        </div>
+    </div>
 
     <script>
         const SUPABASE_URL = "https://wioheljpjdcprozqumpv.supabase.co";
@@ -102,7 +183,6 @@
 
         async function loadNews() {
             try {
-                // Fetch more posts to fill categories
                 const response = await fetch(SUPABASE_URL + "/rest/v1/posts?select=*&order=id.desc&limit=100", {
                     headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + SUPABASE_KEY }
                 });
@@ -121,16 +201,16 @@
             document.getElementById('article-view').classList.add('hidden');
             document.getElementById('home-view').classList.remove('hidden');
             
-            // 1. Render Slider (Top 5)
+            // Render Slider (Top 5)
             const top5 = newsList.slice(0, 5);
             let sliderHTML = '';
             top5.forEach((item, index) => {
                 sliderHTML += `
-                <div class="slide ${index === 0 ? 'active' : ''} cursor-pointer w-full h-[300px] md:h-[450px] relative group" onclick="openArticle('${item.slug}')">
+                <div class="slide ${index === 0 ? 'active' : ''} cursor-pointer w-full h-[220px] md:h-[450px] relative group" onclick="openArticle('${item.slug}')">
                     <img src="${item.image_url}" class="w-full h-full object-cover">
-                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent p-4 md:p-8 pt-20">
-                        <span class="bg-[#cc0000] text-white text-[10px] md:text-xs px-2 py-1 rounded font-bold uppercase">${item.category}</span>
-                        <h2 class="text-white text-xl md:text-4xl font-black mt-2 leading-tight">${item.title}</h2>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent p-3 md:p-8 pt-16">
+                        <span class="bg-[#cc0000] text-white text-[9px] md:text-xs px-2 py-0.5 rounded font-bold uppercase">${item.category}</span>
+                        <h2 class="text-white text-lg md:text-4xl font-black mt-1.5 md:mt-2 leading-tight line-clamp-2">${item.title}</h2>
                     </div>
                 </div>`;
             });
@@ -144,7 +224,7 @@
                 slides[slideIndex].classList.add('active');
             }, 3000);
 
-            // 2. Render Category Sections
+            // Render Category Sections
             const cats = ['Politics', 'Economy', 'Business', 'Sports', 'Automobile', 'Tech & AI', 'Jobs'];
             let sectionsHTML = '';
             
@@ -153,16 +233,16 @@
                 if(catPosts.length > 0) {
                     sectionsHTML += `
                     <div>
-                        <div class="flex justify-between items-center mb-4 border-b-2 border-gray-200 pb-2">
-                            <h3 class="text-xl md:text-2xl font-black text-gray-900 border-l-4 border-[#cc0000] pl-3 uppercase">${cat}</h3>
-                            <button onclick="filterCategory('${cat}')" class="text-sm font-bold text-[#cc0000] hover:underline">View More &raquo;</button>
+                        <div class="flex justify-between items-center mb-3 md:mb-4 border-b-2 border-gray-200 pb-1 md:pb-2">
+                            <h3 class="text-lg md:text-2xl font-black text-gray-900 border-l-4 border-[#cc0000] pl-2 md:pl-3 uppercase">${cat}</h3>
+                            <button onclick="filterCategory('${cat}')" class="text-xs md:text-sm font-bold text-[#cc0000]">View More &raquo;</button>
                         </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4">
                             ${catPosts.slice(0, 4).map(item => `
-                                <div onclick="openArticle('${item.slug}')" class="bg-white border shadow-sm cursor-pointer rounded-lg overflow-hidden flex flex-col">
-                                    <img src="${item.image_url}" class="w-full h-40 object-cover">
-                                    <div class="p-3 flex-grow">
-                                        <h4 class="font-bold text-sm md:text-base text-gray-900 line-clamp-3">${item.title}</h4>
+                                <div onclick="openArticle('${item.slug}')" class="bg-white border shadow-sm cursor-pointer rounded overflow-hidden flex flex-col">
+                                    <img src="${item.image_url}" class="w-full h-24 md:h-40 object-cover">
+                                    <div class="p-2 flex-grow">
+                                        <h4 class="font-bold text-xs md:text-base text-gray-900 line-clamp-3 leading-snug">${item.title}</h4>
                                     </div>
                                 </div>
                             `).join('')}
@@ -173,20 +253,37 @@
             document.getElementById('category-sections').innerHTML = sectionsHTML;
         }
 
+        function searchNews() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            if (!query) { renderHome(allNews); return; }
+            
+            clearInterval(slideInterval);
+            document.getElementById('slider-wrapper').innerHTML = ''; 
+            
+            const filtered = allNews.filter(item => item.title.toLowerCase().includes(query));
+            let gridHTML = `<h3 class="text-xl font-black mb-4">Search Results</h3><div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4">`;
+            filtered.forEach(item => {
+                gridHTML += `
+                <div onclick="openArticle('${item.slug}')" class="bg-white border shadow-sm cursor-pointer rounded overflow-hidden">
+                    <img src="${item.image_url}" class="w-full h-24 md:h-40 object-cover">
+                    <div class="p-2"><h4 class="font-bold text-xs md:text-sm">${item.title}</h4></div>
+                </div>`;
+            });
+            gridHTML += '</div>';
+            document.getElementById('category-sections').innerHTML = gridHTML;
+        }
+
         function openArticle(slug) {
             const post = allNews.find(item => item.slug === slug);
             if (post) {
                 history.pushState({slug: slug}, "", "?slug=" + slug);
                 document.getElementById('home-view').classList.add('hidden');
                 document.getElementById('article-view').classList.remove('hidden');
-                
                 document.getElementById('detail-title').innerText = post.title;
                 
-                // FIXED: Use actual database created_at time
                 const postDate = new Date(post.created_at);
                 const options = { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' };
                 document.getElementById('detail-date').innerText = postDate.toLocaleDateString('en-IN', options);
-                
                 document.getElementById('detail-image').src = post.image_url;
                 document.getElementById('detail-content').innerHTML = post.content;
                 window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -195,15 +292,15 @@
 
         function filterCategory(cat) {
             clearInterval(slideInterval);
-            document.getElementById('slider-wrapper').innerHTML = ''; // Hide slider on category page
+            document.getElementById('slider-wrapper').innerHTML = ''; 
             const filtered = cat === 'All' ? allNews : allNews.filter(item => item.category === cat);
             
-            let gridHTML = `<h3 class="text-2xl font-black mb-6 uppercase border-l-4 border-[#cc0000] pl-3">${cat} News</h3><div class="grid grid-cols-1 md:grid-cols-4 gap-4">`;
+            let gridHTML = `<h3 class="text-xl md:text-2xl font-black mb-4 uppercase border-l-4 border-[#cc0000] pl-3">${cat} News</h3><div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4">`;
             filtered.forEach(item => {
                 gridHTML += `
-                <div onclick="openArticle('${item.slug}')" class="bg-white border shadow-sm cursor-pointer rounded-lg overflow-hidden">
-                    <img src="${item.image_url}" class="w-full h-40 object-cover">
-                    <div class="p-3"><h4 class="font-bold text-sm">${item.title}</h4></div>
+                <div onclick="openArticle('${item.slug}')" class="bg-white border shadow-sm cursor-pointer rounded overflow-hidden">
+                    <img src="${item.image_url}" class="w-full h-24 md:h-40 object-cover">
+                    <div class="p-2"><h4 class="font-bold text-xs md:text-sm">${item.title}</h4></div>
                 </div>`;
             });
             gridHTML += '</div>';
@@ -220,6 +317,32 @@
         function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
         function filterCategoryAndClose(cat) { filterCategory(cat); toggleMobileMenu(); }
         
+        window.addEventListener('popstate', function(event) {
+            const urlParams = new URLSearchParams(window.location.search);
+            const postSlug = urlParams.get('slug');
+            if (postSlug) {
+                const found = allNews.find(item => item.slug === postSlug);
+                if (found) { openArticle(found.slug); return; }
+            }
+            goBackHome();
+        });
+
+        function openModal(title, content) {
+            document.getElementById('modalTitle').innerHTML = title;
+            document.getElementById('modalContent').innerHTML = content;
+            document.getElementById('infoModal').classList.remove('hidden');
+            document.getElementById('infoModal').classList.add('flex');
+        }
+        function closeModal() {
+            document.getElementById('infoModal').classList.add('hidden');
+            document.getElementById('infoModal').classList.remove('flex');
+        }
+        function shareWebsite(platform) {
+            const url = encodeURIComponent(window.location.href);
+            if (platform === 'facebook') window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+            else if (platform === 'whatsapp') window.open(`https://api.whatsapp.com/send?text=Check out this news: ${url}`, '_blank');
+        }
+
         loadNews();
     </script>
 </body>
