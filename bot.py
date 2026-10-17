@@ -1,6 +1,7 @@
 import feedparser
 import re
 import random
+import time
 from datetime import datetime
 from supabase import create_client
 import requests
@@ -14,7 +15,6 @@ OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
-# 7 Categories
 RSS_FEEDS = {
     "Politics": ["https://www.thehindu.com/news/national/feeder/default.rss"],
     "Economy": ["https://economictimes.indiatimes.com/news/economy/rssfeeds/1377380.cms"],
@@ -62,89 +62,88 @@ def slugify(text):
     text = text.lower()
     text = re.sub(r'[^a-z0-9\s-]', '', text)
     words = text.split()
-    # ULTRA SHORT SEO SLUG (Max 4 words)
     return "-".join(words[:4])
 
-def fetch_and_insert():
-    print(f"[{datetime.now()}] Bot started! Picking a random category for 1 post...")
-    
-    if not OPENAI_API_KEY or not SUPABASE_KEY:
-        print("ERROR: API Keys missing!")
-        return
-    
-    # Shuffle categories to ensure it picks a different one every time
+def fetch_and_insert_single():
     categories = list(RSS_FEEDS.keys())
     random.shuffle(categories)
     
-    inserted = False # Tracker to ensure we only post ONCE per run
-    
     for category in categories:
-        if inserted: break
-        
         feeds = RSS_FEEDS[category]
-        random.shuffle(feeds) # Shuffle feeds within category
+        random.shuffle(feeds)
         
         for url in feeds:
-            if inserted: break
-            feed = feedparser.parse(url)
-            
-            for entry in feed.entries:
-                image_url = extract_real_image(entry)
-                if not image_url: continue 
-                
-                title = entry.title.strip()
-                summary = entry.get('summary', '')
-                
-                # STRICT DUPLICATE CHECK (Check if first 30 chars of title exist)
-                check = supabase.table("posts").select("id").ilike("title", f"%{title[:30]}%").execute()
-                if len(check.data) > 0:
-                    continue # Skip duplicate
-                
-                # Short 4-digit code for clean URL
-                short_id = str(int(datetime.now().timestamp()))[-4:]
-                slug = slugify(title) + "-" + short_id
-                
-                print(f"[{category}] Generating SEO article for: {title[:30]}...")
-                
-                # STRICT 800+ WORDS SEO RANKING PROMPT
-                prompt = f"""
-                Write a highly engaging, comprehensive, and SEO-optimized news article based on:
-                Original Title: {title}
-                Context: {summary}
-                
-                CRITICAL INSTRUCTIONS FOR LENGTH & STRUCTURE (STRICTLY 800+ WORDS):
-                1. You MUST write a very detailed article exceeding 800 words. Expand on the topic by providing: detailed background history, current implications, expert analysis, and future outlook.
-                2. Use at least 5-6 <h3 class="article-subheading"> tags. Under each heading, write 2 to 3 long, detailed paragraphs.
-                3. Create a highly ranked, catchy SEO Title for the article.
-                4. Year is 2026. Treat as breaking modern news.
-                5. Format strictly in HTML. Start with <h1 class="seo-title">YOUR Catchy Title Here</h1> then <p class="intro-text"><strong>(FastJob Alert Desk):</strong>...
-                6. Include one <table class="article-table"> for key highlights.
-                7. At the very end of the article, add a paragraph with 5-6 trending hashtags (e.g., <p class="hashtags">#News #Trending ...</p>).
-                8. Do not include ```html or markdown formatting, just raw HTML.
-                """
-                
-                content = generate_content_openai(prompt)
-                if not content: continue 
-                
-                content = content.strip()
-                if content.startswith('```html'): content = content[7:-3]
-                elif content.startswith('```'): content = content[3:-3]
-                
-                data = {
-                    "title": title,
-                    "slug": slug,
-                    "content": content,
-                    "category": category,
-                    "image_url": image_url
-                }
-                
-                try:
+            try:
+                feed = feedparser.parse(url)
+                for entry in feed.entries:
+                    image_url = extract_real_image(entry)
+                    if not image_url: continue 
+                    
+                    title = entry.title.strip()
+                    summary = entry.get('summary', '')
+                    
+                    check = supabase.table("posts").select("id").ilike("title", f"%{title[:30]}%").execute()
+                    if len(check.data) > 0:
+                        continue 
+                    
+                    short_id = str(int(datetime.now().timestamp()))[-4:]
+                    slug = slugify(title) + "-" + short_id
+                    
+                    print(f"[{category}] Generating 800+ word SEO article for: {title[:30]}...")
+                    
+                    prompt = f"""
+                    Write a highly engaging, comprehensive, and SEO-optimized news article based on:
+                    Original Title: {title}
+                    Context: {summary}
+                    
+                    CRITICAL INSTRUCTIONS FOR LENGTH & STRUCTURE (STRICTLY 800+ WORDS):
+                    1. You MUST write a very detailed article exceeding 800 words. Expand on the topic by providing: detailed background history, current implications, expert analysis, and future outlook.
+                    2. Use at least 5-6 <h3 class="article-subheading"> tags. Under each heading, write 2 to 3 long, detailed paragraphs.
+                    3. Create a highly ranked, catchy SEO Title for the article.
+                    4. Year is 2026. Treat as breaking modern news.
+                    5. Format strictly in HTML. Start with <h1 class="seo-title">YOUR Catchy Title Here</h1> then <p class="intro-text"><strong>(FastJob Alert Desk):</strong>...
+                    6. Include one <table class="article-table"> for key highlights.
+                    7. At the very end of the article, add a paragraph with 5-6 trending hashtags (e.g., <p class="hashtags">#News #Trending ...</p>).
+                    8. Do not include ```html or markdown formatting, just raw HTML.
+                    """
+                    
+                    content = generate_content_openai(prompt)
+                    if not content: continue 
+                    
+                    content = content.strip()
+                    if content.startswith('```html'): content = content[7:-3]
+                    elif content.startswith('```'): content = content[3:-3]
+                    
+                    data = {
+                        "title": title,
+                        "slug": slug,
+                        "content": content,
+                        "category": category,
+                        "image_url": image_url
+                    }
+                    
                     supabase.table("posts").insert(data).execute()
-                    print(f"SUCCESS! Posted 1 article in [{category}]. Bot stopping.")
-                    inserted = True
-                    break # Break out of entry loop
-                except Exception as e:
-                    print(f"Supabase Error: {e}")
+                    print(f"SUCCESS! Posted 1 article in [{category}].")
+                    return True # Successfully posted 1 article
+            except Exception as e:
+                print(f"Error in {category}: {e}")
+                continue
+    return False
 
 if __name__ == "__main__":
-    fetch_and_insert()
+    if not OPENAI_API_KEY or not SUPABASE_KEY:
+        print("ERROR: API Keys missing!")
+    else:
+        print(f"[{datetime.now()}] Bot activated for a 1-Hour continuous cycle!")
+        # 6 Baar chalega (Total 1 ghanta)
+        for i in range(6):
+            print(f"\n--- Starting Post {i+1} of 6 ---")
+            success = fetch_and_insert_single()
+            if not success:
+                print("No new posts found right now.")
+            
+            # Aakhri post ke baad wait nahi karna hai
+            if i < 5:
+                print("Waiting 10 minutes (600 seconds) for the next post...")
+                time.sleep(600) # Exactly 10 minutes sleep
+        print("\n1-Hour cycle complete. Waiting for next GitHub trigger.")
