@@ -1,5 +1,6 @@
 import feedparser
 import re
+import random
 from datetime import datetime
 from supabase import create_client
 import requests
@@ -53,54 +54,71 @@ def generate_content_openai(prompt):
         response = requests.post(url, headers=headers, json=data)
         if response.status_code == 200:
             return response.json()['choices'][0]['message']['content']
-        else:
-            print(f"OpenAI API Error: {response.text}")
-            return None
     except Exception as e:
         print(f"Request failed: {e}")
-        return None
+    return None
 
 def slugify(text):
     text = text.lower()
     text = re.sub(r'[^a-z0-9\s-]', '', text)
-    return re.sub(r'[\s-]+', '-', text).strip('-')
+    words = text.split()
+    # ULTRA SHORT SEO SLUG (Max 4 words)
+    return "-".join(words[:4])
 
 def fetch_and_insert():
-    print(f"[{datetime.now()}] Bot started on Cloud Server! Fetching fresh posts...")
+    print(f"[{datetime.now()}] Bot started! Picking a random category for 1 post...")
     
     if not OPENAI_API_KEY or not SUPABASE_KEY:
-        print("ERROR: API Keys missing! Check GitHub Secrets.")
+        print("ERROR: API Keys missing!")
         return
     
-    for category, feeds in RSS_FEEDS.items():
+    # Shuffle categories to ensure it picks a different one every time
+    categories = list(RSS_FEEDS.keys())
+    random.shuffle(categories)
+    
+    inserted = False # Tracker to ensure we only post ONCE per run
+    
+    for category in categories:
+        if inserted: break
+        
+        feeds = RSS_FEEDS[category]
+        random.shuffle(feeds) # Shuffle feeds within category
+        
         for url in feeds:
+            if inserted: break
             feed = feedparser.parse(url)
-            added_in_category = 0
             
             for entry in feed.entries:
-                # HAR GHANTE 2 POST PER CATEGORY (Daily 336 posts total)
-                if added_in_category >= 2: break 
-                
                 image_url = extract_real_image(entry)
                 if not image_url: continue 
                 
-                title = entry.title
+                title = entry.title.strip()
                 summary = entry.get('summary', '')
-                slug = slugify(title) + "-" + str(int(datetime.now().timestamp()))
                 
-                check = supabase.table("posts").select("id").ilike("title", title).execute()
+                # STRICT DUPLICATE CHECK (Check if first 30 chars of title exist)
+                check = supabase.table("posts").select("id").ilike("title", f"%{title[:30]}%").execute()
                 if len(check.data) > 0:
-                    continue 
+                    continue # Skip duplicate
                 
-                print(f"[{category}] Generating article for: {title[:30]}...")
+                # Short 4-digit code for clean URL
+                short_id = str(int(datetime.now().timestamp()))[-4:]
+                slug = slugify(title) + "-" + short_id
                 
-                # YAHAN DATE AUR YEAR FIX KIYA HAI
+                print(f"[{category}] Generating SEO article for: {title[:30]}...")
+                
+                # SEO RANKING PROMPT WITH HASHTAGS
                 prompt = f"""
-                Write a detailed, professional, and SEO-optimized news article in English (at least 800-900 words) about:
-                Title: {title}
+                Write a highly engaging, SEO-optimized news article (800+ words) based on:
+                Original Title: {title}
                 Context: {summary}
-                CRITICAL RULE: The current year is 2026. Treat this as breaking, modern news. DO NOT include outdated dates like 2023 or 2024 in tables or text unless historically necessary.
-                Format strictly in HTML. Start with <p class="intro-text"><strong>(FastJob Alert Desk):</strong>... Use <h3 class="article-subheading"> for headings and include one <table class="article-table">. Do not include ```html or ``` markdown formatting, just the raw HTML code.
+                
+                CRITICAL INSTRUCTIONS:
+                1. Create a highly ranked, catchy SEO Title for the article.
+                2. Year is 2026. Treat as breaking modern news.
+                3. Format strictly in HTML. Start with <h1 class="seo-title">YOUR Catchy Title Here</h1> then <p class="intro-text"><strong>(FastJob Alert Desk):</strong>...
+                4. Include one <table class="article-table"> for key highlights.
+                5. At the very end of the article, add a paragraph with 5-6 trending hashtags (e.g., <p class="hashtags">#News #Trending ...</p>).
+                6. Do not include ```html or markdown formatting, just raw HTML.
                 """
                 
                 content = generate_content_openai(prompt)
@@ -120,8 +138,9 @@ def fetch_and_insert():
                 
                 try:
                     supabase.table("posts").insert(data).execute()
-                    print(f"SUCCESS! Inserted [{category}] post.")
-                    added_in_category += 1
+                    print(f"SUCCESS! Posted 1 article in [{category}]. Bot stopping.")
+                    inserted = True
+                    break # Break out of entry loop
                 except Exception as e:
                     print(f"Supabase Error: {e}")
 
