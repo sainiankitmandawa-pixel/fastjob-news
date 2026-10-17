@@ -94,10 +94,12 @@ def fetch_and_insert():
                 
                 print(f"[{category}] Generating article for: {title[:30]}...")
                 
+                # YAHAN DATE AUR YEAR FIX KIYA HAI
                 prompt = f"""
                 Write a detailed, professional, and SEO-optimized news article in English (at least 800-900 words) about:
                 Title: {title}
                 Context: {summary}
+                CRITICAL RULE: The current year is 2026. Treat this as breaking, modern news. DO NOT include outdated dates like 2023 or 2024 in tables or text unless historically necessary.
                 Format strictly in HTML. Start with <p class="intro-text"><strong>(FastJob Alert Desk):</strong>... Use <h3 class="article-subheading"> for headings and include one <table class="article-table">. Do not include ```html or ``` markdown formatting, just the raw HTML code.
                 """
                 
