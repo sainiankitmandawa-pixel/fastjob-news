@@ -3,7 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">FastJob Alert - Live Global & Verified Coverage</title>
+    
+    <!-- FULL SEO META TAGS -->
+    <title id="page-title">FastJob Alert - Live Global News & Verified Coverage</title>
+    <meta name="description" content="FastJob Alert provides 24/7 breaking news, politics, economy, tech, sports, auto, and job updates globally. Stay informed with verified coverage.">
+    <meta name="keywords" content="News, Breaking News, Jobs, Politics, Economy, Tech News, Auto, Sports, Daily Updates, FastJob Alert">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="FastJob Alert Desk">
     
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4ECBSC962B"></script>
@@ -21,15 +27,16 @@
         body { font-family: 'Mukta', sans-serif; }
         #detail-content { color: #333; line-height: 1.8; font-size: 1.125rem; }
         #detail-content p { margin-bottom: 1.5rem; }
+        #detail-content .seo-title { font-size: 2rem; font-weight: 900; color: #cc0000; margin-bottom: 1.5rem; line-height: 1.2; }
         #detail-content .intro-text { font-weight: 600; font-size: 1.2rem; }
         #detail-content .article-subheading { font-size: 1.5rem; font-weight: 800; color: #111; margin-top: 2rem; margin-bottom: 1rem; }
+        #detail-content .hashtags { margin-top: 2rem; font-weight: bold; color: #1877f2; }
         .article-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 1rem; }
         .article-table th, .article-table td { border: 1px solid #ddd; padding: 12px; text-align: left; }
         .article-table th { background-color: #f5f5f5; font-weight: 700; color: #333; }
         .nav-scroll::-webkit-scrollbar { display: none; }
         
-        /* Slider Styles */
-        .slider-container { position: relative; overflow: hidden; border-radius: 0.5rem; }
+        .slider-container { position: relative; overflow: hidden; border-radius: 0.2rem; }
         .slide { display: none; animation: fade 0.5s ease-in-out; }
         .slide.active { display: block; }
         @keyframes fade { from { opacity: 0.8; } to { opacity: 1; } }
@@ -37,33 +44,23 @@
 </head>
 <body class="bg-gray-100 text-gray-900 flex flex-col min-h-screen overflow-x-hidden">
 
-    <!-- Main Header -->
     <header class="bg-[#cc0000] text-white sticky top-0 z-40 shadow-md">
-        <!-- PADDING REDUCED FOR MOBILE FULL WIDTH -->
-        <div class="px-2 md:container md:mx-auto md:px-4 flex items-center justify-between py-2 gap-2">
-            
-            <!-- Logo -->
+        <div class="w-full px-2 md:px-4 flex items-center justify-between py-2 gap-2 max-w-[1600px] mx-auto">
             <a href="index.html" class="flex items-center bg-white px-1.5 py-1 rounded shrink-0 cursor-pointer">
                 <i class="fa-solid fa-bolt text-yellow-500 text-base md:text-2xl mr-1"></i>
                 <span class="text-sm md:text-xl font-black text-[#cc0000] tracking-tighter">FASTJOB</span>
                 <span class="text-[8px] md:text-xs font-bold text-gray-800 ml-0.5 mt-1">ALERT</span>
             </a>
-            
-            <!-- Search Box (Visible on ALL screens now) -->
             <div class="bg-white rounded px-2 py-1 flex items-center w-full max-w-2xl shadow-inner flex-grow">
                 <input type="text" id="searchInput" onkeyup="searchNews()" placeholder="Search news..." class="w-full text-xs md:text-sm text-black outline-none font-semibold bg-transparent">
                 <i class="fa-solid fa-magnifying-glass text-[#cc0000] cursor-pointer text-xs md:text-base"></i>
             </div>
-
-            <!-- Menu Button -->
             <button onclick="toggleMobileMenu()" class="text-white text-xl md:text-2xl hover:text-yellow-300 transition focus:outline-none shrink-0 pl-1">
                 <i class="fa-solid fa-bars"></i>
             </button>
-            
         </div>
     </header>
 
-    <!-- Mobile Menu -->
     <div id="mobileMenu" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex justify-end">
         <div class="w-64 bg-white h-full shadow-2xl flex flex-col p-4 overflow-y-auto">
             <button onclick="toggleMobileMenu()" class="self-end text-gray-500 hover:text-red-600 text-2xl mb-4"><i class="fa-solid fa-xmark"></i></button>
@@ -80,12 +77,10 @@
         </div>
     </div>
 
-    <!-- Main Content -->
-    <!-- Mobile margins fully reduced (px-1) to cover left/right gap -->
-    <main class="px-1 md:container md:mx-auto md:px-4 py-4 flex-grow w-full overflow-hidden">
+    <!-- FULL WIDTH CONTAINER TO FIX DESKTOP SITE SPACING -->
+    <main class="w-full max-w-[1600px] mx-auto px-1 md:px-3 py-4 flex-grow overflow-hidden">
         
-        <!-- Detailed Article View -->
-        <div id="article-view" class="hidden bg-white p-3 md:p-8 max-w-4xl mx-auto shadow-sm border-t-4 border-[#cc0000]">
+        <div id="article-view" class="hidden bg-white p-3 md:p-8 w-full mx-auto shadow-sm border-t-4 border-[#cc0000]">
             <button onclick="goBackHome()" class="mb-4 bg-gray-100 font-bold py-2 px-4 rounded inline-flex items-center text-sm"><i class="fa-solid fa-arrow-left mr-2"></i> Back to News</button>
             <h1 id="detail-title" class="text-2xl md:text-[40px] font-black text-gray-900 leading-tight mb-4"></h1>
             <div class="flex items-center justify-between border-b pb-4 mb-4">
@@ -101,25 +96,20 @@
                     <button onclick="shareWebsite('facebook')" class="bg-[#1877f2] text-white w-8 h-8 rounded-full"><i class="fa-brands fa-facebook-f"></i></button>
                 </div>
             </div>
-            <img id="detail-image" src="" class="w-full h-auto object-cover max-h-[400px] mb-6 rounded">
+            <img id="detail-image" src="" class="w-full h-auto object-cover max-h-[500px] mb-6 rounded">
             <div id="detail-content" class="w-full overflow-x-auto"></div>
         </div>
 
-        <!-- Home Grid View -->
         <div id="home-view">
-            <!-- Top 5 Auto Slider -->
-            <div id="slider-wrapper" class="slider-container bg-white border shadow-sm min-h-[220px] md:min-h-[450px] mb-6 md:mb-8">
+            <div id="slider-wrapper" class="slider-container bg-white shadow-sm min-h-[200px] md:min-h-[450px] mb-6 md:mb-8">
                 <p class="p-10 text-center text-gray-500 font-bold"><i class="fa-solid fa-spinner fa-spin mr-2"></i> Loading Latest Updates...</p>
             </div>
-
-            <!-- Category Wise Sections -->
             <div id="category-sections" class="space-y-8 md:space-y-10"></div>
         </div>
     </main>
 
-    <!-- Professional Footer Restored -->
     <footer class="bg-gray-900 text-white pt-10 pb-6 mt-12 border-t-4 border-[#cc0000]">
-        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div class="w-full max-w-[1600px] mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div>
                 <a href="index.html" class="flex items-center bg-white px-2 py-1 rounded w-max mb-4">
                     <i class="fa-solid fa-bolt text-yellow-500 text-xl mr-1"></i>
@@ -154,17 +144,15 @@
                 </div>
             </div>
         </div>
-        <div class="container mx-auto px-4 border-t border-gray-800 pt-6 text-center text-sm text-gray-500 font-semibold">
+        <div class="w-full max-w-[1600px] mx-auto px-4 border-t border-gray-800 pt-6 text-center text-sm text-gray-500 font-semibold">
             &copy; 2026 FastJob Alert Portal. All rights reserved.
         </div>
     </footer>
 
-    <!-- Fixed WhatsApp Button -->
     <a href="https://whatsapp.com/channel/0029VbDajQV8PgsNA1lLhW0i" target="_blank" class="fixed bottom-6 right-6 bg-[#25d366] text-white rounded-full w-14 h-14 flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition z-50 animate-bounce">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <!-- Footer Modal -->
     <div id="infoModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center z-[100] px-4">
         <div class="bg-white rounded-xl shadow-2xl max-w-lg w-full p-6 relative">
             <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-red-600 text-xl"><i class="fa-solid fa-xmark"></i></button>
@@ -197,12 +185,11 @@
             } catch (err) { console.error(err); }
         }
 
-        function renderHome(newsList) {
-            document.getElementById('article-view').classList.add('hidden');
-            document.getElementById('home-view').classList.remove('hidden');
+        // SLIDER RENDER FUNCTION
+        function renderSlider(newsItems) {
+            const top5 = newsItems.slice(0, 5);
+            if(top5.length === 0) return;
             
-            // Render Slider (Top 5)
-            const top5 = newsList.slice(0, 5);
             let sliderHTML = '';
             top5.forEach((item, index) => {
                 sliderHTML += `
@@ -214,8 +201,13 @@
                     </div>
                 </div>`;
             });
-            document.getElementById('slider-wrapper').innerHTML = sliderHTML;
+            
+            const wrapper = document.getElementById('slider-wrapper');
+            wrapper.innerHTML = sliderHTML;
+            wrapper.classList.remove('hidden');
+            
             clearInterval(slideInterval);
+            slideIndex = 0;
             slideInterval = setInterval(() => {
                 const slides = document.querySelectorAll('.slide');
                 if(!slides.length) return;
@@ -223,11 +215,16 @@
                 slideIndex = (slideIndex + 1) % slides.length;
                 slides[slideIndex].classList.add('active');
             }, 3000);
+        }
 
-            // Render Category Sections
+        function renderHome(newsList) {
+            document.getElementById('article-view').classList.add('hidden');
+            document.getElementById('home-view').classList.remove('hidden');
+            
+            renderSlider(newsList); // Call slider for ALL news
+
             const cats = ['Politics', 'Economy', 'Business', 'Sports', 'Automobile', 'Tech & AI', 'Jobs'];
             let sectionsHTML = '';
-            
             cats.forEach(cat => {
                 const catPosts = newsList.filter(p => p.category === cat);
                 if(catPosts.length > 0) {
@@ -237,12 +234,12 @@
                             <h3 class="text-lg md:text-2xl font-black text-gray-900 border-l-4 border-[#cc0000] pl-2 md:pl-3 uppercase">${cat}</h3>
                             <button onclick="filterCategory('${cat}')" class="text-xs md:text-sm font-bold text-[#cc0000]">View More &raquo;</button>
                         </div>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4">
-                            ${catPosts.slice(0, 4).map(item => `
+                        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-2 md:gap-4">
+                            ${catPosts.slice(0, 5).map(item => `
                                 <div onclick="openArticle('${item.slug}')" class="bg-white border shadow-sm cursor-pointer rounded overflow-hidden flex flex-col">
-                                    <img src="${item.image_url}" class="w-full h-24 md:h-40 object-cover">
+                                    <img src="${item.image_url}" class="w-full h-24 md:h-32 object-cover">
                                     <div class="p-2 flex-grow">
-                                        <h4 class="font-bold text-xs md:text-base text-gray-900 line-clamp-3 leading-snug">${item.title}</h4>
+                                        <h4 class="font-bold text-xs md:text-sm text-gray-900 line-clamp-3 leading-snug">${item.title}</h4>
                                     </div>
                                 </div>
                             `).join('')}
@@ -253,21 +250,36 @@
             document.getElementById('category-sections').innerHTML = sectionsHTML;
         }
 
-        function searchNews() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
-            if (!query) { renderHome(allNews); return; }
+        // CATEGORY FILTER FIX (SLIDER AYEGA AB)
+        function filterCategory(cat) {
+            const filtered = cat === 'All' ? allNews : allNews.filter(item => item.category === cat);
+            renderSlider(filtered); // Render category-specific slider!
             
-            clearInterval(slideInterval);
-            document.getElementById('slider-wrapper').innerHTML = ''; 
-            
-            const filtered = allNews.filter(item => item.title.toLowerCase().includes(query));
-            let gridHTML = `<h3 class="text-xl font-black mb-4">Search Results</h3><div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4">`;
+            let gridHTML = `<h3 class="text-xl md:text-2xl font-black mb-4 uppercase border-l-4 border-[#cc0000] pl-3">${cat} News</h3><div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-2 md:gap-4">`;
             filtered.forEach(item => {
                 gridHTML += `
                 <div onclick="openArticle('${item.slug}')" class="bg-white border shadow-sm cursor-pointer rounded overflow-hidden">
-                    <img src="${item.image_url}" class="w-full h-24 md:h-40 object-cover">
+                    <img src="${item.image_url}" class="w-full h-24 md:h-32 object-cover">
                     <div class="p-2"><h4 class="font-bold text-xs md:text-sm">${item.title}</h4></div>
                 </div>`;
+            });
+            gridHTML += '</div>';
+            document.getElementById('category-sections').innerHTML = gridHTML;
+            
+            // Fix SEO title dynamically
+            document.title = `${cat} News - FastJob Alert`;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function searchNews() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            if (!query) { renderHome(allNews); return; }
+            const filtered = allNews.filter(item => item.title.toLowerCase().includes(query));
+            document.getElementById('slider-wrapper').classList.add('hidden'); // Hide slider in search
+            
+            let gridHTML = `<h3 class="text-xl font-black mb-4">Search Results</h3><div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-2 md:gap-4">`;
+            filtered.forEach(item => {
+                gridHTML += `<div onclick="openArticle('${item.slug}')" class="bg-white border shadow-sm cursor-pointer rounded overflow-hidden"><img src="${item.image_url}" class="w-full h-24 md:h-32 object-cover"><div class="p-2"><h4 class="font-bold text-xs md:text-sm">${item.title}</h4></div></div>`;
             });
             gridHTML += '</div>';
             document.getElementById('category-sections').innerHTML = gridHTML;
@@ -280,6 +292,7 @@
                 document.getElementById('home-view').classList.add('hidden');
                 document.getElementById('article-view').classList.remove('hidden');
                 document.getElementById('detail-title').innerText = post.title;
+                document.title = `${post.title} - FastJob Alert`; // SEO Title Update
                 
                 const postDate = new Date(post.created_at);
                 const options = { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' };
@@ -290,26 +303,9 @@
             }
         }
 
-        function filterCategory(cat) {
-            clearInterval(slideInterval);
-            document.getElementById('slider-wrapper').innerHTML = ''; 
-            const filtered = cat === 'All' ? allNews : allNews.filter(item => item.category === cat);
-            
-            let gridHTML = `<h3 class="text-xl md:text-2xl font-black mb-4 uppercase border-l-4 border-[#cc0000] pl-3">${cat} News</h3><div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4">`;
-            filtered.forEach(item => {
-                gridHTML += `
-                <div onclick="openArticle('${item.slug}')" class="bg-white border shadow-sm cursor-pointer rounded overflow-hidden">
-                    <img src="${item.image_url}" class="w-full h-24 md:h-40 object-cover">
-                    <div class="p-2"><h4 class="font-bold text-xs md:text-sm">${item.title}</h4></div>
-                </div>`;
-            });
-            gridHTML += '</div>';
-            document.getElementById('category-sections').innerHTML = gridHTML;
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
         function goBackHome() {
             history.pushState({}, "", window.location.pathname);
+            document.title = "FastJob Alert - Live Global News & Verified Coverage";
             renderHome(allNews);
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -340,7 +336,7 @@
         function shareWebsite(platform) {
             const url = encodeURIComponent(window.location.href);
             if (platform === 'facebook') window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
-            else if (platform === 'whatsapp') window.open(`https://api.whatsapp.com/send?text=Check out this news: ${url}`, '_blank');
+            else if (platform === 'whatsapp') window.open(`https://api.whatsapp.com/send?text=Check out this breaking news: ${url}`, '_blank');
         }
 
         loadNews();
