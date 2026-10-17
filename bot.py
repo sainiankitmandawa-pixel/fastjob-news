@@ -106,19 +106,21 @@ def fetch_and_insert():
                 
                 print(f"[{category}] Generating SEO article for: {title[:30]}...")
                 
-                # SEO RANKING PROMPT WITH HASHTAGS
+                # STRICT 800+ WORDS SEO RANKING PROMPT
                 prompt = f"""
-                Write a highly engaging, SEO-optimized news article (800+ words) based on:
+                Write a highly engaging, comprehensive, and SEO-optimized news article based on:
                 Original Title: {title}
                 Context: {summary}
                 
-                CRITICAL INSTRUCTIONS:
-                1. Create a highly ranked, catchy SEO Title for the article.
-                2. Year is 2026. Treat as breaking modern news.
-                3. Format strictly in HTML. Start with <h1 class="seo-title">YOUR Catchy Title Here</h1> then <p class="intro-text"><strong>(FastJob Alert Desk):</strong>...
-                4. Include one <table class="article-table"> for key highlights.
-                5. At the very end of the article, add a paragraph with 5-6 trending hashtags (e.g., <p class="hashtags">#News #Trending ...</p>).
-                6. Do not include ```html or markdown formatting, just raw HTML.
+                CRITICAL INSTRUCTIONS FOR LENGTH & STRUCTURE (STRICTLY 800+ WORDS):
+                1. You MUST write a very detailed article exceeding 800 words. Expand on the topic by providing: detailed background history, current implications, expert analysis, and future outlook.
+                2. Use at least 5-6 <h3 class="article-subheading"> tags. Under each heading, write 2 to 3 long, detailed paragraphs.
+                3. Create a highly ranked, catchy SEO Title for the article.
+                4. Year is 2026. Treat as breaking modern news.
+                5. Format strictly in HTML. Start with <h1 class="seo-title">YOUR Catchy Title Here</h1> then <p class="intro-text"><strong>(FastJob Alert Desk):</strong>...
+                6. Include one <table class="article-table"> for key highlights.
+                7. At the very end of the article, add a paragraph with 5-6 trending hashtags (e.g., <p class="hashtags">#News #Trending ...</p>).
+                8. Do not include ```html or markdown formatting, just raw HTML.
                 """
                 
                 content = generate_content_openai(prompt)
