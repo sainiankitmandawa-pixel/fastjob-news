@@ -1,9 +1,9 @@
 name: FastJob Auto News Bot
 
 on:
-  schedule:
-    - cron: '0 * * * *'
   workflow_dispatch:
+  schedule:
+    - cron: '0 */6 * * *'
 
 permissions:
   contents: write
@@ -11,6 +11,7 @@ permissions:
 jobs:
   run-bot:
     runs-on: ubuntu-latest
+    timeout-minutes: 120
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -23,66 +24,17 @@ jobs:
       - name: Install Requirements
         run: |
           python -m pip install --upgrade pip
-          pip install feedparser supabase requests beautifulsoup4 google-api-python-client google-auth
+          pip install feedparser supabase requests beautifulsoup4
 
-      - name: Run Auto News Script
+      - name: Run Auto News Script (15 Posts Per Category)
         env:
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: python -u bot.py
-
-      - name: Run Google Indexing API
-        env:
-          GOOGLE_SERVICE_ACCOUNT: ${{ secrets.GOOGLE_SERVICE_ACCOUNT }}
-        run: |
-          python -c "
-          import os
-          import json
-          import xml.etree.ElementTree as ET
-          import urllib.request
-          from google.oauth2 import service_account
-          from googleapiclient.discovery import build
-
-          if 'GOOGLE_SERVICE_ACCOUNT' in os.environ and os.environ['GOOGLE_SERVICE_ACCOUNT']:
-              try:
-                  creds_json = json.loads(os.environ['GOOGLE_SERVICE_ACCOUNT'])
-                  credentials = service_account.Credentials.from_service_account_info(
-                      creds_json, scopes=['https://www.googleapis.com/auth/indexing']
-                  )
-                  service = build('indexing', 'v3', credentials=credentials)
-
-                  # अपनी वेबसाइट का असली sitemap.xml लिंक यहाँ डालें
-                  sitemap_url = 'https://fastjob.online/sitemap.xml'
-                  
-                  req = urllib.request.Request(sitemap_url, headers={'User-Agent': 'Mozilla/5.0'})
-                  with urllib.request.urlopen(req) as response:
-                      xml_data = response.read()
-                  
-                  root = ET.fromstring(xml_data)
-                  namespaces = {'ns': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
-                  urls = [elem.text for elem in root.findall('.//ns:loc', namespaces)]
-                  
-                  print(f'Found {len(urls)} URLs in sitemap for indexing.')
-                  
-                  for url in urls:
-                      body = {
-                          'url': url,
-                          'type': 'URL_UPDATED'
-                      }
-                      try:
-                          res = service.urlNotifications().publish(body=body).execute()
-                          print(f'Successfully indexed: {url}')
-                      except Exception as e:
-                          print(f'Failed to index {url}: {e}')
-              except Exception as e:
-                  print(f'Indexing script error: {e}')
-          else:
-              print('Google Service Account secret not found, skipping indexing.')
-          "
 
       - name: Commit and Push Updated Sitemap
         run: |
           git config --global user.name "FastJob Bot"
           git config --global user.email "bot@fastjob.online"
           git add sitemap.xml
-          git diff --staged --quiet || (git commit -m "Auto-update clean sitemap.xml & Indexing" && git pull --rebase origin main && git push origin main)
+          git diff --staged --quiet || (git commit -m "Auto-update clean sitemap.xml" && git pull --rebase origin main && git push origin main)
