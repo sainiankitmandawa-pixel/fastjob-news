@@ -1,56 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title id="page-title">FastJob Alert - Premium Global News & Verified Coverage</title>
-    <meta name="description" id="meta-desc" content="FastJob Alert provides 24/7 breaking news, politics, economy, tech, sports, auto, and job updates globally. Stay informed with verified coverage.">
+    <title id="page-title">FastJob Alert - Live Breaking News, Jobs & Global Coverage</title>
+    <meta name="description" content="FastJob Alert provides 24/7 breaking news, politics, economy, tech, sports, auto, and job updates globally. Stay informed with verified coverage.">
     <meta name="keywords" content="News, Breaking News, Jobs, Politics, Economy, Tech News, Auto, Sports, Daily Updates, FastJob Alert">
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="robots" content="index, follow">
     <meta name="author" content="FastJob Alert Editorial Desk">
-    <link rel="canonical" id="canonical-link" href="https://fastjob.online/">
-    <link rel="alternate" type="application/rss+xml" title="FastJob Alert RSS Feed" href="https://fastjob.online/rss.xml">
-
-    <!-- Open Graph / Social Sharing Metadata -->
-    <meta property="og:site_name" content="FastJob Alert">
-    <meta property="og:title" id="og-title" content="FastJob Alert - Premium Global News & Verified Coverage">
-    <meta property="og:description" id="og-desc" content="FastJob Alert provides 24/7 breaking news, politics, economy, tech, sports, auto, and job updates globally.">
-    <meta property="og:type" id="og-type" content="website">
-    <meta property="og:url" id="og-url" content="https://fastjob.online/">
-    <meta property="og:image" id="og-image" content="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" id="tw-title" content="FastJob Alert - Premium Global News & Verified Coverage">
-    <meta name="twitter:description" id="tw-desc" content="24/7 breaking news, politics, economy, tech, sports, and verified job updates.">
-    <meta name="twitter:image" id="tw-image" content="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80">
-
-    <!-- Dynamic JSON-LD Structured Data Container (Organization + NewsArticle + BreadcrumbList) -->
-    <script type="application/ld+json" id="schema-org-graph">
-    {
-      "@context": "https://schema.org",
-      "@type": "NewsMediaOrganization",
-      "name": "FastJob Alert",
-      "url": "https://fastjob.online",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://ui-avatars.com/api/?name=FastJob+Alert&background=cc0000&color=fff&bold=true&size=512"
-      },
-      "sameAs": [
-        "https://whatsapp.com/channel/0029VbDajQV8PgsNA1lLhW0i"
-      ],
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "email": "desk@fastjob.online",
-        "contactType": "editorial"
-      },
-      "publishingPrinciples": "https://fastjob.online/editorial-policy",
-      "correctionsPolicy": "https://fastjob.online/corrections-policy",
-      "ethicsPolicy": "https://fastjob.online/ethics-policy",
-      "verificationFactCheckingPolicy": "https://fastjob.online/fact-checking-policy"
-    }
-    </script>
-
-    <!-- Google tag (gtag.js) Preserved from Original File -->
+    
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4ECBSC962B"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -60,1028 +20,757 @@
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        brand: { DEFAULT: '#cc0000', dark: '#990000', light: '#fef2f2' },
-                        ink: { DEFAULT: '#0f172a', muted: '#475569' }
-                    }
-                }
-            }
-        }
-    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600&family=Mukta:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Mukta', sans-serif; background-color: #f8fafc; }
-        .dark body { background-color: #020617; }
+        /* Clean White/Gray Newspaper Background like Aaj Tak */
+        body { font-family: 'Mukta', sans-serif; background-color: #f4f5f7; color: #111827; }
         .heading-font { font-family: 'Playfair Display', serif; }
+        
+        /* Smooth Hide Scrollbar for 25 Categories */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* Visible Accessible Focus States */
-        *:focus-visible { outline: 3px solid #cc0000 !important; outline-offset: 2px; }
-
-        /* Reading Progress Bar */
-        #reading-progress { position: fixed; top: 0; left: 0; height: 4px; background: linear-gradient(90deg, #cc0000, #facc15); width: 0%; z-index: 100; transition: width 0.15s ease-out; }
-
-        /* Breaking News Ticker with Pause Support */
-        .ticker-wrap { width: 100%; overflow: hidden; background-color: #0f172a; color: white; display: flex; align-items: center; border-bottom: 3px solid #cc0000; position: relative; }
-        .ticker-label { background: #cc0000; color: white; padding: 8px 18px; font-weight: 900; font-size: 12px; z-index: 10; text-transform: uppercase; letter-spacing: 1.5px; shrink: 0; display: flex; align-items: center; gap: 6px; }
-        .ticker-track { flex: 1; overflow: hidden; position: relative; }
-        .ticker { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 42s linear infinite; padding-top: 6px; padding-bottom: 6px; }
-        .ticker.paused { animation-play-state: paused !important; }
+        /* Aaj Tak Style Breaking News Ticker */
+        .ticker-wrap { width: 100%; overflow: hidden; background-color: #ffffff; color: #111827; display: flex; align-items: center; border-bottom: 2px solid #e5e7eb; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+        .ticker-label { background: linear-gradient(90deg, #d10000 0%, #a80000 100%); color: #ffffff; padding: 8px 24px 8px 16px; font-weight: 900; font-size: 12px; z-index: 20; position: relative; text-transform: uppercase; letter-spacing: 1px; clip-path: polygon(0 0, 100% 0, 92% 100%, 0% 100%); shrink: 0; white-space: nowrap; }
+        .ticker { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 38s linear infinite; padding-top: 7px; padding-bottom: 7px; }
         .ticker:hover { animation-play-state: paused; }
-        .ticker-item { display: inline-block; padding: 0 2rem; font-size: 14px; font-weight: 600; }
-        .ticker-item:hover { color: #facc15; cursor: pointer; text-decoration: underline; text-underline-offset: 4px; }
+        .ticker-item { display: inline-block; padding: 0 2rem; font-size: 14.5px; font-weight: 700; color: #111827; transition: color 0.2s; }
+        .ticker-item:hover { color: #d10000; cursor: pointer; }
         @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 
-        /* Reduced Motion Support */
-        @media (prefers-reduced-motion: reduce) {
-            *, ::before, ::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
-            .ticker { animation: none !important; padding-left: 1rem; white-space: normal; }
-        }
+        /* Aaj Tak Category Navigation Ribbon */
+        .cat-pill { position: relative; transition: all 0.2s ease; color: #111827; white-space: nowrap; }
+        .cat-pill:hover { color: #d10000; }
+        .cat-pill::after { content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 3px; background: #d10000; transition: all 0.2s ease; transform: translateX(-50%); }
+        .cat-pill:hover::after, .cat-pill.active-cat::after { width: 100%; }
+        .cat-pill.active-cat { color: #d10000 !important; font-weight: 800; background-color: #fff5f5; }
 
-        /* Original & Enhanced Article Formatting */
-        #detail-content, #legal-page-content { line-height: 1.95; font-size: 1.15rem; }
-        #detail-content p, #legal-page-content p { margin-bottom: 1.5rem; }
-        #detail-content p:first-of-type::first-letter { font-size: 3.75rem; font-weight: 900; float: left; line-height: 0.85; margin-right: 0.75rem; margin-top: 0.2rem; color: #cc0000; font-family: 'Playfair Display', serif; }
-        #detail-content h2, #detail-content h3, #detail-content .article-subheading, #legal-page-content h3 { font-size: 1.6rem; font-weight: 800; margin-top: 2.2rem; margin-bottom: 1rem; font-family: 'Playfair Display', serif; display: flex; align-items: center; }
-        #detail-content h2::before, #detail-content h3::before, #detail-content .article-subheading::before, #legal-page-content h3::before { content: ""; display: inline-block; width: 8px; height: 8px; background: #cc0000; border-radius: 50%; margin-right: 12px; flex-shrink: 0; }
-        #detail-content blockquote, #detail-content .intro-text { font-weight: 600; font-size: 1.2rem; border-left: 5px solid #cc0000; padding: 14px 20px; background: rgba(204, 0, 0, 0.05); border-radius: 0 8px 8px 0; margin: 1.5rem 0; }
-        #detail-content .hashtags { margin-top: 2.5rem; font-weight: bold; color: #2563eb; background: rgba(37, 99, 235, 0.08); padding: 16px; border-radius: 12px; border: 1px dashed #93c5fd; }
-        .article-table { width: 100%; border-collapse: collapse; margin: 2rem 0; font-size: 0.95rem; border-radius: 8px; overflow: hidden; }
-        .article-table th, .article-table td { border: 1px solid #cbd5e1; padding: 14px; text-align: left; }
-        .article-table th { background-color: rgba(15, 23, 42, 0.06); font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px; font-family: 'Playfair Display', serif; }
+        /* Aaj Tak Section Header Ribbon */
+        .section-badge { background: #d10000; color: #ffffff; padding: 6px 18px 6px 14px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px; clip-path: polygon(0 0, 100% 0, 93% 100%, 0% 100%); display: inline-block; }
 
-        /* Print-Friendly Stylesheet */
-        @media print {
-            header, nav, footer, .no-print, #reading-progress, .ticker-wrap, #floating-controls { display: none !important; }
-            body, #article-view { background: #fff !important; color: #000 !important; box-shadow: none !important; border: none !important; padding: 0 !important; margin: 0 !important; }
-            a::after { content: " (" attr(href) ")"; font-size: 0.8em; color: #555; }
-        }
+        /* Article Formatting */
+        #detail-content, #legal-page-content { color: #1f2937; line-height: 1.95; font-size: 1.15rem; }
+        #detail-content p, #legal-page-content p { margin-bottom: 1.6rem; }
+        #detail-content p:first-of-type::first-letter { font-size: 3.6rem; font-weight: 900; float: left; line-height: 0.85; margin-right: 0.7rem; margin-top: 0.15rem; color: #d10000; font-family: 'Playfair Display', serif; }
+        #detail-content .seo-title { font-size: 2.2rem; font-weight: 900; color: #111827; margin-bottom: 1.5rem; line-height: 1.25; border-bottom: 3px solid #d10000; padding-bottom: 10px; display: inline-block;}
+        #detail-content .intro-text { font-weight: 600; font-size: 1.2rem; color: #111827; border-left: 4px solid #d10000; padding-left: 16px; background: #fff5f5; padding-top: 12px; padding-bottom: 12px; border-radius: 0 8px 8px 0;}
+        #detail-content .article-subheading, #legal-page-content h3 { font-size: 1.6rem; font-weight: 800; color: #111827; margin-top: 2.2rem; margin-bottom: 1rem; display: flex; align-items: center;}
+        #detail-content .article-subheading::before, #legal-page-content h3::before { content: ""; display: inline-block; width: 6px; height: 22px; background: #d10000; margin-right: 10px; border-radius: 2px; }
+        #detail-content .hashtags { margin-top: 3rem; font-weight: 700; color: #1d4ed8; background: #eff6ff; padding: 16px; border-radius: 8px; border: 1px solid #bfdbfe;}
+        .article-table { width: 100%; border-collapse: collapse; margin: 2rem 0; font-size: 1rem; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-radius: 8px; overflow: hidden; }
+        .article-table th, .article-table td { border: 1px solid #e5e7eb; padding: 14px 16px; text-align: left; }
+        .article-table th { background-color: #d10000; font-weight: 800; color: #ffffff; text-transform: uppercase; letter-spacing: 0.5px; }
+        
+        .slider-container { position: relative; overflow: hidden; border-radius: 0.75rem; }
+        .slide { display: none; animation: slideFade 0.6s ease-in-out; }
+        .slide.active { display: block; }
+        @keyframes slideFade { from { opacity: 0.4; } to { opacity: 1; } }
+        
+        .mag-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .mag-grid .featured { grid-column: span 2; grid-row: span 2; }
+        @media (max-width: 768px) { .mag-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; } .mag-grid .featured { grid-column: span 2; grid-row: span 1; } }
+        html { scroll-behavior: smooth; }
     </style>
 </head>
-<body class="text-slate-900 dark:text-slate-100 bg-slate-50 dark:bg-slate-950 flex flex-col min-h-screen overflow-x-hidden transition-colors duration-200">
+<body class="flex flex-col min-h-screen overflow-x-hidden">
 
-    <!-- Accessibility Skip Link -->
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[200] focus:bg-[#cc0000] focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:font-bold">Skip to main content</a>
-
-    <!-- Reading Progress Bar -->
-    <div id="reading-progress" role="progressbar" aria-label="Article reading progress"></div>
-
-    <!-- Top Utility & Edition Bar -->
-    <div class="bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 text-xs py-2 px-3 md:px-6 w-full border-b border-slate-200 dark:border-slate-800 no-print">
-        <div class="w-full max-w-[1440px] mx-auto flex flex-wrap justify-between items-center gap-2">
-            <div class="flex items-center gap-4 flex-wrap">
-                <span class="font-bold tracking-wider flex items-center">
-                    <i class="fa-regular fa-calendar-days text-[#cc0000] mr-1.5"></i>
-                    <span id="live-date"></span>
+    <!-- ==================== AAJ TAK STYLE RED & WHITE HEADER ==================== -->
+    
+    <!-- 1. Top Utility Bar -->
+    <div class="bg-[#990000] text-white text-[11px] py-1.5 px-3 md:px-6 w-full border-b border-red-800 relative z-50">
+        <div class="w-full max-w-[1400px] mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3 md:gap-4">
+                <span class="bg-white text-[#d10000] px-2 py-0.5 rounded font-black uppercase tracking-wider text-[9px] md:text-[10px] flex items-center shadow-sm">
+                    <span class="w-2 h-2 bg-[#d10000] rounded-full mr-1.5 animate-ping"></span> LIVE TV / NEWS
                 </span>
-                <span class="hidden sm:inline-flex items-center font-bold text-slate-500 dark:text-slate-400">
-                    <i class="fa-regular fa-clock text-[#cc0000] mr-1.5"></i>
-                    <span id="live-clock"></span>
-                </span>
-                <span id="backend-status-badge" class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300">
-                    <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span> Connecting Desk...
+                <span class="font-semibold tracking-wide text-red-100 flex items-center text-[10px] md:text-xs">
+                    <i class="fa-regular fa-calendar-days text-yellow-300 mr-1.5"></i><span id="live-date"></span>
                 </span>
             </div>
 
-            <div class="flex items-center gap-3 md:gap-5">
-                <div class="hidden lg:flex gap-4 font-bold uppercase tracking-wider text-[11px] text-slate-500 dark:text-slate-400">
-                    <a href="/about-us" onclick="event.preventDefault(); openStaticPage('about-us');" class="hover:text-[#cc0000] transition" data-i18n="about">About</a>
-                    <a href="/editorial-policy" onclick="event.preventDefault(); openStaticPage('editorial-policy');" class="hover:text-[#cc0000] transition" data-i18n="editorialPolicy">Editorial Policy</a>
-                    <a href="/fact-checking-policy" onclick="event.preventDefault(); openStaticPage('fact-checking-policy');" class="hover:text-[#cc0000] transition">Fact-Check Policy</a>
-                    <a href="/submit-news-tip" onclick="event.preventDefault(); openStaticPage('submit-news-tip');" class="text-[#cc0000] hover:underline"><i class="fa-solid fa-bullhorn mr-1"></i>Submit News Tip</a>
-                    <a href="/admin" onclick="event.preventDefault(); openAdminPortal();" class="hover:text-[#cc0000] transition"><i class="fa-solid fa-lock mr-1"></i>Newsroom CMS</a>
+            <div class="flex items-center gap-4 md:gap-5">
+                <div class="hidden md:flex gap-5 font-bold uppercase tracking-wider text-[10px] text-red-100">
+                    <a href="/about-us" onclick="event.preventDefault(); openStaticPage('about-us');" class="hover:text-yellow-300 transition">About Us</a>
+                    <a href="/editorial-policy" onclick="event.preventDefault(); openStaticPage('editorial-policy');" class="hover:text-yellow-300 transition">Editorial Policy</a>
+                    <a href="/contact-us" onclick="event.preventDefault(); openStaticPage('contact-us');" class="hover:text-yellow-300 transition">Contact Desk</a>
                 </div>
-
-                <!-- Language Switcher (Prepared for Multi-Language UI) -->
-                <select id="lang-switcher" onchange="switchLanguage(this.value)" aria-label="Interface Language" class="bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-bold text-[11px] rounded px-2 py-1 border border-slate-200 dark:border-slate-700 cursor-pointer">
-                    <option value="en">EN (English)</option>
-                    <option value="hi">HI (हिन्दी UI)</option>
-                </select>
-
-                <!-- Personalize Feed Button -->
-                <button onclick="toggleModal('interests-modal')" class="text-xs font-bold px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 hover:bg-[#cc0000] hover:text-white transition flex items-center gap-1" title="Customize Your Topics">
-                    <i class="fa-solid fa-sliders"></i> <span class="hidden sm:inline" data-i18n="myFeed">My Topics</span>
-                </button>
-
-                <!-- Saved Bookmarks & Reading History Drawer Trigger -->
-                <button onclick="openReaderDrawer()" class="text-xs font-bold px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 hover:bg-[#cc0000] hover:text-white transition flex items-center gap-1.5" aria-label="Saved Articles and Reading History">
-                    <i class="fa-solid fa-bookmark text-[#cc0000]"></i>
-                    <span id="bookmark-counter">0</span>
-                </button>
-
-                <!-- Dark Mode Toggle -->
-                <button onclick="toggleTheme()" id="theme-toggle-btn" class="w-7 h-7 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-[#cc0000] hover:text-white transition" aria-label="Toggle Dark or Light Mode">
-                    <i id="theme-icon" class="fa-solid fa-moon"></i>
-                </button>
+                <a href="https://whatsapp.com/channel/0029VbDajQV8PgsNA1lLhW0i" target="_blank" class="bg-[#25d366] hover:bg-[#1da851] text-white px-3 py-0.5 rounded-full font-bold text-[10px] uppercase tracking-wider flex items-center gap-1 shadow transition">
+                    <i class="fa-brands fa-whatsapp text-xs"></i> <span>Join WhatsApp</span>
+                </a>
             </div>
         </div>
     </div>
 
-    <!-- Masthead & Primary Header -->
-    <header class="bg-white dark:bg-slate-900 sticky top-0 z-40 shadow-sm border-b border-slate-200 dark:border-slate-800 no-print">
-        <div class="w-full max-w-[1440px] mx-auto px-3 md:px-6 py-3.5 flex items-center justify-between gap-4">
-            <!-- Brand Logo -->
-            <a href="/" onclick="event.preventDefault(); goBackHome();" class="flex items-center shrink-0 cursor-pointer group" aria-label="FastJob Alert Homepage">
-                <div class="bg-[#cc0000] w-11 h-11 md:w-14 md:h-14 rounded-xl mr-3 flex items-center justify-center shadow-md transform group-hover:scale-105 transition duration-300">
-                    <i class="fa-solid fa-bolt text-2xl md:text-3xl text-yellow-400"></i>
-                </div>
-                <div class="flex flex-col justify-center">
-                    <span class="text-2xl md:text-4xl font-black text-slate-900 dark:text-white tracking-tight heading-font leading-none mb-0.5">FASTJOB</span>
-                    <span class="text-[10px] md:text-[11px] font-black text-[#cc0000] tracking-[0.2em] uppercase flex items-center">
-                        <span class="w-1.5 h-1.5 bg-yellow-400 rounded-full mr-1.5"></span><span data-i18n="alertDesk">ALERT DESK</span>
-                    </span>
-                </div>
-            </a>
+    <!-- 2. Main Aaj Tak Red Header -->
+    <header class="sticky top-0 z-40 shadow-md">
+        <div class="bg-[#d10000] text-white py-3 md:py-4 px-3 md:px-6">
+            <div class="w-full max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-3 md:gap-6">
+                
+                <div class="w-full md:w-auto flex items-center justify-between">
+                    <!-- Aaj Tak Style Bold Logo -->
+                    <a href="/" onclick="event.preventDefault(); goBackHome();" class="flex items-center shrink-0 cursor-pointer group">
+                        <div class="bg-white text-[#d10000] w-11 h-11 md:w-14 md:h-14 rounded-xl mr-3 flex items-center justify-center shadow-lg transform group-hover:scale-105 transition">
+                            <i class="fa-solid fa-bolt text-2xl md:text-3xl text-yellow-500 drop-shadow"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <div class="flex items-center gap-1.5">
+                                <span class="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight text-white leading-none">
+                                    FASTJOB
+                                </span>
+                                <span class="bg-yellow-400 text-gray-900 text-[10px] md:text-xs font-black px-2 py-0.5 rounded uppercase tracking-wider shadow">
+                                    ALERT
+                                </span>
+                            </div>
+                            <span class="text-[9px] md:text-[11px] font-semibold text-red-100 tracking-widest uppercase mt-1">
+                                सबसे तेज़, सबसे सटीक ख़बरें
+                            </span>
+                        </div>
+                    </a>
 
-            <!-- Global Search Bar with Live Autocomplete Suggestions -->
-            <div class="relative flex-1 max-w-xl hidden md:block">
-                <div class="bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full px-4 py-2.5 flex items-center focus-within:bg-white dark:focus-within:bg-slate-900 focus-within:border-[#cc0000] focus-within:ring-2 focus-within:ring-[#cc0000]/20 transition">
-                    <i class="fa-solid fa-magnifying-glass text-slate-400 mr-3"></i>
-                    <input type="search" id="searchInput" oninput="handleSearchInput(this.value)" onkeydown="if(event.key==='Enter'){executeFullSearch();}" placeholder="Search headlines, categories, tags, jobs, or explainers..." aria-label="Search news articles" class="w-full text-sm text-slate-800 dark:text-slate-100 outline-none font-semibold bg-transparent placeholder-slate-400">
-                    <button id="clearSearchBtn" onclick="clearSearch()" class="hidden text-slate-400 hover:text-[#cc0000] px-1.5" aria-label="Clear search query">
-                        <i class="fa-solid fa-circle-xmark"></i>
+                    <!-- Mobile Buttons -->
+                    <div class="flex items-center gap-2 md:hidden">
+                        <button onclick="filterCategory('Jobs & Careers')" class="bg-yellow-400 text-gray-900 px-3 py-1.5 rounded-lg font-black text-xs uppercase tracking-wider flex items-center gap-1 shadow">
+                            Jobs
+                        </button>
+                        <button onclick="toggleMobileMenu()" class="bg-[#a80000] hover:bg-[#8f0000] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl transition border border-red-400/30">
+                            <i class="fa-solid fa-bars"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Center Crisp White Search Bar -->
+                <div class="w-full md:max-w-xl flex-grow">
+                    <div class="bg-white rounded-full p-1 pl-4 flex items-center w-full shadow-inner focus-within:ring-2 focus-within:ring-yellow-400 transition">
+                        <i class="fa-solid fa-magnifying-glass text-gray-400 mr-2.5 text-sm md:text-base"></i>
+                        <input type="text" id="searchInput" onkeyup="searchNews()" placeholder="Search breaking news, jobs, politics, sports..." class="w-full text-xs md:text-sm text-gray-900 outline-none font-semibold bg-transparent placeholder-gray-400 py-1.5">
+                        <button onclick="searchNews()" class="bg-[#d10000] hover:bg-[#a80000] text-white font-bold text-xs uppercase tracking-wider px-5 py-2 rounded-full transition shrink-0">
+                            Search
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Desktop Actions -->
+                <div class="hidden md:flex items-center gap-3 shrink-0">
+                    <button onclick="filterCategory('Jobs & Careers')" class="bg-yellow-400 hover:bg-yellow-300 text-gray-900 font-black text-xs uppercase tracking-wider px-4 py-2.5 rounded-full shadow-md transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-briefcase text-[#d10000]"></i> Job Alerts
                     </button>
-                    <button onclick="executeFullSearch()" class="ml-2 bg-[#cc0000] hover:bg-[#990000] text-white text-xs font-black uppercase tracking-wider px-3.5 py-1.5 rounded-full transition" data-i18n="searchBtn">Search</button>
+                    <button onclick="toggleMobileMenu()" class="bg-[#a80000] hover:bg-[#8f0000] text-white px-3.5 py-2.5 rounded-full flex items-center gap-2 text-xs font-bold uppercase tracking-wider transition border border-red-400/30 shadow" title="All 25 Categories">
+                        <i class="fa-solid fa-bars text-base"></i> <span>All Sections</span>
+                    </button>
                 </div>
-                <!-- Search Autocomplete Dropdown -->
-                <div id="search-suggestions" class="hidden absolute left-0 right-0 top-full mt-2 bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 z-50 overflow-hidden max-h-96 overflow-y-auto"></div>
-            </div>
 
-            <!-- Right Action Buttons -->
-            <div class="flex items-center gap-2.5 shrink-0">
-                <button onclick="toggleModal('notifications-modal')" class="hidden sm:inline-flex items-center gap-1.5 text-xs font-extrabold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 px-3.5 py-2.5 rounded-full transition" title="Notification Preferences">
-                    <i class="fa-regular fa-bell text-[#cc0000]"></i> <span class="hidden xl:inline" data-i18n="alerts">Alerts</span>
-                </button>
-                <a href="https://whatsapp.com/channel/0029VbDajQV8PgsNA1lLhW0i" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-1.5 bg-[#25d366] hover:bg-[#1da851] text-white text-xs font-extrabold uppercase tracking-wider px-4 py-2.5 rounded-full shadow transition">
-                    <i class="fa-brands fa-whatsapp text-base"></i> <span class="hidden lg:inline">Join Broadcast</span>
-                </a>
-                <button onclick="toggleMobileMenu()" class="text-slate-900 dark:text-white text-2xl p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition" aria-label="Open All Categories Menu">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
             </div>
         </div>
 
-        <!-- Primary 25-Category Navigation Bar with Working "More Desks" Mega Dropdown -->
-        <nav aria-label="Primary Categories" class="bg-[#0f172a] text-white border-t border-slate-800">
-            <div class="w-full max-w-[1440px] mx-auto px-3 md:px-6 flex items-center justify-between">
-                <ul class="flex items-center space-x-1 overflow-x-auto no-scrollbar py-1.5 text-xs font-extrabold uppercase tracking-wider">
-                    <li><a href="/" onclick="event.preventDefault(); goBackHome();" class="px-3 py-1.5 rounded hover:bg-[#cc0000] transition whitespace-nowrap inline-block" data-i18n="home">Home</a></li>
-                    <li><a href="/category/breaking-news" onclick="event.preventDefault(); filterCategory('Breaking News');" class="px-3 py-1.5 rounded hover:bg-[#cc0000] text-red-400 hover:text-white transition whitespace-nowrap inline-flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping"></span>Breaking</a></li>
-                    <li><a href="/category/india-news" onclick="event.preventDefault(); filterCategory('India News');" class="px-3 py-1.5 rounded hover:bg-[#cc0000] transition whitespace-nowrap inline-block">India</a></li>
-                    <li><a href="/category/world-news" onclick="event.preventDefault(); filterCategory('World News');" class="px-3 py-1.5 rounded hover:bg-[#cc0000] transition whitespace-nowrap inline-block">World</a></li>
-                    <li><a href="/category/politics" onclick="event.preventDefault(); filterCategory('Politics');" class="px-3 py-1.5 rounded hover:bg-[#cc0000] transition whitespace-nowrap inline-block">Politics</a></li>
-                    <li><a href="/category/jobs-careers" onclick="event.preventDefault(); filterCategory('Jobs & Careers');" class="px-3 py-1.5 rounded bg-[#cc0000]/20 text-yellow-400 hover:bg-[#cc0000] hover:text-white transition whitespace-nowrap inline-block"><i class="fa-solid fa-briefcase mr-1"></i>Jobs & Careers</a></li>
-                    <li><a href="/category/economy" onclick="event.preventDefault(); filterCategory('Economy');" class="px-3 py-1.5 rounded hover:bg-[#cc0000] transition whitespace-nowrap inline-block">Economy</a></li>
-                    <li><a href="/category/business" onclick="event.preventDefault(); filterCategory('Business');" class="px-3 py-1.5 rounded hover:bg-[#cc0000] transition whitespace-nowrap inline-block">Business</a></li>
-                    <li><a href="/category/finance-markets" onclick="event.preventDefault(); filterCategory('Finance & Markets');" class="px-3 py-1.5 rounded hover:bg-[#cc0000] transition whitespace-nowrap inline-block hidden xl:inline-block">Markets</a></li>
-                    <li><a href="/category/technology" onclick="event.preventDefault(); filterCategory('Technology');" class="px-3 py-1.5 rounded hover:bg-[#cc0000] transition whitespace-nowrap inline-block">Tech</a></li>
-                    <li><a href="/category/ai-robotics" onclick="event.preventDefault(); filterCategory('AI & Robotics');" class="px-3 py-1.5 rounded hover:bg-[#cc0000] transition whitespace-nowrap inline-block hidden lg:inline-block">AI & Robotics</a></li>
-                    <li><a href="/category/sports" onclick="event.preventDefault(); filterCategory('Sports');" class="px-3 py-1.5 rounded hover:bg-[#cc0000] transition whitespace-nowrap inline-block">Sports</a></li>
-                    <li><a href="/category/auto-ev" onclick="event.preventDefault(); filterCategory('Auto & EV');" class="px-3 py-1.5 rounded hover:bg-[#cc0000] transition whitespace-nowrap inline-block hidden md:inline-block">Auto & EV</a></li>
-                    <li><a href="/category/education" onclick="event.preventDefault(); filterCategory('Education');" class="px-3 py-1.5 rounded hover:bg-[#cc0000] transition whitespace-nowrap inline-block hidden xl:inline-block">Education</a></li>
-                </ul>
-
-                <!-- Working "More Desks (25)" Mega Dropdown Trigger -->
-                <div class="relative shrink-0 ml-2">
-                    <button onclick="toggleMoreDropdown()" id="more-desks-btn" aria-expanded="false" class="px-3.5 py-1.5 rounded bg-slate-800 hover:bg-[#cc0000] text-xs font-extrabold uppercase tracking-wider inline-flex items-center gap-1.5 transition">
-                        <span>All 25 Desks</span> <i class="fa-solid fa-chevron-down text-[10px]"></i>
-                    </button>
-                    <div id="more-desks-dropdown" class="hidden absolute right-0 top-full mt-2 w-[320px] sm:w-[640px] bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 p-5 z-50">
-                        <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-800 pb-2.5 mb-3">
-                            <span class="text-xs font-black uppercase tracking-widest text-[#cc0000]">Complete 25-Category Directory</span>
-                            <button onclick="toggleMoreDropdown()" class="text-slate-400 hover:text-[#cc0000]"><i class="fa-solid fa-xmark"></i></button>
-                        </div>
-                        <div id="all-categories-mega-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs font-bold"></div>
-                    </div>
-                </div>
+        <!-- 3. White Horizontal Category Bar (All 25 Category Names Only) -->
+        <div class="bg-white border-b border-gray-200 px-2 md:px-6 shadow-sm">
+            <div class="w-full max-w-[1400px] mx-auto flex items-center">
+                <nav class="flex items-center space-x-1 overflow-x-auto no-scrollbar py-1 w-full" id="top-category-nav">
+                    <!-- 25 Categories Injected Dynamically (Names Only) -->
+                </nav>
             </div>
-        </nav>
+        </div>
     </header>
 
-    <!-- Breaking News Ticker with Pause / Resume Control -->
-    <div class="ticker-wrap no-print" role="region" aria-label="Breaking News Ticker">
-        <div class="ticker-label">
-            <span class="w-2 h-2 rounded-full bg-yellow-400 animate-ping"></span>
-            <span data-i18n="breaking">BREAKING</span>
+    <!-- 4. Breaking News Ticker -->
+    <div class="ticker-wrap relative">
+        <div class="ticker-label flex items-center">
+            <span class="w-2 h-2 bg-yellow-300 rounded-full animate-ping mr-2"></span> BREAKING NEWS
         </div>
-        <div class="ticker-track">
-            <div class="ticker" id="ticker-content">
-                <span class="ticker-item"><i class="fa-solid fa-circle-notch fa-spin mr-2 text-yellow-400"></i> Synchronizing global news wires...</span>
-            </div>
-        </div>
-        <button onclick="toggleTickerPause()" id="ticker-pause-btn" class="bg-slate-900 hover:bg-slate-800 text-white px-3.5 py-2 text-xs font-bold border-l border-slate-700 z-10 shrink-0 flex items-center gap-1.5" aria-label="Pause or resume breaking news ticker">
-            <i id="ticker-pause-icon" class="fa-solid fa-pause text-yellow-400"></i>
-            <span id="ticker-pause-text" class="hidden sm:inline">Pause</span>
-        </button>
-    </div>
-
-    <!-- Mobile Responsive Navigation Drawer (All 25 Categories + Search) -->
-    <div id="mobileMenu" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex justify-end no-print" role="dialog" aria-modal="true" aria-label="Navigation Menu">
-        <div class="w-80 sm:w-96 bg-white dark:bg-slate-900 h-full shadow-2xl flex flex-col p-6 overflow-y-auto border-l-4 border-[#cc0000]">
-            <div class="flex items-center justify-between mb-5 border-b border-slate-200 dark:border-slate-800 pb-3">
-                <span class="font-black text-lg heading-font text-slate-900 dark:text-white"><i class="fa-solid fa-bolt text-[#cc0000] mr-2"></i>FastJob Navigation</span>
-                <button onclick="toggleMobileMenu()" class="text-slate-400 hover:text-[#cc0000] text-2xl" aria-label="Close Menu"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-
-            <div class="bg-slate-100 dark:bg-slate-800 rounded-xl px-3.5 py-2.5 mb-5 flex items-center border border-slate-200 dark:border-slate-700">
-                <input type="search" id="mobileSearchInput" onkeydown="if(event.key==='Enter'){searchNewsMobile();}" placeholder="Search all articles..." class="w-full bg-transparent outline-none font-bold text-sm text-slate-900 dark:text-white">
-                <button onclick="searchNewsMobile()" class="text-[#cc0000] font-bold text-sm ml-2" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
-            </div>
-
-            <p class="text-[11px] font-black uppercase tracking-widest text-[#cc0000] mb-3">All 25 News Categories</p>
-            <nav id="mobile-category-list" class="grid grid-cols-1 gap-1.5 mb-6 text-sm font-bold"></nav>
-
-            <p class="text-[11px] font-black uppercase tracking-widest text-[#cc0000] mb-3">Newsroom & Trust</p>
-            <div class="grid grid-cols-2 gap-2 text-xs font-bold text-slate-600 dark:text-slate-400 mb-6">
-                <a href="/about-us" onclick="event.preventDefault(); toggleMobileMenu(); openStaticPage('about-us');" class="hover:text-[#cc0000]">About Us</a>
-                <a href="/editorial-team" onclick="event.preventDefault(); toggleMobileMenu(); openStaticPage('editorial-team');" class="hover:text-[#cc0000]">Editorial Team</a>
-                <a href="/editorial-policy" onclick="event.preventDefault(); toggleMobileMenu(); openStaticPage('editorial-policy');" class="hover:text-[#cc0000]">Editorial Policy</a>
-                <a href="/fact-checking-policy" onclick="event.preventDefault(); toggleMobileMenu(); openStaticPage('fact-checking-policy');" class="hover:text-[#cc0000]">Fact-Check Policy</a>
-                <a href="/corrections-policy" onclick="event.preventDefault(); toggleMobileMenu(); openStaticPage('corrections-policy');" class="hover:text-[#cc0000]">Corrections</a>
-                <a href="/submit-news-tip" onclick="event.preventDefault(); toggleMobileMenu(); openStaticPage('submit-news-tip');" class="hover:text-[#cc0000]">Submit a Tip</a>
-                <a href="/advertise-with-us" onclick="event.preventDefault(); toggleMobileMenu(); openStaticPage('advertise-with-us');" class="hover:text-[#cc0000]">Advertise</a>
-                <a href="/admin" onclick="event.preventDefault(); toggleMobileMenu(); openAdminPortal();" class="text-[#cc0000]">Admin CMS</a>
-            </div>
+        <div class="ticker" id="ticker-content">
+            <span class="ticker-item">Loading latest breaking news updates...</span>
         </div>
     </div>
 
-    <!-- MAIN CONTENT CONTAINER -->
-    <main id="main-content" class="w-full max-w-[1440px] mx-auto px-3 md:px-6 py-6 md:py-10 flex-grow">
-
-        <!-- "Continue Reading" Bar (Populated from Reading History if available) -->
-        <div id="continue-reading-banner" class="hidden mb-6 bg-white dark:bg-slate-900 border-l-4 border-[#cc0000] rounded-r-xl shadow-sm p-3.5 flex items-center justify-between gap-4 no-print"></div>
-
-        <!-- =========================================================
-             VIEW 1: HOMEPAGE EDITORIAL LAYOUT
-        ========================================================== -->
-        <div id="home-view" class="space-y-14">
-
-            <!-- Subcategory / Trending Topic Pills Bar -->
-            <div class="flex items-center gap-2 overflow-x-auto pb-2 border-b border-slate-200 dark:border-slate-800 text-xs font-bold">
-                <span class="text-[#cc0000] font-black uppercase tracking-widest shrink-0 mr-2"><i class="fa-solid fa-fire mr-1"></i>Hot Topics:</span>
-                <button onclick="quickTagSearch('UPSC & PSC Jobs')" class="px-3 py-1 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-[#cc0000] shrink-0 transition">#UPSC & PSC Jobs</button>
-                <button onclick="quickTagSearch('RBI Monetary Policy')" class="px-3 py-1 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-[#cc0000] shrink-0 transition">#RBI Monetary Policy</button>
-                <button onclick="quickTagSearch('Semiconductor & AI')" class="px-3 py-1 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-[#cc0000] shrink-0 transition">#Semiconductor & AI</button>
-                <button onclick="quickTagSearch('EV Infrastructure')" class="px-3 py-1 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-[#cc0000] shrink-0 transition">#EV Infrastructure</button>
-                <button onclick="quickTagSearch('Parliament Session')" class="px-3 py-1 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-[#cc0000] shrink-0 transition">#Parliament Session</button>
-                <button onclick="quickTagSearch('Climate Action')" class="px-3 py-1 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-[#cc0000] shrink-0 transition">#Climate Action</button>
-                <button onclick="quickTagSearch('Fact Check')" class="px-3 py-1 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-[#cc0000] shrink-0 transition">#Fact Check</button>
+    <!-- Mobile & All-Categories Drawer Menu -->
+    <div id="mobileMenu" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex justify-end transition-opacity">
+        <div class="w-80 bg-white text-gray-900 h-full shadow-2xl flex flex-col p-6 overflow-y-auto border-t-4 border-[#d10000]">
+            <div class="flex items-center justify-between border-b border-gray-200 pb-4 mb-5">
+                <div class="flex items-center gap-2">
+                    <div class="bg-[#d10000] w-8 h-8 rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-bolt text-yellow-300"></i>
+                    </div>
+                    <span class="text-xl font-black tracking-tight text-gray-900">FASTJOB <span class="text-[#d10000]">ALERT</span></span>
+                </div>
+                <button onclick="toggleMobileMenu()" class="text-gray-400 hover:text-[#d10000] text-2xl transition"><i class="fa-solid fa-xmark"></i></button>
             </div>
-
-            <!-- Personalized Feed Section (Visible when reader follows topics) -->
-            <section id="personalized-feed-section" class="hidden bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
-                <div class="flex flex-wrap justify-between items-center mb-5 border-b border-slate-100 dark:border-slate-800 pb-3">
-                    <div>
-                        <span class="text-[10px] font-black uppercase tracking-widest text-[#cc0000]">Customized For You</span>
-                        <h2 class="text-2xl font-black heading-font">Your Followed Topics Feed</h2>
-                    </div>
-                    <button onclick="toggleModal('interests-modal')" class="text-xs font-bold text-[#cc0000] hover:underline"><i class="fa-solid fa-pen mr-1"></i>Edit Topics</button>
-                </div>
-                <div id="personalized-feed-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
-            </section>
-
-            <!-- Hero Section: Lead Story + Top Stories Hierarchy + Latest/Trending/Most Read Sidebar -->
-            <section aria-label="Top Global Stories" class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                <!-- Lead Story & Secondary Top Stories (8 Cols) -->
-                <div class="lg:col-span-8 space-y-6">
-                    <div id="hero-lead-story"></div>
-                    <div id="hero-sub-stories" class="grid grid-cols-1 sm:grid-cols-3 gap-5"></div>
-                </div>
-
-                <!-- Right Sidebar: Latest / Trending / Most Read Tabs (4 Cols) -->
-                <aside class="lg:col-span-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 shadow-sm flex flex-col justify-between">
-                    <div>
-                        <div class="grid grid-cols-3 gap-1 bg-slate-100 dark:bg-slate-800 p-1 rounded-xl mb-5 text-xs font-black uppercase tracking-wider">
-                            <button onclick="switchSidebarTab('latest')" id="tab-btn-latest" class="py-2 rounded-lg bg-[#cc0000] text-white transition">Latest</button>
-                            <button onclick="switchSidebarTab('trending')" id="tab-btn-trending" class="py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:text-[#cc0000] transition">Trending</button>
-                            <button onclick="switchSidebarTab('mostread')" id="tab-btn-mostread" class="py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:text-[#cc0000] transition">Most Read</button>
-                        </div>
-                        <div id="sidebar-feed-list" class="divide-y divide-slate-100 dark:divide-slate-800"></div>
-                    </div>
-
-                    <!-- News in Brief Box -->
-                    <div class="mt-6 pt-5 border-t-2 border-slate-100 dark:border-slate-800">
-                        <div class="flex items-center justify-between mb-3">
-                            <h3 class="text-sm font-black uppercase tracking-widest text-[#cc0000]"><i class="fa-solid fa-bolt mr-1.5"></i>News In Brief</h3>
-                            <span class="text-[10px] font-bold text-slate-400">60-Sec Bulletins</span>
-                        </div>
-                        <ul id="news-in-brief-list" class="space-y-2.5 text-xs font-semibold text-slate-700 dark:text-slate-300"></ul>
-                    </div>
-                </aside>
-            </section>
-
-            <!-- Editor's Picks & Exclusive Stories -->
-            <section aria-label="Editor's Picks and Exclusive Coverage" class="bg-white dark:bg-slate-900 rounded-2xl p-6 md:p-8 border border-slate-200 dark:border-slate-800 shadow-sm">
-                <div class="flex flex-wrap justify-between items-end mb-6 border-b-2 border-slate-100 dark:border-slate-800 pb-3">
-                    <div>
-                        <span class="text-[11px] font-black uppercase tracking-widest text-[#cc0000]">Curated Journalism</span>
-                        <h2 class="text-2xl md:text-3xl font-black heading-font">Editor's Picks & Exclusive Reports</h2>
-                    </div>
-                    <a href="/category/opinion-editorial" onclick="event.preventDefault(); filterCategory('Opinion & Editorial');" class="text-xs font-black uppercase tracking-widest text-slate-500 hover:text-[#cc0000]">Editorial Desk <i class="fa-solid fa-arrow-right ml-1"></i></a>
-                </div>
-                <div id="editors-picks-grid" class="grid grid-cols-1 md:grid-cols-4 gap-6"></div>
-            </section>
-
-            <!-- ADVANCED NEWSROOM HUB (Live Blog, Briefings, Trackers, Polls, Audio, Timelines) -->
-            <section aria-label="Interactive Newsroom Features" class="bg-slate-900 text-white rounded-2xl p-6 md:p-8 shadow-xl border-t-4 border-[#cc0000]">
-                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-5 mb-6">
-                    <div>
-                        <span class="bg-[#cc0000] text-white text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded">Interactive Newsroom</span>
-                        <h2 class="text-2xl md:text-4xl font-black heading-font mt-2">Special Desks, Live Blogs & Data Journalism</h2>
-                    </div>
-                    <div class="flex flex-wrap gap-2 text-xs font-bold">
-                        <button onclick="switchNewsroomTab('liveblog')" id="nr-tab-liveblog" class="px-3.5 py-2 rounded-lg bg-[#cc0000] text-white transition"><i class="fa-solid fa-tower-broadcast mr-1"></i>Live Blog & Briefings</button>
-                        <button onclick="switchNewsroomTab('trackers')" id="nr-tab-trackers" class="px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 transition"><i class="fa-solid fa-chart-column mr-1"></i>Election, Budget & Data</button>
-                        <button onclick="switchNewsroomTab('audio')" id="nr-tab-audio" class="px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 transition"><i class="fa-solid fa-headphones mr-1"></i>Podcasts & Timeline</button>
-                        <button onclick="switchNewsroomTab('poll')" id="nr-tab-poll" class="px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 transition"><i class="fa-solid fa-square-poll-vertical mr-1"></i>Reader Poll & History</button>
-                    </div>
-                </div>
-                <div id="newsroom-hub-content"></div>
-            </section>
-
-            <!-- India News & World News Dual Section -->
-            <section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
-                    <div class="flex justify-between items-center mb-5 border-b-2 border-[#cc0000] pb-2">
-                        <h2 class="text-2xl font-black heading-font uppercase"><span class="text-[#cc0000] mr-2">|</span>India News & Regional</h2>
-                        <a href="/category/india-news" onclick="event.preventDefault(); filterCategory('India News');" class="text-xs font-black text-[#cc0000] uppercase">Full Coverage &rarr;</a>
-                    </div>
-                    <div id="india-news-box" class="space-y-4"></div>
-                </div>
-                <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
-                    <div class="flex justify-between items-center mb-5 border-b-2 border-[#cc0000] pb-2">
-                        <h2 class="text-2xl font-black heading-font uppercase"><span class="text-[#cc0000] mr-2">|</span>World & Diplomacy</h2>
-                        <a href="/category/world-news" onclick="event.preventDefault(); filterCategory('World News');" class="text-xs font-black text-[#cc0000] uppercase">Full Coverage &rarr;</a>
-                    </div>
-                    <div id="world-news-box" class="space-y-4"></div>
-                </div>
-            </section>
-
-            <!-- Dynamic Category Sections Container (Preserves Original Category Grids + Expanded Desks) -->
-            <div id="category-sections" class="space-y-14"></div>
-
-            <!-- Fact-Check, Explainers & Investigative Journalism Desk -->
-            <section class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-200 dark:border-slate-800">
-                <div class="flex flex-wrap justify-between items-end mb-6 border-b border-slate-200 dark:border-slate-800 pb-3">
-                    <div>
-                        <span class="text-[11px] font-black uppercase tracking-widest text-emerald-600 dark:text-emerald-400"><i class="fa-solid fa-shield-halved mr-1"></i>Verification & Deep Dives</span>
-                        <h2 class="text-2xl md:text-3xl font-black heading-font">Fact-Check Archive, Explainers & Ground Reports</h2>
-                    </div>
-                    <div class="flex gap-3 text-xs font-black uppercase">
-                        <a href="/fact-checking-policy" onclick="event.preventDefault(); openStaticPage('fact-checking-policy');" class="text-slate-500 hover:text-[#cc0000]">Methodology</a>
-                        <a href="/category/fact-check-explainers" onclick="event.preventDefault(); filterCategory('Fact Check & Explainers');" class="text-[#cc0000] hover:underline">All Fact Checks &rarr;</a>
-                    </div>
-                </div>
-                <div id="factcheck-explainer-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
-            </section>
-
-            <!-- Multimedia Section: Photo Gallery (with Lightbox) & Video News -->
-            <section class="bg-slate-900 text-white p-6 md:p-8 rounded-2xl">
-                <div class="flex flex-wrap justify-between items-end mb-6 border-b border-slate-800 pb-3">
-                    <div>
-                        <span class="text-[11px] font-black uppercase tracking-widest text-yellow-400"><i class="fa-solid fa-camera-retro mr-1"></i>Visual Journalism</span>
-                        <h2 class="text-2xl md:text-3xl font-black heading-font">Photojournalism Gallery & Video Bulletins</h2>
-                    </div>
-                    <span class="text-xs text-slate-400 font-bold">Click any photo to open high-res caption view</span>
-                </div>
-                <div id="multimedia-gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"></div>
-            </section>
-
-            <!-- Clean, Clearly Separated Advertisement / Monetization Integration Slot -->
-            <aside aria-label="Advertisement and Partner Slot" class="bg-slate-100 dark:bg-slate-900 border border-dashed border-slate-300 dark:border-slate-700 rounded-2xl p-6 text-center no-print">
-                <span class="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400 block mb-2">Advertisement / Commercial Integration Slot</span>
-                <div class="max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 bg-white dark:bg-slate-800 p-5 rounded-xl shadow-sm">
-                    <div class="text-left">
-                        <span class="bg-amber-100 text-amber-800 text-[10px] font-black px-2 py-0.5 rounded uppercase">Partner Placement</span>
-                        <h3 class="text-lg font-black heading-font mt-1">Reach Readers Across India & Global Desks</h3>
-                        <p class="text-xs text-slate-500 dark:text-slate-400">Display ads, newsletter sponsorships, and clearly labeled sponsored features strictly separated from editorial coverage.</p>
-                    </div>
-                    <a href="/advertise-with-us" onclick="event.preventDefault(); openStaticPage('advertise-with-us');" class="shrink-0 bg-[#0f172a] hover:bg-[#cc0000] text-white text-xs font-black uppercase tracking-wider px-5 py-3 rounded-xl transition">View Media Kit</a>
-                </div>
-            </aside>
-
-            <!-- Newsletter Subscription Section -->
-            <section aria-label="Newsletter Subscription" class="bg-gradient-to-r from-[#0f172a] to-slate-900 text-white rounded-2xl p-6 md:p-12 border-l-8 border-[#cc0000] shadow-xl">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                    <div class="lg:col-span-7 space-y-2">
-                        <span class="text-xs font-black uppercase tracking-widest text-yellow-400"><i class="fa-regular fa-paper-plane mr-1.5"></i>Daily Morning & Evening Briefings</span>
-                        <h2 class="text-2xl md:text-4xl font-black heading-font">Never Miss a Verified Job Alert or Breaking Story</h2>
-                        <p class="text-sm text-slate-300">Subscribe to the FastJob Alert Daily Digest. Zero spam, transparent privacy, one-click unsubscribe.</p>
-                    </div>
-                    <form onsubmit="handleNewsletterSignup(event)" class="lg:col-span-5 space-y-3">
-                        <div class="flex flex-col sm:flex-row gap-2">
-                            <input type="email" id="newsletter-email" required placeholder="Enter your email address..." aria-label="Email address for newsletter" class="flex-1 px-4 py-3 rounded-xl text-slate-900 font-bold text-sm outline-none">
-                            <button type="submit" class="bg-[#cc0000] hover:bg-[#990000] text-white font-black uppercase tracking-wider text-xs px-6 py-3 rounded-xl transition shrink-0">Subscribe</button>
-                        </div>
-                        <label class="flex items-start gap-2 text-[11px] text-slate-300 cursor-pointer">
-                            <input type="checkbox" id="newsletter-consent" required class="mt-0.5 accent-[#cc0000]">
-                            <span>I agree to receive editorial briefings and accept the <a href="/privacy-policy" onclick="event.preventDefault(); openStaticPage('privacy-policy');" class="underline text-yellow-400">Privacy Policy</a>.</span>
-                        </label>
-                        <p id="newsletter-status" class="text-xs font-bold hidden"></p>
-                    </form>
-                </div>
-            </section>
-        </div>
-
-        <!-- =========================================================
-             VIEW 2: DEDICATED CATEGORY & ADVANCED SEARCH / FILTER VIEW
-        ========================================================== -->
-        <div id="category-view" class="hidden space-y-8">
-            <div class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
-                <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-5">
-                    <div>
-                        <nav id="category-breadcrumb" class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2"></nav>
-                        <h1 id="category-view-title" class="text-3xl md:text-5xl font-black heading-font text-slate-900 dark:text-white"></h1>
-                        <p id="category-view-desc" class="text-sm text-slate-500 dark:text-slate-400 mt-1"></p>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <button id="follow-category-btn" onclick="toggleFollowCurrentCategory()" class="px-4 py-2 rounded-full text-xs font-black uppercase tracking-wider border-2 border-[#cc0000] text-[#cc0000] hover:bg-[#cc0000] hover:text-white transition"></button>
-                        <button onclick="goBackHome()" class="px-4 py-2 rounded-full text-xs font-bold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 transition"><i class="fa-solid fa-house mr-1"></i>Home</button>
-                    </div>
-                </div>
-
-                <!-- Subcategory Tags Row -->
-                <div id="subcategory-pills-bar" class="flex items-center gap-2 overflow-x-auto pt-4 text-xs font-bold"></div>
-
-                <!-- Search & Multi-Faceted Filter Bar -->
-                <div class="mt-6 pt-5 border-t border-slate-100 dark:border-slate-800 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
-                    <div class="lg:col-span-2 flex items-center bg-slate-100 dark:bg-slate-800 rounded-xl px-3.5 py-2 border border-slate-200 dark:border-slate-700">
-                        <i class="fa-solid fa-filter text-[#cc0000] mr-2 text-xs"></i>
-                        <input type="search" id="cat-filter-keyword" oninput="applyCategoryAndSearchFilters()" placeholder="Filter within results..." class="w-full bg-transparent text-xs font-bold outline-none">
-                    </div>
-                    <select id="cat-filter-category" onchange="applyCategoryAndSearchFilters()" aria-label="Filter by Category" class="bg-slate-100 dark:bg-slate-800 rounded-xl px-3 py-2 text-xs font-bold border border-slate-200 dark:border-slate-700"></select>
-                    <select id="cat-filter-type" onchange="applyCategoryAndSearchFilters()" aria-label="Filter by Content Type" class="bg-slate-100 dark:bg-slate-800 rounded-xl px-3 py-2 text-xs font-bold border border-slate-200 dark:border-slate-700">
-                        <option value="ALL">All Content Types</option>
-                        <option value="Report">Standard News Report</option>
-                        <option value="Job Alert">Verified Job Alert</option>
-                        <option value="Explainer">Explainer / FAQ</option>
-                        <option value="Fact Check">Fact Check</option>
-                        <option value="Investigative">Investigative / Special</option>
-                        <option value="Opinion">Opinion & Editorial</option>
-                    </select>
-                    <select id="cat-filter-sort" onchange="applyCategoryAndSearchFilters()" aria-label="Sort Articles" class="bg-slate-100 dark:bg-slate-800 rounded-xl px-3 py-2 text-xs font-bold border border-slate-200 dark:border-slate-700">
-                        <option value="newest">Sort: Newest First</option>
-                        <option value="oldest">Sort: Oldest First</option>
-                        <option value="relevant">Sort: Most Relevant</option>
-                    </select>
-                </div>
+            
+            <div class="bg-gray-100 rounded-full px-4 py-2 mb-5 flex items-center border border-gray-200">
+                <input type="text" id="mobileSearchInput" onkeyup="searchNewsMobile()" placeholder="Search news..." class="w-full bg-transparent outline-none font-semibold text-sm text-gray-900 placeholder-gray-400">
+                <i class="fa-solid fa-magnifying-glass text-[#d10000] text-sm"></i>
             </div>
+            
+            <p class="text-[11px] font-black uppercase tracking-wider text-[#d10000] mb-3 border-b border-gray-100 pb-1">All 25 News Categories</p>
+            <nav class="flex flex-col space-y-1 font-bold text-gray-800 text-sm mb-8" id="mobile-category-nav">
+                <!-- Mobile 25 Categories Injected Dynamically -->
+            </nav>
 
-            <!-- Filtered Articles Results Grid -->
-            <div id="category-results-meta" class="text-xs font-bold text-slate-500 flex justify-between items-center"></div>
-            <div id="category-results-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
-
-            <!-- Empty Search Results State -->
-            <div id="category-empty-state" class="hidden bg-white dark:bg-slate-900 p-12 rounded-2xl border border-slate-200 dark:border-slate-800 text-center space-y-4">
-                <i class="fa-solid fa-magnifying-glass-minus text-4xl text-[#cc0000]"></i>
-                <h2 class="text-2xl font-black heading-font">No Matching Articles Found</h2>
-                <p class="text-sm text-slate-500 max-w-md mx-auto">No articles matched your active filter criteria in our current dataset. Try clearing filters or exploring popular topics below:</p>
-                <div class="flex flex-wrap justify-center gap-2 pt-2">
-                    <button onclick="resetCategoryFilters()" class="bg-[#cc0000] text-white text-xs font-black uppercase px-4 py-2 rounded-full">Reset All Filters</button>
-                    <button onclick="filterCategory('Jobs & Careers')" class="bg-slate-100 dark:bg-slate-800 text-xs font-bold px-4 py-2 rounded-full">Jobs & Careers</button>
-                    <button onclick="filterCategory('Politics')" class="bg-slate-100 dark:bg-slate-800 text-xs font-bold px-4 py-2 rounded-full">Politics</button>
-                    <button onclick="filterCategory('Economy')" class="bg-slate-100 dark:bg-slate-800 text-xs font-bold px-4 py-2 rounded-full">Economy</button>
-                </div>
-            </div>
-
-            <!-- Working Pagination / Load More Button -->
-            <div id="pagination-controls" class="text-center pt-4">
-                <button id="load-more-btn" onclick="loadMoreCategoryArticles()" class="bg-[#0f172a] hover:bg-[#cc0000] text-white font-black uppercase tracking-widest text-xs px-8 py-3.5 rounded-full shadow-lg transition">Load More Stories</button>
+            <p class="text-[11px] font-black uppercase tracking-wider text-[#d10000] mb-3 border-b border-gray-100 pb-1">Legal & Portal Info</p>
+            <div class="flex flex-col space-y-2.5 text-xs font-bold text-gray-600 pt-1">
+                <a href="/about-us" onclick="event.preventDefault(); openStaticPage('about-us'); toggleMobileMenu();" class="hover:text-[#d10000]">About Us</a>
+                <a href="/privacy-policy" onclick="event.preventDefault(); openStaticPage('privacy-policy'); toggleMobileMenu();" class="hover:text-[#d10000]">Privacy Policy</a>
+                <a href="/terms-and-conditions" onclick="event.preventDefault(); openStaticPage('terms-and-conditions'); toggleMobileMenu();" class="hover:text-[#d10000]">Terms & Conditions</a>
+                <a href="/disclaimer" onclick="event.preventDefault(); openStaticPage('disclaimer'); toggleMobileMenu();" class="hover:text-[#d10000]">Disclaimer</a>
+                <a href="/editorial-policy" onclick="event.preventDefault(); openStaticPage('editorial-policy'); toggleMobileMenu();" class="hover:text-[#d10000]">Editorial Policy</a>
+                <a href="/contact-us" onclick="event.preventDefault(); openStaticPage('contact-us'); toggleMobileMenu();" class="hover:text-[#d10000]">Contact Desk</a>
             </div>
         </div>
+    </div>
 
-        <!-- =========================================================
-             VIEW 3: DEDICATED ARTICLE PAGE
-        ========================================================== -->
-        <article id="article-view" class="hidden bg-white dark:bg-slate-900 p-5 md:p-12 w-full max-w-5xl mx-auto shadow-xl rounded-2xl border border-slate-200 dark:border-slate-800">
-            <!-- Top Navigation & Breadcrumb -->
-            <div class="flex flex-wrap items-center justify-between gap-4 mb-6 no-print">
-                <nav id="article-breadcrumb" aria-label="Breadcrumb" class="text-xs font-bold text-slate-500 dark:text-slate-400 flex items-center flex-wrap gap-1.5"></nav>
-                <button onclick="goBackHome()" class="bg-slate-100 dark:bg-slate-800 hover:bg-[#cc0000] hover:text-white text-slate-700 dark:text-slate-200 font-black uppercase text-[11px] tracking-widest py-2 px-5 rounded-full inline-flex items-center transition">
-                    <i class="fa-solid fa-arrow-left mr-2"></i> Back to Feed
-                </button>
-            </div>
-
-            <!-- Category, Demo Status & Content Type Badges -->
-            <div id="article-badges" class="flex flex-wrap items-center gap-2 mb-4"></div>
-
-            <!-- Headline & Optional Subtitle -->
-            <h1 id="detail-title" class="text-3xl md:text-5xl font-black text-slate-900 dark:text-white leading-[1.15] mb-4 heading-font"></h1>
-            <p id="detail-subtitle" class="text-lg md:text-xl text-slate-600 dark:text-slate-300 font-semibold mb-6 leading-relaxed"></p>
-
-            <!-- Author Metadata, Reading Time & Reader Utility Toolbar -->
-            <div class="flex flex-col lg:flex-row lg:items-center justify-between border-y border-slate-200 dark:border-slate-800 py-5 mb-8 bg-slate-50 dark:bg-slate-800/50 px-5 rounded-xl gap-4">
+    <!-- ==================== MAIN CONTENT AREA ==================== -->
+    <main class="w-full max-w-[1400px] mx-auto px-3 md:px-6 py-6 md:py-8 flex-grow overflow-hidden">
+        
+        <!-- 1. Detailed Article View -->
+        <div id="article-view" class="hidden bg-white p-5 md:p-12 w-full mx-auto shadow-md rounded-xl border-t-4 border-[#d10000]">
+            <button onclick="goBackHome()" class="mb-6 bg-gray-100 hover:bg-[#d10000] text-gray-800 hover:text-white font-bold uppercase text-xs tracking-wider py-2.5 px-6 rounded-full inline-flex items-center transition"><i class="fa-solid fa-arrow-left mr-2"></i> Back to News</button>
+            
+            <h1 id="detail-title" class="text-2xl md:text-5xl font-black text-gray-900 leading-tight mb-6 heading-font"></h1>
+            
+            <div class="flex flex-col md:flex-row md:items-center justify-between border-y border-gray-200 py-4 mb-8 bg-gray-50 px-5 rounded-lg gap-4">
                 <div class="flex items-center gap-4">
-                    <img id="detail-author-avatar" src="https://ui-avatars.com/api/?name=FastJob+Desk&background=cc0000&color=fff&bold=true" alt="Author Avatar" class="w-14 h-14 rounded-full shadow border-2 border-white">
+                    <img src="https://ui-avatars.com/api/?name=FastJob+Desk&background=d10000&color=fff&bold=true" class="w-12 h-12 rounded-full shadow">
                     <div>
-                        <div class="flex items-center gap-2 flex-wrap">
-                            <a id="detail-author-link" href="/author/fastjob-editorial-desk" onclick="event.preventDefault(); openAuthorProfile(this.dataset.author);" data-author="FastJob Editorial Desk" class="font-black text-sm text-[#cc0000] uppercase tracking-wider hover:underline">FastJob Editorial Desk</a>
-                            <span class="text-[10px] bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 px-2 py-0.5 rounded font-bold"><i class="fa-solid fa-circle-check mr-1"></i>Verified Desk</span>
-                        </div>
-                        <p id="detail-date" class="text-xs font-bold text-slate-500 dark:text-slate-400 mt-1"></p>
-                        <p id="detail-reading-time" class="text-xs font-extrabold text-slate-700 dark:text-slate-300 mt-0.5"></p>
+                        <p class="font-extrabold text-sm text-[#d10000] uppercase tracking-wider">FastJob Alert Desk</p>
+                        <p id="detail-date" class="text-xs font-semibold text-gray-500 mt-0.5"></p>
                     </div>
                 </div>
-
-                <!-- Interactive Reader Controls (TTS, Font Size, Bookmark, Print, Share, Copy Link) -->
-                <div class="flex flex-wrap items-center gap-2 no-print">
-                    <button onclick="toggleArticleTTS()" id="tts-btn" class="px-3 py-2 rounded-full bg-slate-200 dark:bg-slate-700 hover:bg-[#cc0000] hover:text-white text-xs font-black transition inline-flex items-center gap-1.5" title="Listen to Article (Text-to-Speech)">
-                        <i class="fa-solid fa-volume-high"></i> <span id="tts-label">Listen</span>
-                    </button>
-                    <button onclick="adjustArticleFontSize(-1)" class="w-9 h-9 rounded-full bg-slate-200 dark:bg-slate-700 hover:bg-[#cc0000] hover:text-white font-black text-xs transition" title="Decrease Font Size" aria-label="Decrease Font Size">A-</button>
-                    <button onclick="adjustArticleFontSize(1)" class="w-9 h-9 rounded-full bg-slate-200 dark:bg-slate-700 hover:bg-[#cc0000] hover:text-white font-black text-xs transition" title="Increase Font Size" aria-label="Increase Font Size">A+</button>
-                    <button onclick="toggleBookmarkCurrentArticle()" id="article-bookmark-btn" class="w-9 h-9 rounded-full bg-slate-200 dark:bg-slate-700 hover:bg-[#cc0000] hover:text-white transition flex items-center justify-center" title="Bookmark Article" aria-label="Bookmark Article">
-                        <i class="fa-regular fa-bookmark"></i>
-                    </button>
-                    <button onclick="window.print()" class="w-9 h-9 rounded-full bg-slate-200 dark:bg-slate-700 hover:bg-[#cc0000] hover:text-white transition flex items-center justify-center" title="Print Article" aria-label="Print Article">
-                        <i class="fa-solid fa-print"></i>
-                    </button>
-                    <button onclick="copyArticleLink()" class="w-9 h-9 rounded-full bg-slate-200 dark:bg-slate-700 hover:bg-[#cc0000] hover:text-white transition flex items-center justify-center" title="Copy Clean Link" aria-label="Copy Article Link">
-                        <i class="fa-solid fa-link"></i>
-                    </button>
-                    <button onclick="shareWebsite('whatsapp')" class="w-9 h-9 rounded-full bg-[#25d366] text-white flex items-center justify-center hover:scale-105 transition" title="Share on WhatsApp" aria-label="Share on WhatsApp"><i class="fa-brands fa-whatsapp"></i></button>
-                    <button onclick="shareWebsite('x')" class="w-9 h-9 rounded-full bg-black text-white flex items-center justify-center hover:scale-105 transition" title="Share on X" aria-label="Share on X"><i class="fa-brands fa-x-twitter"></i></button>
-                    <button onclick="shareWebsite('facebook')" class="w-9 h-9 rounded-full bg-[#1877f2] text-white flex items-center justify-center hover:scale-105 transition" title="Share on Facebook" aria-label="Share on Facebook"><i class="fa-brands fa-facebook-f"></i></button>
-                    <button onclick="shareWebsite('linkedin')" class="w-9 h-9 rounded-full bg-[#0a66c2] text-white flex items-center justify-center hover:scale-105 transition" title="Share on LinkedIn" aria-label="Share on LinkedIn"><i class="fa-brands fa-linkedin-in"></i></button>
-                    <button onclick="shareWebsite('email')" class="w-9 h-9 rounded-full bg-slate-600 text-white flex items-center justify-center hover:scale-105 transition" title="Share via Email" aria-label="Share via Email"><i class="fa-solid fa-envelope"></i></button>
+                <!-- Natural Social Colors: WhatsApp Green & Facebook Blue -->
+                <div class="flex gap-2.5">
+                    <button onclick="shareWebsite('whatsapp')" class="bg-[#25d366] hover:bg-[#1da851] text-white px-4 py-2 rounded-full shadow transition flex items-center gap-1.5 text-xs font-bold"><i class="fa-brands fa-whatsapp text-base"></i> Share</button>
+                    <button onclick="shareWebsite('facebook')" class="bg-[#1877f2] hover:bg-[#145dbf] text-white px-4 py-2 rounded-full shadow transition flex items-center gap-1.5 text-xs font-bold"><i class="fa-brands fa-facebook-f text-sm"></i> Share</button>
                 </div>
             </div>
-
-            <!-- Featured Image with Caption & Credit -->
-            <figure class="mb-8">
-                <img id="detail-image" src="" alt="" class="w-full h-auto object-cover max-h-[580px] rounded-2xl shadow-lg bg-slate-200">
-                <figcaption id="detail-image-caption" class="text-xs text-slate-500 dark:text-slate-400 mt-2.5 italic flex justify-between flex-wrap gap-2"></figcaption>
-            </figure>
-
-            <!-- Auto-Generated Table of Contents (for Long-Form Articles) -->
-            <div id="article-toc-box" class="hidden mb-8 bg-slate-50 dark:bg-slate-800/70 p-5 rounded-xl border-l-4 border-[#cc0000]">
-                <p class="text-xs font-black uppercase tracking-widest text-[#cc0000] mb-2"><i class="fa-solid fa-list-ul mr-1.5"></i>In This Report (Table of Contents)</p>
-                <ul id="article-toc-list" class="space-y-1.5 text-sm font-bold text-slate-700 dark:text-slate-200"></ul>
-            </div>
-
-            <!-- Main Article Content Body -->
-            <div id="detail-content" class="w-full overflow-x-auto text-slate-800 dark:text-slate-200"></div>
-
-            <!-- Source References, Tags & Report an Error Footer -->
-            <div class="mt-10 pt-6 border-t border-slate-200 dark:border-slate-800 space-y-6">
-                <div class="flex flex-wrap items-center justify-between gap-4">
-                    <div id="detail-tags" class="flex flex-wrap items-center gap-2"></div>
-                    <button onclick="openReportErrorModal()" class="text-xs font-black uppercase tracking-wider text-red-600 dark:text-red-400 hover:underline flex items-center gap-1.5 no-print">
-                        <i class="fa-solid fa-flag"></i> Report Factual Error / Request Correction
-                    </button>
-                </div>
-
-                <!-- Author Bio Box & More by Author -->
-                <div class="bg-slate-50 dark:bg-slate-800/60 p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
-                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">
-                        <div>
-                            <span class="text-[10px] font-black uppercase tracking-widest text-[#cc0000]">About The Author / Desk</span>
-                            <h3 id="author-box-name" class="text-xl font-black heading-font">FastJob Editorial Desk</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Our editorial team verifies official notifications, gazette releases, macroeconomic filings, and global news wires 24/7 in accordance with the FastJob Alert Editorial & Fact-Checking Policy.</p>
-                        </div>
-                        <button onclick="openAuthorProfile(document.getElementById('detail-author-link').dataset.author)" class="shrink-0 bg-slate-900 text-white text-xs font-bold px-4 py-2 rounded-lg hover:bg-[#cc0000] transition no-print">View Author Profile</button>
-                    </div>
-                    <div id="more-by-author-list" class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-3 border-t border-slate-200 dark:border-slate-700"></div>
-                </div>
-
-                <!-- Related Stories Section -->
-                <div class="pt-6 no-print">
-                    <h3 class="text-2xl font-black heading-font mb-5"><span class="text-[#cc0000] mr-2">|</span>Related Stories</h3>
-                    <div id="related-articles-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
-                </div>
-            </div>
-        </article>
-
-        <!-- =========================================================
-             VIEW 4: AUTHOR PROFILE VIEW
-        ========================================================== -->
-        <div id="author-view" class="hidden bg-white dark:bg-slate-900 p-6 md:p-12 rounded-2xl border border-slate-200 dark:border-slate-800 max-w-5xl mx-auto space-y-8">
-            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6 border-b border-slate-200 dark:border-slate-800 pb-6">
-                <img id="author-profile-avatar" src="https://ui-avatars.com/api/?name=FastJob+Desk&background=cc0000&color=fff&bold=true&size=128" alt="Author" class="w-24 h-24 rounded-full shadow-lg">
-                <div class="flex-1">
-                    <span class="text-xs font-black uppercase tracking-widest text-[#cc0000]">Verified Journalist / Editorial Desk</span>
-                    <h1 id="author-profile-name" class="text-3xl md:text-4xl font-black heading-font mt-1"></h1>
-                    <p id="author-profile-bio" class="text-sm text-slate-600 dark:text-slate-300 mt-2"></p>
-                    <p class="text-xs font-bold text-slate-400 mt-2"><i class="fa-solid fa-envelope mr-1"></i>Contact Desk: <a href="mailto:desk@fastjob.online" class="text-[#cc0000] underline">desk@fastjob.online</a></p>
-                </div>
-                <button onclick="goBackHome()" class="bg-slate-100 dark:bg-slate-800 px-4 py-2 rounded-full text-xs font-bold">&larr; Back Home</button>
-            </div>
-            <div>
-                <h2 class="text-2xl font-black heading-font mb-5">Published Articles by this Desk</h2>
-                <div id="author-articles-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
-            </div>
+            
+            <img id="detail-image" src="" class="w-full h-auto object-cover max-h-[600px] mb-8 rounded-xl shadow">
+            <div id="detail-content" class="w-full overflow-x-auto text-gray-800"></div>
         </div>
 
-        <!-- =========================================================
-             VIEW 5: TRUST, TRANSPARENCY & LEGAL PAGES (ALL 17 PAGES)
-        ========================================================== -->
-        <div id="legal-view" class="hidden bg-white dark:bg-slate-900 p-6 md:p-14 w-full max-w-5xl mx-auto shadow-xl rounded-2xl border-t-8 border-[#cc0000]">
-            <div class="flex flex-wrap justify-between items-center gap-4 mb-6">
-                <button onclick="goBackHome()" class="bg-slate-100 dark:bg-slate-800 hover:bg-[#cc0000] hover:text-white text-slate-800 dark:text-slate-200 font-black uppercase text-xs tracking-widest py-2.5 px-6 rounded-full inline-flex items-center transition">
-                    <i class="fa-solid fa-arrow-left mr-2"></i> Back to Home
-                </button>
-                <div class="flex flex-wrap gap-2 text-xs font-bold">
-                    <a href="/about-us" onclick="event.preventDefault(); openStaticPage('about-us');" class="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 hover:text-[#cc0000]">About</a>
-                    <a href="/editorial-policy" onclick="event.preventDefault(); openStaticPage('editorial-policy');" class="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 hover:text-[#cc0000]">Editorial Policy</a>
-                    <a href="/fact-checking-policy" onclick="event.preventDefault(); openStaticPage('fact-checking-policy');" class="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 hover:text-[#cc0000]">Fact-Check</a>
-                    <a href="/corrections-policy" onclick="event.preventDefault(); openStaticPage('corrections-policy');" class="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 hover:text-[#cc0000]">Corrections</a>
-                    <a href="/privacy-policy" onclick="event.preventDefault(); openStaticPage('privacy-policy');" class="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 hover:text-[#cc0000]">Privacy</a>
-                </div>
-            </div>
-            <h1 id="legal-page-title" class="text-3xl md:text-5xl font-black text-slate-900 dark:text-white heading-font mb-8 border-b border-slate-200 dark:border-slate-800 pb-5 uppercase tracking-tight"></h1>
-            <div id="legal-page-content" class="w-full text-slate-700 dark:text-slate-200 leading-relaxed space-y-6"></div>
+        <!-- 2. Full-Page Legal & Info View -->
+        <div id="legal-view" class="hidden bg-white p-6 md:p-14 w-full max-w-5xl mx-auto shadow-md rounded-xl border-t-4 border-[#d10000]">
+            <button onclick="goBackHome()" class="mb-6 bg-gray-100 hover:bg-[#d10000] text-gray-800 hover:text-white font-bold uppercase text-xs tracking-wider py-2.5 px-6 rounded-full inline-flex items-center transition"><i class="fa-solid fa-arrow-left mr-2"></i> Back to Home</button>
+            <h1 id="legal-page-title" class="text-3xl md:text-4xl font-black text-gray-900 heading-font mb-6 border-b-2 border-gray-100 pb-4 uppercase"></h1>
+            <div id="legal-page-content" class="w-full text-gray-700 leading-relaxed space-y-5"></div>
         </div>
 
-        <!-- =========================================================
-             VIEW 6: NEWSROOM ADMIN PANEL & CMS (CONNECTED TO SUPABASE)
-        ========================================================== -->
-        <div id="admin-view" class="hidden space-y-8">
-            <div class="bg-white dark:bg-slate-900 p-6 md:p-10 rounded-2xl border-t-8 border-[#cc0000] shadow-xl">
-                <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-5 mb-6">
-                    <div>
-                        <span class="bg-[#cc0000] text-white text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded">Newsroom CMS Architecture</span>
-                        <h1 class="text-3xl font-black heading-font mt-2">FastJob Alert — Editorial & Publishing Portal</h1>
-                        <p class="text-xs text-slate-500 mt-1">Integrated with your existing Supabase backend (<code class="text-[#cc0000]">wioheljpjdcprozqumpv.supabase.co</code>). Zero secrets or private keys are stored in frontend code.</p>
-                    </div>
-                    <button onclick="goBackHome()" class="bg-slate-100 dark:bg-slate-800 px-4 py-2 rounded-full text-xs font-bold">&larr; Exit to Public Site</button>
-                </div>
-
-                <!-- Supabase Real Authentication Box + Local Sandbox Mode -->
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                    <div class="lg:col-span-4 bg-slate-50 dark:bg-slate-800/60 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-4">
-                        <h2 class="text-lg font-black heading-font"><i class="fa-solid fa-shield-halved text-[#cc0000] mr-2"></i>1. Supabase Auth Login</h2>
-                        <p class="text-xs text-slate-500 dark:text-slate-400">Sign in with your Supabase Authenticated Editor/Admin user to execute live database writes (<code class="font-bold">POST / PATCH / DELETE</code>) protected by Row-Level Security (RLS).</p>
-                        <form onsubmit="handleSupabaseAdminLogin(event)" class="space-y-3">
-                            <div>
-                                <label class="text-xs font-bold block mb-1">Admin Email (Supabase Auth)</label>
-                                <input type="email" id="admin-email" required placeholder="editor@fastjob.online" class="w-full px-3.5 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-sm">
-                            </div>
-                            <div>
-                                <label class="text-xs font-bold block mb-1">Password</label>
-                                <input type="password" id="admin-password" required placeholder="••••••••••••" class="w-full px-3.5 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-sm">
-                            </div>
-                            <button type="submit" class="w-full bg-[#cc0000] hover:bg-[#990000] text-white font-black uppercase tracking-wider text-xs py-3 rounded-xl transition">Authenticate with Supabase</button>
-                        </form>
-                        <div id="admin-auth-status" class="text-xs font-bold p-3 rounded-lg bg-amber-50 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300">
-                            Status: <strong>Unauthenticated (Local Sandbox Preview Mode)</strong>. You can test creating, editing, and previewing articles locally in your browser session right now; live database writes require Supabase Auth login above.
-                        </div>
-                    </div>
-
-                    <!-- Article Composer & Metadata Manager -->
-                    <div class="lg:col-span-8 bg-slate-50 dark:bg-slate-800/60 p-6 rounded-2xl border border-slate-200 dark:border-slate-700">
-                        <h2 class="text-lg font-black heading-font mb-4"><i class="fa-solid fa-pen-nib text-[#cc0000] mr-2"></i>2. Create / Edit Article & SEO Metadata</h2>
-                        <form onsubmit="handleAdminArticleSave(event)" class="space-y-4">
-                            <input type="hidden" id="cms-article-id">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="text-xs font-bold block mb-1">Headline *</label>
-                                    <input type="text" id="cms-title" required oninput="autoGenerateSlug(this.value)" placeholder="Enter verified headline..." class="w-full px-3.5 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-sm font-bold">
-                                </div>
-                                <div>
-                                    <label class="text-xs font-bold block mb-1">Clean URL Slug (No ?slug=) *</label>
-                                    <input type="text" id="cms-slug" required placeholder="clean-article-url-slug" class="w-full px-3.5 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-sm font-mono">
-                                </div>
-                            </div>
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                <div>
-                                    <label class="text-xs font-bold block mb-1">Category (25 Desks) *</label>
-                                    <select id="cms-category" required class="w-full px-3.5 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-sm font-bold"></select>
-                                </div>
-                                <div>
-                                    <label class="text-xs font-bold block mb-1">Content Type</label>
-                                    <select id="cms-type" class="w-full px-3.5 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-sm font-bold">
-                                        <option value="Report">Standard News Report</option>
-                                        <option value="Job Alert">Verified Job Alert</option>
-                                        <option value="Explainer">Explainer</option>
-                                        <option value="Fact Check">Fact Check</option>
-                                        <option value="Investigative">Investigative</option>
-                                        <option value="Opinion">Opinion & Editorial</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label class="text-xs font-bold block mb-1">Author / Role</label>
-                                    <input type="text" id="cms-author" value="FastJob Editorial Desk" class="w-full px-3.5 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-sm font-bold">
-                                </div>
-                            </div>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="text-xs font-bold block mb-1">Featured Image URL (HTTPS) *</label>
-                                    <input type="url" id="cms-image" required placeholder="https://images.unsplash.com/..." class="w-full px-3.5 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-sm">
-                                </div>
-                                <div>
-                                    <label class="text-xs font-bold block mb-1">Image Alt Text & Credit *</label>
-                                    <input type="text" id="cms-alt" required placeholder="Descriptive alt text for accessibility & SEO" class="w-full px-3.5 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-sm">
-                                </div>
-                            </div>
-                            <div>
-                                <label class="text-xs font-bold block mb-1">SEO Meta Description / Subtitle Summary *</label>
-                                <input type="text" id="cms-summary" required maxlength="170" placeholder="Concise 150-character summary for Google Search & OpenGraph..." class="w-full px-3.5 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-sm">
-                            </div>
-                            <div>
-                                <label class="text-xs font-bold block mb-1">Article Body HTML (Supports &lt;p&gt;, &lt;h3 class="article-subheading"&gt;, &lt;blockquote&gt;, tables) *</label>
-                                <textarea id="cms-content" rows="6" required placeholder="<p>Write full verified report here...</p><h3>Key Highlights</h3><p>Details...</p>" class="w-full p-3.5 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-sm font-mono"></textarea>
-                            </div>
-                            <div class="flex flex-wrap gap-3 pt-2">
-                                <button type="submit" class="bg-[#cc0000] hover:bg-[#990000] text-white font-black uppercase tracking-wider text-xs px-6 py-3 rounded-xl transition"><i class="fa-solid fa-cloud-arrow-up mr-1.5"></i>Publish / Save Article</button>
-                                <button type="button" onclick="previewCMSArticle()" class="bg-slate-900 hover:bg-slate-700 text-white font-bold uppercase tracking-wider text-xs px-5 py-3 rounded-xl transition"><i class="fa-regular fa-eye mr-1.5"></i>Live Preview</button>
-                            </div>
-                            <p id="cms-save-feedback" class="text-xs font-bold hidden"></p>
-                        </form>
+        <!-- 3. Aaj Tak Style Home & Category View -->
+        <div id="home-view">
+            <!-- Top Hero Section: Left Big Slider + Right Top Stories Sidebar -->
+            <div id="hero-top-section" class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-12">
+                <!-- Main Slider (8 Columns on Desktop) -->
+                <div class="lg:col-span-8">
+                    <div id="slider-wrapper" class="slider-container bg-gray-900 shadow-md min-h-[280px] md:min-h-[480px] rounded-xl overflow-hidden">
+                        <p class="p-16 text-center text-white font-bold text-lg"><i class="fa-solid fa-spinner fa-spin mr-2 text-yellow-400"></i> Loading Top Stories...</p>
                     </div>
                 </div>
-
-                <!-- Existing Articles Management Table -->
-                <div class="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800">
-                    <h3 class="text-lg font-black heading-font mb-4">Manage Loaded Articles (<span id="cms-post-count">0</span>)</h3>
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left border-collapse text-xs">
-                            <thead>
-                                <tr class="bg-slate-100 dark:bg-slate-800 uppercase font-black">
-                                    <th class="p-3">Headline</th>
-                                    <th class="p-3">Category</th>
-                                    <th class="p-3">Source</th>
-                                    <th class="p-3">Clean URL</th>
-                                    <th class="p-3">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody id="cms-articles-tbody" class="divide-y divide-slate-200 dark:divide-slate-800 font-semibold"></tbody>
-                        </table>
+                <!-- Aaj Tak Style "Badi Khabrein" Sidebar (4 Columns on Desktop) -->
+                <div class="lg:col-span-4 bg-white rounded-xl shadow-sm border border-gray-200 p-4 flex flex-col">
+                    <div class="flex items-center justify-between border-b-2 border-[#d10000] pb-2 mb-4">
+                        <span class="section-badge text-xs">TOP HEADLINES</span>
+                        <span class="text-[11px] font-bold text-[#d10000] flex items-center"><span class="w-2 h-2 bg-[#d10000] rounded-full animate-ping mr-1.5"></span> LIVE UPDATES</span>
+                    </div>
+                    <div id="top-sidebar-list" class="divide-y divide-gray-100 flex-grow overflow-y-auto max-h-[420px] pr-1">
+                        <!-- Top 6 Sidebar News Injected Here -->
                     </div>
                 </div>
             </div>
+            
+            <!-- Category Sections -->
+            <div id="category-sections" class="space-y-12"></div>
         </div>
-
-        <!-- =========================================================
-             VIEW 7: DEDICATED 404 PAGE FOR MISSING CONTENT
-        ========================================================== -->
-        <div id="not-found-view" class="hidden bg-white dark:bg-slate-900 p-10 md:p-20 rounded-2xl border border-slate-200 dark:border-slate-800 text-center max-w-3xl mx-auto my-8 space-y-6">
-            <div class="w-20 h-20 rounded-full bg-red-100 dark:bg-red-950 text-[#cc0000] flex items-center justify-center text-4xl mx-auto font-black">404</div>
-            <h1 class="text-3xl md:text-5xl font-black heading-font">Story or Page Not Found</h1>
-            <p class="text-slate-500 dark:text-slate-400 text-base">The URL <code id="missing-url-path" class="text-[#cc0000] font-bold"></code> does not match any published article, category desk, or policy page on FastJob Alert.</p>
-            <div class="max-w-md mx-auto flex gap-2">
-                <input type="search" id="search-404-input" onkeydown="if(event.key==='Enter'){document.getElementById('searchInput').value=this.value;executeFullSearch();}" placeholder="Search for the headline..." class="flex-1 px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-bold">
-                <button onclick="document.getElementById('searchInput').value=document.getElementById('search-404-input').value;executeFullSearch();" class="bg-[#cc0000] text-white text-xs font-black uppercase px-5 py-2.5 rounded-xl">Search</button>
-            </div>
-            <div class="pt-4">
-                <button onclick="goBackHome()" class="bg-[#0f172a] hover:bg-[#cc0000] text-white font-black uppercase tracking-widest text-xs px-8 py-3.5 rounded-full transition">Return to FastJob Alert Homepage</button>
-            </div>
-        </div>
-
     </main>
 
-    <!-- =========================================================
-         MODALS & DRAWERS (Bookmarks/History, Topic Interests, Notifications, Lightbox, Report Error)
-    ========================================================== -->
-
-    <!-- 1. Saved Bookmarks & Reading History Drawer -->
-    <div id="reader-drawer" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex justify-end no-print" role="dialog" aria-modal="true" aria-label="Bookmarks and Reading History">
-        <div class="w-full max-w-md bg-white dark:bg-slate-900 h-full shadow-2xl p-6 flex flex-col justify-between overflow-y-auto border-l-4 border-[#cc0000]">
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="bg-[#111827] text-gray-300 pt-14 pb-8 mt-12 border-t-4 border-[#d10000]">
+        <div class="w-full max-w-[1400px] mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
             <div>
-                <div class="flex justify-between items-center border-b border-slate-200 dark:border-slate-800 pb-4 mb-4">
-                    <h2 class="text-xl font-black heading-font"><i class="fa-solid fa-book-bookmark text-[#cc0000] mr-2"></i>Reader Library</h2>
-                    <button onclick="openReaderDrawer()" class="text-slate-400 hover:text-[#cc0000] text-2xl"><i class="fa-solid fa-xmark"></i></button>
-                </div>
-                <div class="bg-amber-50 dark:bg-amber-950/50 border border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-300 p-3 rounded-xl text-[11px] font-semibold mb-5">
-                    <i class="fa-solid fa-circle-info mr-1"></i> <strong>Privacy & Device Notice:</strong> Bookmarks, theme preferences, and reading history are stored locally in your browser (<code class="font-mono">localStorage</code>) for your privacy and do not sync across different devices.
-                </div>
-
-                <h3 class="text-xs font-black uppercase tracking-widest text-[#cc0000] mb-3">Saved Bookmarks</h3>
-                <div id="drawer-bookmarks-list" class="space-y-3 mb-8"></div>
-
-                <div class="flex justify-between items-center mb-3">
-                    <h3 class="text-xs font-black uppercase tracking-widest text-slate-500">Recent Reading History</h3>
-                    <button onclick="clearReadingHistory()" class="text-[11px] font-bold text-red-600 hover:underline">Clear History</button>
-                </div>
-                <div id="drawer-history-list" class="space-y-3"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 2. Personalize Topics ("My Feed") Modal -->
-    <div id="interests-modal" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4 no-print" role="dialog" aria-modal="true">
-        <div class="bg-white dark:bg-slate-900 w-full max-w-2xl rounded-2xl p-6 md:p-8 shadow-2xl border border-slate-200 dark:border-slate-700 max-h-[85vh] overflow-y-auto">
-            <div class="flex justify-between items-center border-b border-slate-200 dark:border-slate-800 pb-3 mb-4">
-                <div>
-                    <span class="text-[10px] font-black uppercase tracking-widest text-[#cc0000]">Local Personalization</span>
-                    <h2 class="text-2xl font-black heading-font">Follow News Desks & Topics</h2>
-                </div>
-                <button onclick="toggleModal('interests-modal')" class="text-slate-400 hover:text-[#cc0000] text-2xl"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Select the categories you care about most to build your custom homepage section. Stored locally in your browser.</p>
-            <div id="interests-checkbox-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 mb-6"></div>
-            <div class="flex justify-end gap-3">
-                <button onclick="clearFollowedTopics()" class="px-4 py-2 rounded-lg text-xs font-bold bg-slate-100 dark:bg-slate-800">Reset</button>
-                <button onclick="toggleModal('interests-modal')" class="px-6 py-2 rounded-lg text-xs font-black uppercase bg-[#cc0000] text-white">Save Feed Preferences</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- 3. Notification Preferences Modal -->
-    <div id="notifications-modal" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4 no-print" role="dialog" aria-modal="true">
-        <div class="bg-white dark:bg-slate-900 w-full max-w-md rounded-2xl p-6 shadow-2xl border border-slate-200 dark:border-slate-700 space-y-4">
-            <div class="flex justify-between items-center border-b border-slate-200 dark:border-slate-800 pb-3">
-                <h2 class="text-xl font-black heading-font"><i class="fa-regular fa-bell text-[#cc0000] mr-2"></i>Alert & Push Preferences</h2>
-                <button onclick="toggleModal('notifications-modal')" class="text-slate-400 hover:text-[#cc0000] text-xl"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            <p class="text-xs text-slate-500 dark:text-slate-400">Choose how you want to receive breaking news and government job notifications:</p>
-            <div class="space-y-2.5 text-sm font-bold">
-                <label class="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-slate-800">
-                    <span>Breaking News Alerts</span>
-                    <input type="checkbox" checked class="accent-[#cc0000] w-4 h-4">
-                </label>
-                <label class="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-slate-800">
-                    <span>Employment & Admit Card Alerts</span>
-                    <input type="checkbox" checked class="accent-[#cc0000] w-4 h-4">
-                </label>
-                <label class="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-slate-800">
-                    <span>Morning & Evening Briefing</span>
-                    <input type="checkbox" class="accent-[#cc0000] w-4 h-4">
-                </label>
-            </div>
-            <button onclick="requestBrowserNotifications()" class="w-full bg-[#cc0000] hover:bg-[#990000] text-white text-xs font-black uppercase tracking-wider py-3 rounded-xl transition">Enable Browser Push Notifications</button>
-            <p id="notif-permission-status" class="text-[11px] text-slate-500 text-center font-semibold"></p>
-        </div>
-    </div>
-
-    <!-- 4. Report an Error / Correction Modal -->
-    <div id="report-error-modal" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4 no-print" role="dialog" aria-modal="true">
-        <div class="bg-white dark:bg-slate-900 w-full max-w-lg rounded-2xl p-6 shadow-2xl border border-slate-200 dark:border-slate-700 space-y-4">
-            <div class="flex justify-between items-center border-b border-slate-200 dark:border-slate-800 pb-3">
-                <h2 class="text-xl font-black heading-font text-[#cc0000]"><i class="fa-solid fa-flag mr-2"></i>Report Factual Error</h2>
-                <button onclick="toggleModal('report-error-modal')" class="text-slate-400 hover:text-[#cc0000] text-xl"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            <form onsubmit="submitArticleErrorReport(event)" class="space-y-3 text-xs">
-                <div>
-                    <label class="font-bold block mb-1">Article Headline</label>
-                    <input type="text" id="error-article-title" readonly class="w-full px-3 py-2 rounded bg-slate-100 dark:bg-slate-800 font-bold">
-                </div>
-                <div>
-                    <label class="font-bold block mb-1">Describe the factual inaccuracy & official source link *</label>
-                    <textarea id="error-description" required rows="4" placeholder="Please specify the paragraph or figure and provide a verifiable reference..." class="w-full p-3 rounded border border-slate-300 dark:border-slate-700 bg-transparent"></textarea>
-                </div>
-                <div>
-                    <label class="font-bold block mb-1">Your Email (for editorial follow-up) *</label>
-                    <input type="email" id="error-reporter-email" required placeholder="you@example.com" class="w-full px-3 py-2 rounded border border-slate-300 dark:border-slate-700 bg-transparent">
-                </div>
-                <button type="submit" class="w-full bg-[#cc0000] text-white font-black uppercase py-3 rounded-xl">Send to Corrections Desk (desk@fastjob.online)</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- 5. Photo Gallery Lightbox Modal -->
-    <div id="lightbox-modal" class="hidden fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 no-print" onclick="toggleModal('lightbox-modal')">
-        <div class="max-w-4xl w-full bg-slate-900 rounded-2xl overflow-hidden shadow-2xl border border-slate-700" onclick="event.stopPropagation()">
-            <img id="lightbox-img" src="" alt="" class="w-full max-h-[70vh] object-contain bg-black">
-            <div class="p-5 flex justify-between items-start gap-4 text-white">
-                <div>
-                    <span id="lightbox-cat" class="text-[10px] font-black uppercase tracking-widest text-yellow-400"></span>
-                    <h3 id="lightbox-caption" class="text-lg font-bold mt-1"></h3>
-                </div>
-                <button onclick="toggleModal('lightbox-modal')" class="text-slate-400 hover:text-white text-2xl"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-        </div>
-    </div>
-
-    <!-- =========================================================
-         ULTRA-PREMIUM FOOTER (All 25 Desks + All 17 Legal/Trust Links)
-    ========================================================== -->
-    <footer class="bg-[#0f172a] text-slate-300 pt-16 pb-10 mt-16 border-t-[8px] border-[#cc0000] no-print">
-        <div class="w-full max-w-[1440px] mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-14">
-            <!-- Col 1: Brand & Contact -->
-            <div class="lg:col-span-1 space-y-4">
-                <a href="/" onclick="event.preventDefault(); goBackHome();" class="flex items-center shrink-0 cursor-pointer">
-                    <div class="bg-[#cc0000] text-white w-11 h-11 rounded-xl mr-3 flex items-center justify-center shadow-lg"><i class="fa-solid fa-bolt text-2xl text-yellow-400"></i></div>
+                <a href="/" onclick="event.preventDefault(); goBackHome();" class="flex items-center shrink-0 cursor-pointer mb-5">
+                    <div class="bg-[#d10000] text-white w-11 h-11 rounded-xl mr-3 flex items-center justify-center shadow-md">
+                        <i class="fa-solid fa-bolt text-2xl text-yellow-400"></i>
+                    </div>
                     <div class="flex flex-col">
-                        <span class="text-3xl font-black text-white tracking-tighter heading-font leading-none">FASTJOB</span>
-                        <span class="text-[10px] font-black text-[#cc0000] tracking-[0.2em] uppercase mt-1">ALERT DESK</span>
+                        <span class="text-3xl font-black text-white tracking-tight leading-none">FASTJOB</span>
+                        <span class="text-[10px] font-bold text-yellow-400 tracking-[0.2em] uppercase mt-1">ALERT DESK</span>
                     </div>
                 </a>
-                <p class="text-slate-400 text-xs leading-relaxed font-medium">FastJob Alert (fastjob.online) is your premier destination for breaking global news, verified employment alerts, macroeconomic analysis, and fact-checked journalism delivered 24/7.</p>
-                <p class="text-xs font-bold text-slate-300"><i class="fa-solid fa-envelope text-[#cc0000] mr-2"></i><a href="mailto:desk@fastjob.online" class="hover:underline">desk@fastjob.online</a></p>
-                <div class="flex gap-3 pt-1">
-                    <a href="https://whatsapp.com/channel/0029VbDajQV8PgsNA1lLhW0i" target="_blank" rel="noopener noreferrer" aria-label="Official WhatsApp Channel" class="bg-slate-800 text-white w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#25d366] transition text-xl"><i class="fa-brands fa-whatsapp"></i></a>
-                    <button onclick="shareWebsite('facebook')" aria-label="Share on Facebook" class="bg-slate-800 text-white w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#1877f2] transition"><i class="fa-brands fa-facebook-f"></i></button>
-                    <button onclick="shareWebsite('x')" aria-label="Share on X" class="bg-slate-800 text-white w-10 h-10 flex items-center justify-center rounded-full hover:bg-black transition"><i class="fa-brands fa-x-twitter"></i></button>
-                    <a href="/rss.xml" target="_blank" aria-label="RSS Feed" class="bg-slate-800 text-white w-10 h-10 flex items-center justify-center rounded-full hover:bg-orange-500 transition"><i class="fa-solid fa-rss"></i></a>
+                <p class="text-gray-400 text-sm leading-relaxed">FastJob Alert brings you 24/7 verified breaking news, government job notifications, economy, sports, and global updates in real time.</p>
+            </div>
+            
+            <div>
+                <h4 class="text-base font-black mb-5 border-b-2 border-[#d10000] pb-2 text-white uppercase tracking-wider inline-block">Legal & Info</h4>
+                <ul class="space-y-3 text-sm font-semibold text-gray-400">
+                    <li><a href="/about-us" onclick="event.preventDefault(); openStaticPage('about-us');" class="hover:text-white transition flex items-center"><i class="fa-solid fa-angle-right text-[#d10000] mr-2"></i>About Us</a></li>
+                    <li><a href="/privacy-policy" onclick="event.preventDefault(); openStaticPage('privacy-policy');" class="hover:text-white transition flex items-center"><i class="fa-solid fa-angle-right text-[#d10000] mr-2"></i>Privacy Policy</a></li>
+                    <li><a href="/terms-and-conditions" onclick="event.preventDefault(); openStaticPage('terms-and-conditions');" class="hover:text-white transition flex items-center"><i class="fa-solid fa-angle-right text-[#d10000] mr-2"></i>Terms & Conditions</a></li>
+                    <li><a href="/disclaimer" onclick="event.preventDefault(); openStaticPage('disclaimer');" class="hover:text-white transition flex items-center"><i class="fa-solid fa-angle-right text-[#d10000] mr-3"></i>Disclaimer</a></li>
+                    <li><a href="/editorial-policy" onclick="event.preventDefault(); openStaticPage('editorial-policy');" class="hover:text-white transition flex items-center"><i class="fa-solid fa-angle-right text-[#d10000] mr-2"></i>Editorial Policy</a></li>
+                    <li><a href="/contact-us" onclick="event.preventDefault(); openStaticPage('contact-us');" class="hover:text-white transition flex items-center"><i class="fa-solid fa-angle-right text-[#d10000] mr-2"></i>Contact Desk</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="text-base font-black mb-5 border-b-2 border-[#d10000] pb-2 text-white uppercase tracking-wider inline-block">Popular Categories</h4>
+                <ul class="space-y-3 text-sm font-semibold text-gray-400" id="footer-categories">
+                    <!-- Top categories injected -->
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="text-base font-black mb-5 border-b-2 border-[#d10000] pb-2 text-white uppercase tracking-wider inline-block">Follow Us</h4>
+                <p class="text-sm text-gray-400 mb-5 leading-relaxed">Join our official channels for instant breaking news and job alerts on your phone.</p>
+                <!-- Original Social Brand Colors -->
+                <div class="flex gap-3">
+                    <a href="https://whatsapp.com/channel/0029VbDajQV8PgsNA1lLhW0i" target="_blank" class="bg-[#25d366] hover:bg-[#1da851] text-white w-11 h-11 flex items-center justify-center rounded-full transition shadow-lg text-2xl"><i class="fa-brands fa-whatsapp"></i></a>
+                    <button onclick="shareWebsite('facebook')" class="bg-[#1877f2] hover:bg-[#145dbf] text-white w-11 h-11 flex items-center justify-center rounded-full transition shadow-lg text-lg"><i class="fa-brands fa-facebook-f"></i></button>
                 </div>
             </div>
-
-            <!-- Col 2: Trust, Transparency & Policies -->
-            <div>
-                <h4 class="text-sm font-black mb-5 border-b border-slate-800 pb-2.5 text-white uppercase tracking-widest heading-font">Trust & Ethics</h4>
-                <ul class="space-y-2.5 text-xs font-bold text-slate-400">
-                    <li><a href="/about-us" onclick="event.preventDefault(); openStaticPage('about-us');" class="hover:text-white transition">About FastJob Alert</a></li>
-                    <li><a href="/editorial-team" onclick="event.preventDefault(); openStaticPage('editorial-team');" class="hover:text-white transition">Editorial Team</a></li>
-                    <li><a href="/editorial-policy" onclick="event.preventDefault(); openStaticPage('editorial-policy');" class="hover:text-white transition">Editorial Policy</a></li>
-                    <li><a href="/fact-checking-policy" onclick="event.preventDefault(); openStaticPage('fact-checking-policy');" class="hover:text-white transition">Fact-Checking Policy</a></li>
-                    <li><a href="/corrections-policy" onclick="event.preventDefault(); openStaticPage('corrections-policy');" class="hover:text-white transition">Corrections Policy & Archive</a></li>
-                    <li><a href="/ethics-policy" onclick="event.preventDefault(); openStaticPage('ethics-policy');" class="hover:text-white transition">Journalistic Ethics Policy</a></li>
-                </ul>
-            </div>
-
-            <!-- Col 3: Legal & Compliance -->
-            <div>
-                <h4 class="text-sm font-black mb-5 border-b border-slate-800 pb-2.5 text-white uppercase tracking-widest heading-font">Legal & Privacy</h4>
-                <ul class="space-y-2.5 text-xs font-bold text-slate-400">
-                    <li><a href="/privacy-policy" onclick="event.preventDefault(); openStaticPage('privacy-policy');" class="hover:text-white transition">Privacy Policy</a></li>
-                    <li><a href="/terms-and-conditions" onclick="event.preventDefault(); openStaticPage('terms-and-conditions');" class="hover:text-white transition">Terms & Conditions</a></li>
-                    <li><a href="/disclaimer" onclick="event.preventDefault(); openStaticPage('disclaimer');" class="hover:text-white transition">Disclaimer</a></li>
-                    <li><a href="/cookie-policy" onclick="event.preventDefault(); openStaticPage('cookie-policy');" class="hover:text-white transition">Cookie Policy</a></li>
-                    <li><a href="/copyright-policy" onclick="event.preventDefault(); openStaticPage('copyright-policy');" class="hover:text-white transition">Copyright & Attribution</a></li>
-                    <li><a href="/accessibility-statement" onclick="event.preventDefault(); openStaticPage('accessibility-statement');" class="hover:text-white transition">Accessibility Statement</a></li>
-                </ul>
-            </div>
-
-            <!-- Col 4: Contribute & Commercial -->
-            <div>
-                <h4 class="text-sm font-black mb-5 border-b border-slate-800 pb-2.5 text-white uppercase tracking-widest heading-font">Engage & Partner</h4>
-                <ul class="space-y-2.5 text-xs font-bold text-slate-400">
-                    <li><a href="/contact-us" onclick="event.preventDefault(); openStaticPage('contact-us');" class="hover:text-white transition">Contact Desk</a></li>
-                    <li><a href="/submit-news-tip" onclick="event.preventDefault(); openStaticPage('submit-news-tip');" class="hover:text-white transition text-yellow-400">Submit a Confidential Tip</a></li>
-                    <li><a href="/advertise-with-us" onclick="event.preventDefault(); openStaticPage('advertise-with-us');" class="hover:text-white transition">Advertise & Media Kit</a></li>
-                    <li><a href="/careers" onclick="event.preventDefault(); openStaticPage('careers');" class="hover:text-white transition">Careers at FastJob</a></li>
-                    <li><a href="/write-for-us" onclick="event.preventDefault(); openStaticPage('write-for-us');" class="hover:text-white transition">Write for Us (Op-Eds)</a></li>
-                    <li><a href="/admin" onclick="event.preventDefault(); openAdminPortal();" class="hover:text-white transition">Admin CMS Portal</a></li>
-                </ul>
-            </div>
-
-            <!-- Col 5: Quick Category Links -->
-            <div>
-                <h4 class="text-sm font-black mb-5 border-b border-slate-800 pb-2.5 text-white uppercase tracking-widest heading-font">Core Desks</h4>
-                <ul class="space-y-2.5 text-xs font-bold text-slate-400">
-                    <li><a href="/category/jobs-careers" onclick="event.preventDefault(); filterCategory('Jobs & Careers');" class="hover:text-white transition">Jobs & Careers Desk</a></li>
-                    <li><a href="/category/politics" onclick="event.preventDefault(); filterCategory('Politics');" class="hover:text-white transition">Politics & Governance</a></li>
-                    <li><a href="/category/economy" onclick="event.preventDefault(); filterCategory('Economy');" class="hover:text-white transition">Economy & RBI Policy</a></li>
-                    <li><a href="/category/finance-markets" onclick="event.preventDefault(); filterCategory('Finance & Markets');" class="hover:text-white transition">Finance & Markets</a></li>
-                    <li><a href="/category/technology" onclick="event.preventDefault(); filterCategory('Technology');" class="hover:text-white transition">Technology & AI</a></li>
-                    <li><a href="/category/fact-check-explainers" onclick="event.preventDefault(); filterCategory('Fact Check & Explainers');" class="hover:text-white transition">Fact Check & Explainers</a></li>
-                </ul>
-            </div>
         </div>
-
-        <div class="w-full max-w-[1440px] mx-auto px-4 md:px-6 border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500 font-bold uppercase tracking-wider gap-4">
-            <p>&copy; 2026 FastJob Alert Network (fastjob.online). All rights reserved.</p>
-            <div class="flex gap-4">
-                <a href="/sitemap.xml" target="_blank" class="hover:text-slate-300">XML Sitemap</a>
-                <a href="/news-sitemap.xml" target="_blank" class="hover:text-slate-300">Google News Sitemap</a>
-                <a href="/rss.xml" target="_blank" class="hover:text-slate-300">RSS Feed</a>
-            </div>
+        
+        <div class="w-full max-w-[1400px] mx-auto px-6 border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400 font-semibold">
+            <p>&copy; 2026 FastJob Alert Portal. All rights reserved.</p>
+            <p class="mt-2 md:mt-0">Designed for Fast & Verified Journalism</p>
         </div>
     </footer>
 
-    <!-- Floating Back-to-Top & Official WhatsApp Channel Controls -->
-    <div id="floating-controls" class="fixed bottom-5 right-5 flex flex-col items-center gap-3 z-40 no-print">
-        <button id="back-to-top-btn" onclick="window.scrollTo({top:0, behavior:'smooth'})" aria-label="Scroll back to top" class="hidden bg-slate-900 dark:bg-slate-800 text-white w-11 h-11 rounded-full shadow-xl border border-slate-700 hover:bg-[#cc0000] transition flex items-center justify-center">
-            <i class="fa-solid fa-arrow-up"></i>
-        </button>
-        <a href="https://whatsapp.com/channel/0029VbDajQV8PgsNA1lLhW0i" target="_blank" rel="noopener noreferrer" aria-label="Join FastJob Alert Official WhatsApp Channel" class="bg-[#25d366] text-white rounded-full w-14 h-14 flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition duration-300">
-            <i class="fa-brands fa-whatsapp"></i>
-        </a>
-    </div>
+    <!-- Original Green Floating WhatsApp Button -->
+    <a href="https://whatsapp.com/channel/0029VbDajQV8PgsNA1lLhW0i" target="_blank" class="fixed bottom-6 right-6 bg-[#25d366] hover:bg-[#1da851] text-white rounded-full w-14 h-14 flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition duration-300 z-40 animate-bounce">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
-    <!-- =========================================================
-         CORE APPLICATION JAVASCRIPT
-    ========================================================== -->
     <script>
-        /* -----------------------------------------------------------
-           1. CONFIGURATION, 25 CATEGORIES & LEGACY MAPPING
-        ------------------------------------------------------------ */
+        const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('live-date').innerText = new Date().toLocaleDateString('en-US', dateOptions);
+
         const SUPABASE_URL = "https://wioheljpjdcprozqumpv.supabase.co";
         const SUPABASE_KEY = "sb_publishable_d_ROr-nG6RpIRlVWtIE-Fg_sciaLZXR";
+        let allNews = [];
+        let slideIndex = 0;
+        let slideInterval;
 
-        const ALL_25_CATEGORIES = [
-            { name: "Breaking News", slug: "breaking-news", icon: "fa-bolt", sub: ["Urgent Alerts", "Developing", "National Flash"] },
-            { name: "World News", slug: "world-news", icon: "fa-globe", sub: ["Geopolitics", "UN & Summits", "Asia-Pacific", "Middle East", "Europe & US"] },
-            { name: "India News", slug: "india-news", icon: "fa-flag", sub: ["National", "North India", "South India", "East & NE", "West & Central"] },
-            { name: "Politics", slug: "politics", icon: "fa-landmark", sub: ["Parliament", "Elections", "Policy & Governance", "State Politics"] },
-            { name: "Sports", slug: "sports", icon: "fa-trophy", sub: ["Cricket", "Football", "Olympics", "Tennis & Badminton"] },
-            { name: "Business", slug: "business", icon: "fa-briefcase", sub: ["Corporate", "Startups", "Mergers", "MSME & Retail"] },
-            { name: "Finance & Markets", slug: "finance-markets", icon: "fa-chart-line", sub: ["Stock Markets", "Mutual Funds", "Banking", "Personal Finance", "Taxation"] },
-            { name: "Technology", slug: "technology", icon: "fa-laptop-code", sub: ["Consumer Tech", "Cybersecurity", "Telecom & 5G", "Digital India"] },
-            { name: "Entertainment", slug: "entertainment", icon: "fa-film", sub: ["Cinema", "OTT & Streaming", "Music", "Culture"] },
-            { name: "Education", slug: "education", icon: "fa-graduation-cap", sub: ["Board Exams", "Higher Education", "NEET & JEE", "Study Abroad", "Scholarships"] },
-            { name: "Jobs & Careers", slug: "jobs-careers", icon: "fa-user-tie", sub: ["UPSC & SSC", "Banking & IBPS", "Railways & Defence", "State PSC", "Admit Cards & Results"] },
-            { name: "Health & Medicine", slug: "health-medicine", icon: "fa-heart-pulse", sub: ["Public Health", "Medical Research", "Nutrition", "Mental Wellness"] },
-            { name: "Science", slug: "science", icon: "fa-flask", sub: ["ISRO & Space", "Physics & Astronomy", "Earth Sciences", "Biotech"] },
-            { name: "AI & Robotics", slug: "ai-robotics", icon: "fa-microchip", sub: ["Generative AI", "Robotics", "Semiconductors", "AI Regulation"] },
-            { name: "Crime & Justice", slug: "crime-justice", icon: "fa-scale-balanced", sub: ["Supreme Court", "High Courts", "Cyber Crime", "Law Enforcement"] },
-            { name: "Auto & EV", slug: "auto-ev", icon: "fa-car-side", sub: ["Electric Vehicles", "Cars & SUVs", "Two-Wheelers", "Battery & Charging"] },
-            { name: "Economy", slug: "economy", icon: "fa-chart-pie", sub: ["GDP & Growth", "RBI & Inflation", "Trade & Exports", "Union Budget"] },
-            { name: "Environment & Climate", slug: "environment-climate", icon: "fa-leaf", sub: ["Renewable Energy", "Climate Policy", "Wildlife", "Air Quality"] },
-            { name: "Lifestyle", slug: "lifestyle", icon: "fa-mug-hot", sub: ["Work-Life", "Food & Dining", "Design", "Relationships"] },
-            { name: "Travel & Tourism", slug: "travel-tourism", icon: "fa-plane-departure", sub: ["Domestic Aviation", "Railways", "Visa Updates", "Heritage"] },
-            { name: "Real Estate", slug: "real-estate", icon: "fa-building", sub: ["Housing Market", "Commercial Infra", "RERA & Policy", "Home Loans"] },
-            { name: "Defence & Security", slug: "defence-security", icon: "fa-shield-halved", sub: ["Armed Forces", "Indigenous Defence", "Border Security", "Strategic Affairs"] },
-            { name: "Weather", slug: "weather", icon: "fa-cloud-sun-rain", sub: ["IMD Alerts", "Monsoon Tracker", "Heatwave & Coldwave", "Agromet"] },
-            { name: "Opinion & Editorial", slug: "opinion-editorial", icon: "fa-pen-fancy", sub: ["Editorials", "Columns", "Letters to Desk", "Policy Debates"] },
-            { name: "Fact Check & Explainers", slug: "fact-check-explainers", icon: "fa-magnifying-glass-chart", sub: ["Viral Claim Check", "Deep Explainers", "Policy FAQs"] }
+        // ALL 25 CATEGORIES (NAMES ONLY IN NAV)
+        const categories = [
+            "Breaking News", "World News", "India News", "Politics", "Sports", 
+            "Business", "Finance & Markets", "Technology", "Entertainment", "Education", 
+            "Jobs & Careers", "Health & Medicine", "Science", "AI & Robotics", "Crime & Justice", 
+            "Auto & EV", "Economy", "Environment & Climate", "Lifestyle", "Travel & Tourism", 
+            "Real Estate", "Defence & Security", "Weather", "Opinion & Editorial", "Fact Check & Explainers"
         ];
 
-        // Bidirectional lookup maps (including aliases for your existing Supabase categories: 'Jobs', 'Automobile', 'Tech & AI')
+        // Smart Alias Mapper so existing database posts ("Jobs", "Automobile", "Tech & AI") also match seamlessly
+        function getPostsForCategory(newsList, cat) {
+            if (cat === "Breaking News") return newsList.slice(0, 8);
+            return newsList.filter(p => {
+                if (p.category === cat) return true;
+                if (cat === "Jobs & Careers" && p.category === "Jobs") return true;
+                if (cat === "Auto & EV" && p.category === "Automobile") return true;
+                if ((cat === "Technology" || cat === "AI & Robotics") && p.category === "Tech & AI") return true;
+                return false;
+            });
+        }
+
+        function toSlug(cat) {
+            return cat.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-');
+        }
+
+        const slugToCategory = {};
         const categoryToSlug = {};
+        categories.forEach(cat => {
+            const s = toSlug(cat);
+            slugToCategory[s] = cat;
+            categoryToSlug[cat] = s;
+        });
+
+        // Populate 25 Category Names Only in Nav
+        function initCategoryNav() {
+            let topNavHTML = `<a href="/" onclick="event.preventDefault(); setActiveNav(this); goBackHome();" class="cat-pill active-cat px-3 py-2.5 font-extrabold text-xs md:text-[13px] uppercase tracking-wide shrink-0">Home</a>`;
+            let mobileNavHTML = `<a href="/" onclick="event.preventDefault(); filterCategoryAndClose('All');" class="px-3 py-2 rounded hover:bg-red-50 hover:text-[#d10000] transition block">Home</a>`;
+            let footerCatHTML = '';
+
+            categories.forEach((cat, idx) => {
+                const slug = categoryToSlug[cat];
+                topNavHTML += `<a href="/category/${slug}" onclick="event.preventDefault(); setActiveNav(this); filterCategory('${cat}');" class="cat-pill px-3 py-2.5 font-bold text-xs md:text-[13px] uppercase tracking-wide shrink-0">${cat}</a>`;
+                mobileNavHTML += `<a href="/category/${slug}" onclick="event.preventDefault(); filterCategoryAndClose('${cat}');" class="px-3 py-2 rounded hover:bg-red-50 hover:text-[#d10000] transition block border-b border-gray-50">${idx + 1}. ${cat}</a>`;
+                if (idx < 7) {
+                    footerCatHTML += `<li><a href="/category/${slug}" onclick="event.preventDefault(); filterCategory('${cat}');" class="hover:text-white transition flex items-center"><i class="fa-solid fa-angle-right text-[#d10000] mr-2"></i>${cat}</a></li>`;
+                }
+            });
+
+            document.getElementById('top-category-nav').innerHTML = topNavHTML;
+            document.getElementById('mobile-category-nav').innerHTML = mobileNavHTML;
+            document.getElementById('footer-categories').innerHTML = footerCatHTML;
+        }
+        initCategoryNav();
+
+        function setActiveNav(el) {
+            document.querySelectorAll('#top-category-nav .cat-pill').forEach(btn => btn.classList.remove('active-cat'));
+            if (el) el.classList.add('active-cat');
+        }
+
+        // Complete Comprehensive Legal Pages Content
+        const staticPages = {
+            'about-us': {
+                title: 'About FastJob Alert',
+                content: `
+                    <p>Welcome to <strong>FastJob Alert</strong> (fastjob.online), India's rapidly growing digital news publication and verified employment update portal. Founded with a steadfast mission to democratize real-time information, we bring comprehensive, fact-checked, and in-depth journalism directly to your screens 24 hours a day, 7 days a week.</p>
+                    <h3>Our Mission & Vision</h3>
+                    <p>In an era of information overload and digital misinformation, FastJob Alert stands as a beacon of clarity, speed, and reliability. Our primary objective is to empower citizens, students, job seekers, and professionals with accurate news coverage across 25 specialized desks that impact their daily lives, careers, and financial decisions.</p>
+                    <h3>What We Cover</h3>
+                    <ul class="list-disc pl-6 space-y-2 mb-6">
+                        <li><strong>Jobs & Careers:</strong> Instant notifications on government recruitment, public sector openings, exam schedules, admit cards, results, and private sector career opportunities.</li>
+                        <li><strong>India, World & Politics:</strong> Unbiased reporting on policy changes, parliamentary affairs, elections, governance, and global diplomatic relations.</li>
+                        <li><strong>Economy, Business & Finance:</strong> Deep-dive analysis into macroeconomic indicators, banking updates, corporate earnings, startups, and market movements.</li>
+                        <li><strong>Technology, Science & AI:</strong> Coverage of breakthrough innovations, artificial intelligence trends, robotics, consumer gadgets, and digital transformation.</li>
+                        <li><strong>Sports, Auto, Health & Lifestyle:</strong> Live action updates from cricket and global tournaments, alongside comprehensive vehicle reviews, health advisories, and fact-checks.</li>
+                    </ul>
+                `
+            },
+            'privacy-policy': {
+                title: 'Privacy Policy',
+                content: `
+                    <p>At <strong>FastJob Alert</strong> (accessible from https://fastjob.online), protecting the privacy of our visitors is one of our highest priorities. This Privacy Policy document outlines the types of information that are collected and recorded by FastJob Alert and how we utilize and safeguard it.</p>
+                    <h3>1. Information We Collect</h3>
+                    <p>We do not require users to register or provide personal identity details to read our articles. When you visit our portal, we automatically collect standard log file information including your Internet Protocol (IP) address, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and click stream data.</p>
+                    <h3>2. Cookies and Web Beacons</h3>
+                    <p>Like any modern digital publication, FastJob Alert uses "cookies" to store information including visitors' preferences and the pages on the website that the visitor accessed or visited. The information is used to optimize the users' experience by customizing our web page content based on visitors' browser type.</p>
+                    <h3>3. Google Analytics & Third-Party Partners</h3>
+                    <p>We utilize Google Analytics to understand how our audience engages with our content. Third-party ad servers or ad networks (such as Google AdSense) may use technologies like cookies, JavaScript, or Web Beacons in their respective advertisements.</p>
+                    <h3>4. Consent</h3>
+                    <p>By using our website, you hereby consent to our Privacy Policy and agree to its terms.</p>
+                `
+            },
+            'terms-and-conditions': {
+                title: 'Terms & Conditions',
+                content: `
+                    <p>Welcome to <strong>FastJob Alert</strong>! These Terms and Conditions outline the rules and regulations for the use of FastJob Alert's Website, located at https://fastjob.online.</p>
+                    <h3>1. Intellectual Property Rights</h3>
+                    <p>Unless otherwise stated, FastJob Alert and/or its licensors own the intellectual property rights for all original material, article structures, compilations, and branding on FastJob Alert. All intellectual property rights are reserved.</p>
+                    <h3>2. Restrictions on Use</h3>
+                    <ul class="list-disc pl-6 space-y-2 mb-6">
+                        <li>You must not republish material from FastJob Alert verbatim without explicit credit and a backlink.</li>
+                        <li>You must not sell, rent, or sub-license material from FastJob Alert.</li>
+                        <li>Automated scraping or data mining without prior written permission is strictly prohibited.</li>
+                    </ul>
+                    <h3>3. Accuracy of Information</h3>
+                    <p>Applicants and readers are advised to always cross-verify official job notifications, dates, and financial figures from the respective official government or corporate websites before making any formal decisions.</p>
+                `
+            },
+            'disclaimer': {
+                title: 'Disclaimer',
+                content: `
+                    <p>All the information published on <strong>FastJob Alert</strong> (https://fastjob.online) is published in good faith and for general information and educational purposes only.</p>
+                    <h3>1. No Professional or Legal Advice</h3>
+                    <p>The articles covering economy, finance, business, stocks, and career opportunities are meant purely for informational purposes. FastJob Alert does not provide financial, investment, legal, or career counseling advice.</p>
+                    <h3>2. Recruitment & Job Alerts</h3>
+                    <p>FastJob Alert is an independent news portal and is <strong>not affiliated with any government entity or recruitment board</strong>. Candidates must verify all details from the official portal of the recruiting organization before applying.</p>
+                `
+            },
+            'editorial-policy': {
+                title: 'Editorial Policy',
+                content: `
+                    <p>At <strong>FastJob Alert</strong>, our credibility is our greatest asset. Our Editorial Policy governs how we source, verify, write, and publish news across all 25 desks.</p>
+                    <h3>1. Commitment to Accuracy & Verification</h3>
+                    <p>We source our breaking news from reputable national and international wire services, official government press releases, regulatory filings, and verified public statements.</p>
+                    <h3>2. Independence & Corrections</h3>
+                    <p>FastJob Alert maintains complete editorial independence. If a factual error is identified in any published report, our desk promptly updates the article. Readers can report inaccuracies directly to our Contact Desk.</p>
+                `
+            },
+            'contact-us': {
+                title: 'Contact Desk',
+                content: `
+                    <p>We value our readers' feedback, news tips, correction requests, and business inquiries. Connect with the <strong>FastJob Alert Editorial & Support Team</strong> through our official channels:</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+                        <div class="bg-gray-50 p-6 rounded-xl border border-gray-200">
+                            <h4 class="text-xl font-black text-gray-900 mb-2"><i class="fa-solid fa-envelope text-[#d10000] mr-2"></i> Editorial Email</h4>
+                            <p class="text-sm text-gray-600 mb-3">For news tips, press releases, or general inquiries:</p>
+                            <a href="mailto:desk@fastjob.online" class="text-lg font-black text-[#d10000] hover:underline">desk@fastjob.online</a>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-xl border border-gray-200">
+                            <h4 class="text-xl font-black text-gray-900 mb-2"><i class="fa-brands fa-whatsapp text-[#25d366] mr-2"></i> Official WhatsApp Channel</h4>
+                            <p class="text-sm text-gray-600 mb-3">Get instant breaking news alerts on your phone:</p>
+                            <a href="https://whatsapp.com/channel/0029VbDajQV8PgsNA1lLhW0i" target="_blank" class="inline-block bg-[#25d366] text-white font-bold px-5 py-2 rounded-full text-sm hover:bg-[#1da851] transition">Join WhatsApp Channel</a>
+                        </div>
+                    </div>
+                `
+            }
+        };
+
+        async function loadNews() {
+            try {
+                const response = await fetch(SUPABASE_URL + "/rest/v1/posts?select=*&order=id.desc&limit=100", {
+                    headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + SUPABASE_KEY }
+                });
+                const data = await response.json();
+                if (data && data.length > 0) {
+                    allNews = data;
+                    renderTicker(allNews);
+                    handleRoute(window.location.pathname, false);
+                }
+            } catch (err) { console.error(err); }
+        }
+
+        function handleRoute(pathname, pushState = false) {
+            let cleanPath = pathname.replace(/^\/|\/$/g, '').replace(/\.html$/, '');
+
+            if (!cleanPath || cleanPath === 'index') {
+                renderHome(allNews, pushState);
+                return;
+            }
+
+            if (staticPages[cleanPath]) {
+                openStaticPage(cleanPath, pushState);
+                return;
+            }
+
+            if (cleanPath.startsWith('category/')) {
+                const catSlug = cleanPath.replace('category/', '');
+                const catName = slugToCategory[catSlug];
+                if (catName) {
+                    filterCategory(catName, pushState);
+                    return;
+                }
+            }
+
+            openArticle(cleanPath, pushState);
+        }
+
+        function openStaticPage(pageKey, pushState = true) {
+            const page = staticPages[pageKey];
+            if (!page) return;
+
+            if (pushState) {
+                history.pushState({ type: 'static', key: pageKey }, "", "/" + pageKey);
+            }
+
+            clearInterval(slideInterval);
+            document.getElementById('home-view').classList.add('hidden');
+            document.getElementById('article-view').classList.add('hidden');
+            document.getElementById('legal-view').classList.remove('hidden');
+
+            document.getElementById('legal-page-title').innerText = page.title;
+            document.getElementById('legal-page-content').innerHTML = page.content;
+            document.title = `${page.title} - FastJob Alert`;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function renderTicker(newsItems) {
+            const topTitles = newsItems.slice(0, 10).map(item => `<span class="ticker-item" onclick="openArticle('${item.slug}')"><span class="text-[#d10000] font-black mr-1.5">&#9679;</span> ${item.title}</span>`).join(' &nbsp;&nbsp;<span class="text-gray-300">|</span>&nbsp;&nbsp; ');
+            document.getElementById('ticker-content').innerHTML = topTitles;
+        }
+
+        function renderSliderAndSidebar(newsItems) {
+            const top5 = newsItems.slice(0, 5);
+            if(top5.length === 0) return;
+            
+            let sliderHTML = '';
+            top5.forEach((item, index) => {
+                sliderHTML += `
+                <div class="slide ${index === 0 ? 'active' : ''} cursor-pointer w-full h-[280px] md:h-[480px] relative group" onclick="openArticle('${item.slug}')">
+                    <img src="${item.image_url}" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-5 md:p-10">
+                        <span class="bg-[#d10000] text-white text-[10px] md:text-xs px-3 py-1 rounded font-black uppercase tracking-wider shadow">${item.category}</span>
+                        <h2 class="text-white text-xl md:text-4xl font-black mt-3 leading-tight drop-shadow-lg">${item.title}</h2>
+                    </div>
+                </div>`;
+            });
+            
+            const wrapper = document.getElementById('slider-wrapper');
+            wrapper.innerHTML = sliderHTML;
+            
+            // Render Right Sidebar Top Headlines (Aaj Tak style)
+            const sideItems = newsItems.slice(5, 12);
+            const sidebarList = sideItems.length > 0 ? sideItems : newsItems.slice(0, 6);
+            let sideHTML = '';
+            sidebarList.forEach(item => {
+                sideHTML += `
+                <div onclick="openArticle('${item.slug}')" class="py-3 flex gap-3 items-start cursor-pointer group">
+                    <img src="${item.image_url}" class="w-20 h-14 object-cover rounded shrink-0 border border-gray-100">
+                    <div class="flex-grow">
+                        <span class="text-[10px] font-extrabold text-[#d10000] uppercase block">${item.category}</span>
+                        <h4 class="text-xs md:text-sm font-bold text-gray-900 group-hover:text-[#d10000] line-clamp-2 leading-snug transition">${item.title}</h4>
+                    </div>
+                </div>`;
+            });
+            document.getElementById('top-sidebar-list').innerHTML = sideHTML;
+
+            document.getElementById('hero-top-section').classList.remove('hidden');
+            
+            clearInterval(slideInterval);
+            slideIndex = 0;
+            slideInterval = setInterval(() => {
+                const slides = document.querySelectorAll('.slide');
+                if(!slides.length) return;
+                slides[slideIndex].classList.remove('active');
+                slideIndex = (slideIndex + 1) % slides.length;
+                slides[slideIndex].classList.add('active');
+            }, 4000);
+        }
+
+        function renderHome(newsList, pushState = false) {
+            if (pushState) {
+                history.pushState({ type: 'home' }, "", "/");
+            }
+            document.getElementById('article-view').classList.add('hidden');
+            document.getElementById('legal-view').classList.add('hidden');
+            document.getElementById('home-view').classList.remove('hidden');
+            document.title = "FastJob Alert - Live Breaking News, Jobs & Global Coverage";
+            
+            renderSliderAndSidebar(newsList);
+
+            let sectionsHTML = '';
+            categories.forEach(cat => {
+                const catPosts = getPostsForCategory(newsList, cat);
+                const catSlug = categoryToSlug[cat];
+                if(catPosts.length > 0) {
+                    sectionsHTML += `
+                    <div class="bg-white p-5 md:p-7 rounded-xl shadow-sm border border-gray-200">
+                        <div class="flex justify-between items-center mb-6 border-b-2 border-[#d10000] pb-2">
+                            <span class="section-badge text-sm md:text-lg">${cat}</span>
+                            <a href="/category/${catSlug}" onclick="event.preventDefault(); filterCategory('${cat}');" class="text-xs md:text-sm font-extrabold text-[#d10000] hover:underline uppercase flex items-center">More News <i class="fa-solid fa-angle-right ml-1.5"></i></a>
+                        </div>
+                        <div class="mag-grid">
+                            ${catPosts.slice(0, 5).map((item, idx) => `
+                                <div onclick="openArticle('${item.slug}')" class="bg-white border border-gray-100 hover:border-red-200 shadow-sm hover:shadow-md transition duration-300 cursor-pointer rounded-xl overflow-hidden flex flex-col group ${idx === 0 ? 'featured' : ''}">
+                                    <div class="overflow-hidden ${idx === 0 ? 'h-52 md:h-[320px]' : 'h-32 md:h-40'} relative">
+                                        <img src="${item.image_url}" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+                                    </div>
+                                    <div class="p-4 flex-grow bg-white">
+                                        <span class="text-[#d10000] text-[10px] font-extrabold uppercase tracking-wider mb-1.5 block">${cat}</span>
+                                        <h4 class="font-bold ${idx === 0 ? 'text-xl md:text-2xl leading-snug' : 'text-sm md:text-base leading-snug'} text-gray-900 group-hover:text-[#d10000] transition line-clamp-3">${item.title}</h4>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>`;
+                }
+            });
+            document.getElementById('category-sections').innerHTML = sectionsHTML;
+        }
+
+        function filterCategory(cat, pushState = true) {
+            if (cat === 'All') {
+                goBackHome();
+                return;
+            }
+            const catSlug = categoryToSlug[cat] || 'all';
+            if (pushState) {
+                history.pushState({ type: 'category', cat: cat }, "", "/category/" + catSlug);
+            }
+
+            document.getElementById('article-view').classList.add('hidden');
+            document.getElementById('legal-view').classList.add('hidden');
+            document.getElementById('home-view').classList.remove('hidden');
+
+            const filtered = getPostsForCategory(allNews, cat);
+            if (filtered.length > 0) {
+                renderSliderAndSidebar(filtered);
+            } else {
+                document.getElementById('hero-top-section').classList.add('hidden');
+            }
+            
+            let gridHTML = `
+            <div class="bg-white p-5 md:p-8 rounded-xl shadow-sm border border-gray-200">
+                <div class="border-b-2 border-[#d10000] pb-2 mb-6 flex justify-between items-center">
+                    <span class="section-badge text-base md:text-xl">${cat}</span>
+                    <button onclick="goBackHome()" class="text-xs font-bold text-gray-600 hover:text-[#d10000]"><i class="fa-solid fa-house mr-1"></i> Home</button>
+                </div>`;
+
+            if (filtered.length === 0) {
+                gridHTML += `<p class="py-12 text-center text-gray-500 font-semibold">New stories for <strong>${cat}</strong> are being updated by our desk. Check back shortly!</p>`;
+            } else {
+                gridHTML += `<div class="mag-grid">`;
+                filtered.forEach((item, idx) => {
+                    gridHTML += `
+                    <div onclick="openArticle('${item.slug}')" class="bg-white border border-gray-100 shadow-sm hover:shadow-md transition cursor-pointer rounded-xl overflow-hidden flex flex-col group ${idx === 0 ? 'featured' : ''}">
+                        <div class="overflow-hidden ${idx === 0 ? 'h-52 md:h-[320px]' : 'h-32 md:h-40'} relative">
+                            <img src="${item.image_url}" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+                        </div>
+                        <div class="p-4 flex-grow bg-white">
+                            <span class="text-[#d10000] text-[10px] font-extrabold uppercase tracking-wider mb-1.5 block">${cat}</span>
+                            <h4 class="font-bold ${idx === 0 ? 'text-xl md:text-2xl leading-snug' : 'text-sm md:text-base leading-snug'} text-gray-900 group-hover:text-[#d10000] transition">${item.title}</h4>
+                        </div>
+                    </div>`;
+                });
+                gridHTML += `</div>`;
+            }
+            gridHTML += `</div>`;
+
+            document.getElementById('category-sections').innerHTML = gridHTML;
+            document.title = `${cat} News - FastJob Alert`;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function searchNews() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            if (!query) { renderHome(allNews); return; }
+            searchCore(query);
+        }
+        function searchNewsMobile() {
+            const query = document.getElementById('mobileSearchInput').value.toLowerCase();
+            if (!query) { renderHome(allNews); toggleMobileMenu(); return; }
+            searchCore(query);
+            toggleMobileMenu();
+        }
+        function searchCore(query) {
+            document.getElementById('article-view').classList.add('hidden');
+            document.getElementById('legal-view').classList.add('hidden');
+            document.getElementById('home-view').classList.remove('hidden');
+            document.getElementById('hero-top-section').classList.add('hidden');
+
+            const filtered = allNews.filter(item => item.title.toLowerCase().includes(query));
+            
+            let gridHTML = `<div class="bg-white p-5 md:p-8 rounded-xl shadow-sm border border-gray-200"><div class="border-b-2 border-[#d10000] pb-2 mb-6"><span class="section-badge text-base md:text-xl">Search Results</span></div><div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">`;
+            filtered.forEach(item => {
+                gridHTML += `<div onclick="openArticle('${item.slug}')" class="bg-white border border-gray-100 shadow-sm hover:shadow-md transition cursor-pointer rounded-xl overflow-hidden flex flex-col group"><div class="overflow-hidden h-32 md:h-40"><img src="${item.image_url}" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500"></div><div class="p-4 flex-grow bg-white"><h4 class="font-bold text-sm md:text-base leading-snug text-gray-900 group-hover:text-[#d10000] transition">${item.title}</h4></div></div>`;
+            });
+            gridHTML += '</div></div>';
+            document.getElementById('category-sections').innerHTML = gridHTML;
+        }
+
+        function openArticle(slug, pushState = true) {
+            const post = allNews.find(item => item.slug === slug);
+            if (post) {
+                if(pushState) { history.pushState({ type: 'article', slug: slug }, "", "/" + slug); }
+                
+                document.getElementById('home-view').classList.add('hidden');
+                document.getElementById('legal-view').classList.add('hidden');
+                document.getElementById('article-view').classList.remove('hidden');
+                
+                document.getElementById('detail-title').innerText = post.title;
+                document.title = `${post.title} - FastJob Alert`;
+                
+                const postDate = new Date(post.created_at);
+                const options = { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' };
+                document.getElementById('detail-date').innerHTML = `<i class="fa-regular fa-clock mr-1"></i> Published on ${postDate.toLocaleDateString('en-IN', options)}`;
+                document.getElementById('detail-image').src = post.image_url;
+                document.getElementById('detail-content').innerHTML = post.content;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                goBackHome();
+            }
+        }
+
+        function goBackHome() {
+            history.pushState({ type: 'home' }, "", "/");
+            renderHome(allNews, false);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
+        function filterCategoryAndClose(cat) { filterCategory(cat); toggleMobileMenu(); }
+        
+        window.addEventListener('popstate', function() {
+            handleRoute(window.location.pathname, false);
+        });
+
+        function shareWebsite(platform) {
+            const url = encodeURIComponent(window.location.href);
+            if (platform === 'facebook') window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+            else if (platform === 'whatsapp') window.open(`https://api.whatsapp.com/send?text=Breaking News from FastJob Alert: ${url}`, '_blank');
+        }
+
+        loadNews();
+    </script>
+</body>
+</html>
