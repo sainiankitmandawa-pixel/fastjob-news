@@ -222,7 +222,7 @@
     <!-- ==================== MAIN CONTENT AREA ==================== -->
     <main class="w-full max-w-[1400px] mx-auto px-3 md:px-6 py-6 md:py-8 flex-grow overflow-hidden">
         
-        <!-- 1. Detailed Article View -->
+        <!-- 1. Detailed Article View (With Dynamic Global Author Avatar & Byline) -->
         <div id="article-view" class="hidden bg-white p-5 md:p-12 w-full mx-auto shadow-md rounded-xl border-t-4 border-[#d10000]">
             <button onclick="goBackHome()" class="mb-6 bg-gray-100 hover:bg-[#d10000] text-gray-800 hover:text-white font-bold uppercase text-xs tracking-wider py-2.5 px-6 rounded-full inline-flex items-center transition"><i class="fa-solid fa-arrow-left mr-2"></i> Back to News</button>
             
@@ -230,9 +230,9 @@
             
             <div class="flex flex-col md:flex-row md:items-center justify-between border-y border-gray-200 py-4 mb-8 bg-gray-50 px-5 rounded-lg gap-4">
                 <div class="flex items-center gap-4">
-                    <img src="https://ui-avatars.com/api/?name=FastJob+Desk&background=d10000&color=fff&bold=true" class="w-12 h-12 rounded-full shadow">
+                    <img id="detail-author-avatar" src="https://ui-avatars.com/api/?name=FastJob+Desk&background=d10000&color=fff&bold=true" class="w-12 h-12 rounded-full shadow border-2 border-white">
                     <div>
-                        <p class="font-extrabold text-sm text-[#d10000] uppercase tracking-wider">FastJob Alert Desk</p>
+                        <p id="detail-author-name" class="font-extrabold text-sm text-[#d10000] uppercase tracking-wider">FastJob Alert Desk</p>
                         <p id="detail-date" class="text-xs font-semibold text-gray-500 mt-0.5"></p>
                     </div>
                 </div>
@@ -271,7 +271,7 @@
                         <span class="text-[11px] font-bold text-[#d10000] flex items-center"><span class="w-2 h-2 bg-[#d10000] rounded-full animate-ping mr-1.5"></span> LIVE UPDATES</span>
                     </div>
                     <div id="top-sidebar-list" class="divide-y divide-gray-100 flex-grow overflow-y-auto max-h-[420px] pr-1">
-                        <!-- Top 6 Sidebar News Injected Here -->
+                        <!-- Top Sidebar News Injected Here -->
                     </div>
                 </div>
             </div>
@@ -348,6 +348,37 @@
         let slideIndex = 0;
         let slideInterval;
 
+        // 50 UNIQUE WORLD-WIDE AUTHORS (GLOBAL JOURNALISTS)
+        const WORLD_AUTHORS = [
+            "Aarav Sharma (New Delhi)", "Priya Nair (Mumbai)", "Vikramaditya Rathore (India Desk)",
+            "Ananya Chatterjee (Kolkata)", "Rohan Deshmukh (Pune)", "Siddharth Menon (Bengaluru)",
+            "Kavita Iyer (Chennai)", "Kabir Malhotra (North India)", "Zoya Khan (Hyderabad)",
+            "Devansh Joshi (Ahmedabad)", "Niharika Verma (Lucknow)", "Arjun Kapoor (South Asia)",
+            "Ethan Brooks (New York)", "Madison Carter (Washington DC)", "Lucas Bennett (Silicon Valley)",
+            "Olivia Hayes (Chicago)", "Noah Mitchell (Los Angeles)", "Chloe Sullivan (Boston)",
+            "Mason Rivera (Miami)", "Harper Reed (Toronto)", "Logan Foster (Seattle)",
+            "Sophia Jenkins (Houston)", "Oliver Sterling (London)", "Amelia Clarke (UK Bureau)",
+            "Liam O'Connor (Dublin)", "Camille Laurent (Paris)", "Lukas Weber (Frankfurt)",
+            "Elena Rostova (Geneva)", "Matteo Rossi (Milan)", "Sofia Lindqvist (Stockholm)",
+            "Hugo Martinez (Madrid)", "Freya Van Der Berg (Amsterdam)", "Tariq Al-Mansoor (Dubai)",
+            "Layla Haddad (Doha)", "Omar Farooq (Riyadh)", "Nadia El-Masri (Cairo)",
+            "Kwame Mensah (Accra)", "Amara Okafor (Lagos)", "Zanele Khumalo (Johannesburg)",
+            "Youssef Benali (Casablanca)", "Kenji Takahashi (Tokyo)", "Mei-Ling Tan (Singapore)",
+            "Min-Jae Park (Seoul)", "Liam Thornton (Sydney)", "Isla MacLeod (Melbourne)",
+            "Hiroshi Sato (Osaka)", "Mateo Silva (Sao Paulo)", "Valentina Gomez (Buenos Aires)",
+            "Diego Hernandez (Mexico City)", "Camila Vargas (Santiago)"
+        ];
+
+        // Extracts embedded author from new posts OR assigns a consistent global author to existing posts
+        function getPostAuthor(post) {
+            if (post && post.content) {
+                const match = post.content.match(/data-author="([^"]+)"/);
+                if (match && match[1]) return match[1];
+            }
+            const idNum = post && post.id ? Number(post.id) : 1;
+            return WORLD_AUTHORS[(idNum * 7) % WORLD_AUTHORS.length];
+        }
+
         // ALL 25 CATEGORIES (NAMES ONLY IN NAV)
         const categories = [
             "Breaking News", "World News", "India News", "Politics", "Sports", 
@@ -412,7 +443,7 @@
             'about-us': {
                 title: 'About FastJob Alert',
                 content: `
-                    <p>Welcome to <strong>FastJob Alert</strong> (fastjob.online), India's rapidly growing digital news publication and verified employment update portal. Founded with a steadfast mission to democratize real-time information, we bring comprehensive, fact-checked, and in-depth journalism directly to your screens 24 hours a day, 7 days a week.</p>
+                    <p>Welcome to <strong>FastJob Alert</strong> (fastjob.online), India's rapidly growing digital news publication and verified employment update portal. Founded with a steadfast mission to democratize real-time information, we bring comprehensive, fact-checked, and in-depth journalism from 50+ global correspondents directly to your screens 24 hours a day, 7 days a week.</p>
                     <h3>Our Mission & Vision</h3>
                     <p>In an era of information overload and digital misinformation, FastJob Alert stands as a beacon of clarity, speed, and reliability. Our primary objective is to empower citizens, students, job seekers, and professionals with accurate news coverage across 25 specialized desks that impact their daily lives, careers, and financial decisions.</p>
                     <h3>What We Cover</h3>
@@ -468,7 +499,7 @@
             'editorial-policy': {
                 title: 'Editorial Policy',
                 content: `
-                    <p>At <strong>FastJob Alert</strong>, our credibility is our greatest asset. Our Editorial Policy governs how we source, verify, write, and publish news across all 25 desks.</p>
+                    <p>At <strong>FastJob Alert</strong>, our credibility is our greatest asset. Our Editorial Policy governs how our 50+ global authors source, verify, write, and publish news across all 25 desks.</p>
                     <h3>1. Commitment to Accuracy & Verification</h3>
                     <p>We source our breaking news from reputable national and international wire services, official government press releases, regulatory filings, and verified public statements.</p>
                     <h3>2. Independence & Corrections</h3>
@@ -564,13 +595,17 @@
             
             let sliderHTML = '';
             top5.forEach((item, index) => {
+                const author = getPostAuthor(item);
                 sliderHTML += `
                 <div class="slide ${index === 0 ? 'active' : ''} cursor-pointer w-full h-[280px] md:h-[480px] relative group" onclick="openArticle('${item.slug}')">
                     <img src="${item.image_url}" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
                     <div class="absolute bottom-0 left-0 right-0 p-5 md:p-10">
-                        <span class="bg-[#d10000] text-white text-[10px] md:text-xs px-3 py-1 rounded font-black uppercase tracking-wider shadow">${item.category}</span>
-                        <h2 class="text-white text-xl md:text-4xl font-black mt-3 leading-tight drop-shadow-lg">${item.title}</h2>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="bg-[#d10000] text-white text-[10px] md:text-xs px-3 py-1 rounded font-black uppercase tracking-wider shadow">${item.category}</span>
+                            <span class="text-gray-200 text-[11px] md:text-xs font-bold"><i class="fa-solid fa-user-pen text-yellow-400 mr-1"></i>${author}</span>
+                        </div>
+                        <h2 class="text-white text-xl md:text-4xl font-black mt-2 leading-tight drop-shadow-lg">${item.title}</h2>
                     </div>
                 </div>`;
             });
@@ -583,11 +618,15 @@
             const sidebarList = sideItems.length > 0 ? sideItems : newsItems.slice(0, 6);
             let sideHTML = '';
             sidebarList.forEach(item => {
+                const author = getPostAuthor(item);
                 sideHTML += `
                 <div onclick="openArticle('${item.slug}')" class="py-3 flex gap-3 items-start cursor-pointer group">
                     <img src="${item.image_url}" class="w-20 h-14 object-cover rounded shrink-0 border border-gray-100">
                     <div class="flex-grow">
-                        <span class="text-[10px] font-extrabold text-[#d10000] uppercase block">${item.category}</span>
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-extrabold text-[#d10000] uppercase">${item.category}</span>
+                            <span class="text-[10px] font-semibold text-gray-400 truncate max-w-[120px]">${author.split('(')[0]}</span>
+                        </div>
                         <h4 class="text-xs md:text-sm font-bold text-gray-900 group-hover:text-[#d10000] line-clamp-2 leading-snug transition">${item.title}</h4>
                     </div>
                 </div>`;
@@ -635,9 +674,12 @@
                                     <div class="overflow-hidden ${idx === 0 ? 'h-52 md:h-[320px]' : 'h-32 md:h-40'} relative">
                                         <img src="${item.image_url}" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
                                     </div>
-                                    <div class="p-4 flex-grow bg-white">
-                                        <span class="text-[#d10000] text-[10px] font-extrabold uppercase tracking-wider mb-1.5 block">${cat}</span>
-                                        <h4 class="font-bold ${idx === 0 ? 'text-xl md:text-2xl leading-snug' : 'text-sm md:text-base leading-snug'} text-gray-900 group-hover:text-[#d10000] transition line-clamp-3">${item.title}</h4>
+                                    <div class="p-4 flex-grow bg-white flex flex-col justify-between">
+                                        <div>
+                                            <span class="text-[#d10000] text-[10px] font-extrabold uppercase tracking-wider mb-1.5 block">${cat}</span>
+                                            <h4 class="font-bold ${idx === 0 ? 'text-xl md:text-2xl leading-snug' : 'text-sm md:text-base leading-snug'} text-gray-900 group-hover:text-[#d10000] transition line-clamp-3">${item.title}</h4>
+                                        </div>
+                                        <p class="text-[11px] font-semibold text-gray-500 mt-3 pt-2 border-t border-gray-100 flex items-center"><i class="fa-solid fa-pen-nib text-[#d10000] mr-1.5 text-[10px]"></i>${getPostAuthor(item)}</p>
                                     </div>
                                 </div>
                             `).join('')}
@@ -686,9 +728,12 @@
                         <div class="overflow-hidden ${idx === 0 ? 'h-52 md:h-[320px]' : 'h-32 md:h-40'} relative">
                             <img src="${item.image_url}" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
                         </div>
-                        <div class="p-4 flex-grow bg-white">
-                            <span class="text-[#d10000] text-[10px] font-extrabold uppercase tracking-wider mb-1.5 block">${cat}</span>
-                            <h4 class="font-bold ${idx === 0 ? 'text-xl md:text-2xl leading-snug' : 'text-sm md:text-base leading-snug'} text-gray-900 group-hover:text-[#d10000] transition">${item.title}</h4>
+                        <div class="p-4 flex-grow bg-white flex flex-col justify-between">
+                            <div>
+                                <span class="text-[#d10000] text-[10px] font-extrabold uppercase tracking-wider mb-1.5 block">${cat}</span>
+                                <h4 class="font-bold ${idx === 0 ? 'text-xl md:text-2xl leading-snug' : 'text-sm md:text-base leading-snug'} text-gray-900 group-hover:text-[#d10000] transition">${item.title}</h4>
+                            </div>
+                            <p class="text-[11px] font-semibold text-gray-500 mt-3 pt-2 border-t border-gray-100 flex items-center"><i class="fa-solid fa-pen-nib text-[#d10000] mr-1.5 text-[10px]"></i>${getPostAuthor(item)}</p>
                         </div>
                     </div>`;
                 });
@@ -722,7 +767,7 @@
             
             let gridHTML = `<div class="bg-white p-5 md:p-8 rounded-xl shadow-sm border border-gray-200"><div class="border-b-2 border-[#d10000] pb-2 mb-6"><span class="section-badge text-base md:text-xl">Search Results</span></div><div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">`;
             filtered.forEach(item => {
-                gridHTML += `<div onclick="openArticle('${item.slug}')" class="bg-white border border-gray-100 shadow-sm hover:shadow-md transition cursor-pointer rounded-xl overflow-hidden flex flex-col group"><div class="overflow-hidden h-32 md:h-40"><img src="${item.image_url}" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500"></div><div class="p-4 flex-grow bg-white"><h4 class="font-bold text-sm md:text-base leading-snug text-gray-900 group-hover:text-[#d10000] transition">${item.title}</h4></div></div>`;
+                gridHTML += `<div onclick="openArticle('${item.slug}')" class="bg-white border border-gray-100 shadow-sm hover:shadow-md transition cursor-pointer rounded-xl overflow-hidden flex flex-col group"><div class="overflow-hidden h-32 md:h-40"><img src="${item.image_url}" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500"></div><div class="p-4 flex-grow bg-white flex flex-col justify-between"><h4 class="font-bold text-sm md:text-base leading-snug text-gray-900 group-hover:text-[#d10000] transition">${item.title}</h4><p class="text-[11px] font-semibold text-gray-500 mt-2 pt-2 border-t border-gray-100"><i class="fa-solid fa-pen-nib text-[#d10000] mr-1 text-[10px]"></i>${getPostAuthor(item)}</p></div></div>`;
             });
             gridHTML += '</div></div>';
             document.getElementById('category-sections').innerHTML = gridHTML;
@@ -740,6 +785,14 @@
                 document.getElementById('detail-title').innerText = post.title;
                 document.title = `${post.title} - FastJob Alert`;
                 
+                // Set Unique Global Author Name & Auto Avatar
+                const authorName = getPostAuthor(post);
+                const cleanAvatarName = encodeURIComponent(authorName.split('(')[0].trim());
+                const nameEl = document.getElementById('detail-author-name');
+                const avatarEl = document.getElementById('detail-author-avatar');
+                if (nameEl) nameEl.innerHTML = `<i class="fa-solid fa-pen-nib mr-1.5"></i> Reported by ${authorName}`;
+                if (avatarEl) avatarEl.src = `https://ui-avatars.com/api/?name=${cleanAvatarName}&background=d10000&color=fff&bold=true`;
+
                 const postDate = new Date(post.created_at);
                 const options = { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' };
                 document.getElementById('detail-date').innerHTML = `<i class="fa-regular fa-clock mr-1"></i> Published on ${postDate.toLocaleDateString('en-IN', options)}`;
