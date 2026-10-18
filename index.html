@@ -35,13 +35,13 @@
         @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 
         /* Article Formatting */
-        #detail-content { color: #1e293b; line-height: 2; font-size: 1.15rem; }
-        #detail-content p { margin-bottom: 2rem; }
+        #detail-content, #legal-page-content { color: #1e293b; line-height: 2; font-size: 1.15rem; }
+        #detail-content p, #legal-page-content p { margin-bottom: 1.8rem; }
         #detail-content p:first-of-type::first-letter { font-size: 4rem; font-weight: 900; float: left; line-height: 0.8; margin-right: 0.8rem; margin-top: 0.2rem; color: #cc0000; font-family: 'Playfair Display', serif; }
         #detail-content .seo-title { font-size: 2.5rem; font-weight: 900; color: #0f172a; margin-bottom: 1.5rem; line-height: 1.2; font-family: 'Playfair Display', serif; border-bottom: 3px solid #cc0000; padding-bottom: 10px; display: inline-block;}
         #detail-content .intro-text { font-weight: 600; font-size: 1.25rem; color: #334155; border-left: 5px solid #cc0000; padding-left: 20px; background: #fef2f2; padding-top: 10px; padding-bottom: 10px; border-radius: 0 8px 8px 0;}
-        #detail-content .article-subheading { font-size: 1.8rem; font-weight: 800; color: #0f172a; margin-top: 3rem; margin-bottom: 1.5rem; font-family: 'Playfair Display', serif; display: flex; align-items: center;}
-        #detail-content .article-subheading::before { content: ""; display: inline-block; width: 8px; height: 8px; background: #cc0000; border-radius: 50%; margin-right: 12px; }
+        #detail-content .article-subheading, #legal-page-content h3 { font-size: 1.7rem; font-weight: 800; color: #0f172a; margin-top: 2.5rem; margin-bottom: 1.2rem; font-family: 'Playfair Display', serif; display: flex; align-items: center;}
+        #detail-content .article-subheading::before, #legal-page-content h3::before { content: ""; display: inline-block; width: 8px; height: 8px; background: #cc0000; border-radius: 50%; margin-right: 12px; }
         #detail-content .hashtags { margin-top: 4rem; font-weight: bold; color: #2563eb; background: #eff6ff; padding: 20px; border-radius: 12px; border: 1px dashed #bfdbfe;}
         .article-table { width: 100%; border-collapse: collapse; margin: 2.5rem 0; font-size: 1rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border-radius: 8px; overflow: hidden; }
         .article-table th, .article-table td { border: 1px solid #e2e8f0; padding: 18px; text-align: left; }
@@ -60,25 +60,25 @@
 </head>
 <body class="text-gray-900 flex flex-col min-h-screen overflow-x-hidden">
 
-    <!-- New Top Mini Bar -->
+    <!-- Top Mini Bar (Clean Links without .html) -->
     <div class="bg-white text-gray-800 text-[10px] md:text-xs py-2 px-2 md:px-4 w-full border-b border-gray-200">
         <div class="w-full max-w-[1400px] mx-auto flex justify-between items-center">
             <span class="font-bold tracking-wider flex items-center">
                 <i class="fa-regular fa-calendar-days text-[#cc0000] mr-2"></i><span id="live-date"></span>
             </span>
             <div class="hidden md:flex gap-6 font-black uppercase tracking-widest text-[10px] text-gray-500">
-                <a href="/about-us.html" class="hover:text-[#0f172a] transition">About</a>
-                <a href="/contact-us.html" class="hover:text-[#0f172a] transition">Contact</a>
-                <a href="/editorial-policy.html" class="hover:text-[#0f172a] transition">Editorial Policy</a>
+                <a href="/about-us" onclick="event.preventDefault(); openStaticPage('about-us');" class="hover:text-[#cc0000] transition">About</a>
+                <a href="/contact-us" onclick="event.preventDefault(); openStaticPage('contact-us');" class="hover:text-[#cc0000] transition">Contact</a>
+                <a href="/editorial-policy" onclick="event.preventDefault(); openStaticPage('editorial-policy');" class="hover:text-[#cc0000] transition">Editorial Policy</a>
             </div>
         </div>
     </div>
 
-    <!-- Redesigned Main Premium Header -->
+    <!-- Main Premium Header -->
     <header class="bg-white sticky top-0 z-40 shadow-sm border-b border-gray-100">
-        <div class="w-full px-3 md:px-4 flex items-center justify-between py-4 md:py-6 gap-4 max-w-[1400px] mx-auto">
+        <div class="w-full px-3 md:px-4 flex items-center justify-between py-4 md:py-5 gap-4 max-w-[1400px] mx-auto">
             
-            <!-- Logo matching your image exactly -->
+            <!-- Brand Logo -->
             <a href="/" onclick="event.preventDefault(); goBackHome();" class="flex items-center shrink-0 cursor-pointer group">
                 <div class="bg-[#cc0000] w-12 h-12 md:w-[60px] md:h-[60px] rounded-xl mr-3 md:mr-4 flex items-center justify-center shadow-md transform group-hover:scale-105 transition duration-300">
                     <i class="fa-solid fa-bolt text-2xl md:text-4xl text-yellow-400"></i>
@@ -111,30 +111,32 @@
         </div>
     </div>
 
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="hidden fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex justify-end transition-opacity">
-        <div class="w-72 bg-white h-full shadow-2xl flex flex-col p-8 overflow-y-auto border-l-4 border-[#cc0000]">
-            <button onclick="toggleMobileMenu()" class="self-end text-gray-400 hover:text-[#cc0000] text-3xl mb-8 transform hover:rotate-90 transition"><i class="fa-solid fa-xmark"></i></button>
-            <!-- Mobile Search -->
-            <div class="bg-gray-100 rounded-lg px-4 py-2 mb-6 flex items-center border border-gray-200">
+    <!-- Mobile & Sidebar Menu (With Real Clean Links for Categories!) -->
+    <div id="mobileMenu" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex justify-end transition-opacity">
+        <div class="w-72 bg-white h-full shadow-2xl flex flex-col p-6 overflow-y-auto border-l-4 border-[#cc0000]">
+            <button onclick="toggleMobileMenu()" class="self-end text-gray-400 hover:text-[#cc0000] text-3xl mb-4 transform hover:rotate-90 transition"><i class="fa-solid fa-xmark"></i></button>
+            
+            <div class="bg-gray-100 rounded-lg px-4 py-2.5 mb-6 flex items-center border border-gray-200">
                 <input type="text" id="mobileSearchInput" onkeyup="searchNewsMobile()" placeholder="Search news..." class="w-full bg-transparent outline-none font-bold text-sm">
+                <i class="fa-solid fa-magnifying-glass text-gray-400 text-sm"></i>
             </div>
-            <nav class="flex flex-col space-y-6 font-black text-gray-900 text-xl heading-font uppercase">
-                <button onclick="filterCategoryAndClose('All')" class="text-left border-b border-gray-200 pb-3 hover:text-[#cc0000] transition flex items-center"><i class="fa-solid fa-house text-[#cc0000] text-xl w-8"></i> Home</button>
-                <button onclick="filterCategoryAndClose('Politics')" class="text-left border-b border-gray-200 pb-3 hover:text-[#cc0000] transition flex items-center"><i class="fa-solid fa-landmark text-[#cc0000] text-xl w-8"></i> Politics</button>
-                <button onclick="filterCategoryAndClose('Economy')" class="text-left border-b border-gray-200 pb-3 hover:text-[#cc0000] transition flex items-center"><i class="fa-solid fa-chart-pie text-[#cc0000] text-xl w-8"></i> Economy</button>
-                <button onclick="filterCategoryAndClose('Business')" class="text-left border-b border-gray-200 pb-3 hover:text-[#cc0000] transition flex items-center"><i class="fa-solid fa-briefcase text-[#cc0000] text-xl w-8"></i> Business</button>
-                <button onclick="filterCategoryAndClose('Sports')" class="text-left border-b border-gray-200 pb-3 hover:text-[#cc0000] transition flex items-center"><i class="fa-solid fa-trophy text-[#cc0000] text-xl w-8"></i> Sports</button>
-                <button onclick="filterCategoryAndClose('Automobile')" class="text-left border-b border-gray-200 pb-3 hover:text-[#cc0000] transition flex items-center"><i class="fa-solid fa-car text-[#cc0000] text-xl w-8"></i> Auto</button>
-                <button onclick="filterCategoryAndClose('Tech & AI')" class="text-left border-b border-gray-200 pb-3 hover:text-[#cc0000] transition flex items-center"><i class="fa-solid fa-microchip text-[#cc0000] text-xl w-8"></i> Tech</button>
-                <button onclick="filterCategoryAndClose('Jobs')" class="text-left border-b border-gray-200 pb-3 text-[#cc0000] flex items-center"><i class="fa-solid fa-user-tie text-gray-900 text-xl w-8"></i> Jobs</button>
+            
+            <nav class="flex flex-col space-y-5 font-black text-gray-900 text-xl heading-font">
+                <a href="/" onclick="event.preventDefault(); filterCategoryAndClose('All');" class="text-left border-b border-gray-100 pb-3 hover:text-[#cc0000] transition flex items-center"><i class="fa-solid fa-house text-[#cc0000] text-xl w-9"></i> Home</a>
+                <a href="/category/politics" onclick="event.preventDefault(); filterCategoryAndClose('Politics');" class="text-left border-b border-gray-100 pb-3 hover:text-[#cc0000] transition flex items-center"><i class="fa-solid fa-landmark text-[#cc0000] text-xl w-9"></i> Politics</a>
+                <a href="/category/economy" onclick="event.preventDefault(); filterCategoryAndClose('Economy');" class="text-left border-b border-gray-100 pb-3 hover:text-[#cc0000] transition flex items-center"><i class="fa-solid fa-chart-pie text-[#cc0000] text-xl w-9"></i> Economy</a>
+                <a href="/category/business" onclick="event.preventDefault(); filterCategoryAndClose('Business');" class="text-left border-b border-gray-100 pb-3 hover:text-[#cc0000] transition flex items-center"><i class="fa-solid fa-briefcase text-[#cc0000] text-xl w-9"></i> Business</a>
+                <a href="/category/sports" onclick="event.preventDefault(); filterCategoryAndClose('Sports');" class="text-left border-b border-gray-100 pb-3 hover:text-[#cc0000] transition flex items-center"><i class="fa-solid fa-trophy text-[#cc0000] text-xl w-9"></i> Sports</a>
+                <a href="/category/automobile" onclick="event.preventDefault(); filterCategoryAndClose('Automobile');" class="text-left border-b border-gray-100 pb-3 hover:text-[#cc0000] transition flex items-center"><i class="fa-solid fa-car text-[#cc0000] text-xl w-9"></i> Auto</a>
+                <a href="/category/tech-ai" onclick="event.preventDefault(); filterCategoryAndClose('Tech & AI');" class="text-left border-b border-gray-100 pb-3 hover:text-[#cc0000] transition flex items-center"><i class="fa-solid fa-microchip text-[#cc0000] text-xl w-9"></i> Tech</a>
+                <a href="/category/jobs" onclick="event.preventDefault(); filterCategoryAndClose('Jobs');" class="text-left border-b border-gray-100 pb-3 text-[#cc0000] flex items-center"><i class="fa-solid fa-user-tie text-gray-900 text-xl w-9"></i> Jobs</a>
             </nav>
         </div>
     </div>
 
     <main class="w-full max-w-[1400px] mx-auto px-3 md:px-4 py-8 md:py-12 flex-grow overflow-hidden">
         
-        <!-- Detailed Article View -->
+        <!-- 1. Detailed Article View -->
         <div id="article-view" class="hidden bg-white p-6 md:p-14 w-full mx-auto shadow-[0_15px_50px_-15px_rgba(0,0,0,0.1)] rounded-2xl border border-gray-100">
             <button onclick="goBackHome()" class="mb-10 bg-white border-2 border-gray-200 text-gray-600 hover:border-[#cc0000] hover:text-[#cc0000] font-black uppercase text-[11px] tracking-[0.2em] py-3 px-8 rounded-full inline-flex items-center transition duration-300 shadow-sm"><i class="fa-solid fa-arrow-left mr-3"></i> Back to Global Feed</button>
             
@@ -158,7 +160,14 @@
             <div id="detail-content" class="w-full overflow-x-auto text-gray-800"></div>
         </div>
 
-        <!-- Home Grid View -->
+        <!-- 2. Dedicated Full-Page Legal & Info View (No .html needed!) -->
+        <div id="legal-view" class="hidden bg-white p-6 md:p-16 w-full max-w-5xl mx-auto shadow-[0_15px_50px_-15px_rgba(0,0,0,0.1)] rounded-2xl border-t-8 border-[#cc0000]">
+            <button onclick="goBackHome()" class="mb-8 bg-gray-100 hover:bg-[#cc0000] hover:text-white text-gray-800 font-black uppercase text-xs tracking-widest py-3 px-6 rounded-full inline-flex items-center transition duration-300"><i class="fa-solid fa-arrow-left mr-2"></i> Back to Home</button>
+            <h1 id="legal-page-title" class="text-3xl md:text-5xl font-black text-[#0f172a] heading-font mb-8 border-b-2 border-gray-100 pb-6 uppercase tracking-tight"></h1>
+            <div id="legal-page-content" class="w-full text-gray-700 leading-relaxed space-y-6"></div>
+        </div>
+
+        <!-- 3. Home & Category Grid View -->
         <div id="home-view">
             <!-- Mega Slider -->
             <div id="slider-wrapper" class="slider-container bg-gray-900 shadow-2xl min-h-[300px] md:min-h-[600px] mb-12 md:mb-20 rounded-2xl overflow-hidden border border-gray-800">
@@ -169,7 +178,7 @@
         </div>
     </main>
 
-    <!-- Ultra-Premium Footer -->
+    <!-- Ultra-Premium Footer (Clean URLs without .html) -->
     <footer class="bg-[#0f172a] text-gray-300 pt-20 pb-10 mt-12 border-t-[8px] border-[#cc0000] relative overflow-hidden">
         
         <div class="w-full max-w-[1400px] mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-16 mb-16">
@@ -178,7 +187,7 @@
                     <div class="bg-[#cc0000] text-white w-12 h-12 rounded-xl mr-3 flex items-center justify-center shadow-lg"><i class="fa-solid fa-bolt text-2xl text-yellow-400"></i></div>
                     <div class="flex flex-col">
                         <span class="text-4xl font-black text-white tracking-tighter heading-font leading-none">FASTJOB</span>
-                        <span class="text-[11px] font-black text-[#cc0000] tracking-[0.2em] uppercase mt-1">Global Portal</span>
+                        <span class="text-[11px] font-black text-[#cc0000] tracking-[0.2em] uppercase mt-1">ALERT DESK</span>
                     </div>
                 </a>
                 <p class="text-gray-400 text-base leading-relaxed font-semibold">FastJob Alert is your premier destination for breaking global news, cutting-edge analysis, and verified updates delivered seamlessly 24/7.</p>
@@ -187,23 +196,25 @@
             <div>
                 <h4 class="text-xl font-black mb-8 border-b border-gray-800 pb-3 text-white uppercase tracking-widest heading-font">LEGAL & INFO</h4>
                 <ul class="space-y-4 text-sm font-bold text-gray-400">
-                    <!-- Real Pages Links Added Here -->
-                    <li><a href="/about-us.html" class="hover:text-white hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-angle-right text-[#cc0000] mr-3"></i>About Us</a></li>
-                    <li><a href="/privacy-policy.html" class="hover:text-white hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-angle-right text-[#cc0000] mr-3"></i>Privacy Policy</a></li>
-                    <li><a href="/terms-and-conditions.html" class="hover:text-white hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-angle-right text-[#cc0000] mr-3"></i>Terms & Conditions</a></li>
-                    <li><a href="/disclaimer.html" class="hover:text-white hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-angle-right text-[#cc0000] mr-3"></i>Disclaimer</a></li>
-                    <li><a href="/editorial-policy.html" class="hover:text-white hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-angle-right text-[#cc0000] mr-3"></i>Editorial Policy</a></li>
-                    <li><a href="/contact-us.html" class="hover:text-white hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-angle-right text-[#cc0000] mr-3"></i>Contact Desk</a></li>
+                    <li><a href="/about-us" onclick="event.preventDefault(); openStaticPage('about-us');" class="hover:text-white hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-angle-right text-[#cc0000] mr-3"></i>About Us</a></li>
+                    <li><a href="/privacy-policy" onclick="event.preventDefault(); openStaticPage('privacy-policy');" class="hover:text-white hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-angle-right text-[#cc0000] mr-3"></i>Privacy Policy</a></li>
+                    <li><a href="/terms-and-conditions" onclick="event.preventDefault(); openStaticPage('terms-and-conditions');" class="hover:text-white hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-angle-right text-[#cc0000] mr-3"></i>Terms & Conditions</a></li>
+                    <li><a href="/disclaimer" onclick="event.preventDefault(); openStaticPage('disclaimer');" class="hover:text-white hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-angle-right text-[#cc0000] mr-3"></i>Disclaimer</a></li>
+                    <li><a href="/editorial-policy" onclick="event.preventDefault(); openStaticPage('editorial-policy');" class="hover:text-white hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-angle-right text-[#cc0000] mr-3"></i>Editorial Policy</a></li>
+                    <li><a href="/contact-us" onclick="event.preventDefault(); openStaticPage('contact-us');" class="hover:text-white hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-angle-right text-[#cc0000] mr-3"></i>Contact Desk</a></li>
                 </ul>
             </div>
             
             <div>
                 <h4 class="text-xl font-black mb-8 border-b border-gray-800 pb-3 text-white uppercase tracking-widest heading-font">News Desks</h4>
                 <ul class="space-y-4 text-sm font-bold text-gray-400">
-                    <li><button onclick="filterCategory('Politics')" class="hover:text-white hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-bookmark text-[#cc0000] mr-3"></i>Politics Desk</button></li>
-                    <li><button onclick="filterCategory('Business')" class="hover:text-white hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-bookmark text-[#cc0000] mr-3"></i>Business & Markets</button></li>
-                    <li><button onclick="filterCategory('Tech & AI')" class="hover:text-white hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-bookmark text-[#cc0000] mr-3"></i>Tech Innovation</button></li>
-                    <li><button onclick="filterCategory('Jobs')" class="hover:text-white hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-bookmark text-[#cc0000] mr-3"></i>Employment Alerts</button></li>
+                    <li><a href="/category/politics" onclick="event.preventDefault(); filterCategory('Politics');" class="hover:text-white hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-bookmark text-[#cc0000] mr-3"></i>Politics Desk</a></li>
+                    <li><a href="/category/economy" onclick="event.preventDefault(); filterCategory('Economy');" class="hover:text-white hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-bookmark text-[#cc0000] mr-3"></i>Economy Desk</a></li>
+                    <li><a href="/category/business" onclick="event.preventDefault(); filterCategory('Business');" class="hover:text-white hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-bookmark text-[#cc0000] mr-3"></i>Business & Markets</a></li>
+                    <li><a href="/category/sports" onclick="event.preventDefault(); filterCategory('Sports');" class="hover:text-white hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-bookmark text-[#cc0000] mr-3"></i>Sports Action</a></li>
+                    <li><a href="/category/automobile" onclick="event.preventDefault(); filterCategory('Automobile');" class="hover:text-white hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-bookmark text-[#cc0000] mr-3"></i>Auto World</a></li>
+                    <li><a href="/category/tech-ai" onclick="event.preventDefault(); filterCategory('Tech & AI');" class="hover:text-white hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-bookmark text-[#cc0000] mr-3"></i>Tech & AI</a></li>
+                    <li><a href="/category/jobs" onclick="event.preventDefault(); filterCategory('Jobs');" class="hover:text-white hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-bookmark text-[#cc0000] mr-3"></i>Employment Alerts</a></li>
                 </ul>
             </div>
             
@@ -229,7 +240,6 @@
     </a>
 
     <script>
-        // Set Live Date
         const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         document.getElementById('live-date').innerText = new Date().toLocaleDateString('en-US', dateOptions);
 
@@ -238,6 +248,133 @@
         let allNews = [];
         let slideIndex = 0;
         let slideInterval;
+
+        // Category Slug Mapping for Clean URLs
+        const categoryToSlug = {
+            'Politics': 'politics',
+            'Economy': 'economy',
+            'Business': 'business',
+            'Sports': 'sports',
+            'Automobile': 'automobile',
+            'Tech & AI': 'tech-ai',
+            'Jobs': 'jobs'
+        };
+        const slugToCategory = {
+            'politics': 'Politics',
+            'economy': 'Economy',
+            'business': 'Business',
+            'sports': 'Sports',
+            'automobile': 'Automobile',
+            'tech-ai': 'Tech & AI',
+            'jobs': 'Jobs'
+        };
+
+        // Complete Comprehensive Legal Pages Content
+        const staticPages = {
+            'about-us': {
+                title: 'About FastJob Alert',
+                content: `
+                    <p>Welcome to <strong>FastJob Alert</strong> (fastjob.online), India's rapidly growing digital news publication and verified employment update portal. Founded with a steadfast mission to democratize real-time information, we bring comprehensive, fact-checked, and in-depth journalism directly to your screens 24 hours a day, 7 days a week.</p>
+                    <h3>Our Mission & Vision</h3>
+                    <p>In an era of information overload and digital misinformation, FastJob Alert stands as a beacon of clarity, speed, and reliability. Our primary objective is to empower citizens, students, job seekers, and professionals with accurate news coverage that impacts their daily lives, careers, and financial decisions.</p>
+                    <h3>What We Cover</h3>
+                    <ul class="list-disc pl-6 space-y-2 mb-6">
+                        <li><strong>Employment & Career Alerts (Jobs):</strong> Instant notifications on government recruitment, public sector openings, exam schedules, admit cards, results, and private sector career opportunities.</li>
+                        <li><strong>National & Global Politics:</strong> Unbiased reporting on policy changes, parliamentary affairs, elections, governance, and diplomatic relations.</li>
+                        <li><strong>Economy & Business:</strong> Deep-dive analysis into macroeconomic indicators, banking updates, corporate earnings, startups, and market movements.</li>
+                        <li><strong>Technology & AI:</strong> Coverage of breakthrough innovations, artificial intelligence trends, cybersecurity, consumer gadgets, and digital transformation.</li>
+                        <li><strong>Sports & Automobiles:</strong> Live action updates from cricket and global tournaments, alongside comprehensive reviews of new vehicle launches and EV developments.</li>
+                    </ul>
+                    <h3>Our Editorial & Technological Edge</h3>
+                    <p>FastJob Alert combines seasoned editorial oversight with state-of-the-art news aggregation and analytical tools. Every report published on our platform undergoes strict formatting and verification checks to ensure our readers receive structured key highlights, historical context, and actionable takeaways.</p>
+                `
+            },
+            'privacy-policy': {
+                title: 'Privacy Policy',
+                content: `
+                    <p>At <strong>FastJob Alert</strong> (accessible from https://fastjob.online), protecting the privacy of our visitors is one of our highest priorities. This Privacy Policy document outlines the types of information that are collected and recorded by FastJob Alert and how we utilize and safeguard it.</p>
+                    <h3>1. Information We Collect</h3>
+                    <p>We do not require users to register or provide personal identity details to read our articles. When you visit our portal, we automatically collect standard log file information including your Internet Protocol (IP) address, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and click stream data. This data is strictly non-personally identifiable.</p>
+                    <h3>2. Cookies and Web Beacons</h3>
+                    <p>Like any modern digital publication, FastJob Alert uses "cookies" to store information including visitors' preferences and the pages on the website that the visitor accessed or visited. The information is used to optimize the users' experience by customizing our web page content based on visitors' browser type and other technical metrics.</p>
+                    <h3>3. Google Analytics & Third-Party Partners</h3>
+                    <p>We utilize Google Analytics to understand how our audience engages with our content. Google Analytics uses cookies to report website trends without identifying individual visitors. Furthermore, third-party ad servers or ad networks (such as Google AdSense) may use technologies like cookies, JavaScript, or Web Beacons in their respective advertisements to measure the effectiveness of their campaigns.</p>
+                    <h3>4. Data Security & Third-Party Links</h3>
+                    <p>We never sell, trade, or rent user data to any external organization. Our website may contain links to external sites (such as official government recruitment portals). Please be aware that we are not responsible for the privacy practices of such other sites.</p>
+                    <h3>5. Consent</h3>
+                    <p>By using our website, you hereby consent to our Privacy Policy and agree to its terms. For any privacy-related queries, please reach out via our Contact Desk.</p>
+                `
+            },
+            'terms-and-conditions': {
+                title: 'Terms & Conditions',
+                content: `
+                    <p>Welcome to <strong>FastJob Alert</strong>! These Terms and Conditions outline the rules and regulations for the use of FastJob Alert's Website, located at https://fastjob.online. By accessing this website, we assume you accept these terms and conditions in full.</p>
+                    <h3>1. Intellectual Property Rights</h3>
+                    <p>Unless otherwise stated, FastJob Alert and/or its licensors own the intellectual property rights for all original material, article structures, compilations, and branding on FastJob Alert. All intellectual property rights are reserved. You may access this from FastJob Alert for your own personal, non-commercial use subjected to restrictions set in these terms.</p>
+                    <h3>2. Restrictions on Use</h3>
+                    <ul class="list-disc pl-6 space-y-2 mb-6">
+                        <li>You must not republish material from FastJob Alert verbatim without explicit credit and a do-follow backlink.</li>
+                        <li>You must not sell, rent, or sub-license material from FastJob Alert.</li>
+                        <li>You must not use this website in any way that causes, or may cause, damage to the website or impairment of the availability or accessibility of the portal.</li>
+                        <li>Automated scraping or data mining without prior written permission is strictly prohibited.</li>
+                    </ul>
+                    <h3>3. Accuracy of Information</h3>
+                    <p>While we strive to provide 100% accurate and timely news and job alerts, applicants and readers are advised to always cross-verify official job notifications, dates, and financial figures from the respective official government or corporate websites before making any formal decisions.</p>
+                    <h3>4. Modifications to Terms</h3>
+                    <p>FastJob Alert reserves the right to revise these Terms and Conditions at any time as it sees fit, and by using this Website you are expected to review these Terms on a regular basis.</p>
+                `
+            },
+            'disclaimer': {
+                title: 'Disclaimer',
+                content: `
+                    <p>All the information published on <strong>FastJob Alert</strong> (https://fastjob.online) is published in good faith and for general information and educational purposes only.</p>
+                    <h3>1. No Professional or Legal Advice</h3>
+                    <p>The articles covering economy, business, stocks, automobiles, and career opportunities are meant purely for informational purposes. FastJob Alert does not provide financial, investment, legal, or career counseling advice. Any action you take upon the information you find on this website is strictly at your own risk.</p>
+                    <h3>2. Recruitment & Job Alerts</h3>
+                    <p>FastJob Alert is an independent news and information portal and is <strong>not affiliated with any government entity or recruitment board</strong>. While we summarize job openings and exam updates from official sources, candidates must verify all details from the official gazette or portal of the recruiting organization before applying or paying any fees.</p>
+                    <h3>3. External Links Disclaimer</h3>
+                    <p>From our website, you can visit other websites by following hyperlinks to such external sites. While we strive to provide only quality links to useful and ethical websites, we have no control over the content and nature of these sites.</p>
+                    <h3>4. Fair Use Notice</h3>
+                    <p>This website may contain copyrighted material, images, or press releases the use of which has not always been specifically authorized by the copyright owner. We make such material available in our efforts to advance understanding of current events, politics, economic issues, and public interest news under "Fair Use" guidelines.</p>
+                `
+            },
+            'editorial-policy': {
+                title: 'Editorial Policy',
+                content: `
+                    <p>At <strong>FastJob Alert</strong>, our credibility is our greatest asset. Our Editorial Policy governs how we source, verify, write, and publish news across all our desks.</p>
+                    <h3>1. Commitment to Accuracy & Verification</h3>
+                    <p>We source our breaking news from reputable national and international wire services, official government press releases, regulatory filings, and verified public statements. Every story is structured to separate hard facts from analysis.</p>
+                    <h3>2. Independence & Impartiality</h3>
+                    <p>FastJob Alert maintains complete editorial independence. We do not endorse political parties, candidates, or corporate entities. Our coverage of politics, economic policies, and corporate affairs is guided strictly by public interest and factual merit.</p>
+                    <h3>3. Use of Technology & AI Assistance</h3>
+                    <p>To deliver 24/7 rapid coverage and comprehensive 800+ word deep-dive articles, our editorial workflow utilizes advanced AI tools for structuring, summarizing, and formatting verified news feeds. All automated outputs are governed by strict editorial rules to prevent fabrication and maintain journalistic standards.</p>
+                    <h3>4. Corrections & Updates Policy</h3>
+                    <p>We believe in complete transparency. If a factual error is identified in any published report, our desk promptly updates the article and appends a correction note where necessary. Readers can report inaccuracies directly to our Contact Desk.</p>
+                `
+            },
+            'contact-us': {
+                title: 'Contact Desk',
+                content: `
+                    <p>We value our readers' feedback, news tips, correction requests, and business inquiries. Feel free to get in touch with the <strong>FastJob Alert Editorial & Support Team</strong> through any of the official channels listed below.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+                        <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200 shadow-sm">
+                            <h4 class="text-xl font-black text-[#0f172a] mb-2"><i class="fa-solid fa-envelope text-[#cc0000] mr-2"></i> Editorial & General Inquiries</h4>
+                            <p class="text-sm text-gray-500 mb-3">For news tips, press releases, corrections, or general questions:</p>
+                            <a href="mailto:desk@fastjob.online" class="text-lg font-black text-[#cc0000] hover:underline">desk@fastjob.online</a>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200 shadow-sm">
+                            <h4 class="text-xl font-black text-[#0f172a] mb-2"><i class="fa-brands fa-whatsapp text-[#25d366] mr-2"></i> Instant Broadcast Channel</h4>
+                            <p class="text-sm text-gray-500 mb-3">Join our official WhatsApp channel for real-time breaking alerts:</p>
+                            <a href="https://whatsapp.com/channel/0029VbDajQV8PgsNA1lLhW0i" target="_blank" class="inline-block bg-[#25d366] text-white font-bold px-5 py-2 rounded-full text-sm hover:bg-[#1da851] transition">Join WhatsApp Channel</a>
+                        </div>
+                    </div>
+
+                    <h3>Grievance Redressal & Copyright</h3>
+                    <p>If you have any concerns regarding copyright infringement, content accuracy, or digital grievances, please email us at <strong>desk@fastjob.online</strong> with the exact article URL and subject line <em>"Grievance / Editorial Review"</em>. Our team reviews and responds to all legitimate requests within 24 to 48 business hours.</p>
+                `
+            }
+        };
 
         async function loadNews() {
             try {
@@ -248,16 +385,57 @@
                 if (data && data.length > 0) {
                     allNews = data;
                     renderTicker(allNews);
-                    
-                    // CLEAN URL CHECK
-                    const path = window.location.pathname.replace(/^\/|\/$/g, '');
-                    if (path && path !== 'index.html' && !path.includes('.html')) {
-                        openArticle(path, false);
-                    } else {
-                        renderHome(allNews);
-                    }
+                    handleRoute(window.location.pathname, false);
                 }
             } catch (err) { console.error(err); }
+        }
+
+        // MASTER ROUTER (Handles Clean URLs for Pages, Categories, and Posts)
+        function handleRoute(pathname, pushState = false) {
+            let cleanPath = pathname.replace(/^\/|\/$/g, '').replace(/\.html$/, '');
+
+            if (!cleanPath || cleanPath === 'index') {
+                renderHome(allNews, pushState);
+                return;
+            }
+
+            // 1. Check if it's a Legal/Static Page
+            if (staticPages[cleanPath]) {
+                openStaticPage(cleanPath, pushState);
+                return;
+            }
+
+            // 2. Check if it's a Category URL (e.g. /category/politics)
+            if (cleanPath.startsWith('category/')) {
+                const catSlug = cleanPath.replace('category/', '');
+                const catName = slugToCategory[catSlug];
+                if (catName) {
+                    filterCategory(catName, pushState);
+                    return;
+                }
+            }
+
+            // 3. Otherwise treat as Article Slug
+            openArticle(cleanPath, pushState);
+        }
+
+        function openStaticPage(pageKey, pushState = true) {
+            const page = staticPages[pageKey];
+            if (!page) return;
+
+            if (pushState) {
+                history.pushState({ type: 'static', key: pageKey }, "", "/" + pageKey);
+            }
+
+            clearInterval(slideInterval);
+            document.getElementById('home-view').classList.add('hidden');
+            document.getElementById('article-view').classList.add('hidden');
+            document.getElementById('legal-view').classList.remove('hidden');
+
+            document.getElementById('legal-page-title').innerText = page.title;
+            document.getElementById('legal-page-content').innerHTML = page.content;
+            document.title = `${page.title} - FastJob Alert`;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function renderTicker(newsItems) {
@@ -297,8 +475,12 @@
             }, 4500);
         }
 
-        function renderHome(newsList) {
+        function renderHome(newsList, pushState = false) {
+            if (pushState) {
+                history.pushState({ type: 'home' }, "", "/");
+            }
             document.getElementById('article-view').classList.add('hidden');
+            document.getElementById('legal-view').classList.add('hidden');
             document.getElementById('home-view').classList.remove('hidden');
             document.title = "FastJob Alert - Premium Global News & Verified Coverage";
             
@@ -308,12 +490,13 @@
             let sectionsHTML = '';
             cats.forEach(cat => {
                 const catPosts = newsList.filter(p => p.category === cat);
+                const catSlug = categoryToSlug[cat];
                 if(catPosts.length > 0) {
                     sectionsHTML += `
                     <div class="mb-16">
                         <div class="flex justify-between items-end mb-8 border-b-[3px] border-gray-200 pb-3">
                             <h3 class="text-3xl md:text-5xl font-black text-[#0f172a] heading-font uppercase tracking-tight"><span class="text-[#cc0000] mr-3">|</span>${cat}</h3>
-                            <button onclick="filterCategory('${cat}')" class="text-xs md:text-sm font-black text-gray-500 hover:text-[#cc0000] uppercase tracking-widest transition flex items-center">See All <i class="fa-solid fa-arrow-right ml-2 bg-gray-100 p-2 rounded-full"></i></button>
+                            <a href="/category/${catSlug}" onclick="event.preventDefault(); filterCategory('${cat}');" class="text-xs md:text-sm font-black text-gray-500 hover:text-[#cc0000] uppercase tracking-widest transition flex items-center">See All <i class="fa-solid fa-arrow-right ml-2 bg-gray-100 p-2 rounded-full"></i></a>
                         </div>
                         <div class="mag-grid">
                             ${catPosts.slice(0, 5).map((item, idx) => `
@@ -335,8 +518,21 @@
             document.getElementById('category-sections').innerHTML = sectionsHTML;
         }
 
-        function filterCategory(cat) {
-            const filtered = cat === 'All' ? allNews : allNews.filter(item => item.category === cat);
+        function filterCategory(cat, pushState = true) {
+            if (cat === 'All') {
+                goBackHome();
+                return;
+            }
+            const catSlug = categoryToSlug[cat] || 'all';
+            if (pushState) {
+                history.pushState({ type: 'category', cat: cat }, "", "/category/" + catSlug);
+            }
+
+            document.getElementById('article-view').classList.add('hidden');
+            document.getElementById('legal-view').classList.add('hidden');
+            document.getElementById('home-view').classList.remove('hidden');
+
+            const filtered = allNews.filter(item => item.category === cat);
             renderSlider(filtered);
             
             let gridHTML = `<div class="mb-16"><h3 class="text-4xl md:text-6xl font-black mb-10 heading-font uppercase tracking-tight text-[#0f172a]"><span class="text-[#cc0000] mr-4">|</span>${cat} Desk</h3><div class="mag-grid">`;
@@ -370,6 +566,9 @@
             toggleMobileMenu();
         }
         function searchCore(query) {
+            document.getElementById('article-view').classList.add('hidden');
+            document.getElementById('legal-view').classList.add('hidden');
+            document.getElementById('home-view').classList.remove('hidden');
             const filtered = allNews.filter(item => item.title.toLowerCase().includes(query));
             document.getElementById('slider-wrapper').classList.add('hidden');
             
@@ -384,9 +583,10 @@
         function openArticle(slug, pushState = true) {
             const post = allNews.find(item => item.slug === slug);
             if (post) {
-                if(pushState) { history.pushState({slug: slug}, "", "/" + slug); }
+                if(pushState) { history.pushState({ type: 'article', slug: slug }, "", "/" + slug); }
                 
                 document.getElementById('home-view').classList.add('hidden');
+                document.getElementById('legal-view').classList.add('hidden');
                 document.getElementById('article-view').classList.remove('hidden');
                 
                 document.getElementById('detail-title').innerText = post.title;
@@ -404,21 +604,16 @@
         }
 
         function goBackHome() {
-            history.pushState({}, "", "/");
-            renderHome(allNews);
+            history.pushState({ type: 'home' }, "", "/");
+            renderHome(allNews, false);
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
         function filterCategoryAndClose(cat) { filterCategory(cat); toggleMobileMenu(); }
         
-        window.addEventListener('popstate', function(event) {
-            const path = window.location.pathname.replace(/^\/|\/$/g, '');
-            if (path && path !== 'index.html' && !path.includes('.html')) {
-                const found = allNews.find(item => item.slug === path);
-                if (found) { openArticle(found.slug, false); return; }
-            }
-            renderHome(allNews);
+        window.addEventListener('popstate', function() {
+            handleRoute(window.location.pathname, false);
         });
 
         function shareWebsite(platform) {
