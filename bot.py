@@ -63,24 +63,39 @@ def slugify(text):
     words = text.split()
     return "-".join(words[:4])
 
-# NEW: DYNAMIC SITEMAP GENERATOR FOR GOOGLE INDEXING
+# COMPLETE CLEAN SITEMAP GENERATOR (NO .HTML)
 def generate_sitemap():
     try:
-        print("Generating sitemap.xml for Google Indexing...")
-        posts = supabase.table("posts").select("slug, created_at").order("id", desc=True).execute()
+        print("Generating clean sitemap.xml for Google Indexing...")
+        today = datetime.now().strftime('%Y-%m-%d')
+        
         xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
         xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-        xml += '  <url>\n    <loc>https://fastjob.online/</loc>\n    <changefreq>always</changefreq>\n    <priority>1.0</priority>\n  </url>\n'
         
+        # 1. Main Home Page
+        xml += f'  <url>\n    <loc>https://fastjob.online/</loc>\n    <lastmod>{today}</lastmod>\n    <changefreq>always</changefreq>\n    <priority>1.0</priority>\n  </url>\n'
+        
+        # 2. All 7 Category Pages (Clean URLs)
+        category_slugs = ['politics', 'economy', 'business', 'sports', 'automobile', 'tech-ai', 'jobs']
+        for c_slug in category_slugs:
+            xml += f'  <url>\n    <loc>https://fastjob.online/category/{c_slug}</loc>\n    <lastmod>{today}</lastmod>\n    <changefreq>hourly</changefreq>\n    <priority>0.9</priority>\n  </url>\n'
+            
+        # 3. All 6 Legal & Info Pages (Clean URLs without .html)
+        static_slugs = ['about-us', 'privacy-policy', 'terms-and-conditions', 'disclaimer', 'editorial-policy', 'contact-us']
+        for s_slug in static_slugs:
+            xml += f'  <url>\n    <loc>https://fastjob.online/{s_slug}</loc>\n    <lastmod>{today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>\n  </url>\n'
+        
+        # 4. All News Articles from Supabase
+        posts = supabase.table("posts").select("slug, created_at").order("id", desc=True).limit(1000).execute()
         for p in posts.data:
-            date_str = p['created_at'].split('T')[0]
+            date_str = p['created_at'].split('T')[0] if p.get('created_at') else today
             xml += f'  <url>\n    <loc>https://fastjob.online/{p["slug"]}</loc>\n    <lastmod>{date_str}</lastmod>\n    <changefreq>daily</changefreq>\n    <priority>0.8</priority>\n  </url>\n'
         
         xml += '</urlset>'
         
         with open('sitemap.xml', 'w', encoding='utf-8') as f:
             f.write(xml)
-        print("sitemap.xml updated successfully!")
+        print("sitemap.xml updated successfully with Clean URLs!")
     except Exception as e:
         print(f"Sitemap Error: {e}")
 
@@ -154,12 +169,14 @@ if __name__ == "__main__":
     if not OPENAI_API_KEY or not SUPABASE_KEY:
         print("ERROR: API Keys missing!")
     else:
+        # Generate initial clean sitemap immediately on start
+        generate_sitemap()
         print(f"[{datetime.now()}] Bot activated for a 1-Hour continuous cycle!")
         for i in range(6):
             print(f"\n--- Starting Post {i+1} of 6 ---")
             success = fetch_and_insert_single()
             if success:
-                generate_sitemap() # Auto-update sitemap after every successful post
+                generate_sitemap()
             else:
                 print("No new posts found right now.")
             
