@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title id="page-title">FastJob Alert - Live Global News & Verified Coverage</title>
+    <title id="page-title">FastJob Alert - Premium Global News & Verified Coverage</title>
     <meta name="description" content="FastJob Alert provides 24/7 breaking news, politics, economy, tech, sports, auto, and job updates globally. Stay informed with verified coverage.">
     <meta name="keywords" content="News, Breaking News, Jobs, Politics, Economy, Tech News, Auto, Sports, Daily Updates, FastJob Alert">
     <meta name="robots" content="index, follow">
-    <meta name="author" content="FastJob Alert Desk">
+    <meta name="author" content="FastJob Alert Editorial Desk">
     
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4ECBSC962B"></script>
@@ -19,81 +19,87 @@
       gtag('config', 'G-4ECBSC962B');
     </script>
 
-    <!-- YAHI WO MAIN DESIGN SCRIPT HAI JO MISSING THI -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Mukta:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;0,900;1,600&family=Mukta:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Mukta', sans-serif; background-color: #f4f6f8; }
+        body { font-family: 'Mukta', sans-serif; background-color: #f8fafc; }
         .heading-font { font-family: 'Playfair Display', serif; }
         
         /* Breaking News Ticker Animation */
-        .ticker-wrap { width: 100%; overflow: hidden; background-color: #111; color: white; padding: 4px 0; display: flex; align-items: center;}
-        .ticker-label { background: #cc0000; color: white; padding: 4px 15px; font-weight: bold; font-size: 12px; z-index: 10; position: relative; text-transform: uppercase; letter-spacing: 1px;}
-        .ticker { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 25s linear infinite; }
-        .ticker-item { display: inline-block; padding: 0 2rem; font-size: 14px; font-weight: 600;}
-        .ticker-item:hover { color: #ffeb3b; cursor: pointer; }
+        .ticker-wrap { width: 100%; overflow: hidden; background-color: #0f172a; color: white; padding: 5px 0; display: flex; align-items: center;}
+        .ticker-label { background: linear-gradient(90deg, #cc0000, #990000); color: white; padding: 5px 20px; font-weight: 800; font-size: 12px; z-index: 10; position: relative; text-transform: uppercase; letter-spacing: 1.5px; box-shadow: 5px 0 15px rgba(0,0,0,0.5);}
+        .ticker { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 30s linear infinite; }
+        .ticker-item { display: inline-block; padding: 0 2.5rem; font-size: 14px; font-weight: 600;}
+        .ticker-item:hover { color: #facc15; cursor: pointer; text-decoration: underline; text-underline-offset: 4px; }
         @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 
         /* Premium Article Formatting */
-        #detail-content { color: #222; line-height: 1.9; font-size: 1.15rem; }
-        #detail-content p { margin-bottom: 1.8rem; }
-        #detail-content p:first-of-type::first-letter { font-size: 3.5rem; font-weight: 900; float: left; line-height: 1; margin-right: 0.5rem; color: #cc0000; font-family: 'Playfair Display', serif; }
-        #detail-content .seo-title { font-size: 2.5rem; font-weight: 900; color: #111; margin-bottom: 1.5rem; line-height: 1.2; font-family: 'Playfair Display', serif; border-bottom: 4px solid #cc0000; padding-bottom: 10px; display: inline-block;}
-        #detail-content .intro-text { font-weight: 600; font-size: 1.25rem; color: #444; border-left: 4px solid #cc0000; padding-left: 15px;}
-        #detail-content .article-subheading { font-size: 1.7rem; font-weight: 800; color: #000; margin-top: 2.5rem; margin-bottom: 1.2rem; font-family: 'Playfair Display', serif;}
-        #detail-content .hashtags { margin-top: 3rem; font-weight: bold; color: #1877f2; background: #eef2ff; padding: 15px; border-radius: 8px;}
-        .article-table { width: 100%; border-collapse: collapse; margin: 2rem 0; font-size: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        .article-table th, .article-table td { border: 1px solid #e5e7eb; padding: 15px; text-align: left; }
-        .article-table th { background-color: #f9fafb; font-weight: 800; color: #111; text-transform: uppercase; letter-spacing: 0.5px;}
+        #detail-content { color: #1e293b; line-height: 2; font-size: 1.15rem; }
+        #detail-content p { margin-bottom: 2rem; }
+        #detail-content p:first-of-type::first-letter { font-size: 4rem; font-weight: 900; float: left; line-height: 0.8; margin-right: 0.8rem; margin-top: 0.2rem; color: #cc0000; font-family: 'Playfair Display', serif; }
+        #detail-content .seo-title { font-size: 2.5rem; font-weight: 900; color: #0f172a; margin-bottom: 1.5rem; line-height: 1.2; font-family: 'Playfair Display', serif; border-bottom: 3px solid #cc0000; padding-bottom: 10px; display: inline-block;}
+        #detail-content .intro-text { font-weight: 600; font-size: 1.25rem; color: #334155; border-left: 5px solid #cc0000; padding-left: 20px; background: #fef2f2; padding-top: 10px; padding-bottom: 10px; border-radius: 0 8px 8px 0;}
+        #detail-content .article-subheading { font-size: 1.8rem; font-weight: 800; color: #0f172a; margin-top: 3rem; margin-bottom: 1.5rem; font-family: 'Playfair Display', serif; display: flex; align-items: center;}
+        #detail-content .article-subheading::before { content: ""; display: inline-block; width: 8px; height: 8px; background: #cc0000; border-radius: 50%; margin-right: 12px; }
+        #detail-content .hashtags { margin-top: 4rem; font-weight: bold; color: #2563eb; background: #eff6ff; padding: 20px; border-radius: 12px; border: 1px dashed #bfdbfe;}
+        .article-table { width: 100%; border-collapse: collapse; margin: 2.5rem 0; font-size: 1rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border-radius: 8px; overflow: hidden; }
+        .article-table th, .article-table td { border: 1px solid #e2e8f0; padding: 18px; text-align: left; }
+        .article-table th { background-color: #f8fafc; font-weight: 900; color: #0f172a; text-transform: uppercase; letter-spacing: 1px; font-family: 'Playfair Display', serif;}
         
-        .slider-container { position: relative; overflow: hidden; border-radius: 0.5rem; }
-        .slide { display: none; animation: fade 0.8s ease-in-out; }
+        .slider-container { position: relative; overflow: hidden; border-radius: 1rem; }
+        .slide { display: none; animation: slideFade 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
         .slide.active { display: block; }
-        @keyframes fade { from { opacity: 0.7; transform: scale(1.02); } to { opacity: 1; transform: scale(1); } }
+        @keyframes slideFade { from { opacity: 0; transform: scale(1.03); } to { opacity: 1; transform: scale(1); } }
         
-        .mag-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .mag-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
         .mag-grid .featured { grid-column: span 2; grid-row: span 2; }
-        @media (max-width: 768px) { .mag-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } .mag-grid .featured { grid-column: span 2; grid-row: span 1; } }
+        @media (max-width: 768px) { .mag-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; } .mag-grid .featured { grid-column: span 2; grid-row: span 1; } }
+
+        /* Smooth Scrolling */
+        html { scroll-behavior: smooth; }
     </style>
 </head>
 <body class="text-gray-900 flex flex-col min-h-screen overflow-x-hidden">
 
-    <!-- Top Mini Bar -->
-    <div class="bg-gray-100 text-gray-700 text-[10px] md:text-xs py-1 px-2 md:px-4 w-full border-b border-gray-300">
+    <!-- Premium Top Mini Bar -->
+    <div class="bg-gray-50 text-gray-600 text-[10px] md:text-xs py-1.5 px-2 md:px-4 w-full border-b border-gray-200">
         <div class="w-full max-w-[1400px] mx-auto flex justify-between items-center">
-            <span class="font-bold tracking-wide text-gray-900"><i class="fa-regular fa-calendar-days text-[#cc0000] mr-1.5"></i><span id="live-date"></span></span>
-            <div class="hidden md:flex gap-5 font-bold uppercase tracking-wider text-[10px]">
-                <a href="/about-us.html" class="hover:text-[#cc0000] transition">About</a>
-                <a href="/contact-us.html" class="hover:text-[#cc0000] transition">Contact</a>
-                <a href="/editorial-policy.html" class="hover:text-[#cc0000] transition">Editorial Policy</a>
+            <span class="font-bold tracking-wider text-gray-800 flex items-center">
+                <i class="fa-regular fa-calendar-days text-[#cc0000] mr-2"></i><span id="live-date"></span>
+            </span>
+            <div class="hidden md:flex gap-6 font-bold uppercase tracking-widest text-[10px]">
+                <button onclick="openLegal('About Us')" class="hover:text-[#cc0000] transition">About</button>
+                <button onclick="openLegal('Contact Desk')" class="hover:text-[#cc0000] transition">Contact</button>
+                <button onclick="openLegal('Editorial Policy')" class="hover:text-[#cc0000] transition">Editorial Policy</button>
             </div>
         </div>
     </div>
 
-    <!-- Main Header -->
-    <header class="bg-white sticky top-0 z-40 shadow-md border-b-4 border-[#cc0000]">
-        <div class="w-full px-2 md:px-4 flex items-center justify-between py-3 md:py-4 gap-4 max-w-[1400px] mx-auto">
+    <!-- Main Premium Header -->
+    <header class="bg-white sticky top-0 z-40 shadow-[0_4px_20px_rgba(0,0,0,0.05)] border-b-[3px] border-[#cc0000]">
+        <div class="w-full px-3 md:px-4 flex items-center justify-between py-3 md:py-5 gap-4 max-w-[1400px] mx-auto">
             
             <!-- Grand Logo -->
-            <a href="/" class="flex items-center shrink-0 cursor-pointer">
-                <div class="bg-[#cc0000] text-white p-2 md:p-3 rounded-lg shadow-lg mr-2 md:mr-3 flex items-center justify-center">
-                    <i class="fa-solid fa-bolt text-xl md:text-3xl text-yellow-400"></i>
+            <a href="/" onclick="event.preventDefault(); goBackHome();" class="flex items-center shrink-0 cursor-pointer group">
+                <div class="bg-gradient-to-br from-[#cc0000] to-[#990000] text-white p-2 md:p-3.5 rounded-xl shadow-[0_5px_15px_rgba(204,0,0,0.3)] mr-3 md:mr-4 flex items-center justify-center transform group-hover:scale-105 transition duration-300">
+                    <i class="fa-solid fa-bolt text-xl md:text-3xl text-yellow-300"></i>
                 </div>
                 <div class="flex flex-col">
-                    <span class="text-2xl md:text-4xl font-black text-[#111] tracking-tighter heading-font leading-none">FASTJOB</span>
-                    <span class="text-[10px] md:text-sm font-black text-[#cc0000] tracking-widest uppercase mt-0.5">Alert Desk</span>
+                    <span class="text-3xl md:text-5xl font-black text-[#0f172a] tracking-tighter heading-font leading-none group-hover:text-[#cc0000] transition duration-300">FASTJOB</span>
+                    <span class="text-[10px] md:text-[13px] font-black text-[#cc0000] tracking-[0.25em] uppercase mt-1 flex items-center">
+                        <span class="w-2 h-2 bg-yellow-400 rounded-full mr-2"></span>Alert Desk
+                    </span>
                 </div>
             </a>
             
-            <!-- Search -->
-            <div class="bg-gray-100 border border-gray-200 rounded-full px-4 py-2 md:py-2.5 flex items-center w-full max-w-lg shadow-inner flex-grow focus-within:bg-white focus-within:border-[#cc0000] focus-within:shadow-md transition duration-300">
-                <input type="text" id="searchInput" onkeyup="searchNews()" placeholder="Search top stories..." class="w-full text-xs md:text-sm text-gray-900 outline-none font-bold bg-transparent">
-                <i class="fa-solid fa-magnifying-glass text-gray-500 cursor-pointer text-sm md:text-lg"></i>
+            <!-- Sleek Search -->
+            <div class="bg-gray-50 border-2 border-gray-100 rounded-full px-5 py-2.5 md:py-3 flex items-center w-full max-w-lg shadow-inner flex-grow focus-within:bg-white focus-within:border-[#cc0000] focus-within:shadow-[0_0_15px_rgba(204,0,0,0.1)] transition duration-300">
+                <input type="text" id="searchInput" onkeyup="searchNews()" placeholder="Search top global stories..." class="w-full text-xs md:text-sm text-gray-900 outline-none font-bold bg-transparent">
+                <i class="fa-solid fa-magnifying-glass text-gray-400 cursor-pointer text-sm md:text-lg"></i>
             </div>
             
-            <button onclick="toggleMobileMenu()" class="text-gray-900 text-2xl md:text-3xl hover:text-[#cc0000] transition focus:outline-none shrink-0 pl-1 md:pl-2">
+            <button onclick="toggleMobileMenu()" class="text-[#0f172a] text-2xl md:text-3xl hover:text-[#cc0000] transition focus:outline-none shrink-0 pl-2">
                 <i class="fa-solid fa-bars-staggered"></i>
             </button>
         </div>
@@ -101,42 +107,43 @@
 
     <!-- Breaking News Ticker -->
     <div class="ticker-wrap shadow-inner relative">
-        <div class="ticker-label absolute left-0 h-full flex items-center shadow-[5px_0_10px_rgba(0,0,0,0.5)]">BREAKING NEWS</div>
+        <div class="ticker-label absolute left-0 h-full flex items-center shadow-[5px_0_10px_rgba(0,0,0,0.5)]"><i class="fa-solid fa-circle-bolt mr-2"></i>BREAKING</div>
         <div class="ticker" id="ticker-content">
-            <span class="ticker-item"><i class="fa-solid fa-circle-notch fa-spin mr-2"></i> Loading live updates...</span>
+            <span class="ticker-item"><i class="fa-solid fa-circle-notch fa-spin mr-2"></i> Initializing live updates...</span>
         </div>
     </div>
 
-    <div id="mobileMenu" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex justify-end">
-        <div class="w-72 bg-white h-full shadow-2xl flex flex-col p-6 overflow-y-auto">
-            <button onclick="toggleMobileMenu()" class="self-end text-gray-400 hover:text-[#cc0000] text-3xl mb-8"><i class="fa-solid fa-xmark"></i></button>
-            <nav class="flex flex-col space-y-5 font-black text-gray-800 text-xl heading-font uppercase">
-                <button onclick="filterCategoryAndClose('All')" class="text-left border-b-2 border-gray-100 pb-3 hover:text-[#cc0000] transition flex items-center"><i class="fa-solid fa-house text-[#cc0000] text-lg w-8"></i> Home</button>
-                <button onclick="filterCategoryAndClose('Politics')" class="text-left border-b-2 border-gray-100 pb-3 hover:text-[#cc0000] transition flex items-center"><i class="fa-solid fa-landmark text-[#cc0000] text-lg w-8"></i> Politics</button>
-                <button onclick="filterCategoryAndClose('Economy')" class="text-left border-b-2 border-gray-100 pb-3 hover:text-[#cc0000] transition flex items-center"><i class="fa-solid fa-chart-pie text-[#cc0000] text-lg w-8"></i> Economy</button>
-                <button onclick="filterCategoryAndClose('Business')" class="text-left border-b-2 border-gray-100 pb-3 hover:text-[#cc0000] transition flex items-center"><i class="fa-solid fa-briefcase text-[#cc0000] text-lg w-8"></i> Business</button>
-                <button onclick="filterCategoryAndClose('Sports')" class="text-left border-b-2 border-gray-100 pb-3 hover:text-[#cc0000] transition flex items-center"><i class="fa-solid fa-trophy text-[#cc0000] text-lg w-8"></i> Sports</button>
-                <button onclick="filterCategoryAndClose('Automobile')" class="text-left border-b-2 border-gray-100 pb-3 hover:text-[#cc0000] transition flex items-center"><i class="fa-solid fa-car text-[#cc0000] text-lg w-8"></i> Auto</button>
-                <button onclick="filterCategoryAndClose('Tech & AI')" class="text-left border-b-2 border-gray-100 pb-3 hover:text-[#cc0000] transition flex items-center"><i class="fa-solid fa-microchip text-[#cc0000] text-lg w-8"></i> Tech</button>
-                <button onclick="filterCategoryAndClose('Jobs')" class="text-left border-b-2 border-gray-100 pb-3 text-[#cc0000] flex items-center"><i class="fa-solid fa-user-tie text-gray-800 text-lg w-8"></i> Jobs</button>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex justify-end transition-opacity">
+        <div class="w-72 bg-white h-full shadow-2xl flex flex-col p-8 overflow-y-auto border-l-4 border-[#cc0000]">
+            <button onclick="toggleMobileMenu()" class="self-end text-gray-400 hover:text-[#cc0000] text-3xl mb-8 transform hover:rotate-90 transition"><i class="fa-solid fa-xmark"></i></button>
+            <nav class="flex flex-col space-y-6 font-black text-gray-900 text-xl heading-font uppercase">
+                <button onclick="filterCategoryAndClose('All')" class="text-left border-b border-gray-200 pb-3 hover:text-[#cc0000] transition flex items-center"><i class="fa-solid fa-house text-[#cc0000] text-xl w-8"></i> Home</button>
+                <button onclick="filterCategoryAndClose('Politics')" class="text-left border-b border-gray-200 pb-3 hover:text-[#cc0000] transition flex items-center"><i class="fa-solid fa-landmark text-[#cc0000] text-xl w-8"></i> Politics</button>
+                <button onclick="filterCategoryAndClose('Economy')" class="text-left border-b border-gray-200 pb-3 hover:text-[#cc0000] transition flex items-center"><i class="fa-solid fa-chart-pie text-[#cc0000] text-xl w-8"></i> Economy</button>
+                <button onclick="filterCategoryAndClose('Business')" class="text-left border-b border-gray-200 pb-3 hover:text-[#cc0000] transition flex items-center"><i class="fa-solid fa-briefcase text-[#cc0000] text-xl w-8"></i> Business</button>
+                <button onclick="filterCategoryAndClose('Sports')" class="text-left border-b border-gray-200 pb-3 hover:text-[#cc0000] transition flex items-center"><i class="fa-solid fa-trophy text-[#cc0000] text-xl w-8"></i> Sports</button>
+                <button onclick="filterCategoryAndClose('Automobile')" class="text-left border-b border-gray-200 pb-3 hover:text-[#cc0000] transition flex items-center"><i class="fa-solid fa-car text-[#cc0000] text-xl w-8"></i> Auto</button>
+                <button onclick="filterCategoryAndClose('Tech & AI')" class="text-left border-b border-gray-200 pb-3 hover:text-[#cc0000] transition flex items-center"><i class="fa-solid fa-microchip text-[#cc0000] text-xl w-8"></i> Tech</button>
+                <button onclick="filterCategoryAndClose('Jobs')" class="text-left border-b border-gray-200 pb-3 text-[#cc0000] flex items-center"><i class="fa-solid fa-user-tie text-gray-900 text-xl w-8"></i> Jobs</button>
             </nav>
         </div>
     </div>
 
-    <main class="w-full max-w-[1400px] mx-auto px-2 md:px-4 py-6 md:py-10 flex-grow overflow-hidden">
+    <main class="w-full max-w-[1400px] mx-auto px-3 md:px-4 py-8 md:py-12 flex-grow overflow-hidden">
         
         <!-- Detailed Article View -->
-        <div id="article-view" class="hidden bg-white p-5 md:p-12 w-full mx-auto shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] rounded-xl border border-gray-200">
-            <button onclick="goBackHome()" class="mb-8 bg-white border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white font-black uppercase text-xs tracking-widest py-2.5 px-6 rounded-full inline-flex items-center transition duration-300"><i class="fa-solid fa-arrow-left mr-2"></i> Back to Global Feed</button>
+        <div id="article-view" class="hidden bg-white p-6 md:p-14 w-full mx-auto shadow-[0_15px_50px_-15px_rgba(0,0,0,0.1)] rounded-2xl border border-gray-100">
+            <button onclick="goBackHome()" class="mb-10 bg-white border-2 border-gray-200 text-gray-600 hover:border-[#cc0000] hover:text-[#cc0000] font-black uppercase text-[11px] tracking-[0.2em] py-3 px-8 rounded-full inline-flex items-center transition duration-300 shadow-sm"><i class="fa-solid fa-arrow-left mr-3"></i> Back to Global Feed</button>
             
-            <h1 id="detail-title" class="text-3xl md:text-[50px] font-black text-[#111] leading-[1.1] mb-6 heading-font"></h1>
+            <h1 id="detail-title" class="text-3xl md:text-[54px] font-black text-[#0f172a] leading-[1.1] mb-8 heading-font"></h1>
             
-            <div class="flex flex-col md:flex-row md:items-center justify-between border-y-2 border-gray-100 py-4 mb-8 bg-white gap-4">
-                <div class="flex items-center gap-4">
-                    <img src="https://ui-avatars.com/api/?name=FastJob+Alert&background=111&color=fff&bold=true" class="w-14 h-14 rounded-full shadow-lg border-2 border-[#cc0000]">
+            <div class="flex flex-col md:flex-row md:items-center justify-between border-y border-gray-200 py-6 mb-10 bg-gray-50 px-6 rounded-xl gap-4">
+                <div class="flex items-center gap-5">
+                    <img src="https://ui-avatars.com/api/?name=FastJob+Desk&background=0f172a&color=fff&bold=true" class="w-16 h-16 rounded-full shadow-lg border-2 border-white">
                     <div>
-                        <p class="font-black text-sm text-[#cc0000] uppercase tracking-wider">By FastJob Alert Editorial Desk</p>
-                        <p id="detail-date" class="text-sm font-bold text-gray-500 mt-1"><i class="fa-regular fa-calendar mr-1"></i></p>
+                        <p class="font-black text-sm text-[#cc0000] uppercase tracking-widest">FastJob Editorial Desk</p>
+                        <p id="detail-date" class="text-sm font-bold text-gray-500 mt-1"><i class="fa-regular fa-clock mr-1.5"></i></p>
                     </div>
                 </div>
                 <div class="flex gap-3">
@@ -145,73 +152,93 @@
                 </div>
             </div>
             
-            <img id="detail-image" src="" class="w-full h-auto object-cover max-h-[600px] mb-10 rounded-xl shadow-[0_5px_20px_rgba(0,0,0,0.1)]">
+            <img id="detail-image" src="" class="w-full h-auto object-cover max-h-[650px] mb-12 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
             <div id="detail-content" class="w-full overflow-x-auto text-gray-800"></div>
         </div>
 
         <!-- Home Grid View -->
         <div id="home-view">
             <!-- Mega Slider -->
-            <div id="slider-wrapper" class="slider-container bg-gray-900 shadow-2xl min-h-[300px] md:min-h-[550px] mb-10 md:mb-16 rounded-xl overflow-hidden">
-                <p class="p-20 text-center text-white font-bold text-xl"><i class="fa-solid fa-spinner fa-spin mr-2"></i> Initializing Global Network...</p>
+            <div id="slider-wrapper" class="slider-container bg-gray-900 shadow-2xl min-h-[300px] md:min-h-[600px] mb-12 md:mb-20 rounded-2xl overflow-hidden border border-gray-800">
+                <p class="p-20 text-center text-white font-bold text-2xl"><i class="fa-solid fa-circle-notch fa-spin mr-3 text-[#cc0000]"></i> Initializing Global Network...</p>
             </div>
             
-            <div id="category-sections" class="space-y-12 md:space-y-20"></div>
+            <div id="category-sections" class="space-y-16 md:space-y-24"></div>
         </div>
     </main>
 
-    <!-- Professional Footer -->
-    <footer class="bg-[#111] text-white pt-16 pb-8 mt-12 border-t-[10px] border-[#cc0000]">
-        <div class="w-full max-w-[1400px] mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-            <div>
-                <a href="/" class="flex items-center shrink-0 cursor-pointer mb-6">
-                    <div class="bg-[#cc0000] text-white p-2 rounded-lg mr-2 flex items-center justify-center"><i class="fa-solid fa-bolt text-xl text-yellow-400"></i></div>
+    <!-- Ultra-Premium Footer -->
+    <footer class="bg-[#050505] text-gray-300 pt-20 pb-10 mt-12 border-t-[8px] border-[#cc0000] relative overflow-hidden">
+        <!-- Decorative Glow -->
+        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full max-w-4xl h-1 bg-gradient-to-r from-transparent via-red-600 to-transparent opacity-50 blur-sm"></div>
+        
+        <div class="w-full max-w-[1400px] mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-16 mb-16">
+            <div class="col-span-1 md:col-span-1">
+                <a href="/" onclick="event.preventDefault(); goBackHome();" class="flex items-center shrink-0 cursor-pointer mb-8">
+                    <div class="bg-gradient-to-br from-[#cc0000] to-[#990000] text-white p-3 rounded-xl mr-3 flex items-center justify-center shadow-lg"><i class="fa-solid fa-bolt text-2xl text-yellow-300"></i></div>
                     <div class="flex flex-col">
-                        <span class="text-3xl font-black text-white tracking-tighter heading-font leading-none">FASTJOB</span>
-                        <span class="text-[10px] font-black text-gray-400 tracking-widest uppercase mt-0.5">Global News Portal</span>
+                        <span class="text-4xl font-black text-white tracking-tighter heading-font leading-none">FASTJOB</span>
+                        <span class="text-[11px] font-black text-[#cc0000] tracking-[0.2em] uppercase mt-1">Global Portal</span>
                     </div>
                 </a>
-                <p class="text-gray-400 text-sm leading-relaxed font-semibold">FastJob Alert is your premier destination for breaking global news, cutting-edge analysis, and verified updates delivered 24/7.</p>
+                <p class="text-gray-400 text-base leading-relaxed font-semibold">FastJob Alert is your premier destination for breaking global news, cutting-edge analysis, and verified updates delivered seamlessly 24/7.</p>
             </div>
+            
             <div>
-                <h4 class="text-xl font-black mb-6 border-b-2 border-gray-800 pb-2 text-white uppercase tracking-wider heading-font">Legal & Info</h4>
+                <h4 class="text-xl font-black mb-8 border-b border-gray-800 pb-3 text-white uppercase tracking-widest heading-font">Legal & Info</h4>
                 <ul class="space-y-4 text-sm font-bold text-gray-400">
-                    <li><a href="/about-us.html" class="hover:text-[#cc0000] transition flex items-center"><i class="fa-solid fa-chevron-right text-[10px] mr-2 text-gray-600"></i>About Us</a></li>
-                    <li><a href="/privacy-policy.html" class="hover:text-[#cc0000] transition flex items-center"><i class="fa-solid fa-chevron-right text-[10px] mr-2 text-gray-600"></i>Privacy Policy</a></li>
-                    <li><a href="/terms-and-conditions.html" class="hover:text-[#cc0000] transition flex items-center"><i class="fa-solid fa-chevron-right text-[10px] mr-2 text-gray-600"></i>Terms & Conditions</a></li>
-                    <li><a href="/disclaimer.html" class="hover:text-[#cc0000] transition flex items-center"><i class="fa-solid fa-chevron-right text-[10px] mr-2 text-gray-600"></i>Disclaimer</a></li>
-                    <li><a href="/editorial-policy.html" class="hover:text-[#cc0000] transition flex items-center"><i class="fa-solid fa-chevron-right text-[10px] mr-2 text-gray-600"></i>Editorial Policy</a></li>
-                    <li><a href="/contact-us.html" class="hover:text-[#cc0000] transition flex items-center"><i class="fa-solid fa-chevron-right text-[10px] mr-2 text-gray-600"></i>Contact Desk</a></li>
+                    <li><button onclick="openLegal('About Us')" class="hover:text-yellow-400 hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-angle-right text-[#cc0000] mr-3"></i>About Us</button></li>
+                    <li><button onclick="openLegal('Privacy Policy')" class="hover:text-yellow-400 hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-angle-right text-[#cc0000] mr-3"></i>Privacy Policy</button></li>
+                    <li><button onclick="openLegal('Terms & Conditions')" class="hover:text-yellow-400 hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-angle-right text-[#cc0000] mr-3"></i>Terms & Conditions</button></li>
+                    <li><button onclick="openLegal('Disclaimer')" class="hover:text-yellow-400 hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-angle-right text-[#cc0000] mr-3"></i>Disclaimer</button></li>
+                    <li><button onclick="openLegal('Editorial Policy')" class="hover:text-yellow-400 hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-angle-right text-[#cc0000] mr-3"></i>Editorial Policy</button></li>
+                    <li><button onclick="openLegal('Contact Desk')" class="hover:text-yellow-400 hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-angle-right text-[#cc0000] mr-3"></i>Contact Desk</button></li>
                 </ul>
             </div>
+            
             <div>
-                <h4 class="text-xl font-black mb-6 border-b-2 border-gray-800 pb-2 text-white uppercase tracking-wider heading-font">News Desks</h4>
+                <h4 class="text-xl font-black mb-8 border-b border-gray-800 pb-3 text-white uppercase tracking-widest heading-font">News Desks</h4>
                 <ul class="space-y-4 text-sm font-bold text-gray-400">
-                    <li><button onclick="filterCategory('Politics')" class="hover:text-white transition flex items-center"><i class="fa-solid fa-bookmark text-[#cc0000] mr-2"></i>Politics Desk</button></li>
-                    <li><button onclick="filterCategory('Business')" class="hover:text-white transition flex items-center"><i class="fa-solid fa-bookmark text-[#cc0000] mr-2"></i>Business & Markets</button></li>
-                    <li><button onclick="filterCategory('Tech & AI')" class="hover:text-white transition flex items-center"><i class="fa-solid fa-bookmark text-[#cc0000] mr-2"></i>Tech Innovation</button></li>
-                    <li><button onclick="filterCategory('Jobs')" class="hover:text-white transition flex items-center"><i class="fa-solid fa-bookmark text-[#cc0000] mr-2"></i>Employment Alerts</button></li>
+                    <li><button onclick="filterCategory('Politics')" class="hover:text-white hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-bookmark text-[#cc0000] mr-3"></i>Politics Desk</button></li>
+                    <li><button onclick="filterCategory('Business')" class="hover:text-white hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-bookmark text-[#cc0000] mr-3"></i>Business & Markets</button></li>
+                    <li><button onclick="filterCategory('Tech & AI')" class="hover:text-white hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-bookmark text-[#cc0000] mr-3"></i>Tech Innovation</button></li>
+                    <li><button onclick="filterCategory('Jobs')" class="hover:text-white hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-bookmark text-[#cc0000] mr-3"></i>Employment Alerts</button></li>
                 </ul>
             </div>
+            
             <div>
-                <h4 class="text-xl font-black mb-6 border-b-2 border-gray-800 pb-2 text-white uppercase tracking-wider heading-font">Connect</h4>
-                <p class="text-sm font-bold text-gray-400 mb-4">Join our official channels for instant push alerts.</p>
-                <div class="flex gap-4 mb-4">
-                    <a href="https://whatsapp.com/channel/0029VbDajQV8PgsNA1lLhW0i" target="_blank" class="bg-[#25d366] text-white w-12 h-12 flex items-center justify-center rounded hover:bg-white hover:text-[#25d366] transition shadow-lg text-2xl"><i class="fa-brands fa-whatsapp"></i></a>
-                    <button onclick="shareWebsite('facebook')" class="bg-[#1877f2] text-white w-12 h-12 flex items-center justify-center rounded hover:bg-white hover:text-[#1877f2] transition shadow-lg text-xl"><i class="fa-brands fa-facebook-f"></i></button>
+                <h4 class="text-xl font-black mb-8 border-b border-gray-800 pb-3 text-white uppercase tracking-widest heading-font">Connect</h4>
+                <p class="text-sm font-bold text-gray-400 mb-6 leading-relaxed">Join our official broadcast channels for instant push alerts.</p>
+                <div class="flex gap-4">
+                    <a href="https://whatsapp.com/channel/0029VbDajQV8PgsNA1lLhW0i" target="_blank" class="bg-gray-800 text-white w-12 h-12 flex items-center justify-center rounded-full hover:bg-[#25d366] transition duration-300 shadow-lg text-2xl"><i class="fa-brands fa-whatsapp"></i></a>
+                    <button onclick="shareWebsite('facebook')" class="bg-gray-800 text-white w-12 h-12 flex items-center justify-center rounded-full hover:bg-[#1877f2] transition duration-300 shadow-lg text-xl"><i class="fa-brands fa-facebook-f"></i></button>
                 </div>
             </div>
         </div>
-        <div class="w-full max-w-[1400px] mx-auto px-4 border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 font-bold uppercase tracking-wider">
+        
+        <div class="w-full max-w-[1400px] mx-auto px-6 border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 font-bold uppercase tracking-[0.15em]">
             <p>&copy; 2026 FastJob Alert Network. All rights reserved.</p>
-            <p class="mt-3 md:mt-0 text-gray-400">Powered by Global News Infrastructure</p>
+            <p class="mt-4 md:mt-0">Powered by <span class="text-gray-300">Global News Infrastructure</span></p>
         </div>
     </footer>
 
     <!-- Fixed WhatsApp Bubble -->
-    <a href="https://whatsapp.com/channel/0029VbDajQV8PgsNA1lLhW0i" target="_blank" class="fixed bottom-6 right-6 bg-[#25d366] text-white rounded-full w-16 h-16 flex items-center justify-center text-4xl shadow-[0_0_20px_rgba(37,211,102,0.6)] hover:scale-110 transition duration-300 z-50 animate-bounce">
+    <a href="https://whatsapp.com/channel/0029VbDajQV8PgsNA1lLhW0i" target="_blank" class="fixed bottom-6 right-6 bg-gradient-to-r from-[#25d366] to-[#1da851] text-white rounded-full w-16 h-16 flex items-center justify-center text-4xl shadow-[0_10px_25px_rgba(37,211,102,0.5)] hover:scale-110 transition duration-300 z-40 animate-bounce">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
+
+    <!-- PREMIUM LEGAL MODAL (Replaces broken HTML pages) -->
+    <div id="legalModal" class="hidden fixed inset-0 z-[100] bg-black/80 backdrop-blur-md items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[85vh] overflow-hidden flex flex-col transform scale-95 transition-transform duration-300 border-t-8 border-[#cc0000]" id="legalModalBox">
+            <div class="bg-gray-50 border-b border-gray-200 p-6 flex justify-between items-center">
+                <h2 id="legalModalTitle" class="text-2xl md:text-3xl font-black text-[#0f172a] heading-font uppercase tracking-wider">Title</h2>
+                <button onclick="closeLegal()" class="text-gray-400 hover:text-[#cc0000] text-3xl transition bg-white w-10 h-10 rounded-full shadow-sm flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div id="legalModalContent" class="p-8 overflow-y-auto text-gray-700 leading-relaxed text-lg font-medium">
+                Content goes here...
+            </div>
+        </div>
+    </div>
 
     <script>
         // Set Live Date
@@ -224,6 +251,45 @@
         let slideIndex = 0;
         let slideInterval;
 
+        // Legal Data for Premium Modal
+        const legalData = {
+            'About Us': '<h3 class="text-2xl font-black mb-4 text-[#cc0000] heading-font">Welcome to FastJob Alert</h3><p class="mb-4">FastJob Alert is a premier digital news platform dedicated to delivering breaking global news, cutting-edge analysis, and verified updates 24/7.</p><p>Our mission is to empower our readers with accurate, unbiased, and comprehensive information across various domains including Politics, Economy, Tech & AI, Business, and Employment opportunities.</p>',
+            'Privacy Policy': '<h3 class="text-2xl font-black mb-4 text-[#cc0000] heading-font">Your Privacy Matters</h3><p class="mb-4">At FastJob Alert, we prioritize the protection of your personal information. We do not sell, trade, or rent users personal identification information to others.</p><p>We use standard analytics tools to improve user experience. By using our site, you consent to our data collection practices as outlined in standard web protocols.</p>',
+            'Terms & Conditions': '<h3 class="text-2xl font-black mb-4 text-[#cc0000] heading-font">Terms of Use</h3><p class="mb-4">By accessing this website, you agree to be bound by these website Terms and Conditions of Use. All content provided is for informational purposes only.</p><p>Reproduction of our exclusive articles without proper credit and backlinking is strictly prohibited.</p>',
+            'Disclaimer': '<h3 class="text-2xl font-black mb-4 text-[#cc0000] heading-font">General Disclaimer</h3><p class="mb-4">The information provided by FastJob Alert on this website is for general informational purposes only. All information is provided in good faith, however, we make no representation or warranty of any kind regarding the accuracy, validity, or completeness of any information.</p>',
+            'Editorial Policy': '<h3 class="text-2xl font-black mb-4 text-[#cc0000] heading-font">Editorial Integrity</h3><p class="mb-4">We maintain strict journalistic integrity. Our AI-assisted desk and editorial team ensure all news is fact-checked against multiple reliable sources before publication. We distinguish clearly between news reports and opinion pieces.</p>',
+            'Contact Desk': '<h3 class="text-2xl font-black mb-4 text-[#cc0000] heading-font">Reach Out to Us</h3><div class="bg-gray-100 p-6 rounded-xl border border-gray-200 mt-4"><p class="mb-2"><strong><i class="fa-solid fa-envelope mr-2 text-[#cc0000]"></i> Email:</strong> desk@fastjob.online</p><p><strong><i class="fa-brands fa-whatsapp mr-2 text-[#25d366] text-lg"></i> WhatsApp:</strong> Join our Official Channel for instant queries.</p></div>'
+        };
+
+        function openLegal(pageTitle) {
+            document.getElementById('legalModalTitle').innerText = pageTitle;
+            document.getElementById('legalModalContent').innerHTML = legalData[pageTitle] || '<p>Information currently unavailable.</p>';
+            
+            const modal = document.getElementById('legalModal');
+            const box = document.getElementById('legalModalBox');
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                box.classList.remove('scale-95');
+            }, 10);
+        }
+
+        function closeLegal() {
+            const modal = document.getElementById('legalModal');
+            const box = document.getElementById('legalModalBox');
+            
+            modal.classList.add('opacity-0');
+            box.classList.add('scale-95');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }, 300);
+        }
+
         async function loadNews() {
             try {
                 const response = await fetch(SUPABASE_URL + "/rest/v1/posts?select=*&order=id.desc&limit=100", {
@@ -234,12 +300,10 @@
                     allNews = data;
                     renderTicker(allNews);
                     
-                    // CLEAN URL ROUTING LOGIC
+                    // CLEAN URL CHECK (Without ?slug=)
                     const path = window.location.pathname.replace(/^\/|\/$/g, '');
-                    const staticPages = ['about-us.html', 'contact-us.html', 'disclaimer.html', 'editorial-policy.html', 'privacy-policy.html', 'terms-and-conditions.html', 'index.html', ''];
-                    
-                    if (path && !staticPages.includes(path)) {
-                        openArticle(path);
+                    if (path && path !== 'index.html' && !path.includes('.html')) {
+                        openArticle(path, false);
                     } else {
                         renderHome(allNews);
                     }
@@ -248,7 +312,7 @@
         }
 
         function renderTicker(newsItems) {
-            const topTitles = newsItems.slice(0, 8).map(item => `<span class="ticker-item" onclick="openArticle('${item.slug}')"><i class="fa-solid fa-bolt text-yellow-400 mr-1"></i> ${item.title}</span>`).join(' &nbsp;&nbsp;|&nbsp;&nbsp; ');
+            const topTitles = newsItems.slice(0, 8).map(item => `<span class="ticker-item" onclick="openArticle('${item.slug}')"><i class="fa-solid fa-bolt text-yellow-400 mr-2"></i> ${item.title}</span>`).join(' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ');
             document.getElementById('ticker-content').innerHTML = topTitles;
         }
 
@@ -259,12 +323,12 @@
             let sliderHTML = '';
             top5.forEach((item, index) => {
                 sliderHTML += `
-                <div class="slide ${index === 0 ? 'active' : ''} cursor-pointer w-full h-[300px] md:h-[550px] relative group" onclick="openArticle('${item.slug}')">
-                    <img src="${item.image_url}" class="w-full h-full object-cover transition duration-[2000ms] ease-out group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
-                    <div class="absolute bottom-0 left-0 right-0 p-6 md:p-16 w-full md:w-3/4">
-                        <span class="bg-[#cc0000] text-white text-[10px] md:text-sm px-4 py-1.5 rounded shadow-lg font-black uppercase tracking-widest">${item.category}</span>
-                        <h2 class="text-white text-2xl md:text-[50px] font-black mt-4 md:mt-6 leading-[1.1] heading-font drop-shadow-2xl">${item.title}</h2>
+                <div class="slide ${index === 0 ? 'active' : ''} cursor-pointer w-full h-[350px] md:h-[600px] relative group" onclick="openArticle('${item.slug}')">
+                    <img src="${item.image_url}" class="w-full h-full object-cover transition duration-[2500ms] ease-out group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6 md:p-20 w-full md:w-4/5">
+                        <span class="bg-[#cc0000] text-white text-[10px] md:text-sm px-5 py-2 rounded shadow-lg font-black uppercase tracking-[0.2em]">${item.category}</span>
+                        <h2 class="text-white text-3xl md:text-[55px] font-black mt-5 md:mt-8 leading-[1.1] heading-font drop-shadow-2xl">${item.title}</h2>
                     </div>
                 </div>`;
             });
@@ -281,13 +345,13 @@
                 slides[slideIndex].classList.remove('active');
                 slideIndex = (slideIndex + 1) % slides.length;
                 slides[slideIndex].classList.add('active');
-            }, 4000);
+            }, 4500);
         }
 
         function renderHome(newsList) {
             document.getElementById('article-view').classList.add('hidden');
             document.getElementById('home-view').classList.remove('hidden');
-            document.title = "FastJob Alert - Live Global News & Verified Coverage";
+            document.title = "FastJob Alert - Premium Global News & Verified Coverage";
             
             renderSlider(newsList);
 
@@ -297,20 +361,21 @@
                 const catPosts = newsList.filter(p => p.category === cat);
                 if(catPosts.length > 0) {
                     sectionsHTML += `
-                    <div class="mb-12">
-                        <div class="flex justify-between items-end mb-6 md:mb-8 border-b-2 border-gray-200 pb-2">
-                            <h3 class="text-2xl md:text-4xl font-black text-gray-900 heading-font uppercase tracking-tight"><span class="text-[#cc0000] mr-2">|</span>${cat}</h3>
-                            <button onclick="filterCategory('${cat}')" class="text-xs md:text-sm font-black text-gray-500 hover:text-[#cc0000] uppercase tracking-widest transition">See All <i class="fa-solid fa-arrow-right ml-1"></i></button>
+                    <div class="mb-16">
+                        <div class="flex justify-between items-end mb-8 border-b-[3px] border-gray-200 pb-3">
+                            <h3 class="text-3xl md:text-5xl font-black text-[#0f172a] heading-font uppercase tracking-tight"><span class="text-[#cc0000] mr-3">|</span>${cat}</h3>
+                            <button onclick="filterCategory('${cat}')" class="text-xs md:text-sm font-black text-gray-500 hover:text-[#cc0000] uppercase tracking-widest transition flex items-center">See All <i class="fa-solid fa-arrow-right ml-2 bg-gray-100 p-2 rounded-full"></i></button>
                         </div>
                         <div class="mag-grid">
                             ${catPosts.slice(0, 5).map((item, idx) => `
-                                <div onclick="openArticle('${item.slug}')" class="bg-white border border-gray-100 shadow-[0_4px_15px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_30px_rgba(204,0,0,0.1)] transition duration-300 cursor-pointer rounded-xl overflow-hidden flex flex-col group ${idx === 0 ? 'featured' : ''}">
-                                    <div class="overflow-hidden ${idx === 0 ? 'h-48 md:h-72' : 'h-32 md:h-40'}">
-                                        <img src="${item.image_url}" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+                                <div onclick="openArticle('${item.slug}')" class="bg-white border border-gray-100 shadow-[0_5px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_15px_40px_rgba(204,0,0,0.12)] transition duration-300 cursor-pointer rounded-2xl overflow-hidden flex flex-col group ${idx === 0 ? 'featured' : ''}">
+                                    <div class="overflow-hidden ${idx === 0 ? 'h-56 md:h-[350px]' : 'h-36 md:h-44'} relative">
+                                        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition z-10"></div>
+                                        <img src="${item.image_url}" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
                                     </div>
-                                    <div class="p-4 md:p-6 flex-grow bg-white">
-                                        <span class="text-[#cc0000] text-[10px] font-black uppercase tracking-widest mb-2 block">${item.category}</span>
-                                        <h4 class="font-black ${idx === 0 ? 'text-xl md:text-3xl heading-font leading-tight' : 'text-sm md:text-base leading-snug'} text-[#111] group-hover:text-[#cc0000] transition">${item.title}</h4>
+                                    <div class="p-5 md:p-7 flex-grow bg-white z-20">
+                                        <span class="text-[#cc0000] text-[10px] md:text-xs font-black uppercase tracking-[0.15em] mb-3 block">${item.category}</span>
+                                        <h4 class="font-black ${idx === 0 ? 'text-2xl md:text-4xl heading-font leading-tight' : 'text-base md:text-lg leading-snug'} text-[#0f172a] group-hover:text-[#cc0000] transition duration-300">${item.title}</h4>
                                     </div>
                                 </div>
                             `).join('')}
@@ -325,16 +390,16 @@
             const filtered = cat === 'All' ? allNews : allNews.filter(item => item.category === cat);
             renderSlider(filtered);
             
-            let gridHTML = `<div class="mb-12"><h3 class="text-3xl md:text-5xl font-black mb-8 heading-font uppercase tracking-tight"><span class="text-[#cc0000] mr-3">|</span>${cat} Desk</h3><div class="mag-grid">`;
+            let gridHTML = `<div class="mb-16"><h3 class="text-4xl md:text-6xl font-black mb-10 heading-font uppercase tracking-tight text-[#0f172a]"><span class="text-[#cc0000] mr-4">|</span>${cat} Desk</h3><div class="mag-grid">`;
             filtered.forEach((item, idx) => {
                 gridHTML += `
-                <div onclick="openArticle('${item.slug}')" class="bg-white border border-gray-100 shadow-[0_4px_15px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_30px_rgba(204,0,0,0.1)] transition duration-300 cursor-pointer rounded-xl overflow-hidden flex flex-col group ${idx === 0 ? 'featured' : ''}">
-                    <div class="overflow-hidden ${idx === 0 ? 'h-48 md:h-72' : 'h-32 md:h-40'}">
-                        <img src="${item.image_url}" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+                <div onclick="openArticle('${item.slug}')" class="bg-white border border-gray-100 shadow-[0_5px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_15px_40px_rgba(204,0,0,0.12)] transition duration-300 cursor-pointer rounded-2xl overflow-hidden flex flex-col group ${idx === 0 ? 'featured' : ''}">
+                    <div class="overflow-hidden ${idx === 0 ? 'h-56 md:h-[350px]' : 'h-36 md:h-44'} relative">
+                        <img src="${item.image_url}" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
                     </div>
-                    <div class="p-4 md:p-6 flex-grow bg-white">
-                        <span class="text-[#cc0000] text-[10px] font-black uppercase tracking-widest mb-2 block">${item.category}</span>
-                        <h4 class="font-black ${idx === 0 ? 'text-xl md:text-3xl heading-font leading-tight' : 'text-sm md:text-base leading-snug'} text-[#111] group-hover:text-[#cc0000] transition">${item.title}</h4>
+                    <div class="p-5 md:p-7 flex-grow bg-white">
+                        <span class="text-[#cc0000] text-[10px] md:text-xs font-black uppercase tracking-[0.15em] mb-3 block">${item.category}</span>
+                        <h4 class="font-black ${idx === 0 ? 'text-2xl md:text-4xl heading-font leading-tight' : 'text-base md:text-lg leading-snug'} text-[#0f172a] group-hover:text-[#cc0000] transition">${item.title}</h4>
                     </div>
                 </div>`;
             });
@@ -350,19 +415,21 @@
             const filtered = allNews.filter(item => item.title.toLowerCase().includes(query));
             document.getElementById('slider-wrapper').classList.add('hidden');
             
-            let gridHTML = `<div class="mb-12"><h3 class="text-2xl md:text-4xl font-black mb-8 heading-font"><span class="text-[#cc0000] mr-2">|</span>Search Results</h3><div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">`;
+            let gridHTML = `<div class="mb-16"><h3 class="text-3xl md:text-5xl font-black mb-10 heading-font text-[#0f172a]"><span class="text-[#cc0000] mr-3">|</span>Search Results</h3><div class="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-8">`;
             filtered.forEach(item => {
-                gridHTML += `<div onclick="openArticle('${item.slug}')" class="bg-white border border-gray-100 shadow-sm hover:shadow-xl transition cursor-pointer rounded-xl overflow-hidden flex flex-col group"><div class="overflow-hidden h-32 md:h-40"><img src="${item.image_url}" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500"></div><div class="p-4 flex-grow bg-white"><h4 class="font-black text-sm md:text-base leading-snug text-[#111] group-hover:text-[#cc0000] transition">${item.title}</h4></div></div>`;
+                gridHTML += `<div onclick="openArticle('${item.slug}')" class="bg-white border border-gray-100 shadow-md hover:shadow-xl transition cursor-pointer rounded-2xl overflow-hidden flex flex-col group"><div class="overflow-hidden h-36 md:h-44"><img src="${item.image_url}" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700"></div><div class="p-5 flex-grow bg-white"><h4 class="font-black text-base md:text-lg leading-snug text-[#0f172a] group-hover:text-[#cc0000] transition">${item.title}</h4></div></div>`;
             });
             gridHTML += '</div></div>';
             document.getElementById('category-sections').innerHTML = gridHTML;
         }
 
-        function openArticle(slug) {
+        function openArticle(slug, pushState = true) {
             const post = allNews.find(item => item.slug === slug);
             if (post) {
-                // CLEAN URL PUSH (No ?slug= anymore)
-                history.pushState({slug: slug}, "", "/" + slug);
+                // CLEAN URL UPDATE (No ?slug=)
+                if(pushState) {
+                    history.pushState({slug: slug}, "", "/" + slug);
+                }
                 
                 document.getElementById('home-view').classList.add('hidden');
                 document.getElementById('article-view').classList.remove('hidden');
@@ -392,9 +459,9 @@
         
         window.addEventListener('popstate', function(event) {
             const path = window.location.pathname.replace(/^\/|\/$/g, '');
-            if (path && path !== 'index.html') {
+            if (path && path !== 'index.html' && !path.includes('.html')) {
                 const found = allNews.find(item => item.slug === path);
-                if (found) { openArticle(found.slug); return; }
+                if (found) { openArticle(found.slug, false); return; }
             }
             renderHome(allNews);
         });
