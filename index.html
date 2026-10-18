@@ -26,15 +26,15 @@
         body { font-family: 'Mukta', sans-serif; background-color: #f8fafc; }
         .heading-font { font-family: 'Playfair Display', serif; }
         
-        /* Breaking News Ticker Animation */
-        .ticker-wrap { width: 100%; overflow: hidden; background-color: #0f172a; color: white; padding: 5px 0; display: flex; align-items: center;}
-        .ticker-label { background: linear-gradient(90deg, #cc0000, #990000); color: white; padding: 5px 20px; font-weight: 800; font-size: 12px; z-index: 10; position: relative; text-transform: uppercase; letter-spacing: 1.5px; box-shadow: 5px 0 15px rgba(0,0,0,0.5);}
-        .ticker { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 30s linear infinite; }
-        .ticker-item { display: inline-block; padding: 0 2.5rem; font-size: 14px; font-weight: 600;}
+        /* Premium Breaking News Ticker */
+        .ticker-wrap { width: 100%; overflow: hidden; background-color: #0f172a; color: white; display: flex; align-items: center; border-bottom: 4px solid #cc0000;}
+        .ticker-label { background: #cc0000; color: white; padding: 10px 25px; font-weight: 900; font-size: 13px; z-index: 10; position: relative; text-transform: uppercase; letter-spacing: 1.5px;}
+        .ticker { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 35s linear infinite; padding-top: 8px; padding-bottom: 8px;}
+        .ticker-item { display: inline-block; padding: 0 2.5rem; font-size: 15px; font-weight: 600;}
         .ticker-item:hover { color: #facc15; cursor: pointer; text-decoration: underline; text-underline-offset: 4px; }
         @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 
-        /* Premium Article Formatting */
+        /* Article Formatting */
         #detail-content { color: #1e293b; line-height: 2; font-size: 1.15rem; }
         #detail-content p { margin-bottom: 2rem; }
         #detail-content p:first-of-type::first-letter { font-size: 4rem; font-weight: 900; float: left; line-height: 0.8; margin-right: 0.8rem; margin-top: 0.2rem; color: #cc0000; font-family: 'Playfair Display', serif; }
@@ -55,61 +55,59 @@
         .mag-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
         .mag-grid .featured { grid-column: span 2; grid-row: span 2; }
         @media (max-width: 768px) { .mag-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; } .mag-grid .featured { grid-column: span 2; grid-row: span 1; } }
-
-        /* Smooth Scrolling */
         html { scroll-behavior: smooth; }
     </style>
 </head>
 <body class="text-gray-900 flex flex-col min-h-screen overflow-x-hidden">
 
-    <!-- Premium Top Mini Bar -->
-    <div class="bg-gray-50 text-gray-600 text-[10px] md:text-xs py-1.5 px-2 md:px-4 w-full border-b border-gray-200">
+    <!-- New Top Mini Bar -->
+    <div class="bg-white text-gray-800 text-[10px] md:text-xs py-2 px-2 md:px-4 w-full border-b border-gray-200">
         <div class="w-full max-w-[1400px] mx-auto flex justify-between items-center">
-            <span class="font-bold tracking-wider text-gray-800 flex items-center">
+            <span class="font-bold tracking-wider flex items-center">
                 <i class="fa-regular fa-calendar-days text-[#cc0000] mr-2"></i><span id="live-date"></span>
             </span>
-            <div class="hidden md:flex gap-6 font-bold uppercase tracking-widest text-[10px]">
-                <button onclick="openLegal('About Us')" class="hover:text-[#cc0000] transition">About</button>
-                <button onclick="openLegal('Contact Desk')" class="hover:text-[#cc0000] transition">Contact</button>
-                <button onclick="openLegal('Editorial Policy')" class="hover:text-[#cc0000] transition">Editorial Policy</button>
+            <div class="hidden md:flex gap-6 font-black uppercase tracking-widest text-[10px] text-gray-500">
+                <a href="/about-us.html" class="hover:text-[#0f172a] transition">About</a>
+                <a href="/contact-us.html" class="hover:text-[#0f172a] transition">Contact</a>
+                <a href="/editorial-policy.html" class="hover:text-[#0f172a] transition">Editorial Policy</a>
             </div>
         </div>
     </div>
 
-    <!-- Main Premium Header -->
-    <header class="bg-white sticky top-0 z-40 shadow-[0_4px_20px_rgba(0,0,0,0.05)] border-b-[3px] border-[#cc0000]">
-        <div class="w-full px-3 md:px-4 flex items-center justify-between py-3 md:py-5 gap-4 max-w-[1400px] mx-auto">
+    <!-- Redesigned Main Premium Header -->
+    <header class="bg-white sticky top-0 z-40 shadow-sm border-b border-gray-100">
+        <div class="w-full px-3 md:px-4 flex items-center justify-between py-4 md:py-6 gap-4 max-w-[1400px] mx-auto">
             
-            <!-- Grand Logo -->
+            <!-- Logo matching your image exactly -->
             <a href="/" onclick="event.preventDefault(); goBackHome();" class="flex items-center shrink-0 cursor-pointer group">
-                <div class="bg-gradient-to-br from-[#cc0000] to-[#990000] text-white p-2 md:p-3.5 rounded-xl shadow-[0_5px_15px_rgba(204,0,0,0.3)] mr-3 md:mr-4 flex items-center justify-center transform group-hover:scale-105 transition duration-300">
-                    <i class="fa-solid fa-bolt text-xl md:text-3xl text-yellow-300"></i>
+                <div class="bg-[#cc0000] w-12 h-12 md:w-[60px] md:h-[60px] rounded-xl mr-3 md:mr-4 flex items-center justify-center shadow-md transform group-hover:scale-105 transition duration-300">
+                    <i class="fa-solid fa-bolt text-2xl md:text-4xl text-yellow-400"></i>
                 </div>
-                <div class="flex flex-col">
-                    <span class="text-3xl md:text-5xl font-black text-[#0f172a] tracking-tighter heading-font leading-none group-hover:text-[#cc0000] transition duration-300">FASTJOB</span>
-                    <span class="text-[10px] md:text-[13px] font-black text-[#cc0000] tracking-[0.25em] uppercase mt-1 flex items-center">
-                        <span class="w-2 h-2 bg-yellow-400 rounded-full mr-2"></span>Alert Desk
+                <div class="flex flex-col justify-center">
+                    <span class="text-3xl md:text-[44px] font-black text-[#0f172a] tracking-tight heading-font leading-none mb-1">FASTJOB</span>
+                    <span class="text-[10px] md:text-xs font-black text-[#cc0000] tracking-[0.2em] uppercase flex items-center">
+                        <span class="w-1.5 h-1.5 bg-yellow-400 rounded-full mr-2"></span>ALERT DESK
                     </span>
                 </div>
             </a>
             
-            <!-- Sleek Search -->
-            <div class="bg-gray-50 border-2 border-gray-100 rounded-full px-5 py-2.5 md:py-3 flex items-center w-full max-w-lg shadow-inner flex-grow focus-within:bg-white focus-within:border-[#cc0000] focus-within:shadow-[0_0_15px_rgba(204,0,0,0.1)] transition duration-300">
-                <input type="text" id="searchInput" onkeyup="searchNews()" placeholder="Search top global stories..." class="w-full text-xs md:text-sm text-gray-900 outline-none font-bold bg-transparent">
-                <i class="fa-solid fa-magnifying-glass text-gray-400 cursor-pointer text-sm md:text-lg"></i>
+            <!-- Sleek Search Bar -->
+            <div class="bg-gray-50 border border-gray-200 rounded-full px-5 py-3 md:py-3.5 flex items-center w-full max-w-2xl shadow-inner focus-within:bg-white focus-within:border-gray-300 focus-within:shadow-md transition duration-300 mx-4 hidden md:flex">
+                <input type="text" id="searchInput" onkeyup="searchNews()" placeholder="Search top global stories..." class="w-full text-sm text-gray-800 outline-none font-bold bg-transparent placeholder-gray-400">
+                <i class="fa-solid fa-magnifying-glass text-gray-400 cursor-pointer text-lg"></i>
             </div>
             
-            <button onclick="toggleMobileMenu()" class="text-[#0f172a] text-2xl md:text-3xl hover:text-[#cc0000] transition focus:outline-none shrink-0 pl-2">
-                <i class="fa-solid fa-bars-staggered"></i>
+            <button onclick="toggleMobileMenu()" class="text-[#0f172a] text-3xl hover:text-[#cc0000] transition focus:outline-none shrink-0 pl-2">
+                <i class="fa-solid fa-bars"></i>
             </button>
         </div>
     </header>
 
     <!-- Breaking News Ticker -->
-    <div class="ticker-wrap shadow-inner relative">
-        <div class="ticker-label absolute left-0 h-full flex items-center shadow-[5px_0_10px_rgba(0,0,0,0.5)]"><i class="fa-solid fa-circle-bolt mr-2"></i>BREAKING</div>
+    <div class="ticker-wrap relative">
+        <div class="ticker-label absolute left-0 h-full flex items-center">BREAKING</div>
         <div class="ticker" id="ticker-content">
-            <span class="ticker-item"><i class="fa-solid fa-circle-notch fa-spin mr-2"></i> Initializing live updates...</span>
+            <span class="ticker-item"><i class="fa-solid fa-circle-notch fa-spin mr-2 text-yellow-400"></i> Initializing live updates...</span>
         </div>
     </div>
 
@@ -117,6 +115,10 @@
     <div id="mobileMenu" class="hidden fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex justify-end transition-opacity">
         <div class="w-72 bg-white h-full shadow-2xl flex flex-col p-8 overflow-y-auto border-l-4 border-[#cc0000]">
             <button onclick="toggleMobileMenu()" class="self-end text-gray-400 hover:text-[#cc0000] text-3xl mb-8 transform hover:rotate-90 transition"><i class="fa-solid fa-xmark"></i></button>
+            <!-- Mobile Search -->
+            <div class="bg-gray-100 rounded-lg px-4 py-2 mb-6 flex items-center border border-gray-200">
+                <input type="text" id="mobileSearchInput" onkeyup="searchNewsMobile()" placeholder="Search news..." class="w-full bg-transparent outline-none font-bold text-sm">
+            </div>
             <nav class="flex flex-col space-y-6 font-black text-gray-900 text-xl heading-font uppercase">
                 <button onclick="filterCategoryAndClose('All')" class="text-left border-b border-gray-200 pb-3 hover:text-[#cc0000] transition flex items-center"><i class="fa-solid fa-house text-[#cc0000] text-xl w-8"></i> Home</button>
                 <button onclick="filterCategoryAndClose('Politics')" class="text-left border-b border-gray-200 pb-3 hover:text-[#cc0000] transition flex items-center"><i class="fa-solid fa-landmark text-[#cc0000] text-xl w-8"></i> Politics</button>
@@ -140,7 +142,7 @@
             
             <div class="flex flex-col md:flex-row md:items-center justify-between border-y border-gray-200 py-6 mb-10 bg-gray-50 px-6 rounded-xl gap-4">
                 <div class="flex items-center gap-5">
-                    <img src="https://ui-avatars.com/api/?name=FastJob+Desk&background=0f172a&color=fff&bold=true" class="w-16 h-16 rounded-full shadow-lg border-2 border-white">
+                    <img src="https://ui-avatars.com/api/?name=FastJob+Desk&background=cc0000&color=fff&bold=true" class="w-16 h-16 rounded-full shadow-lg border-2 border-white">
                     <div>
                         <p class="font-black text-sm text-[#cc0000] uppercase tracking-widest">FastJob Editorial Desk</p>
                         <p id="detail-date" class="text-sm font-bold text-gray-500 mt-1"><i class="fa-regular fa-clock mr-1.5"></i></p>
@@ -168,14 +170,12 @@
     </main>
 
     <!-- Ultra-Premium Footer -->
-    <footer class="bg-[#050505] text-gray-300 pt-20 pb-10 mt-12 border-t-[8px] border-[#cc0000] relative overflow-hidden">
-        <!-- Decorative Glow -->
-        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full max-w-4xl h-1 bg-gradient-to-r from-transparent via-red-600 to-transparent opacity-50 blur-sm"></div>
+    <footer class="bg-[#0f172a] text-gray-300 pt-20 pb-10 mt-12 border-t-[8px] border-[#cc0000] relative overflow-hidden">
         
         <div class="w-full max-w-[1400px] mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-16 mb-16">
             <div class="col-span-1 md:col-span-1">
                 <a href="/" onclick="event.preventDefault(); goBackHome();" class="flex items-center shrink-0 cursor-pointer mb-8">
-                    <div class="bg-gradient-to-br from-[#cc0000] to-[#990000] text-white p-3 rounded-xl mr-3 flex items-center justify-center shadow-lg"><i class="fa-solid fa-bolt text-2xl text-yellow-300"></i></div>
+                    <div class="bg-[#cc0000] text-white w-12 h-12 rounded-xl mr-3 flex items-center justify-center shadow-lg"><i class="fa-solid fa-bolt text-2xl text-yellow-400"></i></div>
                     <div class="flex flex-col">
                         <span class="text-4xl font-black text-white tracking-tighter heading-font leading-none">FASTJOB</span>
                         <span class="text-[11px] font-black text-[#cc0000] tracking-[0.2em] uppercase mt-1">Global Portal</span>
@@ -185,14 +185,15 @@
             </div>
             
             <div>
-                <h4 class="text-xl font-black mb-8 border-b border-gray-800 pb-3 text-white uppercase tracking-widest heading-font">Legal & Info</h4>
+                <h4 class="text-xl font-black mb-8 border-b border-gray-800 pb-3 text-white uppercase tracking-widest heading-font">LEGAL & INFO</h4>
                 <ul class="space-y-4 text-sm font-bold text-gray-400">
-                    <li><button onclick="openLegal('About Us')" class="hover:text-yellow-400 hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-angle-right text-[#cc0000] mr-3"></i>About Us</button></li>
-                    <li><button onclick="openLegal('Privacy Policy')" class="hover:text-yellow-400 hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-angle-right text-[#cc0000] mr-3"></i>Privacy Policy</button></li>
-                    <li><button onclick="openLegal('Terms & Conditions')" class="hover:text-yellow-400 hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-angle-right text-[#cc0000] mr-3"></i>Terms & Conditions</button></li>
-                    <li><button onclick="openLegal('Disclaimer')" class="hover:text-yellow-400 hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-angle-right text-[#cc0000] mr-3"></i>Disclaimer</button></li>
-                    <li><button onclick="openLegal('Editorial Policy')" class="hover:text-yellow-400 hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-angle-right text-[#cc0000] mr-3"></i>Editorial Policy</button></li>
-                    <li><button onclick="openLegal('Contact Desk')" class="hover:text-yellow-400 hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-angle-right text-[#cc0000] mr-3"></i>Contact Desk</button></li>
+                    <!-- Real Pages Links Added Here -->
+                    <li><a href="/about-us.html" class="hover:text-white hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-angle-right text-[#cc0000] mr-3"></i>About Us</a></li>
+                    <li><a href="/privacy-policy.html" class="hover:text-white hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-angle-right text-[#cc0000] mr-3"></i>Privacy Policy</a></li>
+                    <li><a href="/terms-and-conditions.html" class="hover:text-white hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-angle-right text-[#cc0000] mr-3"></i>Terms & Conditions</a></li>
+                    <li><a href="/disclaimer.html" class="hover:text-white hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-angle-right text-[#cc0000] mr-3"></i>Disclaimer</a></li>
+                    <li><a href="/editorial-policy.html" class="hover:text-white hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-angle-right text-[#cc0000] mr-3"></i>Editorial Policy</a></li>
+                    <li><a href="/contact-us.html" class="hover:text-white hover:translate-x-2 transition transform flex items-center"><i class="fa-solid fa-angle-right text-[#cc0000] mr-3"></i>Contact Desk</a></li>
                 </ul>
             </div>
             
@@ -223,22 +224,9 @@
     </footer>
 
     <!-- Fixed WhatsApp Bubble -->
-    <a href="https://whatsapp.com/channel/0029VbDajQV8PgsNA1lLhW0i" target="_blank" class="fixed bottom-6 right-6 bg-gradient-to-r from-[#25d366] to-[#1da851] text-white rounded-full w-16 h-16 flex items-center justify-center text-4xl shadow-[0_10px_25px_rgba(37,211,102,0.5)] hover:scale-110 transition duration-300 z-40 animate-bounce">
+    <a href="https://whatsapp.com/channel/0029VbDajQV8PgsNA1lLhW0i" target="_blank" class="fixed bottom-6 right-6 bg-[#25d366] text-white rounded-full w-16 h-16 flex items-center justify-center text-4xl shadow-2xl hover:scale-110 transition duration-300 z-40 animate-bounce">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
-
-    <!-- PREMIUM LEGAL MODAL (Replaces broken HTML pages) -->
-    <div id="legalModal" class="hidden fixed inset-0 z-[100] bg-black/80 backdrop-blur-md items-center justify-center p-4 opacity-0 transition-opacity duration-300">
-        <div class="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[85vh] overflow-hidden flex flex-col transform scale-95 transition-transform duration-300 border-t-8 border-[#cc0000]" id="legalModalBox">
-            <div class="bg-gray-50 border-b border-gray-200 p-6 flex justify-between items-center">
-                <h2 id="legalModalTitle" class="text-2xl md:text-3xl font-black text-[#0f172a] heading-font uppercase tracking-wider">Title</h2>
-                <button onclick="closeLegal()" class="text-gray-400 hover:text-[#cc0000] text-3xl transition bg-white w-10 h-10 rounded-full shadow-sm flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            <div id="legalModalContent" class="p-8 overflow-y-auto text-gray-700 leading-relaxed text-lg font-medium">
-                Content goes here...
-            </div>
-        </div>
-    </div>
 
     <script>
         // Set Live Date
@@ -251,45 +239,6 @@
         let slideIndex = 0;
         let slideInterval;
 
-        // Legal Data for Premium Modal
-        const legalData = {
-            'About Us': '<h3 class="text-2xl font-black mb-4 text-[#cc0000] heading-font">Welcome to FastJob Alert</h3><p class="mb-4">FastJob Alert is a premier digital news platform dedicated to delivering breaking global news, cutting-edge analysis, and verified updates 24/7.</p><p>Our mission is to empower our readers with accurate, unbiased, and comprehensive information across various domains including Politics, Economy, Tech & AI, Business, and Employment opportunities.</p>',
-            'Privacy Policy': '<h3 class="text-2xl font-black mb-4 text-[#cc0000] heading-font">Your Privacy Matters</h3><p class="mb-4">At FastJob Alert, we prioritize the protection of your personal information. We do not sell, trade, or rent users personal identification information to others.</p><p>We use standard analytics tools to improve user experience. By using our site, you consent to our data collection practices as outlined in standard web protocols.</p>',
-            'Terms & Conditions': '<h3 class="text-2xl font-black mb-4 text-[#cc0000] heading-font">Terms of Use</h3><p class="mb-4">By accessing this website, you agree to be bound by these website Terms and Conditions of Use. All content provided is for informational purposes only.</p><p>Reproduction of our exclusive articles without proper credit and backlinking is strictly prohibited.</p>',
-            'Disclaimer': '<h3 class="text-2xl font-black mb-4 text-[#cc0000] heading-font">General Disclaimer</h3><p class="mb-4">The information provided by FastJob Alert on this website is for general informational purposes only. All information is provided in good faith, however, we make no representation or warranty of any kind regarding the accuracy, validity, or completeness of any information.</p>',
-            'Editorial Policy': '<h3 class="text-2xl font-black mb-4 text-[#cc0000] heading-font">Editorial Integrity</h3><p class="mb-4">We maintain strict journalistic integrity. Our AI-assisted desk and editorial team ensure all news is fact-checked against multiple reliable sources before publication. We distinguish clearly between news reports and opinion pieces.</p>',
-            'Contact Desk': '<h3 class="text-2xl font-black mb-4 text-[#cc0000] heading-font">Reach Out to Us</h3><div class="bg-gray-100 p-6 rounded-xl border border-gray-200 mt-4"><p class="mb-2"><strong><i class="fa-solid fa-envelope mr-2 text-[#cc0000]"></i> Email:</strong> desk@fastjob.online</p><p><strong><i class="fa-brands fa-whatsapp mr-2 text-[#25d366] text-lg"></i> WhatsApp:</strong> Join our Official Channel for instant queries.</p></div>'
-        };
-
-        function openLegal(pageTitle) {
-            document.getElementById('legalModalTitle').innerText = pageTitle;
-            document.getElementById('legalModalContent').innerHTML = legalData[pageTitle] || '<p>Information currently unavailable.</p>';
-            
-            const modal = document.getElementById('legalModal');
-            const box = document.getElementById('legalModalBox');
-            
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            
-            setTimeout(() => {
-                modal.classList.remove('opacity-0');
-                box.classList.remove('scale-95');
-            }, 10);
-        }
-
-        function closeLegal() {
-            const modal = document.getElementById('legalModal');
-            const box = document.getElementById('legalModalBox');
-            
-            modal.classList.add('opacity-0');
-            box.classList.add('scale-95');
-            
-            setTimeout(() => {
-                modal.classList.add('hidden');
-                modal.classList.remove('flex');
-            }, 300);
-        }
-
         async function loadNews() {
             try {
                 const response = await fetch(SUPABASE_URL + "/rest/v1/posts?select=*&order=id.desc&limit=100", {
@@ -300,7 +249,7 @@
                     allNews = data;
                     renderTicker(allNews);
                     
-                    // CLEAN URL CHECK (Without ?slug=)
+                    // CLEAN URL CHECK
                     const path = window.location.pathname.replace(/^\/|\/$/g, '');
                     if (path && path !== 'index.html' && !path.includes('.html')) {
                         openArticle(path, false);
@@ -412,6 +361,15 @@
         function searchNews() {
             const query = document.getElementById('searchInput').value.toLowerCase();
             if (!query) { renderHome(allNews); return; }
+            searchCore(query);
+        }
+        function searchNewsMobile() {
+            const query = document.getElementById('mobileSearchInput').value.toLowerCase();
+            if (!query) { renderHome(allNews); toggleMobileMenu(); return; }
+            searchCore(query);
+            toggleMobileMenu();
+        }
+        function searchCore(query) {
             const filtered = allNews.filter(item => item.title.toLowerCase().includes(query));
             document.getElementById('slider-wrapper').classList.add('hidden');
             
@@ -426,10 +384,7 @@
         function openArticle(slug, pushState = true) {
             const post = allNews.find(item => item.slug === slug);
             if (post) {
-                // CLEAN URL UPDATE (No ?slug=)
-                if(pushState) {
-                    history.pushState({slug: slug}, "", "/" + slug);
-                }
+                if(pushState) { history.pushState({slug: slug}, "", "/" + slug); }
                 
                 document.getElementById('home-view').classList.add('hidden');
                 document.getElementById('article-view').classList.remove('hidden');
