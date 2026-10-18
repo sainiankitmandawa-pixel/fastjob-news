@@ -15,7 +15,27 @@ OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
-# ALL 25 CATEGORIES WITH MULTIPLE HIGH-VOLUME RSS FEEDS
+# 50 UNIQUE WORLD-WIDE AUTHORS (GLOBAL JOURNALISTS)
+WORLD_AUTHORS = [
+    "Aarav Sharma (New Delhi)", "Priya Nair (Mumbai)", "Vikramaditya Rathore (India Desk)",
+    "Ananya Chatterjee (Kolkata)", "Rohan Deshmukh (Pune)", "Siddharth Menon (Bengaluru)",
+    "Kavita Iyer (Chennai)", "Kabir Malhotra (North India)", "Zoya Khan (Hyderabad)",
+    "Devansh Joshi (Ahmedabad)", "Niharika Verma (Lucknow)", "Arjun Kapoor (South Asia)",
+    "Ethan Brooks (New York)", "Madison Carter (Washington DC)", "Lucas Bennett (Silicon Valley)",
+    "Olivia Hayes (Chicago)", "Noah Mitchell (Los Angeles)", "Chloe Sullivan (Boston)",
+    "Mason Rivera (Miami)", "Harper Reed (Toronto)", "Logan Foster (Seattle)",
+    "Sophia Jenkins (Houston)", "Oliver Sterling (London)", "Amelia Clarke (UK Bureau)",
+    "Liam O'Connor (Dublin)", "Camille Laurent (Paris)", "Lukas Weber (Frankfurt)",
+    "Elena Rostova (Geneva)", "Matteo Rossi (Milan)", "Sofia Lindqvist (Stockholm)",
+    "Hugo Martinez (Madrid)", "Freya Van Der Berg (Amsterdam)", "Tariq Al-Mansoor (Dubai)",
+    "Layla Haddad (Doha)", "Omar Farooq (Riyadh)", "Nadia El-Masri (Cairo)",
+    "Kwame Mensah (Accra)", "Amara Okafor (Lagos)", "Zanele Khumalo (Johannesburg)",
+    "Youssef Benali (Casablanca)", "Kenji Takahashi (Tokyo)", "Mei-Ling Tan (Singapore)",
+    "Min-Jae Park (Seoul)", "Liam Thornton (Sydney)", "Isla MacLeod (Melbourne)",
+    "Hiroshi Sato (Osaka)", "Mateo Silva (Sao Paulo)", "Valentina Gomez (Buenos Aires)",
+    "Diego Hernandez (Mexico City)", "Camila Vargas (Santiago)"
+]
+
 RSS_FEEDS = {
     "Breaking News": [
         "https://timesofindia.indiatimes.com/rssfeedstopstories.cms",
@@ -135,7 +155,6 @@ RSS_FEEDS = {
     ]
 }
 
-# High-Resolution Fallback News Images (In case an RSS item doesn't include a media tag)
 FALLBACK_IMAGES = [
     "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1000&q=80",
     "https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1000&q=80",
@@ -168,7 +187,7 @@ def generate_content_openai(prompt):
     data = {
         "model": "gpt-3.5-turbo",
         "messages": [
-            {"role": "system", "content": "You are a senior journalist and SEO expert. Output only raw HTML."},
+            {"role": "system", "content": "You are a senior international journalist and SEO expert. Output only raw HTML."},
             {"role": "user", "content": prompt}
         ],
         "temperature": 0.7
@@ -177,8 +196,6 @@ def generate_content_openai(prompt):
         response = requests.post(url, headers=headers, json=data, timeout=60)
         if response.status_code == 200:
             return response.json()['choices'][0]['message']['content']
-        else:
-            print(f"OpenAI Status {response.status_code}: {response.text[:100]}")
     except Exception as e:
         print(f"OpenAI Request failed: {e}")
     return None
@@ -194,7 +211,6 @@ def to_cat_slug(cat):
 
 def generate_sitemap():
     try:
-        print("Updating sitemap.xml for all 25 categories & posts...")
         today = datetime.now().strftime('%Y-%m-%d')
         xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
         xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
@@ -216,7 +232,6 @@ def generate_sitemap():
         xml += '</urlset>'
         with open('sitemap.xml', 'w', encoding='utf-8') as f:
             f.write(xml)
-        print("sitemap.xml updated successfully!")
     except Exception as e:
         print(f"Sitemap Error: {e}")
 
@@ -232,7 +247,6 @@ def post_one_for_category(category, existing_titles):
                 if not title:
                     continue
                 
-                # Check duplicate in current memory
                 title_key = title[:35].lower()
                 if any(title_key in t for t in existing_titles):
                     continue
@@ -240,11 +254,14 @@ def post_one_for_category(category, existing_titles):
                 image_url = extract_real_image(entry)
                 summary = entry.get('summary', '')
                 
+                # Pick 1 of the 50 Global Authors
+                author_name = random.choice(WORLD_AUTHORS)
+                
                 short_id = str(random.randint(1000, 9999))
                 slug = slugify(title) + "-" + short_id
                 
                 prompt = f"""
-                Write a comprehensive, engaging, and SEO-optimized news article for the '{category}' desk based on:
+                Write a comprehensive, engaging, and SEO-optimized news article for the '{category}' desk by journalist '{author_name}' based on:
                 Original Title: {title}
                 Context: {summary}
                 
@@ -252,7 +269,7 @@ def post_one_for_category(category, existing_titles):
                 1. Write a detailed article of 800+ words covering background, key developments, analysis, and future outlook.
                 2. Use 5 <h3 class="article-subheading"> tags with 2-3 detailed paragraphs under each.
                 3. Year is 2026. Treat as breaking modern news.
-                4. Format strictly in raw HTML starting with <h1 class="seo-title">Catchy SEO Title</h1> and <p class="intro-text"><strong>(FastJob Alert Desk):</strong>...
+                4. Format strictly in raw HTML starting with <h1 class="seo-title">Catchy SEO Title</h1> and <p class="intro-text"><strong>Reported by {author_name} | FastJob Global Desk:</strong>...
                 5. Include one <table class="article-table"> for key highlights.
                 6. End with <p class="hashtags">#FastJobAlert #{category.replace(' ', '')} #BreakingNews ...</p>.
                 7. Output raw HTML only, no markdown backticks.
@@ -266,17 +283,21 @@ def post_one_for_category(category, existing_titles):
                 if content.startswith('```html'): content = content[7:-3].strip()
                 elif content.startswith('```'): content = content[3:-3].strip()
                 
+                # Embed hidden author metadata tag so frontend can read it without changing Supabase table schema
+                author_meta = f'<div class="post-author-meta" data-author="{author_name}" style="display:none;"></div>\n'
+                full_content = author_meta + content
+                
                 data = {
                     "title": title,
                     "slug": slug,
-                    "content": content,
+                    "content": full_content,
                     "category": category,
                     "image_url": image_url
                 }
                 
                 supabase.table("posts").insert(data).execute()
                 existing_titles.add(title_key)
-                print(f"✅ [{category}] Posted: {title[:45]}...")
+                print(f"✅ [{category}] By {author_name}: {title[:40]}...")
                 return True
         except Exception as e:
             print(f"Error in {category} feed: {e}")
@@ -284,9 +305,7 @@ def post_one_for_category(category, existing_titles):
     return False
 
 def run_bulk_15_per_category():
-    print("Checking current post counts per category in Supabase...")
     existing_res = supabase.table("posts").select("title, category").limit(1000).execute()
-    
     cat_counts = {cat: 0 for cat in RSS_FEEDS.keys()}
     existing_titles = set()
     
@@ -298,18 +317,15 @@ def run_bulk_15_per_category():
         if c in cat_counts:
             cat_counts[c] += 1
 
-    # Check how many categories need posts to reach 15
     needs_bulk = any(count < 15 for count in cat_counts.values())
     
     if needs_bulk:
-        print("🚀 BULK TURBO MODE ACTIVATED: Filling 15 posts in all 25 categories right now!")
+        print("🚀 BULK TURBO MODE: Filling 15 posts in all 25 categories with 50 Global Authors!")
         for round_num in range(1, 16):
             pending_cats = [cat for cat, count in cat_counts.items() if count < 15]
             if not pending_cats:
                 break
-            
-            print(f"\n================ ROUND {round_num} / 15 (Categories remaining: {len(pending_cats)}) ================")
-            # Run 5 categories in parallel for 5x speed
+            print(f"\n================ ROUND {round_num} / 15 ================")
             with ThreadPoolExecutor(max_workers=5) as executor:
                 future_to_cat = {
                     executor.submit(post_one_for_category, cat, existing_titles): cat 
@@ -322,13 +338,9 @@ def run_bulk_15_per_category():
                             cat_counts[cat] += 1
                     except Exception as e:
                         print(f"Worker error in {cat}: {e}")
-            
-            # Update sitemap after every round
             generate_sitemap()
-            
-        print("\n🎉 ALL 25 CATEGORIES HAVE BEEN FILLED WITH 15 POSTS EACH!")
     else:
-        print("All categories already have 15+ posts! Running normal 10-minute cycle...")
+        print("Running normal 10-minute cycle with 50 Global Authors...")
         for i in range(6):
             cat = random.choice(list(RSS_FEEDS.keys()))
             post_one_for_category(cat, existing_titles)
