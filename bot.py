@@ -8,7 +8,6 @@ import requests
 from bs4 import BeautifulSoup
 import os
 
-# Secure Cloud Environment Variables
 SUPABASE_URL = "https://wioheljpjdcprozqumpv.supabase.co"
 SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
@@ -64,6 +63,27 @@ def slugify(text):
     words = text.split()
     return "-".join(words[:4])
 
+# NEW: DYNAMIC SITEMAP GENERATOR FOR GOOGLE INDEXING
+def generate_sitemap():
+    try:
+        print("Generating sitemap.xml for Google Indexing...")
+        posts = supabase.table("posts").select("slug, created_at").order("id", desc=True).execute()
+        xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
+        xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        xml += '  <url>\n    <loc>https://fastjob.online/</loc>\n    <changefreq>always</changefreq>\n    <priority>1.0</priority>\n  </url>\n'
+        
+        for p in posts.data:
+            date_str = p['created_at'].split('T')[0]
+            xml += f'  <url>\n    <loc>https://fastjob.online/{p["slug"]}</loc>\n    <lastmod>{date_str}</lastmod>\n    <changefreq>daily</changefreq>\n    <priority>0.8</priority>\n  </url>\n'
+        
+        xml += '</urlset>'
+        
+        with open('sitemap.xml', 'w', encoding='utf-8') as f:
+            f.write(xml)
+        print("sitemap.xml updated successfully!")
+    except Exception as e:
+        print(f"Sitemap Error: {e}")
+
 def fetch_and_insert_single():
     categories = list(RSS_FEEDS.keys())
     random.shuffle(categories)
@@ -89,7 +109,7 @@ def fetch_and_insert_single():
                     short_id = str(int(datetime.now().timestamp()))[-4:]
                     slug = slugify(title) + "-" + short_id
                     
-                    print(f"[{category}] Generating 800+ word SEO article for: {title[:30]}...")
+                    print(f"[{category}] Generating SEO article for: {title[:30]}...")
                     
                     prompt = f"""
                     Write a highly engaging, comprehensive, and SEO-optimized news article based on:
@@ -124,7 +144,7 @@ def fetch_and_insert_single():
                     
                     supabase.table("posts").insert(data).execute()
                     print(f"SUCCESS! Posted 1 article in [{category}].")
-                    return True # Successfully posted 1 article
+                    return True
             except Exception as e:
                 print(f"Error in {category}: {e}")
                 continue
@@ -135,15 +155,15 @@ if __name__ == "__main__":
         print("ERROR: API Keys missing!")
     else:
         print(f"[{datetime.now()}] Bot activated for a 1-Hour continuous cycle!")
-        # 6 Baar chalega (Total 1 ghanta)
         for i in range(6):
             print(f"\n--- Starting Post {i+1} of 6 ---")
             success = fetch_and_insert_single()
-            if not success:
+            if success:
+                generate_sitemap() # Auto-update sitemap after every successful post
+            else:
                 print("No new posts found right now.")
             
-            # Aakhri post ke baad wait nahi karna hai
             if i < 5:
                 print("Waiting 10 minutes (600 seconds) for the next post...")
-                time.sleep(600) # Exactly 10 minutes sleep
-        print("\n1-Hour cycle complete. Waiting for next GitHub trigger.")
+                time.sleep(600)
+        print("\n1-Hour cycle complete.")
