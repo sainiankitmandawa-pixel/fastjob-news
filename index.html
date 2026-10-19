@@ -134,7 +134,7 @@
                 <div class="w-full md:max-w-xl flex-grow">
                     <div class="bg-white rounded-full p-1 pl-4 flex items-center w-full shadow-inner focus-within:ring-2 focus-within:ring-yellow-400 transition">
                         <i class="fa-solid fa-magnifying-glass text-gray-400 mr-2.5 text-sm md:text-base"></i>
-                        <input type="text" id="searchInput" onkeyup="searchNews()" placeholder="Search all 7,000+ verified stories & jobs..." class="w-full text-xs md:text-sm text-gray-900 outline-none font-semibold bg-transparent placeholder-gray-400 py-1.5">
+                        <input type="text" id="searchInput" onkeyup="searchNews()" placeholder="Search all verified stories & jobs..." class="w-full text-xs md:text-sm text-gray-900 outline-none font-semibold bg-transparent placeholder-gray-400 py-1.5">
                         <button onclick="searchNews()" class="bg-[#d10000] hover:bg-[#a80000] text-white font-bold text-xs uppercase tracking-wider px-5 py-2 rounded-full transition shrink-0">
                             Search
                         </button>
@@ -331,6 +331,7 @@
         let currentFilteredList = [];
         let currentDisplayLimit = 60;
         let currentActiveCategory = "";
+        let isViewingArticleOrLegal = false;
         let slideIndex = 0;
         let slideInterval;
 
@@ -366,7 +367,7 @@
         function isRealPublisherImage(url) {
             if (!url || typeof url !== 'string') return false;
             const u = url.toLowerCase();
-            if (u.includes('picsum.photos') || u.includes('source.unsplash.com') || u.includes('photo-150000')) return false;
+            if (u.includes('picsum.photos') || u.includes('source.unsplash.com') || u.includes('photo-150000') || u.includes('editorial')) return false;
             return u.startsWith('http');
         }
 
@@ -414,7 +415,6 @@
                 if ((cat === "Technology" || cat === "AI & Robotics") && p.category === "Tech & AI") return true;
                 return false;
             });
-            // Prioritize posts that have real images over old placeholder/picsum images
             const realImgPosts = matched.filter(p => isRealPublisherImage(p.image_url));
             const otherPosts = matched.filter(p => !isRealPublisherImage(p.image_url));
             const combined = realImgPosts.concat(otherPosts);
@@ -473,9 +473,34 @@
             'contact-us': { title: 'Contact Desk', content: `<p>Connect with the <strong>Fast Job Editorial & Support Team</strong> at <strong>desk@fastjob.online</strong>.</p>` }
         };
 
-        // MULTI-BATCH LOADER: Loads ALL 7,000+ posts (old + new) without stopping at 1,000!
+        // EXTRACTS SLUG FROM BOTH ?slug=... AND /slug=... AND /post-slug (Google Search Compatible!)
+        function getActiveRouteSlug() {
+            const params = new URLSearchParams(window.location.search);
+            for (const key of ['slug', 'post', 'article', 'p', 'id']) {
+                if (params.get(key)) {
+                    return decodeURIComponent(params.get(key)).replace(/^\/|\/$/g, '').replace(/^slug=/i, '').trim();
+                }
+            }
+            if (window.location.search && window.location.search.toLowerCase().includes('slug=')) {
+                return decodeURIComponent(window.location.search.split(/slug=/i)[1].split('&')[0]).replace(/^\/|\/$/g, '').trim();
+            }
+            let cleanPath = decodeURIComponent(window.location.pathname).replace(/^\/|\/$/g, '').replace(/\.html$/, '');
+            if (cleanPath.toLowerCase().startsWith('slug=')) {
+                cleanPath = cleanPath.substring(5);
+            }
+            return cleanPath.trim();
+        }
+
         async function loadNews() {
             try {
+                // 1. If user clicked a Google Search link, open the article IMMEDIATELY without waiting for 7,000 posts!
+                const initialTarget = getActiveRouteSlug();
+                if (initialTarget && initialTarget !== 'index' && !staticPages[initialTarget] && !initialTarget.startsWith('category/')) {
+                    isViewingArticleOrLegal = true;
+                    openArticle(initialTarget, false);
+                }
+
+                // 2. Get Exact Total Post Count
                 const countRes = await fetch(SUPABASE_URL + "/rest/v1/posts?select=id&limit=1", {
                     headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + SUPABASE_KEY, "Prefer": "count=exact" }
                 });
@@ -486,7 +511,7 @@
                     document.getElementById('exact-post-counter').innerText = totalCount.toLocaleString();
                 }
 
-                // Load first 1000 immediately for instant display
+                // 3. Load first 1,000 posts
                 const firstRes = await fetch(SUPABASE_URL + "/rest/v1/posts?select=id,title,slug,category,image_url,created_at&order=id.desc&limit=1000&offset=0", {
                     headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + SUPABASE_KEY }
                 });
@@ -496,10 +521,12 @@
                     const fallbackFirst = firstBatch.filter(p => !isRealPublisherImage(p.image_url));
                     allNews = realFirst.concat(fallbackFirst);
                     renderTicker(allNews);
-                    handleRoute(window.location.pathname, false);
+                    if (!isViewingArticleOrLegal) {
+                        handleRoute(false);
+                    }
                 }
 
-                // Now load all remaining older batches (1000 to totalCount) in parallel so ALL old posts come back!
+                // 4. Load remaining older batches in background
                 const batchPromises = [];
                 const maxOffset = Math.min(totalCount, 12000);
                 for (let offset = 1000; offset < maxOffset; offset += 1000) {
@@ -516,34 +543,45 @@
                     olderBatches.forEach(batch => {
                         if (Array.isArray(batch)) combinedAll = combinedAll.concat(batch);
                     });
-                    // Prioritize posts with real publisher images so broken/picsum test posts don't hide old real posts
                     const realPosts = combinedAll.filter(p => isRealPublisherImage(p.image_url));
                     const nonRealPosts = combinedAll.filter(p => !isRealPublisherImage(p.image_url));
                     allNews = realPosts.concat(nonRealPosts);
                     document.getElementById('exact-post-counter').innerText = Math.max(totalCount, allNews.length).toLocaleString();
                     renderTicker(allNews);
-                    if (!document.getElementById('home-view').classList.contains('hidden')) {
-                        handleRoute(window.location.pathname, false);
+                    if (!isViewingArticleOrLegal && !currentActiveCategory) {
+                        renderHome(allNews, false);
                     }
                 }
             } catch (err) { console.error(err); }
         }
 
-        function handleRoute(pathname, pushState = false) {
-            let cleanPath = pathname.replace(/^\/|\/$/g, '').replace(/\.html$/, '');
-            if (!cleanPath || cleanPath === 'index') { renderHome(allNews, pushState); return; }
-            if (staticPages[cleanPath]) { openStaticPage(cleanPath, pushState); return; }
-            if (cleanPath.startsWith('category/')) {
-                const catSlug = cleanPath.replace('category/', '');
-                const catName = slugToCategory[catSlug];
-                if (catName) { filterCategory(catName, pushState); return; }
+        function handleRoute(pushState = false) {
+            const cleanTarget = getActiveRouteSlug();
+            if (!cleanTarget || cleanTarget === 'index') {
+                isViewingArticleOrLegal = false;
+                renderHome(allNews, pushState);
+                return;
             }
-            openArticle(cleanPath, pushState);
+            if (staticPages[cleanTarget]) {
+                openStaticPage(cleanTarget, pushState);
+                return;
+            }
+            if (cleanTarget.startsWith('category/')) {
+                const catSlug = cleanTarget.replace('category/', '');
+                const catName = slugToCategory[catSlug];
+                if (catName) {
+                    isViewingArticleOrLegal = false;
+                    filterCategory(catName, pushState);
+                    return;
+                }
+            }
+            openArticle(cleanTarget, pushState);
         }
 
         function openStaticPage(pageKey, pushState = true) {
             const page = staticPages[pageKey];
             if (!page) return;
+            isViewingArticleOrLegal = true;
             if (pushState) history.pushState({ type: 'static', key: pageKey }, "", "/" + pageKey);
             clearInterval(slideInterval);
             document.getElementById('home-view').classList.add('hidden');
@@ -666,6 +704,8 @@
         }
 
         function renderHome(newsList, pushState = false) {
+            isViewingArticleOrLegal = false;
+            currentActiveCategory = "";
             if (pushState) history.pushState({ type: 'home' }, "", "/");
             document.getElementById('article-view').classList.add('hidden');
             document.getElementById('legal-view').classList.add('hidden');
@@ -740,6 +780,7 @@
 
         function filterCategory(cat, pushState = true) {
             if (cat === 'All') { goBackHome(); return; }
+            isViewingArticleOrLegal = false;
             const catSlug = categoryToSlug[cat] || 'all';
             if (pushState) history.pushState({ type: 'category', cat: cat }, "", "/category/" + catSlug);
 
@@ -774,6 +815,7 @@
             toggleMobileMenu();
         }
         function searchCore(query) {
+            isViewingArticleOrLegal = false;
             document.getElementById('article-view').classList.add('hidden');
             document.getElementById('legal-view').classList.add('hidden');
             document.getElementById('home-view').classList.remove('hidden');
@@ -796,27 +838,62 @@
             document.getElementById('category-sections').innerHTML = gridHTML;
         }
 
-        async function openArticle(slug, pushState = true) {
-            let post = allNews.find(item => item.slug === slug);
-            if (!post || !post.content) {
-                try {
-                    const res = await fetch(SUPABASE_URL + "/rest/v1/posts?select=*&slug=eq." + encodeURIComponent(slug) + "&limit=1", {
-                        headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + SUPABASE_KEY }
-                    });
-                    const rows = await res.json();
-                    if (rows && rows.length > 0) {
-                        post = rows[0];
-                    }
-                } catch (e) { console.error(e); }
+        // SMART ARTICLE OPENER: Works with ?slug=..., /slug=..., exact slug, OR partial keyword match!
+        async function openArticle(rawSlug, pushState = true) {
+            isViewingArticleOrLegal = true;
+            let slug = decodeURIComponent(rawSlug || "").replace(/^\/|\/$/g, '').replace(/^slug=/i, '').trim();
+            if (!slug) { goBackHome(); return; }
+
+            // Show article view immediately so Home page never flashes
+            document.getElementById('home-view').classList.add('hidden');
+            document.getElementById('legal-view').classList.add('hidden');
+            document.getElementById('article-view').classList.remove('hidden');
+            document.getElementById('detail-title').innerText = "Loading Story...";
+            document.getElementById('detail-content').innerHTML = `<div class="py-12 text-center text-gray-500 font-bold"><i class="fa-solid fa-spinner fa-spin mr-2 text-[#d10000]"></i> Loading complete verified article...</div>`;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // 1. Try exact slug match in Supabase
+            let post = null;
+            try {
+                const res = await fetch(SUPABASE_URL + "/rest/v1/posts?select=*&slug=eq." + encodeURIComponent(slug) + "&limit=1", {
+                    headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + SUPABASE_KEY }
+                });
+                const rows = await res.json();
+                if (Array.isArray(rows) && rows.length > 0) post = rows[0];
+            } catch (e) { console.error(e); }
+
+            // 2. Fallback: If Google indexed an old slug whose random number suffix changed, match by slug prefix or title keywords!
+            if (!post) {
+                const slugPrefix = slug.replace(/-\d+$/, '').split('-').slice(0, 4).join('-');
+                if (slugPrefix.length >= 4) {
+                    try {
+                        const res2 = await fetch(SUPABASE_URL + "/rest/v1/posts?select=*&slug=ilike.*" + encodeURIComponent(slugPrefix) + "*&order=id.desc&limit=1", {
+                            headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + SUPABASE_KEY }
+                        });
+                        const rows2 = await res2.json();
+                        if (Array.isArray(rows2) && rows2.length > 0) post = rows2[0];
+                    } catch (e) { console.error(e); }
+                }
+            }
+
+            // 3. Second Fallback: Search by title keywords if slug format was completely different
+            if (!post) {
+                const keywordQuery = slug.replace(/-\d+$/, '').split('-').slice(0, 3).join('%');
+                if (keywordQuery.length >= 4) {
+                    try {
+                        const res3 = await fetch(SUPABASE_URL + "/rest/v1/posts?select=*&title=ilike.*" + encodeURIComponent(keywordQuery) + "*&order=id.desc&limit=1", {
+                            headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + SUPABASE_KEY }
+                        });
+                        const rows3 = await res3.json();
+                        if (Array.isArray(rows3) && rows3.length > 0) post = rows3[0];
+                    } catch (e) { console.error(e); }
+                }
             }
 
             if (post) {
-                if(pushState) { history.pushState({ type: 'article', slug: slug }, "", "/" + slug); }
-                
-                document.getElementById('home-view').classList.add('hidden');
-                document.getElementById('legal-view').classList.add('hidden');
-                document.getElementById('article-view').classList.remove('hidden');
-                
+                if (pushState) {
+                    history.pushState({ type: 'article', slug: post.slug }, "", "/" + post.slug);
+                }
                 document.getElementById('detail-title').innerText = post.title;
                 document.title = `${post.title} - Fast Job`;
                 
@@ -830,13 +907,13 @@
                 document.getElementById('detail-date').innerHTML = `<i class="fa-regular fa-clock mr-1"></i> Published on ${postDate.toLocaleDateString('en-IN', options)}`;
                 document.getElementById('detail-image').src = post.image_url;
                 document.getElementById('detail-content').innerHTML = post.content || "";
-                window.scrollTo({ top: 0, behavior: 'smooth' });
             } else {
                 goBackHome();
             }
         }
 
         function goBackHome() {
+            isViewingArticleOrLegal = false;
             history.pushState({ type: 'home' }, "", "/");
             renderHome(allNews, false);
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -846,7 +923,7 @@
         function filterCategoryAndClose(cat) { filterCategory(cat); toggleMobileMenu(); }
         
         window.addEventListener('popstate', function() {
-            handleRoute(window.location.pathname, false);
+            handleRoute(false);
         });
 
         function shareWebsite(platform) {
