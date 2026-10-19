@@ -9,7 +9,7 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#d10000">
 
-<!-- FJ NEWS FAVICON FOR BROWSER TAB & GOOGLE -->
+<!-- FJ NEWS FAVICON -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='96' fill='%23d10000'/%3E%3Crect x='20' y='20' width='472' height='472' rx='80' fill='none' stroke='%23facc15' stroke-width='16'/%3E%3Ctext x='256' y='320' font-family='Arial Black,sans-serif' font-weight='900' font-size='245' fill='%23ffffff' text-anchor='middle'%3EFJ%3C/text%3E%3Crect x='56' y='382' width='400' height='80' rx='18' fill='%23facc15'/%3E%3Ctext x='256' y='438' font-family='Arial,sans-serif' font-weight='900' font-size='46' fill='%23111827' text-anchor='middle' letter-spacing='5'%3ENEWS%3C/text%3E%3C/svg%3E">
 <link rel="shortcut icon" href="/logo.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/logo.svg">
@@ -65,7 +65,7 @@ body { font-family: 'Mukta', sans-serif; background-color: #f4f5f7; color: #1118
 </head>
 <body class="flex flex-col min-h-screen overflow-x-hidden">
 
-<!-- 1. Top Utility Bar (Day, Date, Year Badge) -->
+<!-- 1. Top Utility Bar -->
 <div class="bg-[#990000] text-white text-[11px] py-1.5 px-3 md:px-6 w-full border-b border-red-800 relative z-50">
     <div class="w-full max-w-[1400px] mx-auto flex justify-between items-center">
         <div class="flex items-center gap-2.5 md:gap-4">
@@ -90,20 +90,20 @@ body { font-family: 'Mukta', sans-serif; background-color: #f4f5f7; color: #1118
     </div>
 </div>
 
-<!-- 2. Main Header with FJ News Logo -->
+<!-- 2. Main Header with Vibrant Red & Gold FJ Logo -->
 <header class="sticky top-0 z-40 shadow-md bg-white">
     <div class="bg-[#d10000] text-white py-3 px-3 md:px-6">
         <div class="w-full max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
             <div class="w-full md:w-auto flex items-center justify-between">
                 <a href="/" onclick="event.preventDefault(); goBackHome();" class="flex items-center shrink-0 cursor-pointer group">
-                    <div class="w-12 h-12 md:w-14 md:h-14 rounded-xl mr-3 flex flex-col items-center justify-center bg-[#111827] border-2 border-yellow-400 shadow-lg">
-                        <span class="text-white font-black text-xl md:text-2xl leading-none">FJ</span>
+                    <div class="w-12 h-12 md:w-14 md:h-14 rounded-xl mr-3 flex flex-col items-center justify-center bg-gradient-to-br from-[#b91c1c] to-[#7f1d1d] border-2 border-yellow-400 shadow-xl transform group-hover:scale-105 transition">
+                        <span class="text-white font-black text-xl md:text-2xl leading-none tracking-tighter">FJ</span>
                         <span class="bg-yellow-400 text-gray-900 font-black text-[7px] px-1.5 rounded-sm uppercase mt-0.5">NEWS</span>
                     </div>
                     <div class="flex flex-col">
                         <div class="flex items-center gap-2">
                             <span class="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight text-white leading-none">FAST JOB</span>
-                            <span class="bg-yellow-400 text-gray-900 text-[9px] font-black px-2 py-0.5 rounded uppercase">24×7 LIVE</span>
+                            <span class="bg-yellow-400 text-gray-900 text-[9px] md:text-[10px] font-black px-2 py-0.5 rounded uppercase shadow-sm">24×7 LIVE</span>
                         </div>
                         <span class="text-[9px] md:text-[11px] font-semibold text-red-100 tracking-widest uppercase mt-1">FAST & VERIFIED GLOBAL COVERAGE</span>
                     </div>
@@ -280,7 +280,6 @@ body { font-family: 'Mukta', sans-serif; background-color: #f4f5f7; color: #1118
 <a href="https://whatsapp.com/channel/0029VbDajQV8PgsNA1lLhW0i" target="_blank" class="fixed bottom-6 right-6 bg-[#25d366] text-white rounded-full w-14 h-14 flex items-center justify-center text-3xl shadow-2xl z-40 animate-bounce"><i class="fa-brands fa-whatsapp"></i></a>
 
 <script>
-// 1. Live Day, Date, Year Display
 document.getElementById('live-date').innerText = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 
 const SUPABASE_URL = "https://wioheljpjdcprozqumpv.supabase.co";
@@ -359,7 +358,6 @@ function initCategoryNav() {
 }
 initCategoryNav();
 
-// Full 900+ Word Legal Page Builder
 function buildLegalPageContent(key) {
     const commonFooter = `
         <h3>Institutional Governance, Compliance & Editorial Accountability (2026 Framework)</h3>
