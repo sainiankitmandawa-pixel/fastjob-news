@@ -154,17 +154,25 @@ def build_800w_full_seo_html(title, summary, cat, author):
             '<p class="hashtags">#FastJob #Rashifal2026 #DailyHoroscope #Astrology</p>'
         )
 
+    # WEB STORIES VIDEO PLAYER FORMAT
     if cat == "Web Stories":
         return (
             '<h1 class="seo-title">' + title + '</h1>'
-            '<div class="web-story-player bg-black text-white p-6 rounded-2xl shadow-2xl my-6 border-2 border-red-500">'
-            '<div class="flex items-center justify-between mb-4"><span class="bg-[#d10000] px-3 py-1 rounded text-xs font-black uppercase tracking-wider">⚡ Visual Web Story</span><span class="text-xs text-yellow-400 font-bold">Swipe & Read</span></div>'
-            '<h2 class="text-xl md:text-2xl font-black mb-4 leading-tight">' + title + '</h2>'
-            '<p class="text-gray-300 text-base leading-relaxed mb-6">' + clean_sum + '</p>'
-            '</div>'
-            '<h3 class="article-subheading">Story Summary & Key Takeaways</h3>'
-            '<p>This visual web story provides a quick, immersive breakdown of <strong>' + title + '</strong>. Stay tuned to Fast Job for live updates and comprehensive visual coverage throughout 2026.</p>'
-            '<p class="hashtags">#FastJob #WebStories #VisualNews #TrendingStories #FastJobLive</p>'
+            '<div class="web-story-video-player my-6 bg-black rounded-2xl overflow-hidden shadow-2xl border-4 border-red-600 relative">'
+            '<div class="absolute top-4 left-4 z-20 bg-red-600 text-white px-3 py-1 rounded-full text-xs font-black uppercase tracking-widest flex items-center gap-1.5 shadow"><span class="w-2.5 h-2.5 bg-yellow-300 rounded-full animate-ping"></span> Live Web Story Video</div>'
+            '<div class="relative aspect-[9/16] sm:aspect-[16/9] max-h-[550px] w-full flex items-center justify-center bg-gray-900">'
+            '<img src="' + img + '" class="w-full h-full object-cover opacity-85">'
+            '<div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>'
+            '<div class="absolute bottom-6 left-6 right-6 z-20 text-white">'
+            '<h2 class="text-xl md:text-3xl font-black mb-3 leading-tight drop-shadow-lg">' + title + '</h2>'
+            '<p class="text-sm md:text-base text-gray-200 leading-relaxed mb-4 line-clamp-3 drop-shadow">' + clean_sum + '</p>'
+            '<div class="flex items-center gap-3">'
+            '<span class="bg-yellow-400 text-gray-900 font-extrabold text-xs px-3 py-1.5 rounded-full shadow">▶ Play Story Slideshow</span>'
+            '<span class="text-xs font-bold text-gray-300">Fast Job Visual Desk</span>'
+            '</div></div></div></div>'
+            '<h3 class="article-subheading">Complete Story Coverage</h3>'
+            '<p>This interactive video web story brings you instant, high-impact visual coverage of <strong>' + title + '</strong>. Stay tuned to Fast Job for live updates throughout 2026.</p>'
+            '<p class="hashtags">#FastJob #WebStories #VisualVideoStory #TrendingNews</p>'
         )
 
     seo_block = (
@@ -261,7 +269,7 @@ def run():
         items = collect_unique_posts(urls, cat, target, seen_titles, seen_imgs)
         q.extend(items)
 
-    print("Publishing " + str(len(q)) + " Unique Posts & Web Stories across 27 Categories...")
+    print("Publishing " + str(len(q)) + " Unique Posts & Video Web Stories across 27 Categories...")
     ok = 0
     with ThreadPoolExecutor(max_workers=8) as ex:
         futs = [ex.submit(publish_one, it, i + 1, len(q)) for i, it in enumerate(q)]
