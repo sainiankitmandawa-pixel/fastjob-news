@@ -44,6 +44,14 @@ body { font-family: 'Mukta', sans-serif; background-color: #f4f5f7; color: #1118
 .ticker-item:hover { color: #d10000; }
 @keyframes ticker { 0% { transform: translate3d(0,0,0); } 100% { transform: translate3d(-100%,0,0); } }
 
+/* INSTAGRAM REEL VERTICAL 9:16 STORY CARD & PLAYER */
+.insta-story-card { width: 100%; max-width: 280px; height: 500px; border-radius: 18px; overflow: hidden; position: relative; cursor: pointer; box-shadow: 0 12px 30px rgba(0,0,0,0.3); border: 2px solid #d10000; background: #000; transition: transform 0.3s; }
+.insta-story-card:hover { transform: translateY(-5px); }
+
+.reel-player { width: 100%; max-width: 360px; height: 640px; border-radius: 24px; overflow: hidden; position: relative; background: #000; box-shadow: 0 20px 50px rgba(0,0,0,0.5); margin: 0 auto; border: 3px solid #d10000; }
+@keyframes fadeInText { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.animate-reel-text { animation: fadeInText 0.8s ease-out forwards; }
+
 .cat-pill { position: relative; transition: all 0.2s; color: #1f2937; white-space: nowrap; cursor: pointer; }
 .cat-pill:hover, .cat-pill.active-cat { color: #d10000 !important; font-weight: 800; background: #fff5f5; }
 .cat-pill.active-cat::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: #d10000; }
@@ -204,7 +212,7 @@ body { font-family: 'Mukta', sans-serif; background-color: #f4f5f7; color: #1118
                 <button onclick="shareWebsite('facebook')" class="bg-[#1877f2] text-white px-4 py-2 rounded-full shadow inline-flex items-center gap-1.5 text-xs font-bold"><i class="fa-brands fa-facebook-f"></i> Share</button>
             </div>
         </div>
-        <div id="detail-image-container"></div>
+        <div id="detail-image-container" class="flex justify-center mb-8"></div>
         <div id="detail-content" class="w-full overflow-x-auto text-gray-800"></div>
     </div>
 
@@ -527,7 +535,7 @@ function renderTicker(items) {
 }
 
 function renderSliderAndSidebar(items) {
-    const top5 = items.slice(0, 5);
+    const top5 = items.filter(p => p.category !== "Web Stories").slice(0, 5);
     if (!top5.length) return;
     document.getElementById('slider-wrapper').innerHTML = top5.map((it, idx) => `
         <div class="slide ${idx === 0 ? 'active' : ''} cursor-pointer w-full h-full relative group" onclick="openArticle('${it.slug}')">
@@ -542,7 +550,7 @@ function renderSliderAndSidebar(items) {
             </div>
         </div>`).join('');
 
-    const side = items.slice(5, 15).length ? items.slice(5, 15) : items.slice(0, 6);
+    const side = items.filter(p => p.category !== "Web Stories").slice(5, 15);
     document.getElementById('top-sidebar-list').innerHTML = side.map(it => `
         <div onclick="openArticle('${it.slug}')" class="py-2.5 flex gap-3 items-center cursor-pointer group">
             <img src="${it.image_url}" onerror="this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&q=80'" class="w-20 h-14 object-cover rounded-lg shrink-0">
@@ -623,19 +631,19 @@ function renderWebStoriesFullPage(newsList, pushState = true) {
     let h = `
     <div class="bg-white p-6 md:p-8 rounded-xl shadow-sm border border-gray-200">
         <div class="border-b-2 border-[#d10000] pb-3 mb-6 flex justify-between items-center">
-            <span class="section-badge text-lg"><i class="fa-solid fa-bolt text-yellow-300"></i> Google Web Stories Video Player (${stories.length})</span>
+            <span class="section-badge text-lg"><i class="fa-solid fa-bolt text-yellow-300"></i> Instagram Style Web Stories (${stories.length})</span>
             <button onclick="goBackHome()" class="text-xs font-bold text-gray-600 hover:text-[#d10000]"><i class="fa-solid fa-house mr-1"></i> Back Home</button>
         </div>
-        <p class="text-gray-600 font-semibold mb-6">Explore our immersive video story player format. Click any video story to watch and read live updates instantly.</p>
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5">`;
+        <p class="text-gray-600 font-semibold mb-6">Explore our immersive vertical Reel / Story player format. Tap any story card to play the interactive slideshow.</p>
+        <div class="flex flex-wrap justify-center gap-6">`;
     
     stories.forEach(st => {
         h += `
-        <div onclick="openArticle('${st.slug}')" class="h-72 rounded-xl overflow-hidden relative cursor-pointer shadow-lg group border-2 border-red-500 bg-black">
-            <img src="${st.image_url}" onerror="this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=80'" class="w-full h-full object-cover opacity-85 transform group-hover:scale-110 transition duration-500">
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-            <div class="absolute top-2.5 left-2.5 bg-[#d10000] text-white text-[9px] font-black px-2 py-0.5 rounded uppercase flex items-center gap-1"><span class="w-1.5 h-1.5 bg-yellow-300 rounded-full animate-ping"></span> Video Story</div>
-            <div class="absolute bottom-3 left-3 right-3"><h4 class="text-white text-xs font-extrabold line-clamp-3 leading-snug drop-shadow">${st.title}</h4></div>
+        <div onclick="openArticle('${st.slug}')" class="insta-story-card relative group">
+            <img src="${st.image_url}" onerror="this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=80'" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+            <div class="absolute top-3 left-3 bg-[#d10000] text-white text-[10px] font-black px-2.5 py-1 rounded-full uppercase flex items-center gap-1.5 shadow"><span class="w-2 h-2 bg-yellow-300 rounded-full animate-ping"></span> REEL STORY</div>
+            <div class="absolute bottom-4 left-4 right-4"><h4 class="text-white text-sm md:text-base font-black line-clamp-3 leading-snug drop-shadow">${st.title}</h4></div>
         </div>`;
     });
     h += `</div></div>`;
@@ -739,15 +747,10 @@ async function openArticle(rawSlug, pushState = true) {
         
         if (post.category === "Web Stories") {
             document.getElementById('detail-image-container').innerHTML = `
-            <div class="my-6 bg-black rounded-2xl overflow-hidden shadow-2xl border-4 border-red-600 relative p-6 text-white">
-                <div class="flex items-center justify-between mb-4"><span class="bg-red-600 px-3 py-1 rounded text-xs font-black uppercase">▶ Interactive Video Story Player</span><span class="text-xs text-yellow-400 font-bold">Fast Job Visual Desk</span></div>
-                <div class="relative aspect-video max-h-[480px] w-full flex items-center justify-center bg-gray-900 rounded-xl overflow-hidden mb-4">
-                    <img src="${post.image_url}" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
-                        <div class="w-16 h-16 bg-[#d10000] text-white rounded-full flex items-center justify-center text-2xl shadow-2xl animate-pulse cursor-pointer"><i class="fa-solid fa-play ml-1"></i></div>
-                    </div>
-                </div>
-                <p class="text-gray-300 text-sm md:text-base leading-relaxed">${post.title}</p>
+            <div class="reel-player relative flex flex-col justify-between p-5 text-white my-4">
+                <div class="absolute inset-0 z-0"><img src="${post.image_url}" class="w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-black/50"></div></div>
+                <div class="flex justify-between items-center z-10"><span class="bg-red-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider">⚡ Live Reel</span><span class="text-xs text-yellow-300 font-bold">Fast Job Video Desk</span></div>
+                <div class="z-10 bg-black/60 backdrop-blur-md p-5 rounded-xl border border-white/20 animate-reel-text"><h3 class="text-lg md:text-xl font-black leading-snug text-white">${post.title}</h3></div>
             </div>`;
         } else {
             document.getElementById('detail-image-container').innerHTML = `<img src="${post.image_url}" class="w-full h-auto object-cover max-h-[550px] mb-8 rounded-xl shadow">`;
