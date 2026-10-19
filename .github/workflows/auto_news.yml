@@ -1,9 +1,9 @@
-name: Fast Job 100 Posts Bot
+name: FastJob Auto News Bot
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 */3 * * *'
+    - cron: '0 */6 * * *'
 
 permissions:
   contents: write
@@ -26,7 +26,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install feedparser supabase requests beautifulsoup4
 
-      - name: Run 100-Posts Bot
+      - name: Run Auto News Script (15 Posts Per Category)
         env:
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
@@ -34,7 +34,7 @@ jobs:
 
       - name: Commit and Push Updated Sitemap
         run: |
-          git config --global user.name "Fast Job Bot"
+          git config --global user.name "FastJob Bot"
           git config --global user.email "bot@fastjob.online"
           git add sitemap.xml
-          git diff --staged --quiet || (git commit -m "Auto-update sitemap" && git pull --rebase origin main && git push origin main)
+          git diff --staged --quiet || (git commit -m "Auto-update clean sitemap.xml" && git pull --rebase origin main && git push origin main)
