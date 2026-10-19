@@ -1,9 +1,9 @@
-name: Fast Job Auto News Bot
+name: Fast Job 100 Posts Bot
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 */2 * * *'
+    - cron: '0 */3 * * *'
 
 permissions:
   contents: write
@@ -11,7 +11,7 @@ permissions:
 jobs:
   run-bot:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 120
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -26,7 +26,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install feedparser supabase requests beautifulsoup4
 
-      - name: Run Smart Ratio Bot
+      - name: Run 100-Posts Bot
         env:
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
