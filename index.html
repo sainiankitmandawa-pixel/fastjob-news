@@ -48,6 +48,8 @@
 
         #detail-content, #legal-page-content { color: #1f2937; line-height: 1.95; font-size: 1.15rem; }
         #detail-content p, #legal-page-content p { margin-bottom: 1.6rem; }
+        #detail-content ul { list-style-type: disc; padding-left: 1.8rem; margin-bottom: 1.6rem; }
+        #detail-content li { margin-bottom: 0.6rem; }
         #detail-content p:first-of-type::first-letter { font-size: 3.6rem; font-weight: 900; float: left; line-height: 0.85; margin-right: 0.7rem; margin-top: 0.15rem; color: #d10000; font-family: 'Playfair Display', serif; }
         #detail-content .seo-title { font-size: 2rem; font-weight: 900; color: #111827; margin-bottom: 1.5rem; line-height: 1.3; border-bottom: 3px solid #d10000; padding-bottom: 10px; display: block; }
         #detail-content .intro-text { font-weight: 600; font-size: 1.15rem; color: #111827; border-left: 4px solid #d10000; padding: 12px 16px; background: #fff5f5; border-radius: 0 8px 8px 0; }
@@ -78,7 +80,7 @@
                 <span class="font-semibold tracking-wide text-red-100 inline-flex items-center text-[10px] md:text-xs">
                     <i class="fa-regular fa-calendar-days text-yellow-300 mr-1.5"></i><span id="live-date"></span>
                 </span>
-                <span class="hidden sm:inline-block bg-black/30 text-yellow-300 px-2 py-0.5 rounded font-bold text-[10px]">
+                <span class="bg-black/30 text-yellow-300 px-2 py-0.5 rounded font-bold text-[10px]">
                     <i class="fa-solid fa-database mr-1"></i> Live Posts: <span id="exact-post-counter">Loading...</span>
                 </span>
             </div>
@@ -96,13 +98,12 @@
         </div>
     </div>
 
-    <!-- 2. Main Aaj Tak Red Header -->
+    <!-- 2. Main Red Header -->
     <header class="sticky top-0 z-40 shadow-md bg-white">
         <div class="bg-[#d10000] text-white py-3 md:py-3.5 px-3 md:px-6">
             <div class="w-full max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-3 md:gap-6">
                 
                 <div class="w-full md:w-auto flex items-center justify-between">
-                    <!-- Brand Logo -->
                     <a href="/" onclick="event.preventDefault(); goBackHome();" class="flex items-center shrink-0 cursor-pointer group">
                         <div class="bg-white text-[#d10000] w-11 h-11 md:w-13 md:h-13 rounded-xl mr-3 flex items-center justify-center shadow-lg transform group-hover:scale-105 transition">
                             <i class="fa-solid fa-bolt text-2xl md:text-3xl text-yellow-500"></i>
@@ -119,7 +120,6 @@
                         </div>
                     </a>
 
-                    <!-- Mobile Buttons -->
                     <div class="flex items-center gap-2 md:hidden">
                         <button onclick="filterCategory('Jobs & Careers')" class="bg-yellow-400 text-gray-900 px-3 py-1.5 rounded-lg font-black text-xs uppercase tracking-wider inline-flex items-center gap-1 shadow">
                             <i class="fa-solid fa-briefcase text-[#d10000]"></i> Jobs
@@ -134,7 +134,7 @@
                 <div class="w-full md:max-w-xl flex-grow">
                     <div class="bg-white rounded-full p-1 pl-4 flex items-center w-full shadow-inner focus-within:ring-2 focus-within:ring-yellow-400 transition">
                         <i class="fa-solid fa-magnifying-glass text-gray-400 mr-2.5 text-sm md:text-base"></i>
-                        <input type="text" id="searchInput" onkeyup="searchNews()" placeholder="Search top global stories & job vacancies..." class="w-full text-xs md:text-sm text-gray-900 outline-none font-semibold bg-transparent placeholder-gray-400 py-1.5">
+                        <input type="text" id="searchInput" onkeyup="searchNews()" placeholder="Search all 7,000+ verified stories & jobs..." class="w-full text-xs md:text-sm text-gray-900 outline-none font-semibold bg-transparent placeholder-gray-400 py-1.5">
                         <button onclick="searchNews()" class="bg-[#d10000] hover:bg-[#a80000] text-white font-bold text-xs uppercase tracking-wider px-5 py-2 rounded-full transition shrink-0">
                             Search
                         </button>
@@ -154,11 +154,10 @@
             </div>
         </div>
 
-        <!-- 3. White Horizontal Category Bar (Jobs & Careers First) -->
+        <!-- 3. White Horizontal Category Bar -->
         <div class="bg-white border-b border-gray-200 px-2 md:px-6">
             <div class="w-full max-w-[1400px] mx-auto flex items-center">
                 <nav class="flex items-center space-x-1 overflow-x-auto no-scrollbar py-0.5 w-full" id="top-category-nav">
-                    <!-- 25 Categories Injected Dynamically -->
                 </nav>
             </div>
         </div>
@@ -196,7 +195,6 @@
             
             <p class="text-[11px] font-black uppercase tracking-wider text-[#d10000] mb-2 border-b border-gray-100 pb-1.5">All 25 News Categories</p>
             <nav class="flex flex-col space-y-0.5 font-bold text-gray-800 text-sm mb-6" id="mobile-category-nav">
-                <!-- Injected Dynamically -->
             </nav>
 
             <p class="text-[11px] font-black uppercase tracking-wider text-[#d10000] mb-2 border-b border-gray-100 pb-1.5">Legal & Portal Info</p>
@@ -247,29 +245,24 @@
 
         <!-- 3. Home & Category View -->
         <div id="home-view">
-            <!-- Top Hero Section -->
             <div id="hero-top-section" class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-10 items-stretch">
-                <!-- Main Slider -->
                 <div class="lg:col-span-8 flex flex-col">
                     <div id="slider-wrapper" class="slider-container bg-gray-900 shadow-sm h-[280px] sm:h-[380px] lg:h-[460px] w-full rounded-xl overflow-hidden">
                         <div class="h-full w-full flex items-center justify-center text-white font-bold text-lg">
-                            <i class="fa-solid fa-spinner fa-spin mr-2 text-yellow-400"></i> Loading Top Stories...
+                            <i class="fa-solid fa-spinner fa-spin mr-2 text-yellow-400"></i> Loading Verified Stories...
                         </div>
                     </div>
                 </div>
-                <!-- Right Sidebar Top Headlines -->
                 <div class="lg:col-span-4 bg-white rounded-xl shadow-sm border border-gray-200 p-4 flex flex-col h-[380px] lg:h-[460px]">
                     <div class="flex items-center justify-between border-b-2 border-[#d10000] pb-2 mb-3 shrink-0">
                         <span class="section-badge text-xs"><i class="fa-solid fa-fire text-yellow-300"></i> TOP HEADLINES</span>
                         <span class="text-[11px] font-bold text-[#d10000] inline-flex items-center"><span class="w-2 h-2 bg-[#d10000] rounded-full animate-ping mr-1.5"></span> LIVE</span>
                     </div>
                     <div id="top-sidebar-list" class="divide-y divide-gray-100 flex-grow overflow-y-auto pr-1">
-                        <!-- Sidebar News Injected Here -->
                     </div>
                 </div>
             </div>
             
-            <!-- Category Sections (Jobs & Careers will render at the very top!) -->
             <div id="category-sections" class="space-y-10"></div>
         </div>
     </main>
@@ -304,7 +297,6 @@
             <div>
                 <h4 class="text-base font-black mb-5 border-b-2 border-[#d10000] pb-2 text-white uppercase tracking-wider inline-block">Popular Desks</h4>
                 <ul class="space-y-2.5 text-sm font-semibold text-gray-400" id="footer-categories">
-                    <!-- Top categories injected -->
                 </ul>
             </div>
             
@@ -336,6 +328,9 @@
         const SUPABASE_URL = "https://wioheljpjdcprozqumpv.supabase.co";
         const SUPABASE_KEY = "sb_publishable_d_ROr-nG6RpIRlVWtIE-Fg_sciaLZXR";
         let allNews = [];
+        let currentFilteredList = [];
+        let currentDisplayLimit = 60;
+        let currentActiveCategory = "";
         let slideIndex = 0;
         let slideInterval;
 
@@ -368,7 +363,13 @@
             return WORLD_AUTHORS[(idNum * 7) % WORLD_AUTHORS.length];
         }
 
-        // "Jobs & Careers" IS NOW FORCED AT THE VERY TOP POSITION!
+        function isRealPublisherImage(url) {
+            if (!url || typeof url !== 'string') return false;
+            const u = url.toLowerCase();
+            if (u.includes('picsum.photos') || u.includes('source.unsplash.com') || u.includes('photo-150000')) return false;
+            return u.startsWith('http');
+        }
+
         const categories = [
             "Jobs & Careers", "Breaking News", "World News", "India News", "Politics", "Sports", 
             "Business", "Finance & Markets", "Technology", "Entertainment", "Education", 
@@ -409,12 +410,16 @@
             const matched = newsList.filter(p => {
                 if (p.category === cat) return true;
                 if (cat === "Jobs & Careers" && (p.category === "Jobs" || p.category === "Jobs & Careers")) return true;
-                if (cat === "Auto & EV" && p.category === "Automobile") return true;
+                if (cat === "Auto & EV" && (p.category === "Automobile" || p.category === "Auto & EV")) return true;
                 if ((cat === "Technology" || cat === "AI & Robotics") && p.category === "Tech & AI") return true;
                 return false;
             });
-            if (cat === "Breaking News" && matched.length === 0) return newsList.slice(0, 15);
-            return matched;
+            // Prioritize posts that have real images over old placeholder/picsum images
+            const realImgPosts = matched.filter(p => isRealPublisherImage(p.image_url));
+            const otherPosts = matched.filter(p => !isRealPublisherImage(p.image_url));
+            const combined = realImgPosts.concat(otherPosts);
+            if (cat === "Breaking News" && combined.length === 0) return newsList.slice(0, 20);
+            return combined;
         }
 
         function toSlug(cat) {
@@ -437,15 +442,12 @@
             categories.forEach((cat, idx) => {
                 const slug = categoryToSlug[cat];
                 const iconClass = categoryIcons[cat] || "fa-solid fa-newspaper";
-                
                 topNavHTML += `<a href="/category/${slug}" onclick="event.preventDefault(); setActiveNav(this); filterCategory('${cat}');" class="cat-pill px-3 py-2.5 font-bold text-xs md:text-[13px] uppercase tracking-wide shrink-0">${cat}</a>`;
-                
                 mobileNavHTML += `
                 <a href="/category/${slug}" onclick="event.preventDefault(); filterCategoryAndClose('${cat}');" class="px-3 py-2.5 rounded-lg hover:bg-red-50 hover:text-[#d10000] transition flex items-center gap-3 border-b border-gray-50">
                     <i class="${iconClass} text-[#d10000] w-5 text-center text-base"></i>
                     <span>${cat}</span>
                 </a>`;
-
                 if (idx < 7) {
                     footerCatHTML += `<li><a href="/category/${slug}" onclick="event.preventDefault(); filterCategory('${cat}');" class="hover:text-white transition flex items-center gap-2.5"><i class="${iconClass} text-[#d10000] w-4 text-center"></i><span>${cat}</span></a></li>`;
                 }
@@ -463,94 +465,90 @@
         }
 
         const staticPages = {
-            'about-us': {
-                title: 'About Fast Job',
-                content: `<p>Welcome to <strong>Fast Job</strong> (fastjob.online), India's rapidly growing digital news publication and verified employment update portal.</p>`
-            },
-            'privacy-policy': {
-                title: 'Privacy Policy',
-                content: `<p>At <strong>Fast Job</strong>, protecting the privacy of our visitors is one of our highest priorities.</p>`
-            },
-            'terms-and-conditions': {
-                title: 'Terms & Conditions',
-                content: `<p>Welcome to <strong>Fast Job</strong>! These Terms and Conditions outline the rules and regulations for the use of our website.</p>`
-            },
-            'disclaimer': {
-                title: 'Disclaimer',
-                content: `<p>All the information published on <strong>Fast Job</strong> is published in good faith and for general information and educational purposes only.</p>`
-            },
-            'editorial-policy': {
-                title: 'Editorial Policy',
-                content: `<p>At <strong>Fast Job</strong>, our credibility is our greatest asset. Our Editorial Policy governs how our global authors publish news.</p>`
-            },
-            'contact-us': {
-                title: 'Contact Desk',
-                content: `<p>Connect with the <strong>Fast Job Editorial & Support Team</strong> at <strong>desk@fastjob.online</strong>.</p>`
-            }
+            'about-us': { title: 'About Fast Job', content: `<p>Welcome to <strong>Fast Job</strong> (fastjob.online), India's rapidly growing digital news publication and verified employment update portal.</p>` },
+            'privacy-policy': { title: 'Privacy Policy', content: `<p>At <strong>Fast Job</strong>, protecting the privacy of our visitors is one of our highest priorities.</p>` },
+            'terms-and-conditions': { title: 'Terms & Conditions', content: `<p>Welcome to <strong>Fast Job</strong>! These Terms and Conditions outline the rules and regulations for the use of our website.</p>` },
+            'disclaimer': { title: 'Disclaimer', content: `<p>All the information published on <strong>Fast Job</strong> is published in good faith and for general information and educational purposes only.</p>` },
+            'editorial-policy': { title: 'Editorial Policy', content: `<p>At <strong>Fast Job</strong>, our credibility is our greatest asset. Our Editorial Policy governs how our global authors publish news.</p>` },
+            'contact-us': { title: 'Contact Desk', content: `<p>Connect with the <strong>Fast Job Editorial & Support Team</strong> at <strong>desk@fastjob.online</strong>.</p>` }
         };
 
+        // MULTI-BATCH LOADER: Loads ALL 7,000+ posts (old + new) without stopping at 1,000!
         async function loadNews() {
             try {
-                const countRes = await fetch(SUPABASE_URL + "/rest/v1/posts?select=id", {
+                const countRes = await fetch(SUPABASE_URL + "/rest/v1/posts?select=id&limit=1", {
                     headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + SUPABASE_KEY, "Prefer": "count=exact" }
                 });
                 const range = countRes.headers.get("content-range");
-                let totalCount = "999+";
-                if (range) {
-                    totalCount = range.split('/')[1];
-                    document.getElementById('exact-post-counter').innerText = totalCount;
+                let totalCount = 7000;
+                if (range && range.includes('/')) {
+                    totalCount = parseInt(range.split('/')[1], 10) || 7000;
+                    document.getElementById('exact-post-counter').innerText = totalCount.toLocaleString();
                 }
 
-                const response = await fetch(SUPABASE_URL + "/rest/v1/posts?select=*&order=id.desc&limit=1000", {
+                // Load first 1000 immediately for instant display
+                const firstRes = await fetch(SUPABASE_URL + "/rest/v1/posts?select=id,title,slug,category,image_url,created_at&order=id.desc&limit=1000&offset=0", {
                     headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + SUPABASE_KEY }
                 });
-                const data = await response.json();
-                if (data && data.length > 0) {
-                    allNews = data;
+                const firstBatch = await firstRes.json();
+                if (Array.isArray(firstBatch) && firstBatch.length > 0) {
+                    const realFirst = firstBatch.filter(p => isRealPublisherImage(p.image_url));
+                    const fallbackFirst = firstBatch.filter(p => !isRealPublisherImage(p.image_url));
+                    allNews = realFirst.concat(fallbackFirst);
                     renderTicker(allNews);
                     handleRoute(window.location.pathname, false);
+                }
+
+                // Now load all remaining older batches (1000 to totalCount) in parallel so ALL old posts come back!
+                const batchPromises = [];
+                const maxOffset = Math.min(totalCount, 12000);
+                for (let offset = 1000; offset < maxOffset; offset += 1000) {
+                    batchPromises.push(
+                        fetch(SUPABASE_URL + `/rest/v1/posts?select=id,title,slug,category,image_url,created_at&order=id.desc&limit=1000&offset=${offset}`, {
+                            headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + SUPABASE_KEY }
+                        }).then(r => r.json()).catch(() => [])
+                    );
+                }
+
+                if (batchPromises.length > 0) {
+                    const olderBatches = await Promise.all(batchPromises);
+                    let combinedAll = Array.isArray(firstBatch) ? [...firstBatch] : [];
+                    olderBatches.forEach(batch => {
+                        if (Array.isArray(batch)) combinedAll = combinedAll.concat(batch);
+                    });
+                    // Prioritize posts with real publisher images so broken/picsum test posts don't hide old real posts
+                    const realPosts = combinedAll.filter(p => isRealPublisherImage(p.image_url));
+                    const nonRealPosts = combinedAll.filter(p => !isRealPublisherImage(p.image_url));
+                    allNews = realPosts.concat(nonRealPosts);
+                    document.getElementById('exact-post-counter').innerText = Math.max(totalCount, allNews.length).toLocaleString();
+                    renderTicker(allNews);
+                    if (!document.getElementById('home-view').classList.contains('hidden')) {
+                        handleRoute(window.location.pathname, false);
+                    }
                 }
             } catch (err) { console.error(err); }
         }
 
         function handleRoute(pathname, pushState = false) {
             let cleanPath = pathname.replace(/^\/|\/$/g, '').replace(/\.html$/, '');
-
-            if (!cleanPath || cleanPath === 'index') {
-                renderHome(allNews, pushState);
-                return;
-            }
-
-            if (staticPages[cleanPath]) {
-                openStaticPage(cleanPath, pushState);
-                return;
-            }
-
+            if (!cleanPath || cleanPath === 'index') { renderHome(allNews, pushState); return; }
+            if (staticPages[cleanPath]) { openStaticPage(cleanPath, pushState); return; }
             if (cleanPath.startsWith('category/')) {
                 const catSlug = cleanPath.replace('category/', '');
                 const catName = slugToCategory[catSlug];
-                if (catName) {
-                    filterCategory(catName, pushState);
-                    return;
-                }
+                if (catName) { filterCategory(catName, pushState); return; }
             }
-
             openArticle(cleanPath, pushState);
         }
 
         function openStaticPage(pageKey, pushState = true) {
             const page = staticPages[pageKey];
             if (!page) return;
-
-            if (pushState) {
-                history.pushState({ type: 'static', key: pageKey }, "", "/" + pageKey);
-            }
-
+            if (pushState) history.pushState({ type: 'static', key: pageKey }, "", "/" + pageKey);
             clearInterval(slideInterval);
             document.getElementById('home-view').classList.add('hidden');
             document.getElementById('article-view').classList.add('hidden');
             document.getElementById('legal-view').classList.remove('hidden');
-
             document.getElementById('legal-page-title').innerText = page.title;
             document.getElementById('legal-page-content').innerHTML = page.content;
             document.title = `${page.title} - Fast Job`;
@@ -558,7 +556,7 @@
         }
 
         function renderTicker(newsItems) {
-            const topTitles = newsItems.slice(0, 12).map(item => `<span class="ticker-item" onclick="openArticle('${item.slug}')"><span class="text-[#d10000] font-black mr-1.5">&#9679;</span> ${item.title}</span>`).join(' &nbsp;&nbsp;<span class="text-gray-300">|</span>&nbsp;&nbsp; ');
+            const topTitles = newsItems.slice(0, 15).map(item => `<span class="ticker-item" onclick="openArticle('${item.slug}')"><span class="text-[#d10000] font-black mr-1.5">&#9679;</span> ${item.title}</span>`).join(' &nbsp;&nbsp;<span class="text-gray-300">|</span>&nbsp;&nbsp; ');
             document.getElementById('ticker-content').innerHTML = topTitles;
         }
 
@@ -571,7 +569,7 @@
                 const author = getPostAuthor(item);
                 sliderHTML += `
                 <div class="slide ${index === 0 ? 'active' : ''} cursor-pointer w-full h-full relative group" onclick="openArticle('${item.slug}')">
-                    <img src="${item.image_url}" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                    <img src="${item.image_url}" onerror="this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1000&q=80'" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
                     <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
                     <div class="absolute bottom-0 left-0 right-0 p-5 md:p-8">
                         <div class="flex flex-wrap items-center gap-2 mb-2">
@@ -582,17 +580,16 @@
                     </div>
                 </div>`;
             });
-            
             document.getElementById('slider-wrapper').innerHTML = sliderHTML;
             
-            const sideItems = newsItems.slice(5, 13);
+            const sideItems = newsItems.slice(5, 15);
             const sidebarList = sideItems.length > 0 ? sideItems : newsItems.slice(0, 6);
             let sideHTML = '';
             sidebarList.forEach(item => {
                 const author = getPostAuthor(item);
                 sideHTML += `
                 <div onclick="openArticle('${item.slug}')" class="py-2.5 flex gap-3 items-center cursor-pointer group">
-                    <img src="${item.image_url}" class="w-20 h-14 object-cover rounded-lg shrink-0 border border-gray-100">
+                    <img src="${item.image_url}" onerror="this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&q=80'" class="w-20 h-14 object-cover rounded-lg shrink-0 border border-gray-100">
                     <div class="flex-grow min-w-0">
                         <div class="flex items-center justify-between gap-1 mb-0.5">
                             <span class="text-[10px] font-extrabold text-[#d10000] uppercase truncate">${item.category}</span>
@@ -625,15 +622,15 @@
             return `
             <section class="bg-white p-5 md:p-7 rounded-xl shadow-sm border border-gray-200">
                 <div class="flex justify-between items-center mb-6 border-b-2 border-[#d10000] pb-2">
-                    <span class="section-badge text-sm md:text-base"><i class="${iconClass} text-yellow-300"></i> ${cat}</span>
-                    <a href="/category/${catSlug}" onclick="event.preventDefault(); filterCategory('${cat}');" class="text-xs md:text-sm font-extrabold text-[#d10000] hover:underline uppercase inline-flex items-center">More News <i class="fa-solid fa-angle-right ml-1.5"></i></a>
+                    <span class="section-badge text-sm md:text-base"><i class="${iconClass} text-yellow-300"></i> ${cat} (${catPosts.length})</span>
+                    <a href="/category/${catSlug}" onclick="event.preventDefault(); filterCategory('${cat}');" class="text-xs md:text-sm font-extrabold text-[#d10000] hover:underline uppercase inline-flex items-center">View All ${catPosts.length} Posts <i class="fa-solid fa-angle-right ml-1.5"></i></a>
                 </div>
                 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
                     <div onclick="openArticle('${featured.slug}')" class="lg:col-span-5 bg-gray-50 border border-gray-100 hover:border-red-200 shadow-sm hover:shadow-md transition cursor-pointer rounded-xl overflow-hidden flex flex-col justify-between group">
                         <div>
                             <div class="overflow-hidden aspect-video relative">
-                                <img src="${featured.image_url}" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+                                <img src="${featured.image_url}" onerror="this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80'" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
                                 <span class="absolute top-3 left-3 bg-[#d10000] text-white text-[10px] font-extrabold uppercase px-2.5 py-1 rounded shadow">${cat}</span>
                             </div>
                             <div class="p-4 md:p-5">
@@ -651,7 +648,7 @@
                             <div onclick="openArticle('${item.slug}')" class="bg-white border border-gray-100 hover:border-red-200 shadow-sm hover:shadow-md transition cursor-pointer rounded-xl overflow-hidden flex flex-col justify-between group">
                                 <div>
                                     <div class="overflow-hidden h-36 relative">
-                                        <img src="${item.image_url}" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+                                        <img src="${item.image_url}" onerror="this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80'" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
                                     </div>
                                     <div class="p-3.5">
                                         <h4 class="font-bold text-sm md:text-base leading-snug text-gray-900 group-hover:text-[#d10000] transition line-clamp-2">${item.title}</h4>
@@ -669,9 +666,7 @@
         }
 
         function renderHome(newsList, pushState = false) {
-            if (pushState) {
-                history.pushState({ type: 'home' }, "", "/");
-            }
+            if (pushState) history.pushState({ type: 'home' }, "", "/");
             document.getElementById('article-view').classList.add('hidden');
             document.getElementById('legal-view').classList.add('hidden');
             document.getElementById('home-view').classList.remove('hidden');
@@ -689,45 +684,28 @@
             document.getElementById('category-sections').innerHTML = sectionsHTML;
         }
 
-        function filterCategory(cat, pushState = true) {
-            if (cat === 'All') {
-                goBackHome();
-                return;
-            }
-            const catSlug = categoryToSlug[cat] || 'all';
+        function renderCategoryGrid() {
+            const cat = currentActiveCategory;
             const iconClass = categoryIcons[cat] || "fa-solid fa-newspaper";
-            if (pushState) {
-                history.pushState({ type: 'category', cat: cat }, "", "/category/" + catSlug);
-            }
+            const visibleItems = currentFilteredList.slice(0, currentDisplayLimit);
 
-            document.getElementById('article-view').classList.add('hidden');
-            document.getElementById('legal-view').classList.add('hidden');
-            document.getElementById('home-view').classList.remove('hidden');
-
-            const filtered = getPostsForCategory(allNews, cat);
-            if (filtered.length > 0) {
-                renderSliderAndSidebar(filtered);
-            } else {
-                document.getElementById('hero-top-section').classList.add('hidden');
-            }
-            
             let gridHTML = `
             <div class="bg-white p-5 md:p-7 rounded-xl shadow-sm border border-gray-200">
                 <div class="border-b-2 border-[#d10000] pb-2 mb-6 flex justify-between items-center">
-                    <span class="section-badge text-base md:text-lg"><i class="${iconClass} text-yellow-300"></i> ${cat} (${filtered.length} Posts)</span>
+                    <span class="section-badge text-base md:text-lg"><i class="${iconClass} text-yellow-300"></i> ${cat} (${currentFilteredList.length} Posts)</span>
                     <button onclick="goBackHome()" class="text-xs font-bold text-gray-600 hover:text-[#d10000] inline-flex items-center"><i class="fa-solid fa-house mr-1.5"></i> Back Home</button>
                 </div>`;
 
-            if (filtered.length === 0) {
+            if (currentFilteredList.length === 0) {
                 gridHTML += `<p class="py-12 text-center text-gray-500 font-semibold">New stories for <strong>${cat}</strong> are being updated by our desk. Check back shortly!</p>`;
             } else {
                 gridHTML += `<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">`;
-                filtered.forEach(item => {
+                visibleItems.forEach(item => {
                     gridHTML += `
                     <div onclick="openArticle('${item.slug}')" class="bg-white border border-gray-200/80 hover:border-red-300 shadow-sm hover:shadow-md transition cursor-pointer rounded-xl overflow-hidden flex flex-col justify-between group">
                         <div>
                             <div class="overflow-hidden aspect-video relative">
-                                <img src="${item.image_url}" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+                                <img src="${item.image_url}" onerror="this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80'" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
                                 <span class="absolute top-2.5 left-2.5 bg-[#d10000] text-white text-[9px] font-extrabold uppercase px-2 py-0.5 rounded shadow">${cat}</span>
                             </div>
                             <div class="p-4">
@@ -741,10 +719,45 @@
                     </div>`;
                 });
                 gridHTML += `</div>`;
+
+                if (currentDisplayLimit < currentFilteredList.length) {
+                    gridHTML += `
+                    <div class="mt-8 text-center">
+                        <button onclick="loadMoreCategoryPosts()" class="bg-[#d10000] hover:bg-[#a80000] text-white font-black text-xs md:text-sm uppercase tracking-wider px-8 py-3 rounded-full shadow-lg transition">
+                            Load More Posts (${currentFilteredList.length - currentDisplayLimit} Remaining)
+                        </button>
+                    </div>`;
+                }
             }
             gridHTML += `</div>`;
-
             document.getElementById('category-sections').innerHTML = gridHTML;
+        }
+
+        function loadMoreCategoryPosts() {
+            currentDisplayLimit += 80;
+            renderCategoryGrid();
+        }
+
+        function filterCategory(cat, pushState = true) {
+            if (cat === 'All') { goBackHome(); return; }
+            const catSlug = categoryToSlug[cat] || 'all';
+            if (pushState) history.pushState({ type: 'category', cat: cat }, "", "/category/" + catSlug);
+
+            document.getElementById('article-view').classList.add('hidden');
+            document.getElementById('legal-view').classList.add('hidden');
+            document.getElementById('home-view').classList.remove('hidden');
+
+            currentActiveCategory = cat;
+            currentFilteredList = getPostsForCategory(allNews, cat);
+            currentDisplayLimit = 60;
+
+            if (currentFilteredList.length > 0) {
+                renderSliderAndSidebar(currentFilteredList);
+            } else {
+                document.getElementById('hero-top-section').classList.add('hidden');
+            }
+            
+            renderCategoryGrid();
             document.title = `${cat} News - Fast Job`;
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -766,14 +779,14 @@
             document.getElementById('home-view').classList.remove('hidden');
             document.getElementById('hero-top-section').classList.add('hidden');
 
-            const filtered = allNews.filter(item => item.title.toLowerCase().includes(query));
+            const filtered = allNews.filter(item => (item.title || "").toLowerCase().includes(query));
             
             let gridHTML = `<div class="bg-white p-5 md:p-7 rounded-xl shadow-sm border border-gray-200"><div class="border-b-2 border-[#d10000] pb-2 mb-6"><span class="section-badge text-base md:text-lg"><i class="fa-solid fa-magnifying-glass"></i> Search Results (${filtered.length})</span></div><div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">`;
-            filtered.forEach(item => {
+            filtered.slice(0, 120).forEach(item => {
                 gridHTML += `
                 <div onclick="openArticle('${item.slug}')" class="bg-white border border-gray-200 shadow-sm hover:shadow-md transition cursor-pointer rounded-xl overflow-hidden flex flex-col justify-between group">
                     <div>
-                        <div class="overflow-hidden aspect-video"><img src="${item.image_url}" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500"></div>
+                        <div class="overflow-hidden aspect-video"><img src="${item.image_url}" onerror="this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80'" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500"></div>
                         <div class="p-4"><h4 class="font-bold text-sm md:text-base leading-snug text-gray-900 group-hover:text-[#d10000] transition line-clamp-3">${item.title}</h4></div>
                     </div>
                     <div class="px-4 pb-3 pt-2 border-t border-gray-100 text-[11px] font-semibold text-gray-500"><i class="fa-solid fa-pen-nib text-[#d10000] mr-1 text-[10px]"></i>${getPostAuthor(item)}</div>
@@ -783,8 +796,20 @@
             document.getElementById('category-sections').innerHTML = gridHTML;
         }
 
-        function openArticle(slug, pushState = true) {
-            const post = allNews.find(item => item.slug === slug);
+        async function openArticle(slug, pushState = true) {
+            let post = allNews.find(item => item.slug === slug);
+            if (!post || !post.content) {
+                try {
+                    const res = await fetch(SUPABASE_URL + "/rest/v1/posts?select=*&slug=eq." + encodeURIComponent(slug) + "&limit=1", {
+                        headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + SUPABASE_KEY }
+                    });
+                    const rows = await res.json();
+                    if (rows && rows.length > 0) {
+                        post = rows[0];
+                    }
+                } catch (e) { console.error(e); }
+            }
+
             if (post) {
                 if(pushState) { history.pushState({ type: 'article', slug: slug }, "", "/" + slug); }
                 
@@ -797,16 +822,14 @@
                 
                 const authorName = getPostAuthor(post);
                 const cleanAvatarName = encodeURIComponent(authorName.split('(')[0].trim());
-                const nameEl = document.getElementById('detail-author-name');
-                const avatarEl = document.getElementById('detail-author-avatar');
-                if (nameEl) nameEl.innerHTML = `<i class="fa-solid fa-pen-nib mr-1.5"></i> Reported by ${authorName}`;
-                if (avatarEl) avatarEl.src = `https://ui-avatars.com/api/?name=${cleanAvatarName}&background=d10000&color=fff&bold=true`;
+                document.getElementById('detail-author-name').innerHTML = `<i class="fa-solid fa-pen-nib mr-1.5"></i> Reported by ${authorName}`;
+                document.getElementById('detail-author-avatar').src = `https://ui-avatars.com/api/?name=${cleanAvatarName}&background=d10000&color=fff&bold=true`;
 
                 const postDate = new Date(post.created_at);
                 const options = { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' };
                 document.getElementById('detail-date').innerHTML = `<i class="fa-regular fa-clock mr-1"></i> Published on ${postDate.toLocaleDateString('en-IN', options)}`;
                 document.getElementById('detail-image').src = post.image_url;
-                document.getElementById('detail-content').innerHTML = post.content;
+                document.getElementById('detail-content').innerHTML = post.content || "";
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             } else {
                 goBackHome();
