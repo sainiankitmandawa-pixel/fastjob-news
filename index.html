@@ -1,1202 +1,718 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title id="page-title">Fast Job - Live Breaking News, Jobs & Global Coverage</title>
-    <meta name="description" content="Fast Job (fastjob.online) provides 24/7 verified breaking news, government job notifications, politics, economy, tech, sports, auto, and global updates.">
-    <meta name="keywords" content="Fast Job, Breaking News, Sarkari Naukri, Jobs, Politics, Economy, Tech News, Auto, Sports, Daily Updates, fastjob.online">
-    <meta name="robots" content="index, follow, max-image-preview:large">
-    <meta name="author" content="Fast Job Editorial Desk">
-    <meta name="theme-color" content="#d10000">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Fast Job - Live Breaking News, Jobs & Global Coverage</title>
+<meta name="description" content="Fast Job (fastjob.online) provides 24/7 verified breaking news, government job notifications, politics, economy, tech, sports, auto, and global updates.">
+<meta name="keywords" content="Fast Job, Breaking News, Sarkari Naukri, Jobs, Politics, Economy, Tech News, Auto, Sports, fastjob.online">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#d10000">
 
-    <!-- FJ NEWS FAVICON FOR BROWSER TAB & GOOGLE SEARCH -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='96' fill='%23d10000'/%3E%3Crect x='20' y='20' width='472' height='472' rx='80' fill='none' stroke='%23facc15' stroke-width='14'/%3E%3Ctext x='245' y='325' font-family='Arial Black,sans-serif' font-weight='900' font-size='250' fill='%23ffffff' text-anchor='middle'%3EFJ%3C/text%3E%3Crect x='56' y='385' width='400' height='78' rx='18' fill='%23facc15'/%3E%3Ctext x='256' y='438' font-family='Arial,sans-serif' font-weight='900' font-size='44' fill='%23111827' text-anchor='middle' letter-spacing='5'%3ENEWS%3C/text%3E%3C/svg%3E">
-    <link rel="shortcut icon" href="/logo.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/logo.svg">
+<!-- FJ NEWS FAVICON FOR BROWSER TAB & GOOGLE -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='96' fill='%23d10000'/%3E%3Crect x='20' y='20' width='472' height='472' rx='80' fill='none' stroke='%23facc15' stroke-width='16'/%3E%3Ctext x='256' y='320' font-family='Arial Black,sans-serif' font-weight='900' font-size='245' fill='%23ffffff' text-anchor='middle'%3EFJ%3C/text%3E%3Crect x='56' y='382' width='400' height='80' rx='18' fill='%23facc15'/%3E%3Ctext x='256' y='438' font-family='Arial,sans-serif' font-weight='900' font-size='46' fill='%23111827' text-anchor='middle' letter-spacing='5'%3ENEWS%3C/text%3E%3C/svg%3E">
+<link rel="shortcut icon" href="/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/logo.svg">
 
-    <!-- GOOGLE SEARCH ORGANIZATION & LOGO SCHEMA -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "NewsMediaOrganization",
-      "name": "Fast Job",
-      "alternateName": "Fast Job News & Career Portal",
-      "url": "https://fastjob.online",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://fastjob.online/logo.svg",
-        "width": 512,
-        "height": 512
-      },
-      "sameAs": [
-        "https://whatsapp.com/channel/0029VbDajQV8PgsNA1lLhW0i"
-      ],
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "email": "desk@fastjob.online",
-        "contactType": "editorial support"
-      }
-    }
-    </script>
-    
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4ECBSC962B"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-4ECBSC962B');
-    </script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"NewsMediaOrganization","name":"Fast Job","url":"https://fastjob.online","logo":{"@type":"ImageObject","url":"https://fastjob.online/logo.svg","width":512,"height":512}}
+</script>
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Mukta', sans-serif; background-color: #f4f5f7; color: #111827; }
-        .heading-font { font-family: 'Playfair Display', serif; }
-        
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4ECBSC962B"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-4ECBSC962B');
+</script>
 
-        .ticker-wrap { width: 100%; background-color: #ffffff; color: #111827; display: flex; align-items: stretch; border-bottom: 2px solid #e5e7eb; box-shadow: 0 2px 8px rgba(0,0,0,0.04); overflow: hidden; }
-        .ticker-label { background: linear-gradient(90deg, #d10000 0%, #a80000 100%); color: #ffffff; padding: 8px 22px 8px 16px; font-weight: 900; font-size: 12px; z-index: 20; text-transform: uppercase; letter-spacing: 1px; clip-path: polygon(0 0, 100% 0, 92% 100%, 0% 100%); flex-shrink: 0; display: flex; align-items: center; }
-        .ticker-track { flex-grow: 1; overflow: hidden; display: flex; align-items: center; }
-        .ticker { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 40s linear infinite; }
-        .ticker:hover { animation-play-state: paused; }
-        .ticker-item { display: inline-block; padding: 0 2rem; font-size: 14px; font-weight: 700; color: #111827; transition: color 0.2s; }
-        .ticker-item:hover { color: #d10000; cursor: pointer; }
-        @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
-
-        .cat-pill { position: relative; transition: all 0.2s ease; color: #1f2937; white-space: nowrap; }
-        .cat-pill:hover { color: #d10000; background-color: #fff5f5; }
-        .cat-pill::after { content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 3px; background: #d10000; transition: all 0.2s ease; transform: translateX(-50%); }
-        .cat-pill:hover::after, .cat-pill.active-cat::after { width: 100%; }
-        .cat-pill.active-cat { color: #d10000 !important; font-weight: 800; background-color: #fff5f5; }
-
-        .section-badge { background: #d10000; color: #ffffff; padding: 6px 20px 6px 14px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px; clip-path: polygon(0 0, 100% 0, 93% 100%, 0% 100%); display: inline-flex; align-items: center; gap: 8px; }
-
-        #detail-content, #legal-page-content { color: #1f2937; line-height: 1.95; font-size: 1.15rem; }
-        #detail-content p, #legal-page-content p { margin-bottom: 1.4rem; }
-        #detail-content ul, #legal-page-content ul { list-style-type: disc; padding-left: 1.8rem; margin-bottom: 1.6rem; }
-        #detail-content li, #legal-page-content li { margin-bottom: 0.6rem; }
-        #detail-content p:first-of-type::first-letter { font-size: 3.6rem; font-weight: 900; float: left; line-height: 0.85; margin-right: 0.7rem; margin-top: 0.15rem; color: #d10000; font-family: 'Playfair Display', serif; }
-        #detail-content .seo-title { font-size: 2rem; font-weight: 900; color: #111827; margin-bottom: 1.5rem; line-height: 1.3; border-bottom: 3px solid #d10000; padding-bottom: 10px; display: block; }
-        #detail-content .intro-text, #legal-page-content .intro-box { font-weight: 600; font-size: 1.15rem; color: #111827; border-left: 4px solid #d10000; padding: 14px 18px; background: #fff5f5; border-radius: 0 8px 8px 0; margin-bottom: 1.8rem; }
-        #detail-content .article-subheading, #legal-page-content h3 { font-size: 1.45rem; font-weight: 800; color: #111827; margin-top: 2.2rem; margin-bottom: 1rem; display: flex; align-items: center; }
-        #detail-content .article-subheading::before, #legal-page-content h3::before { content: ""; display: inline-block; width: 6px; height: 22px; background: #d10000; margin-right: 10px; border-radius: 2px; flex-shrink: 0; }
-        #detail-content .hashtags { margin-top: 2.5rem; font-weight: 700; color: #1d4ed8; background: #eff6ff; padding: 14px 18px; border-radius: 8px; border: 1px solid #bfdbfe; }
-        .article-table { width: 100%; border-collapse: collapse; margin: 1.8rem 0; font-size: 1rem; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-radius: 8px; overflow: hidden; }
-        .article-table th, .article-table td { border: 1px solid #e5e7eb; padding: 12px 16px; text-align: left; }
-        .article-table th { background-color: #d10000; font-weight: 800; color: #ffffff; text-transform: uppercase; letter-spacing: 0.5px; }
-        
-        .slider-container { position: relative; overflow: hidden; border-radius: 0.75rem; }
-        .slide { display: none; animation: slideFade 0.5s ease-in-out; }
-        .slide.active { display: block; }
-        @keyframes slideFade { from { opacity: 0.5; } to { opacity: 1; } }
-        
-        html { scroll-behavior: smooth; }
-    </style>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+body { font-family: 'Mukta', sans-serif; background-color: #f4f5f7; color: #111827; }
+.heading-font { font-family: 'Playfair Display', serif; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.ticker-wrap { width: 100%; background: #fff; color: #111827; display: flex; align-items: stretch; border-bottom: 2px solid #e5e7eb; overflow: hidden; }
+.ticker-label { background: linear-gradient(90deg, #d10000, #a80000); color: #fff; padding: 8px 20px 8px 14px; font-weight: 900; font-size: 12px; text-transform: uppercase; clip-path: polygon(0 0, 100% 0, 92% 100%, 0% 100%); flex-shrink: 0; display: flex; align-items: center; }
+.ticker-track { flex-grow: 1; overflow: hidden; display: flex; align-items: center; }
+.ticker { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 40s linear infinite; }
+.ticker:hover { animation-play-state: paused; }
+.ticker-item { display: inline-block; padding: 0 2rem; font-size: 14px; font-weight: 700; color: #111827; cursor: pointer; }
+.ticker-item:hover { color: #d10000; }
+@keyframes ticker { 0% { transform: translate3d(0,0,0); } 100% { transform: translate3d(-100%,0,0); } }
+.cat-pill { position: relative; transition: all 0.2s; color: #1f2937; white-space: nowrap; }
+.cat-pill:hover, .cat-pill.active-cat { color: #d10000 !important; font-weight: 800; background: #fff5f5; }
+.cat-pill.active-cat::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: #d10000; }
+.section-badge { background: #d10000; color: #fff; padding: 6px 20px 6px 14px; font-weight: 900; text-transform: uppercase; clip-path: polygon(0 0, 100% 0, 93% 100%, 0% 100%); display: inline-flex; align-items: center; gap: 8px; }
+#detail-content, #legal-page-content { color: #1f2937; line-height: 1.9; font-size: 1.12rem; }
+#detail-content p, #legal-page-content p { margin-bottom: 1.4rem; }
+#detail-content ul, #legal-page-content ul { list-style-type: disc; padding-left: 1.8rem; margin-bottom: 1.5rem; }
+#detail-content li, #legal-page-content li { margin-bottom: 0.5rem; }
+#detail-content .seo-title { font-size: 1.9rem; font-weight: 900; color: #111827; margin-bottom: 1.2rem; border-bottom: 3px solid #d10000; padding-bottom: 8px; display: block; }
+#detail-content .intro-text, #legal-page-content .intro-box { font-weight: 600; color: #111827; border-left: 4px solid #d10000; padding: 14px 18px; background: #fff5f5; border-radius: 0 8px 8px 0; margin-bottom: 1.6rem; }
+#detail-content .article-subheading, #legal-page-content h3 { font-size: 1.4rem; font-weight: 800; color: #111827; margin-top: 2rem; margin-bottom: 0.9rem; display: flex; align-items: center; }
+#detail-content .article-subheading::before, #legal-page-content h3::before { content: ""; display: inline-block; width: 6px; height: 22px; background: #d10000; margin-right: 10px; border-radius: 2px; flex-shrink: 0; }
+#detail-content .hashtags { margin-top: 2rem; font-weight: 700; color: #1d4ed8; background: #eff6ff; padding: 12px 16px; border-radius: 8px; border: 1px solid #bfdbfe; }
+.article-table { width: 100%; border-collapse: collapse; margin: 1.6rem 0; font-size: 0.98rem; }
+.article-table th, .article-table td { border: 1px solid #e5e7eb; padding: 10px 14px; text-align: left; }
+.article-table th { background: #d10000; font-weight: 800; color: #fff; text-transform: uppercase; }
+.slider-container { position: relative; overflow: hidden; border-radius: 0.75rem; }
+.slide { display: none; }
+.slide.active { display: block; }
+</style>
 </head>
 <body class="flex flex-col min-h-screen overflow-x-hidden">
 
-    <!-- 1. Top Utility Bar -->
-    <div class="bg-[#990000] text-white text-[11px] py-1.5 px-3 md:px-6 w-full border-b border-red-800 relative z-50">
-        <div class="w-full max-w-[1400px] mx-auto flex justify-between items-center">
-            <div class="flex items-center gap-3 md:gap-4">
-                <span class="bg-white text-[#d10000] px-2.5 py-0.5 rounded font-black uppercase tracking-wider text-[9px] md:text-[10px] inline-flex items-center shadow-sm">
-                    <span class="w-2 h-2 bg-[#d10000] rounded-full mr-1.5 animate-ping"></span> LIVE TV / NEWS
-                </span>
-                <span class="font-semibold tracking-wide text-red-100 inline-flex items-center text-[10px] md:text-xs">
-                    <i class="fa-regular fa-calendar-days text-yellow-300 mr-1.5"></i><span id="live-date"></span>
-                </span>
-                <span class="bg-black/30 text-yellow-300 px-2 py-0.5 rounded font-bold text-[10px]">
-                    <i class="fa-solid fa-database mr-1"></i> Live Posts: <span id="exact-post-counter">Loading...</span>
-                </span>
+<!-- 1. Top Utility Bar (Day, Date, Year Badge) -->
+<div class="bg-[#990000] text-white text-[11px] py-1.5 px-3 md:px-6 w-full border-b border-red-800 relative z-50">
+    <div class="w-full max-w-[1400px] mx-auto flex justify-between items-center">
+        <div class="flex items-center gap-2.5 md:gap-4">
+            <span class="bg-white text-[#d10000] px-2.5 py-0.5 rounded font-black uppercase tracking-wider text-[9px] md:text-[10px] inline-flex items-center shadow-sm">
+                <span class="w-2 h-2 bg-[#d10000] rounded-full mr-1.5 animate-ping"></span> LIVE NEWS
+            </span>
+            <span class="bg-black/35 text-yellow-300 px-3 py-0.5 rounded-full font-bold text-[10px] md:text-xs inline-flex items-center border border-yellow-400/30">
+                <i class="fa-regular fa-calendar-days text-yellow-300 mr-1.5"></i>
+                <span id="live-date">Tuesday, October 20, 2026</span>
+            </span>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="hidden md:flex items-center gap-5 font-bold uppercase tracking-wider text-[10px] text-red-100">
+                <a href="/about-us" onclick="event.preventDefault(); openStaticPage('about-us');" class="hover:text-yellow-300">About Us</a>
+                <a href="/editorial-policy" onclick="event.preventDefault(); openStaticPage('editorial-policy');" class="hover:text-yellow-300">Editorial Policy</a>
+                <a href="/contact-us" onclick="event.preventDefault(); openStaticPage('contact-us');" class="hover:text-yellow-300">Contact Desk</a>
             </div>
-
-            <div class="flex items-center gap-4 md:gap-5">
-                <div class="hidden md:flex items-center gap-5 font-bold uppercase tracking-wider text-[10px] text-red-100">
-                    <a href="/about-us" onclick="event.preventDefault(); openStaticPage('about-us');" class="hover:text-yellow-300 transition">About Us</a>
-                    <a href="/editorial-policy" onclick="event.preventDefault(); openStaticPage('editorial-policy');" class="hover:text-yellow-300 transition">Editorial Policy</a>
-                    <a href="/contact-us" onclick="event.preventDefault(); openStaticPage('contact-us');" class="hover:text-yellow-300 transition">Contact Desk</a>
-                </div>
-                <a href="https://whatsapp.com/channel/0029VbDajQV8PgsNA1lLhW0i" target="_blank" class="bg-[#25d366] hover:bg-[#1da851] text-white px-3 py-0.5 rounded-full font-bold text-[10px] uppercase tracking-wider inline-flex items-center gap-1.5 shadow transition">
-                    <i class="fa-brands fa-whatsapp text-xs"></i> <span>Join WhatsApp</span>
-                </a>
-            </div>
+            <a href="https://whatsapp.com/channel/0029VbDajQV8PgsNA1lLhW0i" target="_blank" class="bg-[#25d366] hover:bg-[#1da851] text-white px-3 py-0.5 rounded-full font-bold text-[10px] uppercase inline-flex items-center gap-1.5 shadow">
+                <i class="fa-brands fa-whatsapp text-xs"></i> <span>Join WhatsApp</span>
+            </a>
         </div>
     </div>
+</div>
 
-    <!-- 2. Main Red Header with Custom FJ News Logo -->
-    <header class="sticky top-0 z-40 shadow-md bg-white">
-        <div class="bg-[#d10000] text-white py-3 md:py-3.5 px-3 md:px-6">
-            <div class="w-full max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-3 md:gap-6">
-                
-                <div class="w-full md:w-auto flex items-center justify-between">
-                    <a href="/" onclick="event.preventDefault(); goBackHome();" class="flex items-center shrink-0 cursor-pointer group">
-                        <!-- Custom FJ Live News Emblem -->
-                        <div class="relative w-12 h-12 md:w-14 md:h-14 rounded-xl mr-3 flex flex-col items-center justify-center bg-gradient-to-br from-[#111827] to-[#1f2937] border-2 border-yellow-400 shadow-lg transform group-hover:scale-105 transition overflow-hidden">
-                            <span class="text-white font-black text-xl md:text-2xl tracking-tighter leading-none">FJ</span>
-                            <span class="bg-yellow-400 text-gray-900 font-black text-[7px] md:text-[8px] px-1.5 py-0.2 rounded-sm uppercase tracking-widest mt-0.5 leading-tight">NEWS</span>
-                        </div>
-                        <div class="flex flex-col">
-                            <div class="flex items-center gap-2">
-                                <span class="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight text-white leading-none">
-                                    FAST JOB
-                                </span>
-                                <span class="bg-yellow-400 text-gray-900 text-[9px] md:text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wider shadow-sm">
-                                    24×7 LIVE
-                                </span>
-                            </div>
-                            <span class="text-[9px] md:text-[11px] font-semibold text-red-100 tracking-widest uppercase mt-1">
-                                FAST & VERIFIED GLOBAL COVERAGE
-                            </span>
-                        </div>
-                    </a>
-
-                    <div class="flex items-center gap-2 md:hidden">
-                        <button onclick="filterCategory('Jobs & Careers')" class="bg-yellow-400 text-gray-900 px-3 py-1.5 rounded-lg font-black text-xs uppercase tracking-wider inline-flex items-center gap-1 shadow">
-                            <i class="fa-solid fa-briefcase text-[#d10000]"></i> Jobs
-                        </button>
-                        <button onclick="toggleMobileMenu()" class="bg-[#a80000] hover:bg-[#8f0000] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl transition border border-red-400/30">
-                            <i class="fa-solid fa-bars"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Center Search Bar -->
-                <div class="w-full md:max-w-xl flex-grow">
-                    <div class="bg-white rounded-full p-1 pl-4 flex items-center w-full shadow-inner focus-within:ring-2 focus-within:ring-yellow-400 transition">
-                        <i class="fa-solid fa-magnifying-glass text-gray-400 mr-2.5 text-sm md:text-base"></i>
-                        <input type="text" id="searchInput" onkeyup="searchNews()" placeholder="Search all 7,000+ verified stories & jobs..." class="w-full text-xs md:text-sm text-gray-900 outline-none font-semibold bg-transparent placeholder-gray-400 py-1.5">
-                        <button onclick="searchNews()" class="bg-[#d10000] hover:bg-[#a80000] text-white font-bold text-xs uppercase tracking-wider px-5 py-2 rounded-full transition shrink-0">
-                            Search
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Right Desktop Actions -->
-                <div class="hidden md:flex items-center gap-3 shrink-0">
-                    <button onclick="filterCategory('Jobs & Careers')" class="bg-yellow-400 hover:bg-yellow-300 text-gray-900 font-black text-xs uppercase tracking-wider px-4 py-2.5 rounded-full shadow-md transition inline-flex items-center gap-1.5">
-                        <i class="fa-solid fa-briefcase text-[#d10000]"></i> Job Alerts
-                    </button>
-                    <button onclick="toggleMobileMenu()" class="bg-[#a80000] hover:bg-[#8f0000] text-white px-4 py-2.5 rounded-full inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider transition border border-red-400/30 shadow" title="All 25 Categories">
-                        <i class="fa-solid fa-bars text-sm"></i> <span>All Sections</span>
-                    </button>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- 3. White Horizontal Category Bar -->
-        <div class="bg-white border-b border-gray-200 px-2 md:px-6">
-            <div class="w-full max-w-[1400px] mx-auto flex items-center">
-                <nav class="flex items-center space-x-1 overflow-x-auto no-scrollbar py-0.5 w-full" id="top-category-nav">
-                </nav>
-            </div>
-        </div>
-    </header>
-
-    <!-- 4. Ticker -->
-    <div class="ticker-wrap">
-        <div class="ticker-label">
-            <span class="w-2 h-2 bg-yellow-300 rounded-full animate-ping mr-2"></span> TRENDING NEWS
-        </div>
-        <div class="ticker-track">
-            <div class="ticker" id="ticker-content">
-                <span class="ticker-item">Loading latest global trending news...</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- Mobile Drawer Menu -->
-    <div id="mobileMenu" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex justify-end transition-opacity">
-        <div class="w-80 bg-white text-gray-900 h-full shadow-2xl flex flex-col p-5 overflow-y-auto border-t-4 border-[#d10000]">
-            <div class="flex items-center justify-between border-b border-gray-200 pb-3.5 mb-4">
-                <div class="flex items-center gap-2.5">
-                    <div class="bg-[#d10000] w-9 h-9 rounded-lg flex flex-col items-center justify-center border border-yellow-400">
-                        <span class="text-white font-black text-sm leading-none">FJ</span>
-                        <span class="text-yellow-300 font-black text-[6px] uppercase">NEWS</span>
-                    </div>
-                    <span class="text-xl font-black tracking-tight text-gray-900">FAST JOB</span>
-                </div>
-                <button onclick="toggleMobileMenu()" class="text-gray-400 hover:text-[#d10000] w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 text-xl transition"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            
-            <div class="bg-gray-100 rounded-full px-4 py-2 mb-4 flex items-center border border-gray-200">
-                <input type="text" id="mobileSearchInput" onkeyup="searchNewsMobile()" placeholder="Search news..." class="w-full bg-transparent outline-none font-semibold text-sm text-gray-900 placeholder-gray-400">
-                <i class="fa-solid fa-magnifying-glass text-[#d10000] text-sm"></i>
-            </div>
-            
-            <p class="text-[11px] font-black uppercase tracking-wider text-[#d10000] mb-2 border-b border-gray-100 pb-1.5">All 25 News Categories</p>
-            <nav class="flex flex-col space-y-0.5 font-bold text-gray-800 text-sm mb-6" id="mobile-category-nav">
-            </nav>
-
-            <p class="text-[11px] font-black uppercase tracking-wider text-[#d10000] mb-2 border-b border-gray-100 pb-1.5">Legal & Portal Info</p>
-            <div class="flex flex-col space-y-2 text-xs font-bold text-gray-600 pt-1">
-                <a href="/about-us" onclick="event.preventDefault(); openStaticPage('about-us'); toggleMobileMenu();" class="hover:text-[#d10000] flex items-center gap-2 py-1"><i class="fa-solid fa-circle-info text-[#d10000] w-4"></i> About Us</a>
-                <a href="/privacy-policy" onclick="event.preventDefault(); openStaticPage('privacy-policy'); toggleMobileMenu();" class="hover:text-[#d10000] flex items-center gap-2 py-1"><i class="fa-solid fa-user-shield text-[#d10000] w-4"></i> Privacy Policy</a>
-                <a href="/terms-and-conditions" onclick="event.preventDefault(); openStaticPage('terms-and-conditions'); toggleMobileMenu();" class="hover:text-[#d10000] flex items-center gap-2 py-1"><i class="fa-solid fa-file-contract text-[#d10000] w-4"></i> Terms & Conditions</a>
-                <a href="/disclaimer" onclick="event.preventDefault(); openStaticPage('disclaimer'); toggleMobileMenu();" class="hover:text-[#d10000] flex items-center gap-2 py-1"><i class="fa-solid fa-triangle-exclamation text-[#d10000] w-4"></i> Disclaimer</a>
-                <a href="/editorial-policy" onclick="event.preventDefault(); openStaticPage('editorial-policy'); toggleMobileMenu();" class="hover:text-[#d10000] flex items-center gap-2 py-1"><i class="fa-solid fa-check-double text-[#d10000] w-4"></i> Editorial Policy</a>
-                <a href="/contact-us" onclick="event.preventDefault(); openStaticPage('contact-us'); toggleMobileMenu();" class="hover:text-[#d10000] flex items-center gap-2 py-1"><i class="fa-solid fa-headset text-[#d10000] w-4"></i> Contact Desk</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- ==================== MAIN CONTENT AREA ==================== -->
-    <main class="w-full max-w-[1400px] mx-auto px-3 md:px-6 py-6 md:py-8 flex-grow">
-        
-        <!-- 1. Detailed Article View -->
-        <div id="article-view" class="hidden bg-white p-5 md:p-10 w-full max-w-5xl mx-auto shadow-md rounded-xl border-t-4 border-[#d10000]">
-            <button onclick="goBackHome()" class="mb-6 bg-gray-100 hover:bg-[#d10000] text-gray-800 hover:text-white font-bold uppercase text-xs tracking-wider py-2.5 px-5 rounded-full inline-flex items-center transition"><i class="fa-solid fa-arrow-left mr-2"></i> Back to News</button>
-            
-            <h1 id="detail-title" class="text-2xl md:text-4xl lg:text-5xl font-black text-gray-900 leading-tight mb-6 heading-font"></h1>
-            
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between border-y border-gray-200 py-4 mb-8 bg-gray-50 px-4 md:px-5 rounded-lg gap-4">
-                <div class="flex items-center gap-3.5">
-                    <img id="detail-author-avatar" src="https://ui-avatars.com/api/?name=Fast+Job+Desk&background=d10000&color=fff&bold=true" class="w-12 h-12 rounded-full shadow border-2 border-white shrink-0">
-                    <div>
-                        <p id="detail-author-name" class="font-extrabold text-sm text-[#d10000] uppercase tracking-wider">Fast Job Desk</p>
-                        <p id="detail-date" class="text-xs font-semibold text-gray-500 mt-0.5"></p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-2.5">
-                    <button onclick="shareWebsite('whatsapp')" class="bg-[#25d366] hover:bg-[#1da851] text-white px-4 py-2 rounded-full shadow transition inline-flex items-center gap-1.5 text-xs font-bold"><i class="fa-brands fa-whatsapp text-base"></i> Share</button>
-                    <button onclick="shareWebsite('facebook')" class="bg-[#1877f2] hover:bg-[#145dbf] text-white px-4 py-2 rounded-full shadow transition inline-flex items-center gap-1.5 text-xs font-bold"><i class="fa-brands fa-facebook-f text-sm"></i> Share</button>
-                </div>
-            </div>
-            
-            <img id="detail-image" src="" class="w-full h-auto object-cover max-h-[550px] mb-8 rounded-xl shadow">
-            <div id="detail-content" class="w-full overflow-x-auto text-gray-800"></div>
-        </div>
-
-        <!-- 2. Full-Page Legal & Info View -->
-        <div id="legal-view" class="hidden bg-white p-6 md:p-12 w-full max-w-5xl mx-auto shadow-md rounded-xl border-t-4 border-[#d10000]">
-            <button onclick="goBackHome()" class="mb-6 bg-gray-100 hover:bg-[#d10000] text-gray-800 hover:text-white font-bold uppercase text-xs tracking-wider py-2.5 px-5 rounded-full inline-flex items-center transition"><i class="fa-solid fa-arrow-left mr-2"></i> Back to Home</button>
-            <h1 id="legal-page-title" class="text-3xl md:text-4xl font-black text-gray-900 heading-font mb-6 border-b-2 border-gray-100 pb-4 uppercase"></h1>
-            <div id="legal-page-content" class="w-full text-gray-800 leading-relaxed"></div>
-        </div>
-
-        <!-- 3. Home & Category View -->
-        <div id="home-view">
-            <div id="hero-top-section" class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-10 items-stretch">
-                <div class="lg:col-span-8 flex flex-col">
-                    <div id="slider-wrapper" class="slider-container bg-gray-900 shadow-sm h-[280px] sm:h-[380px] lg:h-[460px] w-full rounded-xl overflow-hidden">
-                        <div class="h-full w-full flex items-center justify-center text-white font-bold text-lg">
-                            <i class="fa-solid fa-spinner fa-spin mr-2 text-yellow-400"></i> Loading Verified Stories...
-                        </div>
-                    </div>
-                </div>
-                <div class="lg:col-span-4 bg-white rounded-xl shadow-sm border border-gray-200 p-4 flex flex-col h-[380px] lg:h-[460px]">
-                    <div class="flex items-center justify-between border-b-2 border-[#d10000] pb-2 mb-3 shrink-0">
-                        <span class="section-badge text-xs"><i class="fa-solid fa-fire text-yellow-300"></i> TOP HEADLINES</span>
-                        <span class="text-[11px] font-bold text-[#d10000] inline-flex items-center"><span class="w-2 h-2 bg-[#d10000] rounded-full animate-ping mr-1.5"></span> LIVE</span>
-                    </div>
-                    <div id="top-sidebar-list" class="divide-y divide-gray-100 flex-grow overflow-y-auto pr-1">
-                    </div>
-                </div>
-            </div>
-            
-            <div id="category-sections" class="space-y-10"></div>
-        </div>
-    </main>
-
-    <!-- ==================== FOOTER ==================== -->
-    <footer class="bg-[#111827] text-gray-300 pt-14 pb-8 mt-12 border-t-4 border-[#d10000]">
-        <div class="w-full max-w-[1400px] mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-            <div>
-                <a href="/" onclick="event.preventDefault(); goBackHome();" class="flex items-center shrink-0 cursor-pointer mb-4">
-                    <div class="bg-[#d10000] border-2 border-yellow-400 text-white w-12 h-12 rounded-xl mr-3 flex flex-col items-center justify-center shadow-md">
-                        <span class="font-black text-lg leading-none">FJ</span>
-                        <span class="text-[7px] font-black text-yellow-300 uppercase">NEWS</span>
+<!-- 2. Main Header with FJ News Logo -->
+<header class="sticky top-0 z-40 shadow-md bg-white">
+    <div class="bg-[#d10000] text-white py-3 px-3 md:px-6">
+        <div class="w-full max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
+            <div class="w-full md:w-auto flex items-center justify-between">
+                <a href="/" onclick="event.preventDefault(); goBackHome();" class="flex items-center shrink-0 cursor-pointer group">
+                    <div class="w-12 h-12 md:w-14 md:h-14 rounded-xl mr-3 flex flex-col items-center justify-center bg-[#111827] border-2 border-yellow-400 shadow-lg">
+                        <span class="text-white font-black text-xl md:text-2xl leading-none">FJ</span>
+                        <span class="bg-yellow-400 text-gray-900 font-black text-[7px] px-1.5 rounded-sm uppercase mt-0.5">NEWS</span>
                     </div>
                     <div class="flex flex-col">
-                        <span class="text-3xl font-black text-white tracking-tight leading-none">FAST JOB</span>
-                        <span class="text-[10px] font-bold text-yellow-400 tracking-widest uppercase mt-1">GLOBAL NEWS & CAREERS</span>
+                        <div class="flex items-center gap-2">
+                            <span class="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight text-white leading-none">FAST JOB</span>
+                            <span class="bg-yellow-400 text-gray-900 text-[9px] font-black px-2 py-0.5 rounded uppercase">24×7 LIVE</span>
+                        </div>
+                        <span class="text-[9px] md:text-[11px] font-semibold text-red-100 tracking-widest uppercase mt-1">FAST & VERIFIED GLOBAL COVERAGE</span>
                     </div>
                 </a>
-                <p class="text-gray-400 text-sm leading-relaxed">Fast Job (fastjob.online) brings you 24/7 verified breaking news, government job notifications, economy, sports, technology, and global updates in real time.</p>
-            </div>
-            
-            <div>
-                <h4 class="text-base font-black mb-5 border-b-2 border-[#d10000] pb-2 text-white uppercase tracking-wider inline-block">Legal & Info</h4>
-                <ul class="space-y-2.5 text-sm font-semibold text-gray-400">
-                    <li><a href="/about-us" onclick="event.preventDefault(); openStaticPage('about-us');" class="hover:text-white transition flex items-center"><i class="fa-solid fa-angle-right text-[#d10000] mr-2"></i>About Us</a></li>
-                    <li><a href="/privacy-policy" onclick="event.preventDefault(); openStaticPage('privacy-policy');" class="hover:text-white transition flex items-center"><i class="fa-solid fa-angle-right text-[#d10000] mr-2"></i>Privacy Policy</a></li>
-                    <li><a href="/terms-and-conditions" onclick="event.preventDefault(); openStaticPage('terms-and-conditions');" class="hover:text-white transition flex items-center"><i class="fa-solid fa-angle-right text-[#d10000] mr-2"></i>Terms & Conditions</a></li>
-                    <li><a href="/disclaimer" onclick="event.preventDefault(); openStaticPage('disclaimer');" class="hover:text-white transition flex items-center"><i class="fa-solid fa-angle-right text-[#d10000] mr-2"></i>Disclaimer</a></li>
-                    <li><a href="/editorial-policy" onclick="event.preventDefault(); openStaticPage('editorial-policy');" class="hover:text-white transition flex items-center"><i class="fa-solid fa-angle-right text-[#d10000] mr-2"></i>Editorial Policy</a></li>
-                    <li><a href="/contact-us" onclick="event.preventDefault(); openStaticPage('contact-us');" class="hover:text-white transition flex items-center"><i class="fa-solid fa-angle-right text-[#d10000] mr-2"></i>Contact Desk</a></li>
-                </ul>
-            </div>
-            
-            <div>
-                <h4 class="text-base font-black mb-5 border-b-2 border-[#d10000] pb-2 text-white uppercase tracking-wider inline-block">Popular Desks</h4>
-                <ul class="space-y-2.5 text-sm font-semibold text-gray-400" id="footer-categories">
-                </ul>
-            </div>
-            
-            <div>
-                <h4 class="text-base font-black mb-5 border-b-2 border-[#d10000] pb-2 text-white uppercase tracking-wider inline-block">Follow Us</h4>
-                <p class="text-sm text-gray-400 mb-5 leading-relaxed">Join our official channels for instant breaking news and verified job alerts on your phone.</p>
-                <div class="flex gap-3">
-                    <a href="https://whatsapp.com/channel/0029VbDajQV8PgsNA1lLhW0i" target="_blank" class="bg-[#25d366] hover:bg-[#1da851] text-white w-11 h-11 flex items-center justify-center rounded-full transition shadow-lg text-2xl"><i class="fa-brands fa-whatsapp"></i></a>
-                    <button onclick="shareWebsite('facebook')" class="bg-[#1877f2] hover:bg-[#145dbf] text-white w-11 h-11 flex items-center justify-center rounded-full transition shadow-lg text-lg"><i class="fa-brands fa-facebook-f"></i></button>
+                <div class="flex items-center gap-2 md:hidden">
+                    <button onclick="filterCategory('Jobs & Careers')" class="bg-yellow-400 text-gray-900 px-3 py-1.5 rounded-lg font-black text-xs uppercase inline-flex items-center gap-1 shadow">
+                        <i class="fa-solid fa-briefcase text-[#d10000]"></i> Jobs
+                    </button>
+                    <button onclick="toggleMobileMenu()" class="bg-[#a80000] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl border border-red-400/30">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
                 </div>
             </div>
+
+            <div class="w-full md:max-w-xl flex-grow">
+                <div class="bg-white rounded-full p-1 pl-4 flex items-center w-full shadow-inner">
+                    <i class="fa-solid fa-magnifying-glass text-gray-400 mr-2.5 text-sm"></i>
+                    <input type="text" id="searchInput" onkeyup="searchNews()" placeholder="Search latest jobs, breaking news & global updates..." class="w-full text-xs md:text-sm text-gray-900 outline-none font-semibold bg-transparent py-1.5">
+                    <button onclick="searchNews()" class="bg-[#d10000] hover:bg-[#a80000] text-white font-bold text-xs uppercase px-5 py-2 rounded-full shrink-0">Search</button>
+                </div>
+            </div>
+
+            <div class="hidden md:flex items-center gap-3 shrink-0">
+                <button onclick="filterCategory('Jobs & Careers')" class="bg-yellow-400 hover:bg-yellow-300 text-gray-900 font-black text-xs uppercase px-4 py-2.5 rounded-full shadow-md inline-flex items-center gap-1.5">
+                    <i class="fa-solid fa-briefcase text-[#d10000]"></i> Job Alerts
+                </button>
+                <button onclick="toggleMobileMenu()" class="bg-[#a80000] hover:bg-[#8f0000] text-white px-4 py-2.5 rounded-full inline-flex items-center gap-2 text-xs font-bold uppercase border border-red-400/30 shadow">
+                    <i class="fa-solid fa-bars text-sm"></i> <span>All Sections</span>
+                </button>
+            </div>
         </div>
-        
-        <div class="w-full max-w-[1400px] mx-auto px-6 border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400 font-semibold">
-            <p>&copy; 2026 Fast Job Portal (fastjob.online). All rights reserved.</p>
-            <p class="mt-2 md:mt-0">Designed for Fast & Verified Journalism</p>
+    </div>
+
+    <div class="bg-white border-b border-gray-200 px-2 md:px-6">
+        <div class="w-full max-w-[1400px] mx-auto flex items-center">
+            <nav class="flex items-center space-x-1 overflow-x-auto no-scrollbar py-0.5 w-full" id="top-category-nav"></nav>
         </div>
-    </footer>
+    </div>
+</header>
 
-    <!-- Floating WhatsApp Button -->
-    <a href="https://whatsapp.com/channel/0029VbDajQV8PgsNA1lLhW0i" target="_blank" class="fixed bottom-6 right-6 bg-[#25d366] hover:bg-[#1da851] text-white rounded-full w-14 h-14 flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition duration-300 z-40 animate-bounce">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
+<!-- 3. Ticker -->
+<div class="ticker-wrap">
+    <div class="ticker-label"><span class="w-2 h-2 bg-yellow-300 rounded-full animate-ping mr-2"></span> TRENDING NEWS</div>
+    <div class="ticker-track"><div class="ticker" id="ticker-content"><span class="ticker-item">Loading latest verified stories and job notifications...</span></div></div>
+</div>
 
-    <script>
-        const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        document.getElementById('live-date').innerText = new Date().toLocaleDateString('en-US', dateOptions);
+<!-- Mobile Drawer -->
+<div id="mobileMenu" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex justify-end">
+    <div class="w-80 bg-white text-gray-900 h-full shadow-2xl flex flex-col p-5 overflow-y-auto border-t-4 border-[#d10000]">
+        <div class="flex items-center justify-between border-b border-gray-200 pb-3 mb-4">
+            <div class="flex items-center gap-2">
+                <div class="bg-[#d10000] w-9 h-9 rounded-lg flex flex-col items-center justify-center border border-yellow-400">
+                    <span class="text-white font-black text-sm leading-none">FJ</span>
+                    <span class="text-yellow-300 font-black text-[6px]">NEWS</span>
+                </div>
+                <span class="text-xl font-black text-gray-900">FAST JOB</span>
+            </div>
+            <button onclick="toggleMobileMenu()" class="text-gray-500 hover:text-[#d10000] text-xl"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="bg-gray-100 rounded-full px-4 py-2 mb-4 flex items-center border">
+            <input type="text" id="mobileSearchInput" onkeyup="searchNewsMobile()" placeholder="Search news..." class="w-full bg-transparent outline-none font-semibold text-sm">
+            <i class="fa-solid fa-magnifying-glass text-[#d10000] text-sm"></i>
+        </div>
+        <p class="text-[11px] font-black uppercase text-[#d10000] mb-2 border-b pb-1">All 25 News Categories</p>
+        <nav class="flex flex-col space-y-0.5 font-bold text-gray-800 text-sm mb-6" id="mobile-category-nav"></nav>
+        <p class="text-[11px] font-black uppercase text-[#d10000] mb-2 border-b pb-1">Legal & Portal Info</p>
+        <div class="flex flex-col space-y-2 text-xs font-bold text-gray-600 pt-1">
+            <a href="/about-us" onclick="event.preventDefault(); openStaticPage('about-us'); toggleMobileMenu();" class="hover:text-[#d10000] py-1">About Us</a>
+            <a href="/privacy-policy" onclick="event.preventDefault(); openStaticPage('privacy-policy'); toggleMobileMenu();" class="hover:text-[#d10000] py-1">Privacy Policy</a>
+            <a href="/terms-and-conditions" onclick="event.preventDefault(); openStaticPage('terms-and-conditions'); toggleMobileMenu();" class="hover:text-[#d10000] py-1">Terms & Conditions</a>
+            <a href="/disclaimer" onclick="event.preventDefault(); openStaticPage('disclaimer'); toggleMobileMenu();" class="hover:text-[#d10000] py-1">Disclaimer</a>
+            <a href="/editorial-policy" onclick="event.preventDefault(); openStaticPage('editorial-policy'); toggleMobileMenu();" class="hover:text-[#d10000] py-1">Editorial Policy</a>
+            <a href="/contact-us" onclick="event.preventDefault(); openStaticPage('contact-us'); toggleMobileMenu();" class="hover:text-[#d10000] py-1">Contact Desk</a>
+        </div>
+    </div>
+</div>
 
-        const SUPABASE_URL = "https://wioheljpjdcprozqumpv.supabase.co";
-        const SUPABASE_KEY = "sb_publishable_d_ROr-nG6RpIRlVWtIE-Fg_sciaLZXR";
-        let allNews = [];
-        let currentFilteredList = [];
-        let currentDisplayLimit = 60;
-        let currentActiveCategory = "";
-        let isViewingArticleOrLegal = false;
-        let slideIndex = 0;
-        let slideInterval;
+<!-- MAIN CONTENT -->
+<main class="w-full max-w-[1400px] mx-auto px-3 md:px-6 py-6 flex-grow">
+    <!-- Article View -->
+    <div id="article-view" class="hidden bg-white p-5 md:p-10 w-full max-w-5xl mx-auto shadow-md rounded-xl border-t-4 border-[#d10000]">
+        <button onclick="goBackHome()" class="mb-6 bg-gray-100 hover:bg-[#d10000] text-gray-800 hover:text-white font-bold uppercase text-xs py-2.5 px-5 rounded-full inline-flex items-center transition"><i class="fa-solid fa-arrow-left mr-2"></i> Back to News</button>
+        <h1 id="detail-title" class="text-2xl md:text-4xl font-black text-gray-900 leading-tight mb-6 heading-font"></h1>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between border-y border-gray-200 py-4 mb-8 bg-gray-50 px-4 rounded-lg gap-4">
+            <div class="flex items-center gap-3.5">
+                <img id="detail-author-avatar" src="https://ui-avatars.com/api/?name=Fast+Job&background=d10000&color=fff&bold=true" class="w-12 h-12 rounded-full shadow border-2 border-white">
+                <div>
+                    <p id="detail-author-name" class="font-extrabold text-sm text-[#d10000] uppercase">Fast Job Desk</p>
+                    <p id="detail-date" class="text-xs font-semibold text-gray-500 mt-0.5"></p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2.5">
+                <button onclick="shareWebsite('whatsapp')" class="bg-[#25d366] text-white px-4 py-2 rounded-full shadow inline-flex items-center gap-1.5 text-xs font-bold"><i class="fa-brands fa-whatsapp"></i> Share</button>
+                <button onclick="shareWebsite('facebook')" class="bg-[#1877f2] text-white px-4 py-2 rounded-full shadow inline-flex items-center gap-1.5 text-xs font-bold"><i class="fa-brands fa-facebook-f"></i> Share</button>
+            </div>
+        </div>
+        <img id="detail-image" src="" class="w-full h-auto object-cover max-h-[550px] mb-8 rounded-xl shadow">
+        <div id="detail-content" class="w-full overflow-x-auto text-gray-800"></div>
+    </div>
 
-        const WORLD_AUTHORS = [
-            "Aarav Sharma (New Delhi)", "Priya Nair (Mumbai)", "Vikramaditya Rathore (India Desk)",
-            "Ananya Chatterjee (Kolkata)", "Rohan Deshmukh (Pune)", "Siddharth Menon (Bengaluru)",
-            "Kavita Iyer (Chennai)", "Kabir Malhotra (North India)", "Zoya Khan (Hyderabad)",
-            "Devansh Joshi (Ahmedabad)", "Niharika Verma (Lucknow)", "Arjun Kapoor (South Asia)",
-            "Ethan Brooks (New York)", "Madison Carter (Washington DC)", "Lucas Bennett (Silicon Valley)",
-            "Olivia Hayes (Chicago)", "Noah Mitchell (Los Angeles)", "Chloe Sullivan (Boston)",
-            "Mason Rivera (Miami)", "Harper Reed (Toronto)", "Logan Foster (Seattle)",
-            "Sophia Jenkins (Houston)", "Oliver Sterling (London)", "Amelia Clarke (UK Bureau)",
-            "Liam O'Connor (Dublin)", "Camille Laurent (Paris)", "Lukas Weber (Frankfurt)",
-            "Elena Rostova (Geneva)", "Matteo Rossi (Milan)", "Sofia Lindqvist (Stockholm)",
-            "Hugo Martinez (Madrid)", "Freya Van Der Berg (Amsterdam)", "Tariq Al-Mansoor (Dubai)",
-            "Layla Haddad (Doha)", "Omar Farooq (Riyadh)", "Nadia El-Masri (Cairo)",
-            "Kwame Mensah (Accra)", "Amara Okafor (Lagos)", "Zanele Khumalo (Johannesburg)",
-            "Youssef Benali (Casablanca)", "Kenji Takahashi (Tokyo)", "Mei-Ling Tan (Singapore)",
-            "Min-Jae Park (Seoul)", "Liam Thornton (Sydney)", "Isla MacLeod (Melbourne)",
-            "Hiroshi Sato (Osaka)", "Mateo Silva (Sao Paulo)", "Valentina Gomez (Buenos Aires)",
-            "Diego Hernandez (Mexico City)", "Camila Vargas (Santiago)"
-        ];
+    <!-- Legal Page View -->
+    <div id="legal-view" class="hidden bg-white p-6 md:p-12 w-full max-w-5xl mx-auto shadow-md rounded-xl border-t-4 border-[#d10000]">
+        <button onclick="goBackHome()" class="mb-6 bg-gray-100 hover:bg-[#d10000] text-gray-800 hover:text-white font-bold uppercase text-xs py-2.5 px-5 rounded-full inline-flex items-center transition"><i class="fa-solid fa-arrow-left mr-2"></i> Back to Home</button>
+        <h1 id="legal-page-title" class="text-2xl md:text-4xl font-black text-gray-900 heading-font mb-6 border-b-2 border-gray-100 pb-4 uppercase"></h1>
+        <div id="legal-page-content" class="w-full text-gray-800"></div>
+    </div>
 
-        function getPostAuthor(post) {
-            if (post && post.content) {
-                const match = post.content.match(/data-author="([^"]+)"/);
-                if (match && match[1]) return match[1];
-            }
-            const idNum = post && post.id ? Number(post.id) : 1;
-            return WORLD_AUTHORS[(idNum * 7) % WORLD_AUTHORS.length];
+    <!-- Home View -->
+    <div id="home-view">
+        <div id="hero-top-section" class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-10 items-stretch">
+            <div class="lg:col-span-8 flex flex-col">
+                <div id="slider-wrapper" class="slider-container bg-gray-900 shadow-sm h-[280px] sm:h-[380px] lg:h-[460px] w-full rounded-xl overflow-hidden">
+                    <div class="h-full w-full flex items-center justify-center text-white font-bold text-lg"><i class="fa-solid fa-spinner fa-spin mr-2 text-yellow-400"></i> Loading Verified Stories...</div>
+                </div>
+            </div>
+            <div class="lg:col-span-4 bg-white rounded-xl shadow-sm border border-gray-200 p-4 flex flex-col h-[380px] lg:h-[460px]">
+                <div class="flex items-center justify-between border-b-2 border-[#d10000] pb-2 mb-3 shrink-0">
+                    <span class="section-badge text-xs"><i class="fa-solid fa-fire text-yellow-300"></i> TOP HEADLINES</span>
+                    <span class="text-[11px] font-bold text-[#d10000] inline-flex items-center"><span class="w-2 h-2 bg-[#d10000] rounded-full animate-ping mr-1.5"></span> LIVE</span>
+                </div>
+                <div id="top-sidebar-list" class="divide-y divide-gray-100 flex-grow overflow-y-auto pr-1"></div>
+            </div>
+        </div>
+        <div id="category-sections" class="space-y-10"></div>
+    </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-[#111827] text-gray-300 pt-14 pb-8 mt-12 border-t-4 border-[#d10000]">
+    <div class="w-full max-w-[1400px] mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div>
+            <a href="/" onclick="event.preventDefault(); goBackHome();" class="flex items-center shrink-0 cursor-pointer mb-4">
+                <div class="bg-[#d10000] border-2 border-yellow-400 text-white w-12 h-12 rounded-xl mr-3 flex flex-col items-center justify-center shadow-md">
+                    <span class="font-black text-lg leading-none">FJ</span>
+                    <span class="text-[7px] font-black text-yellow-300 uppercase">NEWS</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-3xl font-black text-white tracking-tight leading-none">FAST JOB</span>
+                    <span class="text-[10px] font-bold text-yellow-400 tracking-widest uppercase mt-1">GLOBAL NEWS & CAREERS</span>
+                </div>
+            </a>
+            <p class="text-gray-400 text-sm leading-relaxed">Fast Job (fastjob.online) brings you 24/7 verified breaking news, government job notifications, economy, sports, technology, and global updates in real time.</p>
+        </div>
+        <div>
+            <h4 class="text-base font-black mb-5 border-b-2 border-[#d10000] pb-2 text-white uppercase inline-block">Legal & Info</h4>
+            <ul class="space-y-2.5 text-sm font-semibold text-gray-400">
+                <li><a href="/about-us" onclick="event.preventDefault(); openStaticPage('about-us');" class="hover:text-white"><i class="fa-solid fa-angle-right text-[#d10000] mr-2"></i>About Us</a></li>
+                <li><a href="/privacy-policy" onclick="event.preventDefault(); openStaticPage('privacy-policy');" class="hover:text-white"><i class="fa-solid fa-angle-right text-[#d10000] mr-2"></i>Privacy Policy</a></li>
+                <li><a href="/terms-and-conditions" onclick="event.preventDefault(); openStaticPage('terms-and-conditions');" class="hover:text-white"><i class="fa-solid fa-angle-right text-[#d10000] mr-2"></i>Terms & Conditions</a></li>
+                <li><a href="/disclaimer" onclick="event.preventDefault(); openStaticPage('disclaimer');" class="hover:text-white"><i class="fa-solid fa-angle-right text-[#d10000] mr-2"></i>Disclaimer</a></li>
+                <li><a href="/editorial-policy" onclick="event.preventDefault(); openStaticPage('editorial-policy');" class="hover:text-white"><i class="fa-solid fa-angle-right text-[#d10000] mr-2"></i>Editorial Policy</a></li>
+                <li><a href="/contact-us" onclick="event.preventDefault(); openStaticPage('contact-us');" class="hover:text-white"><i class="fa-solid fa-angle-right text-[#d10000] mr-2"></i>Contact Desk</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="text-base font-black mb-5 border-b-2 border-[#d10000] pb-2 text-white uppercase inline-block">Popular Desks</h4>
+            <ul class="space-y-2.5 text-sm font-semibold text-gray-400" id="footer-categories"></ul>
+        </div>
+        <div>
+            <h4 class="text-base font-black mb-5 border-b-2 border-[#d10000] pb-2 text-white uppercase inline-block">Follow Us</h4>
+            <p class="text-sm text-gray-400 mb-5">Join our official channels for instant breaking news and job alerts on your phone.</p>
+            <div class="flex gap-3">
+                <a href="https://whatsapp.com/channel/0029VbDajQV8PgsNA1lLhW0i" target="_blank" class="bg-[#25d366] text-white w-11 h-11 flex items-center justify-center rounded-full shadow-lg text-2xl"><i class="fa-brands fa-whatsapp"></i></a>
+                <button onclick="shareWebsite('facebook')" class="bg-[#1877f2] text-white w-11 h-11 flex items-center justify-center rounded-full shadow-lg text-lg"><i class="fa-brands fa-facebook-f"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="w-full max-w-[1400px] mx-auto px-6 border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400 font-semibold">
+        <p>&copy; 2026 Fast Job Portal (fastjob.online). All rights reserved.</p>
+        <p class="mt-2 md:mt-0">Designed for Fast & Verified Journalism</p>
+    </div>
+</footer>
+
+<a href="https://whatsapp.com/channel/0029VbDajQV8PgsNA1lLhW0i" target="_blank" class="fixed bottom-6 right-6 bg-[#25d366] text-white rounded-full w-14 h-14 flex items-center justify-center text-3xl shadow-2xl z-40 animate-bounce"><i class="fa-brands fa-whatsapp"></i></a>
+
+<script>
+// 1. Live Day, Date, Year Display
+document.getElementById('live-date').innerText = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+const SUPABASE_URL = "https://wioheljpjdcprozqumpv.supabase.co";
+const SUPABASE_KEY = "sb_publishable_d_ROr-nG6RpIRlVWtIE-Fg_sciaLZXR";
+let allNews = [], currentFilteredList = [], currentDisplayLimit = 60, currentActiveCategory = "", isViewingArticleOrLegal = false, slideIndex = 0, slideInterval;
+
+const WORLD_AUTHORS = [
+    "Aarav Sharma (New Delhi)", "Priya Nair (Mumbai)", "Vikramaditya Rathore (India Desk)", "Ananya Chatterjee (Kolkata)",
+    "Rohan Deshmukh (Pune)", "Siddharth Menon (Bengaluru)", "Kavita Iyer (Chennai)", "Kabir Malhotra (North India)",
+    "Zoya Khan (Hyderabad)", "Devansh Joshi (Ahmedabad)", "Niharika Verma (Lucknow)", "Arjun Kapoor (South Asia)",
+    "Ethan Brooks (New York)", "Madison Carter (Washington DC)", "Lucas Bennett (Silicon Valley)", "Olivia Hayes (Chicago)",
+    "Noah Mitchell (Los Angeles)", "Chloe Sullivan (Boston)", "Mason Rivera (Miami)", "Harper Reed (Toronto)",
+    "Logan Foster (Seattle)", "Sophia Jenkins (Houston)", "Oliver Sterling (London)", "Amelia Clarke (UK Bureau)",
+    "Liam O'Connor (Dublin)", "Camille Laurent (Paris)", "Lukas Weber (Frankfurt)", "Elena Rostova (Geneva)",
+    "Matteo Rossi (Milan)", "Sofia Lindqvist (Stockholm)", "Hugo Martinez (Madrid)", "Freya Van Der Berg (Amsterdam)",
+    "Tariq Al-Mansoor (Dubai)", "Layla Haddad (Doha)", "Omar Farooq (Riyadh)", "Nadia El-Masri (Cairo)",
+    "Kwame Mensah (Accra)", "Amara Okafor (Lagos)", "Zanele Khumalo (Johannesburg)", "Youssef Benali (Casablanca)",
+    "Kenji Takahashi (Tokyo)", "Mei-Ling Tan (Singapore)", "Min-Jae Park (Seoul)", "Liam Thornton (Sydney)",
+    "Isla MacLeod (Melbourne)", "Hiroshi Sato (Osaka)", "Mateo Silva (Sao Paulo)", "Valentina Gomez (Buenos Aires)",
+    "Diego Hernandez (Mexico City)", "Camila Vargas (Santiago)"
+];
+
+function getPostAuthor(post) {
+    if (post && post.content) {
+        const m = post.content.match(/data-author="([^"]+)"/);
+        if (m && m[1]) return m[1];
+    }
+    return WORLD_AUTHORS[((post && post.id ? Number(post.id) : 1) * 7) % WORLD_AUTHORS.length];
+}
+
+function isRealPublisherImage(url) {
+    if (!url || typeof url !== 'string') return false;
+    const u = url.toLowerCase();
+    return u.startsWith('http') && !u.includes('picsum.photos') && !u.includes('source.unsplash.com') && !u.includes('photo-150000') && !u.includes('editorial');
+}
+
+const categories = [
+    "Jobs & Careers", "Breaking News", "World News", "India News", "Politics", "Sports",
+    "Business", "Finance & Markets", "Technology", "Entertainment", "Education",
+    "Health & Medicine", "Science", "AI & Robotics", "Crime & Justice",
+    "Auto & EV", "Economy", "Environment & Climate", "Lifestyle", "Travel & Tourism",
+    "Real Estate", "Defence & Security", "Weather", "Opinion & Editorial", "Fact Check & Explainers"
+];
+
+const categoryIcons = {
+    "Jobs & Careers": "fa-solid fa-user-tie", "Breaking News": "fa-solid fa-bolt-lightning", "World News": "fa-solid fa-earth-americas",
+    "India News": "fa-solid fa-flag", "Politics": "fa-solid fa-landmark-dome", "Sports": "fa-solid fa-trophy",
+    "Business": "fa-solid fa-briefcase", "Finance & Markets": "fa-solid fa-chart-line", "Technology": "fa-solid fa-laptop-code",
+    "Entertainment": "fa-solid fa-film", "Education": "fa-solid fa-graduation-cap", "Health & Medicine": "fa-solid fa-heart-pulse",
+    "Science": "fa-solid fa-flask-vial", "AI & Robotics": "fa-solid fa-robot", "Crime & Justice": "fa-solid fa-scale-balanced",
+    "Auto & EV": "fa-solid fa-car-side", "Economy": "fa-solid fa-indian-rupee-sign", "Environment & Climate": "fa-solid fa-leaf",
+    "Lifestyle": "fa-solid fa-mug-hot", "Travel & Tourism": "fa-solid fa-plane-departure", "Real Estate": "fa-solid fa-building-columns",
+    "Defence & Security": "fa-solid fa-shield-halved", "Weather": "fa-solid fa-cloud-sun-rain", "Opinion & Editorial": "fa-solid fa-pen-fancy",
+    "Fact Check & Explainers": "fa-solid fa-magnifying-glass-chart"
+};
+
+const slugToCategory = {}, categoryToSlug = {};
+categories.forEach(c => {
+    const s = c.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-');
+    slugToCategory[s] = c; categoryToSlug[c] = s;
+});
+
+function initCategoryNav() {
+    let topH = `<a href="/" onclick="event.preventDefault(); goBackHome();" class="cat-pill active-cat px-3 py-2.5 font-extrabold text-xs md:text-[13px] uppercase shrink-0 inline-flex items-center gap-1.5"><i class="fa-solid fa-house text-[#d10000]"></i> Home</a>`;
+    let mobH = `<a href="/" onclick="event.preventDefault(); filterCategoryAndClose('All');" class="px-3 py-2.5 rounded-lg hover:bg-red-50 flex items-center gap-3 border-b border-gray-50"><i class="fa-solid fa-house text-[#d10000] w-5"></i> <span>Home</span></a>`;
+    let footH = '';
+    categories.forEach((c, i) => {
+        const s = categoryToSlug[c], ic = categoryIcons[c] || "fa-solid fa-newspaper";
+        topH += `<a href="/category/${s}" onclick="event.preventDefault(); filterCategory('${c}');" class="cat-pill px-3 py-2.5 font-bold text-xs md:text-[13px] uppercase shrink-0">${c}</a>`;
+        mobH += `<a href="/category/${s}" onclick="event.preventDefault(); filterCategoryAndClose('${c}');" class="px-3 py-2.5 rounded-lg hover:bg-red-50 flex items-center gap-3 border-b border-gray-50"><i class="${ic} text-[#d10000] w-5"></i><span>${c}</span></a>`;
+        if (i < 7) footH += `<li><a href="/category/${s}" onclick="event.preventDefault(); filterCategory('${c}');" class="hover:text-white flex items-center gap-2.5"><i class="${ic} text-[#d10000] w-4"></i><span>${c}</span></a></li>`;
+    });
+    document.getElementById('top-category-nav').innerHTML = topH;
+    document.getElementById('mobile-category-nav').innerHTML = mobH;
+    document.getElementById('footer-categories').innerHTML = footH;
+}
+initCategoryNav();
+
+// Full 900+ Word Legal Page Builder
+function buildLegalPageContent(key) {
+    const commonFooter = `
+        <h3>Institutional Governance, Compliance & Editorial Accountability (2026 Framework)</h3>
+        <p>Fast Job (<strong>https://fastjob.online</strong>) operates under strict digital media ethics, international journalism standards, and statutory compliance protocols. Across all 25 editorial verticals—including our flagship <strong>Jobs & Careers</strong> desk, Breaking News, Economy, Finance, Technology, Science, Auto & EV, Defence, and Fact-Checking bureaus—our primary obligation is to the public interest, reader safety, and factual accuracy.</p>
+        <table class="article-table">
+            <tr><th>Compliance Parameter</th><th>Fast Job (fastjob.online) Official Standard</th></tr>
+            <tr><td><strong>Portal Identity & Domain</strong></td><td>Fast Job Global News & Career Network (https://fastjob.online)</td></tr>
+            <tr><td><strong>Editorial Footprint</strong></td><td>50+ Regional & International Correspondents across 25 Specialized Desks</td></tr>
+            <tr><td><strong>Recruitment Verification</strong></td><td>100% Free Public Information; Direct Cross-Verification with Official Gazettes</td></tr>
+            <tr><td><strong>Official Support & Grievance</strong></td><td>desk@fastjob.online (24×7 Editorial & Compliance Response Desk)</td></tr>
+        </table>
+        <p>Every reader, job aspirant, and stakeholder interacting with our platform is protected by our zero-tolerance policy against misinformation, paid clickbait, or unauthorized data harvesting. For any clarification or official assistance, reach out directly to <strong>desk@fastjob.online</strong>.</p>
+    `;
+    const pages = {
+        'about-us': {
+            title: 'About Fast Job (fastjob.online) — Global News & Career Network',
+            body: `<div class="intro-box"><strong>Fast Job (https://fastjob.online)</strong> is India's premier 24×7 digital newsroom and verified global recruitment portal, powered by 50+ correspondents across 25 specialized desks.</div>
+            <h3>1. Our Founding Vision & Public Mission</h3>
+            <p>Established to bridge the gap between complex government/corporate announcements and millions of citizens, <strong>Fast Job</strong> delivers real-time breaking news, Sarkari Naukri notifications, global career alerts, and deep-dive analytical journalism. We believe timely, verified information empowers youth, professionals, and decision-makers without paywalls or bias.</p>
+            <h3>2. What Sets Our 25 Editorial Desks Apart</h3>
+            <ul>
+                <li><strong>Jobs & Careers Priority:</strong> Instant coverage of UPSC, SSC, Railway RRB, Banking (IBPS/SBI), State PSC, Police & Defence Bharti, admit cards, exam results, and international visa-sponsored jobs.</li>
+                <li><strong>Global & National Newsroom:</strong> 24×7 tracking of Parliament, Supreme Court, geopolitics, economy, stock markets, technology, AI, science, and automobiles.</li>
+                <li><strong>Structured 800+ Word Reports:</strong> Every article features executive summaries, specification tables, step-by-step application guides, and reader FAQs.</li>
+            </ul>` + commonFooter
+        },
+        'privacy-policy': {
+            title: 'Privacy Policy — User Data Protection & Cookie Standards',
+            body: `<div class="intro-box"><strong>Effective Date: January 1, 2026 | Updated: October 2026</strong> — At Fast Job (https://fastjob.online), protecting visitor privacy under India's DPDP Act and global GDPR norms is our highest priority.</div>
+            <h3>1. Information We Collect & Log Files</h3>
+            <p>Visitors can read all news and job notifications on Fast Job without creating an account. Standard non-personal log data (browser type, anonymized IP, timestamps, and pages visited) is processed solely to maintain cloud security and optimize mobile reading speed.</p>
+            <h3>2. Cookies, Google Analytics & Google AdSense</h3>
+            <p>To keep our journalism 100% free, we use Google Analytics (G-4ECBSC962B) and third-party advertising partners including <strong>Google AdSense</strong>. Google uses DART cookies to serve relevant ads based on prior visits. Users may opt out of personalized advertising anytime via <a href="https://adssettings.google.com" target="_blank" class="text-[#d10000] underline">Google Ads Settings</a>.</p>
+            <h3>3. Data Security & Third-Party Links</h3>
+            <p>We never sell, rent, or trade user data. External links to official government recruitment portals are provided for candidate convenience, and users are advised to review the privacy policies of those respective official domains.</p>` + commonFooter
+        },
+        'terms-and-conditions': {
+            title: 'Terms & Conditions of Use — Fast Job Portal',
+            body: `<div class="intro-box">By accessing <strong>https://fastjob.online</strong>, you agree to abide by these Terms and Conditions of Use, our Privacy Policy, and statutory copyright laws.</div>
+            <h3>1. Intellectual Property & Permitted Sharing</h3>
+            <p>All original articles, tables, HTML layouts, and the <strong>FJ News / Fast Job</strong> emblem are the intellectual property of Fast Job. Readers may freely share article links on WhatsApp, Facebook, X, and Telegram for personal and educational use, but automated commercial scraping or verbatim republication is strictly prohibited.</p>
+            <h3>2. Candidate Verification Responsibility</h3>
+            <p>While our editors verify every recruitment notification, exam date, and eligibility criterion against official sources, candidates must always check the official government PDF notification before paying exam fees or submitting forms.</p>
+            <h3>3. Limitation of Liability</h3>
+            <p>All content is provided "as is" for informational utility. Fast Job shall not be liable for any direct or indirect loss arising from reliance on published schedules or external portal downtimes.</p>` + commonFooter
+        },
+        'disclaimer': {
+            title: 'Official Disclaimer — Recruitment, Financial & News Coverage',
+            body: `<div class="intro-box"><strong>Important Reader Notice:</strong> Fast Job (https://fastjob.online) is an independent private digital news publication and is NOT affiliated with the Government of India or any State Government board.</div>
+            <h3>1. Recruitment & Zero-Fee Advisory</h3>
+            <p>We summarize publicly released government and private job notifications for educational convenience. <strong>Fast Job never charges money for job alerts or placements.</strong> Never pay any unauthorized agent claiming guaranteed selection.</p>
+            <h3>2. Financial, Medical & Automobile Disclaimers</h3>
+            <ul>
+                <li><strong>Finance & Markets:</strong> Stock market, Sensex, Nifty, and economy reports are for informational awareness only and do not constitute SEBI-registered investment advice.</li>
+                <li><strong>Health & Medicine:</strong> Wellness and medical reports are not a substitute for consultation with a certified doctor.</li>
+                <li><strong>Auto & Tech:</strong> Ex-showroom prices and specifications are based on official manufacturer briefings and may vary by region.</li>
+            </ul>` + commonFooter
+        },
+        'editorial-policy': {
+            title: 'Editorial Policy, Fact-Checking & Corrections Protocol',
+            body: `<div class="intro-box">Trust, speed, and verification govern every story published by our 50+ correspondents across all 25 desks at <strong>Fast Job (https://fastjob.online)</strong>.</div>
+            <h3>1. Three-Tier Source Verification</h3>
+            <p>Every recruitment alert and breaking news report is cross-checked against official ministry gazettes, UPSC/SSC/RRB bulletins, court orders, and accredited international wire agencies before going live.</p>
+            <h3>2. Visual Authenticity & Original Synthesis</h3>
+            <p>We mandate authentic source imagery and strictly prohibit misleading thumbnails or third-party plagiarism. Each article is independently structured with clear tables and FAQs attributed to its respective desk correspondent.</p>
+            <h3>3. Rapid Corrections Policy</h3>
+            <p>If an official board issues a date extension or corrigendum, our desk updates the article immediately. Readers can flag any update by emailing <strong>desk@fastjob.online</strong>.</p>` + commonFooter
+        },
+        'contact-us': {
+            title: 'Contact Desk & Grievance Redressal — Fast Job',
+            body: `<div class="intro-box">Connect directly with the <strong>Fast Job Editorial, Recruitment & Compliance Desk</strong> for news tips, press releases, corrections, or advertising partnerships.</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+                <div class="bg-red-50 p-6 rounded-xl border border-red-200">
+                    <h4 class="text-lg font-black text-gray-900 mb-2"><i class="fa-solid fa-envelope text-[#d10000] mr-2"></i> Editorial & Grievance Email</h4>
+                    <a href="mailto:desk@fastjob.online" class="text-xl font-black text-[#d10000] underline">desk@fastjob.online</a>
+                    <p class="text-xs font-bold text-gray-500 mt-2">24×7 Support | Response within 12–24 Hours</p>
+                </div>
+                <div class="bg-green-50 p-6 rounded-xl border border-green-200">
+                    <h4 class="text-lg font-black text-gray-900 mb-2"><i class="fa-brands fa-whatsapp text-[#25d366] mr-2"></i> Official WhatsApp Channel</h4>
+                    <a href="https://whatsapp.com/channel/0029VbDajQV8PgsNA1lLhW0i" target="_blank" class="inline-block bg-[#25d366] text-white font-black px-5 py-2 rounded-full text-sm mt-1">Join WhatsApp Broadcast</a>
+                </div>
+            </div>` + commonFooter
+        }
+    };
+    return pages[key] || null;
+}
+
+function getPostsForCategory(newsList, cat) {
+    const matched = newsList.filter(p => {
+        if (p.category === cat) return true;
+        if (cat === "Jobs & Careers" && (p.category === "Jobs" || p.category === "Jobs & Careers")) return true;
+        if (cat === "Auto & EV" && (p.category === "Automobile" || p.category === "Auto & EV")) return true;
+        if ((cat === "Technology" || cat === "AI & Robotics") && p.category === "Tech & AI") return true;
+        return false;
+    });
+    const realImg = matched.filter(p => isRealPublisherImage(p.image_url));
+    const otherImg = matched.filter(p => !isRealPublisherImage(p.image_url));
+    const comb = realImg.concat(otherImg);
+    return (cat === "Breaking News" && comb.length === 0) ? newsList.slice(0, 20) : comb;
+}
+
+function getActiveRouteSlug() {
+    const params = new URLSearchParams(window.location.search);
+    for (const k of ['slug', 'post', 'article', 'p', 'id']) {
+        if (params.get(k)) return decodeURIComponent(params.get(k)).replace(/^\/|\/$/g, '').replace(/^slug=/i, '').trim();
+    }
+    if (window.location.search && window.location.search.toLowerCase().includes('slug=')) {
+        return decodeURIComponent(window.location.search.split(/slug=/i)[1].split('&')[0]).replace(/^\/|\/$/g, '').trim();
+    }
+    let p = decodeURIComponent(window.location.pathname).replace(/^\/|\/$/g, '').replace(/\.html$/, '');
+    if (p.toLowerCase().startsWith('slug=')) p = p.substring(5);
+    return p.trim();
+}
+
+async function loadNews() {
+    try {
+        const initSlug = getActiveRouteSlug();
+        if (initSlug && initSlug !== 'index') {
+            if (buildLegalPageContent(initSlug)) { openStaticPage(initSlug, false); }
+            else if (!initSlug.startsWith('category/')) { isViewingArticleOrLegal = true; openArticle(initSlug, false); }
         }
 
-        function isRealPublisherImage(url) {
-            if (!url || typeof url !== 'string') return false;
-            const u = url.toLowerCase();
-            if (u.includes('picsum.photos') || u.includes('source.unsplash.com') || u.includes('photo-150000') || u.includes('editorial')) return false;
-            return u.startsWith('http');
-        }
-
-        const categories = [
-            "Jobs & Careers", "Breaking News", "World News", "India News", "Politics", "Sports", 
-            "Business", "Finance & Markets", "Technology", "Entertainment", "Education", 
-            "Health & Medicine", "Science", "AI & Robotics", "Crime & Justice", 
-            "Auto & EV", "Economy", "Environment & Climate", "Lifestyle", "Travel & Tourism", 
-            "Real Estate", "Defence & Security", "Weather", "Opinion & Editorial", "Fact Check & Explainers"
-        ];
-
-        const categoryIcons = {
-            "Jobs & Careers": "fa-solid fa-user-tie",
-            "Breaking News": "fa-solid fa-bolt-lightning",
-            "World News": "fa-solid fa-earth-americas",
-            "India News": "fa-solid fa-flag",
-            "Politics": "fa-solid fa-landmark-dome",
-            "Sports": "fa-solid fa-trophy",
-            "Business": "fa-solid fa-briefcase",
-            "Finance & Markets": "fa-solid fa-chart-line",
-            "Technology": "fa-solid fa-laptop-code",
-            "Entertainment": "fa-solid fa-film",
-            "Education": "fa-solid fa-graduation-cap",
-            "Health & Medicine": "fa-solid fa-heart-pulse",
-            "Science": "fa-solid fa-flask-vial",
-            "AI & Robotics": "fa-solid fa-robot",
-            "Crime & Justice": "fa-solid fa-scale-balanced",
-            "Auto & EV": "fa-solid fa-car-side",
-            "Economy": "fa-solid fa-indian-rupee-sign",
-            "Environment & Climate": "fa-solid fa-leaf",
-            "Lifestyle": "fa-solid fa-mug-hot",
-            "Travel & Tourism": "fa-solid fa-plane-departure",
-            "Real Estate": "fa-solid fa-building-columns",
-            "Defence & Security": "fa-solid fa-shield-halved",
-            "Weather": "fa-solid fa-cloud-sun-rain",
-            "Opinion & Editorial": "fa-solid fa-pen-fancy",
-            "Fact Check & Explainers": "fa-solid fa-magnifying-glass-chart"
-        };
-
-        function getPostsForCategory(newsList, cat) {
-            const matched = newsList.filter(p => {
-                if (p.category === cat) return true;
-                if (cat === "Jobs & Careers" && (p.category === "Jobs" || p.category === "Jobs & Careers")) return true;
-                if (cat === "Auto & EV" && (p.category === "Automobile" || p.category === "Auto & EV")) return true;
-                if ((cat === "Technology" || cat === "AI & Robotics") && p.category === "Tech & AI") return true;
-                return false;
-            });
-            const realImgPosts = matched.filter(p => isRealPublisherImage(p.image_url));
-            const otherPosts = matched.filter(p => !isRealPublisherImage(p.image_url));
-            const combined = realImgPosts.concat(otherPosts);
-            if (cat === "Breaking News" && combined.length === 0) return newsList.slice(0, 20);
-            return combined;
-        }
-
-        function toSlug(cat) {
-            return cat.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-');
-        }
-
-        const slugToCategory = {};
-        const categoryToSlug = {};
-        categories.forEach(cat => {
-            const s = toSlug(cat);
-            slugToCategory[s] = cat;
-            categoryToSlug[cat] = s;
+        const firstRes = await fetch(SUPABASE_URL + "/rest/v1/posts?select=id,title,slug,category,image_url,created_at&order=id.desc&limit=1000&offset=0", {
+            headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + SUPABASE_KEY }
         });
-
-        function initCategoryNav() {
-            let topNavHTML = `<a href="/" onclick="event.preventDefault(); setActiveNav(this); goBackHome();" class="cat-pill active-cat px-3 py-2.5 font-extrabold text-xs md:text-[13px] uppercase tracking-wide shrink-0 inline-flex items-center gap-1.5"><i class="fa-solid fa-house text-[#d10000]"></i> Home</a>`;
-            let mobileNavHTML = `<a href="/" onclick="event.preventDefault(); filterCategoryAndClose('All');" class="px-3 py-2.5 rounded-lg hover:bg-red-50 hover:text-[#d10000] transition flex items-center gap-3 border-b border-gray-50"><i class="fa-solid fa-house text-[#d10000] w-5 text-center"></i> <span>Home</span></a>`;
-            let footerCatHTML = '';
-
-            categories.forEach((cat, idx) => {
-                const slug = categoryToSlug[cat];
-                const iconClass = categoryIcons[cat] || "fa-solid fa-newspaper";
-                topNavHTML += `<a href="/category/${slug}" onclick="event.preventDefault(); setActiveNav(this); filterCategory('${cat}');" class="cat-pill px-3 py-2.5 font-bold text-xs md:text-[13px] uppercase tracking-wide shrink-0">${cat}</a>`;
-                mobileNavHTML += `
-                <a href="/category/${slug}" onclick="event.preventDefault(); filterCategoryAndClose('${cat}');" class="px-3 py-2.5 rounded-lg hover:bg-red-50 hover:text-[#d10000] transition flex items-center gap-3 border-b border-gray-50">
-                    <i class="${iconClass} text-[#d10000] w-5 text-center text-base"></i>
-                    <span>${cat}</span>
-                </a>`;
-                if (idx < 7) {
-                    footerCatHTML += `<li><a href="/category/${slug}" onclick="event.preventDefault(); filterCategory('${cat}');" class="hover:text-white transition flex items-center gap-2.5"><i class="${iconClass} text-[#d10000] w-4 text-center"></i><span>${cat}</span></a></li>`;
-                }
-            });
-
-            document.getElementById('top-category-nav').innerHTML = topNavHTML;
-            document.getElementById('mobile-category-nav').innerHTML = mobileNavHTML;
-            document.getElementById('footer-categories').innerHTML = footerCatHTML;
-        }
-        initCategoryNav();
-
-        function setActiveNav(el) {
-            document.querySelectorAll('#top-category-nav .cat-pill').forEach(btn => btn.classList.remove('active-cat'));
-            if (el) el.classList.add('active-cat');
+        const firstBatch = await firstRes.json();
+        if (Array.isArray(firstBatch) && firstBatch.length > 0) {
+            allNews = firstBatch.filter(p => isRealPublisherImage(p.image_url)).concat(firstBatch.filter(p => !isRealPublisherImage(p.image_url)));
+            renderTicker(allNews);
+            if (!isViewingArticleOrLegal) handleRoute(false);
         }
 
-        // ==================== FULL 800-1500 WORD LEGAL & EDITORIAL PAGES ====================
-        const staticPages = {
-            'about-us': {
-                title: 'About Fast Job (fastjob.online) — Global News & Career Network',
-                content: `
-                    <div class="intro-box">
-                        <strong>Fast Job (https://fastjob.online)</strong> is a premier 24×7 digital journalism, recruitment intelligence, and global breaking news publication. Powered by a network of 50+ regional and international correspondents across 25 specialized editorial desks, we deliver verified, real-time updates to millions of readers, job aspirants, and professionals worldwide.
-                    </div>
-
-                    <h3>1. Who We Are & Our Founding Story</h3>
-                    <p>Founded with an unwavering commitment to journalistic integrity, speed, and public utility, <strong>Fast Job</strong> was established to bridge the critical gap between complex official announcements and everyday citizens. In today's fast-paced digital ecosystem, job seekers, students, investors, and general readers are often overwhelmed by fragmented rumors, delayed notifications, and clickbait headlines. Fast Job was engineered as a clean, authoritative, and lightning-fast newsroom that prioritizes verified facts above everything else.</p>
-                    <p>Whether it is a major central or state government recruitment drive, a high-stakes parliamentary policy shift, a breakthrough in artificial intelligence, an electric vehicle launch, or an unfolding geopolitical event, our editorial desks work around the clock to bring you structured, comprehensive, and easy-to-understand coverage within minutes of official release.</p>
-
-                    <h3>2. Our Core Mission & Vision for 2026 and Beyond</h3>
-                    <p>Our mission is simple yet ambitious: <strong>"To democratize access to verified career opportunities and real-time global journalism without paywalls or bias."</strong> We believe that timely information—especially regarding employment notifications, competitive examinations, economic policies, and public welfare schemes—has the power to transform lives and uplift communities.</p>
-                    <ul>
-                        <li><strong>Zero-Delay Recruitment Intelligence:</strong> Ensuring that no student or job seeker misses an application deadline due to late or confusing information.</li>
-                        <li><strong>360-Degree Global Journalism:</strong> Covering 25 distinct verticals ranging from India & World News to Finance, Science, Auto & EV, Defence, and Fact-Checking.</li>
-                        <li><strong>Structured & Reader-First Formatting:</strong> Every article on Fast Job features clear executive summaries, quick-reference specification tables, step-by-step guides, and answered FAQs.</li>
-                        <li><strong>Complete Editorial Independence:</strong> We operate free from corporate or political influence, maintaining strict separation between newsroom reporting and advertising.</li>
-                    </ul>
-
-                    <h3>3. Our 25 Specialized Editorial Desks</h3>
-                    <p>Unlike single-niche blogs, Fast Job operates as a full-scale digital newspaper divided into 25 dedicated beats. Each beat is monitored by domain specialists and editors who verify primary sources before publication:</p>
-                    <table class="article-table">
-                        <tr><th>Editorial Division</th><th>Core Coverage Areas & Reader Value</th></tr>
-                        <tr><td><strong>Jobs & Careers Desk (Flagship)</strong></td><td>Central & State Government Jobs (Sarkari Naukri), UPSC, SSC, Railway RRB, IBPS/SBI Banking, Police & Defence Bharti, PSU Vacancies, Admit Cards, Exam Results, and International Visa-Sponsored & Remote Careers.</td></tr>
-                        <tr><td><strong>Breaking, India & World News</strong></td><td>24/7 live coverage of national affairs, Supreme Court rulings, cabinet decisions, international diplomacy, UN summits, and global geopolitical developments.</td></tr>
-                        <tr><td><strong>Economy, Business & Finance</strong></td><td>Macroeconomic indicators, GDP & inflation reports, RBI monetary policy, Stock Market (Sensex, Nifty, Wall Street), corporate earnings, startups, and real estate trends.</td></tr>
-                        <tr><td><strong>Technology, Science & AI</strong></td><td>Consumer electronics, smartphones, cybersecurity, space missions (ISRO, NASA, SpaceX), Artificial Intelligence breakthroughs, and robotics.</td></tr>
-                        <tr><td><strong>Auto & EV Desk</strong></td><td>New car and bike launches, Electric Vehicle (EV) battery range tests, ex-showroom pricing, safety ratings, and comparative automobile reviews.</td></tr>
-                        <tr><td><strong>Sports, Entertainment & Lifestyle</strong></td><td>Live cricket (IPL, ICC tournaments), football, Olympic sports, box-office analysis, OTT releases, health & medicine advisories, weather alerts, and travel guides.</td></tr>
-                    </table>
-
-                    <h3>4. Our Global Correspondent Network & Verification Workflow</h3>
-                    <p>Fast Job takes pride in its diverse newsroom footprint. Our reports are compiled and reviewed by a collaborative network of <strong>50+ authors and correspondents</strong> stationed across major Indian hubs (New Delhi, Mumbai, Bengaluru, Jaipur, Kolkata, Chennai, Hyderabad, Lucknow, Pune) and international bureaus (New York, London, Silicon Valley, Dubai, Toronto, Singapore, Tokyo, Frankfurt, and Sydney).</p>
-                    <p>Every story published on <strong>fastjob.online</strong> undergoes a three-tier verification protocol: Primary Source Confirmation (checking official gazettes, ministry portals, or accredited wire agencies), Fact & Data Structuring (cross-checking dates, vacancy numbers, and figures), and SEO & Readability Polish so readers get complete 800+ word deep-dive clarity on every topic.</p>
-
-                    <h3>5. Why Millions of Readers Trust Fast Job</h3>
-                    <p>We understand that when a candidate reads a recruitment notification or an investor reads a market report on our portal, they are making real-life decisions based on our words. That is why we strictly prohibit fabricated rumours, misleading thumbnails, or unverified claims. Our live database counter at the top of our portal transparently reflects our growing archive of thousands of verified reports available free of cost to the public.</p>
-                `
-            },
-
-            'privacy-policy': {
-                title: 'Privacy Policy — Data Protection & User Rights',
-                content: `
-                    <div class="intro-box">
-                        <strong>Effective Date: January 1, 2026 | Last Updated: October 2026</strong><br>
-                        At <strong>Fast Job</strong> (accessible at <strong>https://fastjob.online</strong>), safeguarding the digital privacy and personal data of our readers is a foundational priority. This comprehensive Privacy Policy details how we collect, process, protect, and handle information in compliance with global data protection laws, including India's Digital Personal Data Protection (DPDP) Act and the General Data Protection Regulation (GDPR).
-                    </div>
-
-                    <h3>1. Scope of This Privacy Policy</h3>
-                    <p>This Privacy Policy applies exclusively to online activities on <strong>fastjob.online</strong> and is valid for all visitors, readers, and subscribers interacting with our web portal, mobile interface, and official communication channels. We do not mandate account registration or personal identity disclosure to read our news articles or recruitment notifications.</p>
-
-                    <h3>2. Information We Collect Automatically (Log Files & Analytics)</h3>
-                    <p>Like all standard professional news publications, Fast Job utilizes server log files and analytics tools to maintain site security, prevent automated cyberattacks, and understand aggregate reader preferences. The non-personally identifiable information collected automatically includes:</p>
-                    <ul>
-                        <li><strong>Device & Network Metadata:</strong> Internet Protocol (IP) address (anonymized where applicable), browser type and version, operating system, screen resolution, and Internet Service Provider (ISP).</li>
-                        <li><strong>Engagement & Navigation Metrics:</strong> Date and time stamps of visits, referring and exit URLs, categories viewed, time spent on articles, and search queries typed into our internal search bar.</li>
-                        <li><strong>Voluntary Communications:</strong> If you contact our editorial desk directly via email (<code>desk@fastjob.online</code>), we collect your name, email address, and the contents of your message solely to respond to your inquiry.</li>
-                    </ul>
-
-                    <h3>3. Cookies, Web Beacons & Advertising Partners (Google AdSense & Analytics)</h3>
-                    <p>Fast Job uses "cookies"—small text files stored on your browser—to enhance page loading speeds, remember navigation preferences, and deliver relevant content. Furthermore, to keep our journalism 100% free for all readers, we partner with accredited third-party advertising networks, including <strong>Google AdSense</strong>, and traffic measurement services such as <strong>Google Analytics (G-4ECBSC962B)</strong>.</p>
-                    <table class="article-table">
-                        <tr><th>Cookie / Partner Type</th><th>Purpose & User Control</th></tr>
-                        <tr><td><strong>Essential & Security Cookies</strong></td><td>Required for core website routing, cloud security, and preventing malicious bot traffic.</td></tr>
-                        <tr><td><strong>Google Analytics Cookies</strong></td><td>Helps our editorial team understand which news categories and job alerts are most helpful to readers using anonymized traffic data.</td></tr>
-                        <tr><td><strong>Google AdSense & DoubleClick DART Cookies</strong></td><td>Google, as a third-party vendor, uses cookies (including DART cookies) to serve ads based on a user's prior visits to fastjob.online or other websites on the internet. Users may opt out of personalized advertising by visiting <a href="https://adssettings.google.com" target="_blank" class="text-[#d10000] underline">Google Ads Settings</a>.</td></tr>
-                    </table>
-
-                    <h3>4. How We Use & Protect Your Information</h3>
-                    <p>We strictly <strong>never sell, rent, trade, or monetize</strong> any personal user information to third-party data brokers. The technical data we process is used strictly to:</p>
-                    <ul>
-                        <li>Operate, maintain, and optimize the mobile and desktop responsiveness of <strong>fastjob.online</strong>.</li>
-                        <li>Identify trending news topics and high-demand recruitment notifications so our editors can prioritize relevant coverage.</li>
-                        <li>Detect, prevent, and address technical issues, scraping attacks, or unauthorized database access using HTTPS/TLS encryption and cloud firewall protections.</li>
-                    </ul>
-
-                    <h3>5. Third-Party Links & External Portals</h3>
-                    <p>Our recruitment and news articles frequently reference official government portals, examination boards, or international organizations for the convenience of applicants. Please note that once you leave <strong>fastjob.online</strong>, we have no control over the privacy practices of external domains. We encourage users to review the privacy statements of any external website where they submit job applications or personal documents.</p>
-
-                    <h3>6. Children's Privacy & User Data Rights</h3>
-                    <p>Fast Job does not knowingly collect any personal identifiable information from children under the age of 13. Under applicable privacy laws (GDPR, CCPA, and India's DPDP Act), users have the right to request access to, correction of, or deletion of any personal communication records held by our support desk. You can disable cookies at any time through your individual browser settings.</p>
-
-                    <h3>7. Contact Our Privacy & Data Protection Officer</h3>
-                    <p>If you have any questions, concerns, or requests regarding this Privacy Policy or how your data is handled on <strong>fastjob.online</strong>, please write to our Data Protection & Editorial Compliance Desk at <strong>desk@fastjob.online</strong>.</p>
-                `
-            },
-
-            'terms-and-conditions': {
-                title: 'Terms & Conditions of Use — Fast Job Portal',
-                content: `
-                    <div class="intro-box">
-                        <strong>Last Revised: October 2026</strong><br>
-                        Welcome to <strong>Fast Job (https://fastjob.online)</strong>. By accessing, browsing, or utilizing any part of this website, you acknowledge that you have read, understood, and agreed to be bound by these Terms and Conditions of Use, along with our Privacy Policy and Disclaimer.
-                    </div>
-
-                    <h3>1. Acceptance of Terms & Portal Access</h3>
-                    <p>These Terms & Conditions govern your access to all news articles, recruitment notifications, tables, graphics, logos, and digital services provided by Fast Job. We reserve the right to update, modify, or replace any part of these terms at our sole discretion to reflect legal, technical, or operational changes. Continued use of the portal following any updates constitutes acceptance of the revised terms.</p>
-
-                    <h3>2. Intellectual Property & Copyright Ownership</h3>
-                    <p>Unless otherwise credited to official public-domain press releases or licensed media wire agencies, <strong>Fast Job</strong> and its editorial licensors own full intellectual property rights for all original article compilations, SEO structures, custom tables, HTML layouts, and the <strong>"Fast Job / FJ News"</strong> brand identity.</p>
-                    <ul>
-                        <li><strong>Permitted Personal Use:</strong> Readers are welcome to view, download, print, and share links to our articles on social media platforms (WhatsApp, Facebook, X, Telegram, LinkedIn) for personal, educational, and non-commercial informational purposes.</li>
-                        <li><strong>Prohibited Commercial Scraping:</strong> You must not systematically scrape, copy-paste verbatim, republish, frame, or redistribute our full articles onto competing websites, mobile apps, or commercial databases without prior written permission or a clear canonical backlink to <code>https://fastjob.online</code>.</li>
-                    </ul>
-
-                    <h3>3. User Conduct & Acceptable Use Policy</h3>
-                    <p>When using <strong>fastjob.online</strong>, you agree not to engage in any activity that interferes with or disrupts the integrity, performance, or security of our cloud database and web servers. Specifically, users are prohibited from:</p>
-                    <ul>
-                        <li>Deploying malicious bots, DDoS attacks, SQL injections, or automated harvesters that place unreasonable load on our infrastructure.</li>
-                        <li>Attempting to bypass security headers, impersonate Fast Job editors, or falsify referral sources.</li>
-                        <li>Using our brand name or URLs to circulate fraudulent job offers, phishing links, or misleading financial schemes on messaging apps.</li>
-                    </ul>
-
-                    <h3>4. Recruitment Verification & Reader Responsibility</h3>
-                    <p>While our 50+ correspondents exercise the highest diligence in compiling government and private job alerts (including vacancy counts, age limits, application fees, and important dates), recruitment boards occasionally issue corrigendums or deadline extensions. Users agree that it is their ultimate responsibility to cross-verify all application details against the official gazette or recruiting organization's portal before paying fees or submitting forms.</p>
-
-                    <h3>5. Limitation of Liability & Warranties</h3>
-                    <p>All content on <strong>fastjob.online</strong> is provided on an "as is" and "as available" basis without warranties of any kind, whether express or implied. Under no circumstances shall Fast Job, its editors, authors, or technical partners be held liable for any direct, indirect, incidental, or consequential damages arising out of the use or inability to use the information published on this portal.</p>
-
-                    <h3>6. Governing Law & Jurisdiction</h3>
-                    <p>These Terms and Conditions shall be governed by and construed in accordance with the laws of India. Any legal disputes or proceedings arising in connection with the use of <strong>fastjob.online</strong> shall be subject to the exclusive jurisdiction of the competent courts in India.</p>
-                `
-            },
-
-            'disclaimer': {
-                title: 'Official Disclaimer — Recruitment, Financial & News Coverage',
-                content: `
-                    <div class="intro-box">
-                        <strong>Important Notice for All Readers & Job Applicants:</strong><br>
-                        All news reports, recruitment summaries, market analyses, and informational guides published on <strong>Fast Job (https://fastjob.online)</strong> are published in good faith and strictly for general information, public awareness, and educational purposes only.
-                    </div>
-
-                    <h3>1. Independent News Portal — Not a Government Agency</h3>
-                    <p><strong>Fast Job (fastjob.online) is an independent private digital news and career media publication. We are NOT affiliated, associated, authorized, endorsed by, or in any way officially connected with the Government of India, any State Government, UPSC, SSC, Railway Recruitment Board (RRB), IBPS, or any international embassy.</strong></p>
-                    <p>Whenever we publish Sarkari Naukri, public-sector vacancies, admit card alerts, exam results, or international visa-sponsored job updates, our role is strictly journalistic—summarizing publicly released official notifications into easy-to-read English for the benefit of aspirants.</p>
-
-                    <h3>2. Protection Against Recruitment Fraud (Zero-Fee Guarantee)</h3>
-                    <p>Fast Job <strong>never charges any money</strong> from candidates for job alerts, nor do we act as a placement agency or recruit candidates directly. Readers are strongly cautioned to follow these safety rules:</p>
-                    <ul>
-                        <li><strong>Never Pay Unverified Agents:</strong> Do not pay money to any individual, phone caller, or Telegram/WhatsApp group claiming to offer guaranteed government or overseas jobs in the name of Fast Job.</li>
-                        <li><strong>Always Verify on Official Portals:</strong> Application fees for legitimate exams should only be paid on the official government website (such as <code>upsc.gov.in</code>, <code>ssc.gov.in</code>, etc.) after reading the official PDF advertisement.</li>
-                    </ul>
-
-                    <h3>3. No Financial, Investment, Legal, or Medical Advice</h3>
-                    <p>Our portal covers 25 diverse categories, including <strong>Finance & Markets, Economy, Business, Real Estate, Health & Medicine, and Crime & Justice</strong>. Please note the following category-specific disclaimers:</p>
-                    <table class="article-table">
-                        <tr><th>Coverage Category</th><th>Official Reader Advisory</th></tr>
-                        <tr><td><strong>Finance, Stocks & Economy</strong></td><td>Articles discussing stock market indices (Sensex/Nifty), mutual funds, commodities, cryptocurrency, or economic policies are purely informational and do not constitute SEBI-registered investment or financial advice. Always consult a certified financial planner before investing.</td></tr>
-                        <tr><td><strong>Health & Medicine</strong></td><td>Reports on medical research, wellness trends, diseases, fitness, or nutrition are for general awareness only and must never be treated as a substitute for professional medical diagnosis or treatment by a qualified doctor.</td></tr>
-                        <tr><td><strong>Auto & EV / Technology</strong></td><td>Vehicle ex-showroom prices, mileage/range claims, and gadget specifications are based on manufacturer releases and may vary by city or variant.</td></tr>
-                    </table>
-
-                    <h3>4. Accuracy, Completeness & External Links</h3>
-                    <p>While our editorial desk strives to keep every statistic, date, and table 100% accurate and updated for 2026, inadvertent typographical errors or subsequent official amendments may occur. Fast Job makes no warranties regarding the absolute completeness or reliability of this information. Any action you take upon the information you find on <strong>fastjob.online</strong> is strictly at your own risk.</p>
-                `
-            },
-
-            'editorial-policy': {
-                title: 'Editorial Policy, Fact-Checking & Corrections Standards',
-                content: `
-                    <div class="intro-box">
-                        At <strong>Fast Job (https://fastjob.online)</strong>, trust is the cornerstone of our newsroom. This Editorial Policy outlines the journalistic standards, sourcing rules, fact-checking methodology, and correction protocols followed by our 50+ global correspondents across all 25 news and career desks.
-                    </div>
-
-                    <h3>1. Core Principles of Our Journalism</h3>
-                    <p>Every report published on Fast Job is guided by four non-negotiable pillars: <strong>Accuracy, Independence, Impartiality, and Accountability</strong>. Whether we are breaking an international diplomatic development or detailing the eligibility criteria of a state police recruitment drive, our commitment is to serve the public interest with clarity and factual precision.</p>
-
-                    <h3>2. Primary Sourcing & Verification Methodology</h3>
-                    <p>We do not publish unverified social media rumors or anonymous speculation as fact. Our editors and correspondents rely on a strict hierarchy of authoritative sources:</p>
-                    <ul>
-                        <li><strong>For Jobs & Careers:</strong> Official government employment gazettes, ministry press releases, public service commission bulletins, and verified corporate career portals.</li>
-                        <li><strong>For Breaking, India & World News:</strong> Official parliamentary records, Supreme Court and High Court orders, accredited national and international wire agencies, and verified public statements by officials.</li>
-                        <li><strong>For Business, Science & Auto:</strong> Regulatory filings (SEBI/RBI), peer-reviewed scientific journals (ISRO/NASA briefings), and official manufacturer specification sheets.</li>
-                    </ul>
-
-                    <h3>3. Visual Integrity & Original Source Imagery</h3>
-                    <p>Visual context is vital to credible journalism. Our editorial workflow mandates that articles feature authentic, relevant source imagery that accurately represents the subject matter of the report. We strictly avoid deceptive or doctored imagery, and our system actively filters out repetitive or generic placeholder banners so readers always get genuine visual context.</p>
-
-                    <h3>4. Use of Technology & Editorial Oversight</h3>
-                    <p>To deliver 24/7 real-time coverage across 25 categories, Fast Job utilizes advanced newsroom automation and AI-assisted structuring tools to organize complex notifications into reader-friendly tables, subheadings, and FAQs. Every automated draft is governed by strict editorial rules that prohibit third-party plagiarism, enforce original synthesis, and attribute each report to its assigned desk correspondent.</p>
-
-                    <h3>5. Transparent Corrections & Updates Policy</h3>
-                    <p>We believe that acknowledging and correcting errors promptly strengthens reader trust. If a factual inaccuracy—such as an updated examination date, a revised vacancy count, or a typographical error—is identified in any published article:</p>
-                    <ul>
-                        <li>Our editorial desk investigates and updates the article immediately upon verification.</li>
-                        <li>For significant factual revisions, an editor's note is appended indicating the date and nature of the update.</li>
-                        <li>Readers can report any potential error directly to <strong>desk@fastjob.online</strong> with the article link and supporting reference.</li>
-                    </ul>
-                `
-            },
-
-            'contact-us': {
-                title: 'Contact Desk & Grievance Redressal — Fast Job',
-                content: `
-                    <div class="intro-box">
-                        We welcome news tips, recruitment press releases, correction requests, advertising inquiries, and reader feedback. Connect directly with the <strong>Fast Job (fastjob.online) Editorial & Support Desk</strong> through our official channels below.
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
-                        <div class="bg-red-50/60 p-6 rounded-xl border-2 border-red-200 shadow-sm">
-                            <h4 class="text-xl font-black text-gray-900 mb-2"><i class="fa-solid fa-envelope-open-text text-[#d10000] mr-2"></i> Central Editorial & Support Desk</h4>
-                            <p class="text-sm text-gray-600 mb-3">For general inquiries, news tips, press releases, correction requests, and technical support:</p>
-                            <a href="mailto:desk@fastjob.online" class="text-lg font-black text-[#d10000] hover:underline break-all">desk@fastjob.online</a>
-                            <p class="text-xs font-bold text-gray-500 mt-3"><i class="fa-regular fa-clock mr-1"></i> Response Time: Within 12–24 Hours (24×7 Desk)</p>
-                        </div>
-
-                        <div class="bg-green-50/60 p-6 rounded-xl border-2 border-green-200 shadow-sm">
-                            <h4 class="text-xl font-black text-gray-900 mb-2"><i class="fa-brands fa-whatsapp text-[#25d366] mr-2"></i> Official WhatsApp Broadcast Channel</h4>
-                            <p class="text-sm text-gray-600 mb-4">Get instant breaking news alerts, Sarkari Naukri notifications, and admit card updates directly on your phone:</p>
-                            <a href="https://whatsapp.com/channel/0029VbDajQV8PgsNA1lLhW0i" target="_blank" class="inline-flex items-center gap-2 bg-[#25d366] text-white font-black px-6 py-2.5 rounded-full text-sm hover:bg-[#1da851] shadow transition">
-                                <i class="fa-brands fa-whatsapp text-lg"></i> Join Official WhatsApp Channel
-                            </a>
-                        </div>
-                    </div>
-
-                    <h3>1. Department-Wise Contact Directory</h3>
-                    <p>To help us route your message to the right team quickly, please mention the relevant subject line when emailing <strong>desk@fastjob.online</strong>:</p>
-                    <table class="article-table">
-                        <tr><th>Department / Desk</th><th>Subject Line to Use</th><th>Scope of Assistance</th></tr>
-                        <tr><td><strong>Jobs & Recruitment Desk</strong></td><td><code>[JOB ALERT / PRESS RELEASE]</code></td><td>Submitting official government or corporate vacancy notifications, exam schedules, or career events.</td></tr>
-                        <tr><td><strong>Fact-Check & Corrections</strong></td><td><code>[CORRECTION REQUEST]</code></td><td>Reporting typographical errors, updated deadlines, or factual clarifications with article URL.</td></tr>
-                        <tr><td><strong>Advertising & Partnerships</strong></td><td><code>[MEDIA / AD INQUIRY]</code></td><td>Banner sponsorships, native brand campaigns, educational institute promotions, and media partnerships.</td></tr>
-                        <tr><td><strong>Copyright & Legal Compliance</strong></td><td><code>[DMCA / GRIEVANCE]</code></td><td>Intellectual property queries, content attribution requests, or regulatory compliance matters.</td></tr>
-                    </table>
-
-                    <h3>2. Grievance Redressal Mechanism (IT Rules Compliance)</h3>
-                    <p>In accordance with applicable Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, Fast Job maintains a formal Grievance Redressal mechanism. If you have a formal complaint regarding any published report or copyright matter, please send an email to <strong>desk@fastjob.online</strong> containing:</p>
-                    <ul>
-                        <li>Your full name, contact details, and organization (if applicable).</li>
-                        <li>The exact URL (`https://fastjob.online/...`) of the article in question.</li>
-                        <li>A clear description of the grievance along with supporting official documents or links.</li>
-                    </ul>
-                    <p>Our Compliance Desk acknowledges all formal grievances within 24 hours and resolves verified issues expeditiously.</p>
-                `
-            }
-        };
-
-        // EXTRACTS SLUG FROM BOTH ?slug=... AND /slug=... AND /post-slug (Google Search Compatible!)
-        function getActiveRouteSlug() {
-            const params = new URLSearchParams(window.location.search);
-            for (const key of ['slug', 'post', 'article', 'p', 'id']) {
-                if (params.get(key)) {
-                    return decodeURIComponent(params.get(key)).replace(/^\/|\/$/g, '').replace(/^slug=/i, '').trim();
-                }
-            }
-            if (window.location.search && window.location.search.toLowerCase().includes('slug=')) {
-                return decodeURIComponent(window.location.search.split(/slug=/i)[1].split('&')[0]).replace(/^\/|\/$/g, '').trim();
-            }
-            let cleanPath = decodeURIComponent(window.location.pathname).replace(/^\/|\/$/g, '').replace(/\.html$/, '');
-            if (cleanPath.toLowerCase().startsWith('slug=')) {
-                cleanPath = cleanPath.substring(5);
-            }
-            return cleanPath.trim();
-        }
-
-        async function loadNews() {
-            try {
-                const initialTarget = getActiveRouteSlug();
-                if (initialTarget && initialTarget !== 'index' && !staticPages[initialTarget] && !initialTarget.startsWith('category/')) {
-                    isViewingArticleOrLegal = true;
-                    openArticle(initialTarget, false);
-                } else if (initialTarget && staticPages[initialTarget]) {
-                    isViewingArticleOrLegal = true;
-                    openStaticPage(initialTarget, false);
-                }
-
-                const countRes = await fetch(SUPABASE_URL + "/rest/v1/posts?select=id&limit=1", {
-                    headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + SUPABASE_KEY, "Prefer": "count=exact" }
-                });
-                const range = countRes.headers.get("content-range");
-                let totalCount = 7000;
-                if (range && range.includes('/')) {
-                    totalCount = parseInt(range.split('/')[1], 10) || 7000;
-                    document.getElementById('exact-post-counter').innerText = totalCount.toLocaleString();
-                }
-
-                const firstRes = await fetch(SUPABASE_URL + "/rest/v1/posts?select=id,title,slug,category,image_url,created_at&order=id.desc&limit=1000&offset=0", {
+        const batchPromises = [];
+        for (let offset = 1000; offset <= 7000; offset += 1000) {
+            batchPromises.push(
+                fetch(SUPABASE_URL + `/rest/v1/posts?select=id,title,slug,category,image_url,created_at&order=id.desc&limit=1000&offset=${offset}`, {
                     headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + SUPABASE_KEY }
-                });
-                const firstBatch = await firstRes.json();
-                if (Array.isArray(firstBatch) && firstBatch.length > 0) {
-                    const realFirst = firstBatch.filter(p => isRealPublisherImage(p.image_url));
-                    const fallbackFirst = firstBatch.filter(p => !isRealPublisherImage(p.image_url));
-                    allNews = realFirst.concat(fallbackFirst);
-                    renderTicker(allNews);
-                    if (!isViewingArticleOrLegal) {
-                        handleRoute(false);
-                    }
-                }
-
-                const batchPromises = [];
-                const maxOffset = Math.min(totalCount, 12000);
-                for (let offset = 1000; offset < maxOffset; offset += 1000) {
-                    batchPromises.push(
-                        fetch(SUPABASE_URL + `/rest/v1/posts?select=id,title,slug,category,image_url,created_at&order=id.desc&limit=1000&offset=${offset}`, {
-                            headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + SUPABASE_KEY }
-                        }).then(r => r.json()).catch(() => [])
-                    );
-                }
-
-                if (batchPromises.length > 0) {
-                    const olderBatches = await Promise.all(batchPromises);
-                    let combinedAll = Array.isArray(firstBatch) ? [...firstBatch] : [];
-                    olderBatches.forEach(batch => {
-                        if (Array.isArray(batch)) combinedAll = combinedAll.concat(batch);
-                    });
-                    const realPosts = combinedAll.filter(p => isRealPublisherImage(p.image_url));
-                    const nonRealPosts = combinedAll.filter(p => !isRealPublisherImage(p.image_url));
-                    allNews = realPosts.concat(nonRealPosts);
-                    document.getElementById('exact-post-counter').innerText = Math.max(totalCount, allNews.length).toLocaleString();
-                    renderTicker(allNews);
-                    if (!isViewingArticleOrLegal && !currentActiveCategory) {
-                        renderHome(allNews, false);
-                    }
-                }
-            } catch (err) { console.error(err); }
+                }).then(r => r.json()).catch(() => [])
+            );
         }
+        const olderBatches = await Promise.all(batchPromises);
+        let comb = Array.isArray(firstBatch) ? [...firstBatch] : [];
+        olderBatches.forEach(b => { if (Array.isArray(b)) comb = comb.concat(b); });
+        allNews = comb.filter(p => isRealPublisherImage(p.image_url)).concat(comb.filter(p => !isRealPublisherImage(p.image_url)));
+        renderTicker(allNews);
+        if (!isViewingArticleOrLegal && !currentActiveCategory) renderHome(allNews, false);
+    } catch (err) { console.error(err); }
+}
 
-        function handleRoute(pushState = false) {
-            const cleanTarget = getActiveRouteSlug();
-            if (!cleanTarget || cleanTarget === 'index') {
-                isViewingArticleOrLegal = false;
-                renderHome(allNews, pushState);
-                return;
-            }
-            if (staticPages[cleanTarget]) {
-                openStaticPage(cleanTarget, pushState);
-                return;
-            }
-            if (cleanTarget.startsWith('category/')) {
-                const catSlug = cleanTarget.replace('category/', '');
-                const catName = slugToCategory[catSlug];
-                if (catName) {
-                    isViewingArticleOrLegal = false;
-                    filterCategory(catName, pushState);
-                    return;
-                }
-            }
-            openArticle(cleanTarget, pushState);
-        }
+function handleRoute(pushState = false) {
+    const t = getActiveRouteSlug();
+    if (!t || t === 'index') { isViewingArticleOrLegal = false; renderHome(allNews, pushState); return; }
+    if (buildLegalPageContent(t)) { openStaticPage(t, pushState); return; }
+    if (t.startsWith('category/')) {
+        const cn = slugToCategory[t.replace('category/', '')];
+        if (cn) { isViewingArticleOrLegal = false; filterCategory(cn, pushState); return; }
+    }
+    openArticle(t, pushState);
+}
 
-        function openStaticPage(pageKey, pushState = true) {
-            const page = staticPages[pageKey];
-            if (!page) return;
-            isViewingArticleOrLegal = true;
-            if (pushState) history.pushState({ type: 'static', key: pageKey }, "", "/" + pageKey);
-            clearInterval(slideInterval);
-            document.getElementById('home-view').classList.add('hidden');
-            document.getElementById('article-view').classList.add('hidden');
-            document.getElementById('legal-view').classList.remove('hidden');
-            document.getElementById('legal-page-title').innerText = page.title;
-            document.getElementById('legal-page-content').innerHTML = page.content;
-            document.title = `${page.title} - Fast Job`;
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+function openStaticPage(key, pushState = true) {
+    const p = buildLegalPageContent(key);
+    if (!p) return;
+    isViewingArticleOrLegal = true;
+    if (pushState) history.pushState({ type: 'static', key: key }, "", "/" + key);
+    clearInterval(slideInterval);
+    document.getElementById('home-view').classList.add('hidden');
+    document.getElementById('article-view').classList.add('hidden');
+    document.getElementById('legal-view').classList.remove('hidden');
+    document.getElementById('legal-page-title').innerText = p.title;
+    document.getElementById('legal-page-content').innerHTML = p.body;
+    document.title = p.title;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
-        function renderTicker(newsItems) {
-            const topTitles = newsItems.slice(0, 15).map(item => `<span class="ticker-item" onclick="openArticle('${item.slug}')"><span class="text-[#d10000] font-black mr-1.5">&#9679;</span> ${item.title}</span>`).join(' &nbsp;&nbsp;<span class="text-gray-300">|</span>&nbsp;&nbsp; ');
-            document.getElementById('ticker-content').innerHTML = topTitles;
-        }
+function renderTicker(items) {
+    document.getElementById('ticker-content').innerHTML = items.slice(0, 15).map(i => `<span class="ticker-item" onclick="openArticle('${i.slug}')"><span class="text-[#d10000] font-black mr-1.5">&#9679;</span> ${i.title}</span>`).join(' &nbsp;|&nbsp; ');
+}
 
-        function renderSliderAndSidebar(newsItems) {
-            const top5 = newsItems.slice(0, 5);
-            if(top5.length === 0) return;
-            
-            let sliderHTML = '';
-            top5.forEach((item, index) => {
-                const author = getPostAuthor(item);
-                sliderHTML += `
-                <div class="slide ${index === 0 ? 'active' : ''} cursor-pointer w-full h-full relative group" onclick="openArticle('${item.slug}')">
-                    <img src="${item.image_url}" onerror="this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1000&q=80'" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                    <div class="absolute bottom-0 left-0 right-0 p-5 md:p-8">
-                        <div class="flex flex-wrap items-center gap-2 mb-2">
-                            <span class="bg-[#d10000] text-white text-[10px] md:text-xs px-3 py-1 rounded font-black uppercase tracking-wider shadow">${item.category}</span>
-                            <span class="text-gray-200 text-[11px] md:text-xs font-bold"><i class="fa-solid fa-user-pen text-yellow-400 mr-1"></i>${author}</span>
-                        </div>
-                        <h2 class="text-white text-xl sm:text-2xl md:text-4xl font-black leading-tight drop-shadow-lg line-clamp-3">${item.title}</h2>
-                    </div>
-                </div>`;
-            });
-            document.getElementById('slider-wrapper').innerHTML = sliderHTML;
-            
-            const sideItems = newsItems.slice(5, 15);
-            const sidebarList = sideItems.length > 0 ? sideItems : newsItems.slice(0, 6);
-            let sideHTML = '';
-            sidebarList.forEach(item => {
-                const author = getPostAuthor(item);
-                sideHTML += `
-                <div onclick="openArticle('${item.slug}')" class="py-2.5 flex gap-3 items-center cursor-pointer group">
-                    <img src="${item.image_url}" onerror="this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&q=80'" class="w-20 h-14 object-cover rounded-lg shrink-0 border border-gray-100">
-                    <div class="flex-grow min-w-0">
-                        <div class="flex items-center justify-between gap-1 mb-0.5">
-                            <span class="text-[10px] font-extrabold text-[#d10000] uppercase truncate">${item.category}</span>
-                            <span class="text-[10px] font-semibold text-gray-400 truncate">${author.split('(')[0]}</span>
-                        </div>
-                        <h4 class="text-xs md:text-sm font-bold text-gray-900 group-hover:text-[#d10000] line-clamp-2 leading-snug transition">${item.title}</h4>
-                    </div>
-                </div>`;
-            });
-            document.getElementById('top-sidebar-list').innerHTML = sideHTML;
-            document.getElementById('hero-top-section').classList.remove('hidden');
-            
-            clearInterval(slideInterval);
-            slideIndex = 0;
-            slideInterval = setInterval(() => {
-                const slides = document.querySelectorAll('.slide');
-                if(!slides.length) return;
-                slides[slideIndex].classList.remove('active');
-                slideIndex = (slideIndex + 1) % slides.length;
-                slides[slideIndex].classList.add('active');
-            }, 4000);
-        }
-
-        function buildBalancedSectionHTML(cat, catPosts) {
-            const catSlug = categoryToSlug[cat];
-            const iconClass = categoryIcons[cat] || "fa-solid fa-newspaper";
-            const featured = catPosts[0];
-            const rightPosts = catPosts.slice(1, 5);
-
-            return `
-            <section class="bg-white p-5 md:p-7 rounded-xl shadow-sm border border-gray-200">
-                <div class="flex justify-between items-center mb-6 border-b-2 border-[#d10000] pb-2">
-                    <span class="section-badge text-sm md:text-base"><i class="${iconClass} text-yellow-300"></i> ${cat} (${catPosts.length})</span>
-                    <a href="/category/${catSlug}" onclick="event.preventDefault(); filterCategory('${cat}');" class="text-xs md:text-sm font-extrabold text-[#d10000] hover:underline uppercase inline-flex items-center">View All ${catPosts.length} Posts <i class="fa-solid fa-angle-right ml-1.5"></i></a>
+function renderSliderAndSidebar(items) {
+    const top5 = items.slice(0, 5);
+    if (!top5.length) return;
+    document.getElementById('slider-wrapper').innerHTML = top5.map((it, idx) => `
+        <div class="slide ${idx === 0 ? 'active' : ''} cursor-pointer w-full h-full relative group" onclick="openArticle('${it.slug}')">
+            <img src="${it.image_url}" onerror="this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1000&q=80'" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-5 md:p-8">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="bg-[#d10000] text-white text-[10px] px-3 py-1 rounded font-black uppercase">${it.category}</span>
+                    <span class="text-gray-200 text-xs font-bold"><i class="fa-solid fa-user-pen text-yellow-400 mr-1"></i>${getPostAuthor(it)}</span>
                 </div>
-                
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
-                    <div onclick="openArticle('${featured.slug}')" class="lg:col-span-5 bg-gray-50 border border-gray-100 hover:border-red-200 shadow-sm hover:shadow-md transition cursor-pointer rounded-xl overflow-hidden flex flex-col justify-between group">
-                        <div>
-                            <div class="overflow-hidden aspect-video relative">
-                                <img src="${featured.image_url}" onerror="this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80'" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
-                                <span class="absolute top-3 left-3 bg-[#d10000] text-white text-[10px] font-extrabold uppercase px-2.5 py-1 rounded shadow">${cat}</span>
-                            </div>
-                            <div class="p-4 md:p-5">
-                                <h4 class="font-extrabold text-lg md:text-2xl leading-snug text-gray-900 group-hover:text-[#d10000] transition line-clamp-3">${featured.title}</h4>
-                            </div>
-                        </div>
-                        <div class="px-4 md:px-5 pb-4 pt-2 border-t border-gray-200/70 flex items-center justify-between text-xs font-semibold text-gray-500">
-                            <span><i class="fa-solid fa-pen-nib text-[#d10000] mr-1.5"></i>${getPostAuthor(featured)}</span>
-                            <span class="text-[#d10000] font-bold">Read &rarr;</span>
-                        </div>
-                    </div>
+                <h2 class="text-white text-xl sm:text-2xl md:text-4xl font-black leading-tight line-clamp-3">${it.title}</h2>
+            </div>
+        </div>`).join('');
 
-                    <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        ${rightPosts.map(item => `
-                            <div onclick="openArticle('${item.slug}')" class="bg-white border border-gray-100 hover:border-red-200 shadow-sm hover:shadow-md transition cursor-pointer rounded-xl overflow-hidden flex flex-col justify-between group">
-                                <div>
-                                    <div class="overflow-hidden h-36 relative">
-                                        <img src="${item.image_url}" onerror="this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80'" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
-                                    </div>
-                                    <div class="p-3.5">
-                                        <h4 class="font-bold text-sm md:text-base leading-snug text-gray-900 group-hover:text-[#d10000] transition line-clamp-2">${item.title}</h4>
-                                    </div>
-                                </div>
-                                <div class="px-3.5 pb-3 pt-2 border-t border-gray-100 text-[11px] font-semibold text-gray-500 flex items-center">
-                                    <i class="fa-solid fa-pen-nib text-[#d10000] mr-1.5 text-[10px]"></i>
-                                    <span class="truncate">${getPostAuthor(item)}</span>
-                                </div>
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
-            </section>`;
-        }
+    const side = items.slice(5, 15).length ? items.slice(5, 15) : items.slice(0, 6);
+    document.getElementById('top-sidebar-list').innerHTML = side.map(it => `
+        <div onclick="openArticle('${it.slug}')" class="py-2.5 flex gap-3 items-center cursor-pointer group">
+            <img src="${it.image_url}" onerror="this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&q=80'" class="w-20 h-14 object-cover rounded-lg shrink-0">
+            <div class="flex-grow min-w-0">
+                <span class="text-[10px] font-extrabold text-[#d10000] uppercase block truncate">${it.category}</span>
+                <h4 class="text-xs md:text-sm font-bold text-gray-900 group-hover:text-[#d10000] line-clamp-2">${it.title}</h4>
+            </div>
+        </div>`).join('');
+    document.getElementById('hero-top-section').classList.remove('hidden');
 
-        function renderHome(newsList, pushState = false) {
-            isViewingArticleOrLegal = false;
-            currentActiveCategory = "";
-            if (pushState) history.pushState({ type: 'home' }, "", "/");
-            document.getElementById('article-view').classList.add('hidden');
-            document.getElementById('legal-view').classList.add('hidden');
-            document.getElementById('home-view').classList.remove('hidden');
-            document.title = "Fast Job - Live Breaking News, Jobs & Global Coverage";
-            
-            renderSliderAndSidebar(newsList);
+    clearInterval(slideInterval);
+    slideIndex = 0;
+    slideInterval = setInterval(() => {
+        const s = document.querySelectorAll('.slide');
+        if (!s.length) return;
+        s[slideIndex].classList.remove('active');
+        slideIndex = (slideIndex + 1) % s.length;
+        s[slideIndex].classList.add('active');
+    }, 4000);
+}
 
-            let sectionsHTML = '';
-            categories.forEach(cat => {
-                const catPosts = getPostsForCategory(newsList, cat);
-                if(catPosts.length > 0) {
-                    sectionsHTML += buildBalancedSectionHTML(cat, catPosts);
-                }
-            });
-            document.getElementById('category-sections').innerHTML = sectionsHTML;
-        }
+function renderHome(newsList, pushState = false) {
+    isViewingArticleOrLegal = false; currentActiveCategory = "";
+    if (pushState) history.pushState({ type: 'home' }, "", "/");
+    document.getElementById('article-view').classList.add('hidden');
+    document.getElementById('legal-view').classList.add('hidden');
+    document.getElementById('home-view').classList.remove('hidden');
+    document.title = "Fast Job - Live Breaking News, Jobs & Global Coverage";
+    renderSliderAndSidebar(newsList);
 
-        function renderCategoryGrid() {
-            const cat = currentActiveCategory;
-            const iconClass = categoryIcons[cat] || "fa-solid fa-newspaper";
-            const visibleItems = currentFilteredList.slice(0, currentDisplayLimit);
-
-            let gridHTML = `
-            <div class="bg-white p-5 md:p-7 rounded-xl shadow-sm border border-gray-200">
-                <div class="border-b-2 border-[#d10000] pb-2 mb-6 flex justify-between items-center">
-                    <span class="section-badge text-base md:text-lg"><i class="${iconClass} text-yellow-300"></i> ${cat} (${currentFilteredList.length} Posts)</span>
-                    <button onclick="goBackHome()" class="text-xs font-bold text-gray-600 hover:text-[#d10000] inline-flex items-center"><i class="fa-solid fa-house mr-1.5"></i> Back Home</button>
-                </div>`;
-
-            if (currentFilteredList.length === 0) {
-                gridHTML += `<p class="py-12 text-center text-gray-500 font-semibold">New stories for <strong>${cat}</strong> are being updated by our desk. Check back shortly!</p>`;
-            } else {
-                gridHTML += `<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">`;
-                visibleItems.forEach(item => {
-                    gridHTML += `
-                    <div onclick="openArticle('${item.slug}')" class="bg-white border border-gray-200/80 hover:border-red-300 shadow-sm hover:shadow-md transition cursor-pointer rounded-xl overflow-hidden flex flex-col justify-between group">
-                        <div>
-                            <div class="overflow-hidden aspect-video relative">
-                                <img src="${item.image_url}" onerror="this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80'" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
-                                <span class="absolute top-2.5 left-2.5 bg-[#d10000] text-white text-[9px] font-extrabold uppercase px-2 py-0.5 rounded shadow">${cat}</span>
-                            </div>
-                            <div class="p-4">
-                                <h4 class="font-bold text-base leading-snug text-gray-900 group-hover:text-[#d10000] transition line-clamp-3">${item.title}</h4>
-                            </div>
-                        </div>
-                        <div class="px-4 pb-3.5 pt-2.5 border-t border-gray-100 text-[11px] font-semibold text-gray-500 flex items-center">
-                            <i class="fa-solid fa-pen-nib text-[#d10000] mr-1.5 text-[10px]"></i>
-                            <span class="truncate">${getPostAuthor(item)}</span>
-                        </div>
-                    </div>`;
-                });
-                gridHTML += `</div>`;
-
-                if (currentDisplayLimit < currentFilteredList.length) {
-                    gridHTML += `
-                    <div class="mt-8 text-center">
-                        <button onclick="loadMoreCategoryPosts()" class="bg-[#d10000] hover:bg-[#a80000] text-white font-black text-xs md:text-sm uppercase tracking-wider px-8 py-3 rounded-full shadow-lg transition">
-                            Load More Posts (${currentFilteredList.length - currentDisplayLimit} Remaining)
-                        </button>
-                    </div>`;
-                }
-            }
-            gridHTML += `</div>`;
-            document.getElementById('category-sections').innerHTML = gridHTML;
-        }
-
-        function loadMoreCategoryPosts() {
-            currentDisplayLimit += 80;
-            renderCategoryGrid();
-        }
-
-        function filterCategory(cat, pushState = true) {
-            if (cat === 'All') { goBackHome(); return; }
-            isViewingArticleOrLegal = false;
-            const catSlug = categoryToSlug[cat] || 'all';
-            if (pushState) history.pushState({ type: 'category', cat: cat }, "", "/category/" + catSlug);
-
-            document.getElementById('article-view').classList.add('hidden');
-            document.getElementById('legal-view').classList.add('hidden');
-            document.getElementById('home-view').classList.remove('hidden');
-
-            currentActiveCategory = cat;
-            currentFilteredList = getPostsForCategory(allNews, cat);
-            currentDisplayLimit = 60;
-
-            if (currentFilteredList.length > 0) {
-                renderSliderAndSidebar(currentFilteredList);
-            } else {
-                document.getElementById('hero-top-section').classList.add('hidden');
-            }
-            
-            renderCategoryGrid();
-            document.title = `${cat} News - Fast Job`;
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function searchNews() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
-            if (!query) { renderHome(allNews); return; }
-            searchCore(query);
-        }
-        function searchNewsMobile() {
-            const query = document.getElementById('mobileSearchInput').value.toLowerCase();
-            if (!query) { renderHome(allNews); toggleMobileMenu(); return; }
-            searchCore(query);
-            toggleMobileMenu();
-        }
-        function searchCore(query) {
-            isViewingArticleOrLegal = false;
-            document.getElementById('article-view').classList.add('hidden');
-            document.getElementById('legal-view').classList.add('hidden');
-            document.getElementById('home-view').classList.remove('hidden');
-            document.getElementById('hero-top-section').classList.add('hidden');
-
-            const filtered = allNews.filter(item => (item.title || "").toLowerCase().includes(query));
-            
-            let gridHTML = `<div class="bg-white p-5 md:p-7 rounded-xl shadow-sm border border-gray-200"><div class="border-b-2 border-[#d10000] pb-2 mb-6"><span class="section-badge text-base md:text-lg"><i class="fa-solid fa-magnifying-glass"></i> Search Results (${filtered.length})</span></div><div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">`;
-            filtered.slice(0, 120).forEach(item => {
-                gridHTML += `
-                <div onclick="openArticle('${item.slug}')" class="bg-white border border-gray-200 shadow-sm hover:shadow-md transition cursor-pointer rounded-xl overflow-hidden flex flex-col justify-between group">
+    let html = '';
+    categories.forEach(cat => {
+        const posts = getPostsForCategory(newsList, cat);
+        if (!posts.length) return;
+        const f = posts[0], r = posts.slice(1, 5), ic = categoryIcons[cat] || "fa-solid fa-newspaper";
+        html += `
+        <section class="bg-white p-5 md:p-7 rounded-xl shadow-sm border border-gray-200">
+            <div class="flex justify-between items-center mb-6 border-b-2 border-[#d10000] pb-2">
+                <span class="section-badge text-sm md:text-base"><i class="${ic} text-yellow-300"></i> ${cat}</span>
+                <a href="/category/${categoryToSlug[cat]}" onclick="event.preventDefault(); filterCategory('${cat}');" class="text-xs md:text-sm font-extrabold text-[#d10000] hover:underline uppercase">More News <i class="fa-solid fa-angle-right ml-1"></i></a>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+                <div onclick="openArticle('${f.slug}')" class="lg:col-span-5 bg-gray-50 border rounded-xl overflow-hidden cursor-pointer flex flex-col justify-between group">
                     <div>
-                        <div class="overflow-hidden aspect-video"><img src="${item.image_url}" onerror="this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80'" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500"></div>
-                        <div class="p-4"><h4 class="font-bold text-sm md:text-base leading-snug text-gray-900 group-hover:text-[#d10000] transition line-clamp-3">${item.title}</h4></div>
+                        <div class="aspect-video relative overflow-hidden"><img src="${f.image_url}" onerror="this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80'" class="w-full h-full object-cover"></div>
+                        <div class="p-4"><h4 class="font-extrabold text-lg md:text-2xl text-gray-900 group-hover:text-[#d10000] line-clamp-3">${f.title}</h4></div>
                     </div>
-                    <div class="px-4 pb-3 pt-2 border-t border-gray-100 text-[11px] font-semibold text-gray-500"><i class="fa-solid fa-pen-nib text-[#d10000] mr-1 text-[10px]"></i>${getPostAuthor(item)}</div>
-                </div>`;
-            });
-            gridHTML += '</div></div>';
-            document.getElementById('category-sections').innerHTML = gridHTML;
-        }
+                    <div class="px-4 pb-4 pt-2 border-t text-xs font-semibold text-gray-500 flex justify-between"><span><i class="fa-solid fa-pen-nib text-[#d10000] mr-1"></i>${getPostAuthor(f)}</span><span class="text-[#d10000] font-bold">Read &rarr;</span></div>
+                </div>
+                <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    ${r.map(it => `
+                    <div onclick="openArticle('${it.slug}')" class="bg-white border rounded-xl overflow-hidden cursor-pointer flex flex-col justify-between group">
+                        <div>
+                            <div class="h-36 overflow-hidden"><img src="${it.image_url}" onerror="this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80'" class="w-full h-full object-cover"></div>
+                            <div class="p-3.5"><h4 class="font-bold text-sm md:text-base text-gray-900 group-hover:text-[#d10000] line-clamp-2">${it.title}</h4></div>
+                        </div>
+                        <div class="px-3.5 pb-3 pt-2 border-t text-[11px] font-semibold text-gray-500 truncate"><i class="fa-solid fa-pen-nib text-[#d10000] mr-1"></i>${getPostAuthor(it)}</div>
+                    </div>`).join('')}
+                </div>
+            </div>
+        </section>`;
+    });
+    document.getElementById('category-sections').innerHTML = html;
+}
 
-        async function openArticle(rawSlug, pushState = true) {
-            isViewingArticleOrLegal = true;
-            let slug = decodeURIComponent(rawSlug || "").replace(/^\/|\/$/g, '').replace(/^slug=/i, '').trim();
-            if (!slug) { goBackHome(); return; }
+function renderCategoryGrid() {
+    const cat = currentActiveCategory, ic = categoryIcons[cat] || "fa-solid fa-newspaper", vis = currentFilteredList.slice(0, currentDisplayLimit);
+    let h = `<div class="bg-white p-5 md:p-7 rounded-xl shadow-sm border border-gray-200"><div class="border-b-2 border-[#d10000] pb-2 mb-6 flex justify-between items-center"><span class="section-badge text-base"><i class="${ic} text-yellow-300"></i> ${cat}</span><button onclick="goBackHome()" class="text-xs font-bold text-gray-600 hover:text-[#d10000]"><i class="fa-solid fa-house mr-1"></i> Back Home</button></div><div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">`;
+    vis.forEach(it => {
+        h += `<div onclick="openArticle('${it.slug}')" class="bg-white border rounded-xl overflow-hidden cursor-pointer flex flex-col justify-between group"><div><div class="aspect-video overflow-hidden"><img src="${it.image_url}" onerror="this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80'" class="w-full h-full object-cover"></div><div class="p-4"><h4 class="font-bold text-base text-gray-900 group-hover:text-[#d10000] line-clamp-3">${it.title}</h4></div></div><div class="px-4 pb-3 pt-2 border-t text-[11px] font-semibold text-gray-500 truncate"><i class="fa-solid fa-pen-nib text-[#d10000] mr-1"></i>${getPostAuthor(it)}</div></div>`;
+    });
+    h += `</div>`;
+    if (currentDisplayLimit < currentFilteredList.length) {
+        h += `<div class="mt-8 text-center"><button onclick="currentDisplayLimit+=80;renderCategoryGrid();" class="bg-[#d10000] text-white font-black text-xs uppercase px-8 py-3 rounded-full shadow-lg">Load More Posts</button></div>`;
+    }
+    document.getElementById('category-sections').innerHTML = h + `</div>`;
+}
 
-            document.getElementById('home-view').classList.add('hidden');
-            document.getElementById('legal-view').classList.add('hidden');
-            document.getElementById('article-view').classList.remove('hidden');
-            document.getElementById('detail-title').innerText = "Loading Story...";
-            document.getElementById('detail-content').innerHTML = `<div class="py-12 text-center text-gray-500 font-bold"><i class="fa-solid fa-spinner fa-spin mr-2 text-[#d10000]"></i> Loading complete verified article...</div>`;
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+function filterCategory(cat, pushState = true) {
+    if (cat === 'All') { goBackHome(); return; }
+    isViewingArticleOrLegal = false; currentActiveCategory = cat;
+    if (pushState) history.pushState({ type: 'category', cat: cat }, "", "/category/" + (categoryToSlug[cat] || 'all'));
+    document.getElementById('article-view').classList.add('hidden');
+    document.getElementById('legal-view').classList.add('hidden');
+    document.getElementById('home-view').classList.remove('hidden');
+    currentFilteredList = getPostsForCategory(allNews, cat); currentDisplayLimit = 60;
+    if (currentFilteredList.length) renderSliderAndSidebar(currentFilteredList);
+    renderCategoryGrid();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
-            let post = null;
+function searchNews() { const q = document.getElementById('searchInput').value.toLowerCase(); if (!q) { renderHome(allNews); return; } searchCore(q); }
+function searchNewsMobile() { const q = document.getElementById('mobileSearchInput').value.toLowerCase(); toggleMobileMenu(); if (!q) { renderHome(allNews); return; } searchCore(q); }
+function searchCore(q) {
+    currentActiveCategory = "Search Results";
+    currentFilteredList = allNews.filter(i => (i.title || "").toLowerCase().includes(q));
+    currentDisplayLimit = 80;
+    document.getElementById('article-view').classList.add('hidden');
+    document.getElementById('legal-view').classList.add('hidden');
+    document.getElementById('home-view').classList.remove('hidden');
+    document.getElementById('hero-top-section').classList.add('hidden');
+    renderCategoryGrid();
+}
+
+async function openArticle(rawSlug, pushState = true) {
+    isViewingArticleOrLegal = true;
+    let slug = decodeURIComponent(rawSlug || "").replace(/^\/|\/$/g, '').replace(/^slug=/i, '').trim();
+    if (!slug) { goBackHome(); return; }
+    document.getElementById('home-view').classList.add('hidden');
+    document.getElementById('legal-view').classList.add('hidden');
+    document.getElementById('article-view').classList.remove('hidden');
+    document.getElementById('detail-title').innerText = "Loading Story...";
+    document.getElementById('detail-content').innerHTML = `<div class="py-12 text-center text-gray-500 font-bold"><i class="fa-solid fa-spinner fa-spin mr-2 text-[#d10000]"></i> Loading verified article...</div>`;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    let post = null;
+    try {
+        const r1 = await fetch(SUPABASE_URL + "/rest/v1/posts?select=*&slug=eq." + encodeURIComponent(slug) + "&limit=1", { headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + SUPABASE_KEY } });
+        const d1 = await r1.json();
+        if (Array.isArray(d1) && d1.length) post = d1[0];
+    } catch (e) {}
+
+    if (!post) {
+        const pref = slug.replace(/-\d+$/, '').split('-').slice(0, 4).join('-');
+        if (pref.length >= 4) {
             try {
-                const res = await fetch(SUPABASE_URL + "/rest/v1/posts?select=*&slug=eq." + encodeURIComponent(slug) + "&limit=1", {
-                    headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + SUPABASE_KEY }
-                });
-                const rows = await res.json();
-                if (Array.isArray(rows) && rows.length > 0) post = rows[0];
-            } catch (e) { console.error(e); }
-
-            if (!post) {
-                const slugPrefix = slug.replace(/-\d+$/, '').split('-').slice(0, 4).join('-');
-                if (slugPrefix.length >= 4) {
-                    try {
-                        const res2 = await fetch(SUPABASE_URL + "/rest/v1/posts?select=*&slug=ilike.*" + encodeURIComponent(slugPrefix) + "*&order=id.desc&limit=1", {
-                            headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + SUPABASE_KEY }
-                        });
-                        const rows2 = await res2.json();
-                        if (Array.isArray(rows2) && rows2.length > 0) post = rows2[0];
-                    } catch (e) { console.error(e); }
-                }
-            }
-
-            if (!post) {
-                const keywordQuery = slug.replace(/-\d+$/, '').split('-').slice(0, 3).join('%');
-                if (keywordQuery.length >= 4) {
-                    try {
-                        const res3 = await fetch(SUPABASE_URL + "/rest/v1/posts?select=*&title=ilike.*" + encodeURIComponent(keywordQuery) + "*&order=id.desc&limit=1", {
-                            headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + SUPABASE_KEY }
-                        });
-                        const rows3 = await res3.json();
-                        if (Array.isArray(rows3) && rows3.length > 0) post = rows3[0];
-                    } catch (e) { console.error(e); }
-                }
-            }
-
-            if (post) {
-                if (pushState) {
-                    history.pushState({ type: 'article', slug: post.slug }, "", "/" + post.slug);
-                }
-                document.getElementById('detail-title').innerText = post.title;
-                document.title = `${post.title} - Fast Job`;
-                
-                const authorName = getPostAuthor(post);
-                const cleanAvatarName = encodeURIComponent(authorName.split('(')[0].trim());
-                document.getElementById('detail-author-name').innerHTML = `<i class="fa-solid fa-pen-nib mr-1.5"></i> Reported by ${authorName}`;
-                document.getElementById('detail-author-avatar').src = `https://ui-avatars.com/api/?name=${cleanAvatarName}&background=d10000&color=fff&bold=true`;
-
-                const postDate = new Date(post.created_at);
-                const options = { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' };
-                document.getElementById('detail-date').innerHTML = `<i class="fa-regular fa-clock mr-1"></i> Published on ${postDate.toLocaleDateString('en-IN', options)}`;
-                document.getElementById('detail-image').src = post.image_url;
-                document.getElementById('detail-content').innerHTML = post.content || "";
-            } else {
-                goBackHome();
-            }
+                const r2 = await fetch(SUPABASE_URL + "/rest/v1/posts?select=*&slug=ilike.*" + encodeURIComponent(pref) + "*&order=id.desc&limit=1", { headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + SUPABASE_KEY } });
+                const d2 = await r2.json();
+                if (Array.isArray(d2) && d2.length) post = d2[0];
+            } catch (e) {}
         }
+    }
 
-        function goBackHome() {
-            isViewingArticleOrLegal = false;
-            history.pushState({ type: 'home' }, "", "/");
-            renderHome(allNews, false);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+    if (post) {
+        if (pushState) history.pushState({ type: 'article', slug: post.slug }, "", "/" + post.slug);
+        document.getElementById('detail-title').innerText = post.title;
+        document.title = post.title + " - Fast Job";
+        const au = getPostAuthor(post);
+        document.getElementById('detail-author-name').innerHTML = `<i class="fa-solid fa-pen-nib mr-1.5"></i> Reported by ${au}`;
+        document.getElementById('detail-author-avatar').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(au.split('(')[0].trim())}&background=d10000&color=fff&bold=true`;
+        document.getElementById('detail-date').innerHTML = `<i class="fa-regular fa-clock mr-1"></i> Published on ${new Date(post.created_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}`;
+        document.getElementById('detail-image').src = post.image_url;
+        document.getElementById('detail-content').innerHTML = post.content || "";
+    } else {
+        goBackHome();
+    }
+}
 
-        function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
-        function filterCategoryAndClose(cat) { filterCategory(cat); toggleMobileMenu(); }
-        
-        window.addEventListener('popstate', function() {
-            handleRoute(false);
-        });
-
-        function shareWebsite(platform) {
-            const url = encodeURIComponent(window.location.href);
-            if (platform === 'facebook') window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
-            else if (platform === 'whatsapp') window.open(`https://api.whatsapp.com/send?text=Breaking News from Fast Job: ${url}`, '_blank');
-        }
-
-        loadNews();
-    </script>
+function goBackHome() { isViewingArticleOrLegal = false; history.pushState({ type: 'home' }, "", "/"); renderHome(allNews, false); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
+function filterCategoryAndClose(c) { filterCategory(c); toggleMobileMenu(); }
+window.addEventListener('popstate', () => handleRoute(false));
+function shareWebsite(p) {
+    const u = encodeURIComponent(window.location.href);
+    window.open(p === 'facebook' ? `https://www.facebook.com/sharer/sharer.php?u=${u}` : `https://api.whatsapp.com/send?text=Breaking News from Fast Job: ${u}`, '_blank');
+}
+loadNews();
+</script>
 </body>
 </html>
