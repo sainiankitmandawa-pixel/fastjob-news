@@ -62,31 +62,31 @@ def get_rss(url):
     except Exception:
         return []
 
-# STRICT ORIGINAL SOURCE IMAGE EXTRACTOR
-def extract_original_source_image(entry, title):
+# STRICT EXTRACTOR FOR ORIGINAL SOURCE IMAGE ONLY
+def get_exact_source_image(entry, title):
     # 1. Check media:content
     if hasattr(entry, 'media_content') and entry.media_content:
         for media in entry.media_content:
-            if 'url' in media:
+            if 'url' in media and media['url'].startswith('http'):
                 return media['url']
                 
     # 2. Check enclosures
     if hasattr(entry, 'enclosures') and entry.enclosures:
         for enc in entry.enclosures:
-            if 'href' in enc:
+            if 'href' in enc and enc['href'].startswith('http'):
                 return enc['href']
                 
-    # 3. Check <img> tag inside summary/description HTML
+    # 3. Check <img> tag inside summary or description HTML content
     content_html = entry.get('summary', '') + entry.get('description', '')
     if content_html:
         soup = BeautifulSoup(content_html, 'html.parser')
         img_tag = soup.find('img')
         if img_tag and img_tag.get('src'):
-            img_src = img_tag.get('src')
-            if not img_src.endswith('.gif'):
-                return img_src
+            src = img_tag.get('src')
+            if src.startswith('http') and not src.endswith('.gif'):
+                return src
 
-    # 4. Fallback unique topic image if original feed has no image tag
+    # 4. Clean fallback professional image if feed has no image
     seed_id = abs(hash(title)) % 900 + 100
     return f"https://picsum.photos/seed/{seed_id}/1000/600"
 
@@ -127,7 +127,7 @@ def collect(urls, cat, count, seen):
             t = (e.get("title") or "").rsplit(" - ", 1)[0].strip()
             if not t or t[:35].lower() in seen: continue
             seen.add(t[:35].lower())
-            img_url = extract_original_source_image(e, t)
+            img_url = get_exact_source_image(e, t)
             out.append((cat, t, img_url))
     while len(out) < count:
         uid = random.randint(100, 999)
@@ -143,7 +143,7 @@ def publish_one(item, idx):
     slug = "-".join(re.sub(r"[^a-z0-9\s-]", "", title.lower()).split()[:5] or ["post"]) + "-" + str(int(time.time()) % 10000) + str(random.randint(10, 99))
     body = '<div class="post-author-meta" data-author="' + author + '" style="display:none;"></div>\n' + ai_write(title, cat, author)
     try:
-        r = requests.post(S_URL + "/rest/v1/posts", headers=HEADERS, json={"title": title, "slug": slug, "content": body, "category": cat, "image_url": img}, timeout=20)
+        r = requests.post(S_URL + "/rest/v1/posts", headers=HEADERS, json={"title": title, "slug": slug, "content": body, "category": cat, "image_url": img}, timeout=25)
         if r.status_code in [200, 201, 204]:
             print("OK [" + str(idx) + "/250] " + cat + ": " + title[:45])
             return True
