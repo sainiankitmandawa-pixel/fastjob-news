@@ -34,6 +34,7 @@ body { font-family: 'Mukta', sans-serif; background-color: #f4f5f7; color: #1118
 .heading-font { font-family: 'Playfair Display', serif; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
 .ticker-wrap { width: 100%; background: #fff; color: #111827; display: flex; align-items: stretch; border-bottom: 2px solid #e5e7eb; overflow: hidden; }
 .ticker-label { background: linear-gradient(90deg, #d10000, #a80000); color: #fff; padding: 8px 20px 8px 14px; font-weight: 900; font-size: 12px; text-transform: uppercase; clip-path: polygon(0 0, 100% 0, 92% 100%, 0% 100%); flex-shrink: 0; display: flex; align-items: center; }
 .ticker-track { flex-grow: 1; overflow: hidden; display: flex; align-items: center; }
@@ -42,9 +43,20 @@ body { font-family: 'Mukta', sans-serif; background-color: #f4f5f7; color: #1118
 .ticker-item { display: inline-block; padding: 0 2rem; font-size: 14px; font-weight: 700; color: #111827; cursor: pointer; }
 .ticker-item:hover { color: #d10000; }
 @keyframes ticker { 0% { transform: translate3d(0,0,0); } 100% { transform: translate3d(-100%,0,0); } }
-.cat-pill { position: relative; transition: all 0.2s; color: #1f2937; white-space: nowrap; }
+
+/* DROPDOWN SUB-CATEGORIES MENU WITH > ARROW */
+.dropdown { position: relative; display: inline-block; }
+.dropdown-content { display: none; position: absolute; background-color: #ffffff; min-width: 240px; box-shadow: 0px 12px 30px rgba(0,0,0,0.15); z-index: 100; border-top: 3px solid #d10000; border-radius: 0 0 8px 8px; padding: 6px 0; }
+.dropdown:hover .dropdown-content { display: block; }
+.dropdown-item { color: #1f2937; padding: 9px 16px; text-decoration: none; display: flex; align-items: center; justify-content: space-between; font-size: 13px; font-weight: 700; transition: all 0.2s; }
+.dropdown-item:hover { background-color: #fff5f5; color: #d10000; padding-left: 20px; }
+.dropdown-item i { font-size: 10px; color: #9ca3af; transition: color 0.2s; }
+.dropdown-item:hover i { color: #d10000; }
+
+.cat-pill { position: relative; transition: all 0.2s; color: #1f2937; white-space: nowrap; cursor: pointer; }
 .cat-pill:hover, .cat-pill.active-cat { color: #d10000 !important; font-weight: 800; background: #fff5f5; }
 .cat-pill.active-cat::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: #d10000; }
+
 .section-badge { background: #d10000; color: #fff; padding: 6px 20px 6px 14px; font-weight: 900; text-transform: uppercase; clip-path: polygon(0 0, 100% 0, 93% 100%, 0% 100%); display: inline-flex; align-items: center; gap: 8px; }
 #detail-content, #legal-page-content { color: #1f2937; line-height: 1.9; font-size: 1.12rem; }
 #detail-content p, #legal-page-content p { margin-bottom: 1.4rem; }
@@ -137,6 +149,7 @@ body { font-family: 'Mukta', sans-serif; background-color: #f4f5f7; color: #1118
         </div>
     </div>
 
+    <!-- 3. White Horizontal Navigation Bar with Dropdown Sub-Categories -->
     <div class="bg-white border-b border-gray-200 px-2 md:px-6">
         <div class="w-full max-w-[1400px] mx-auto flex items-center">
             <nav class="flex items-center space-x-1 overflow-x-auto no-scrollbar py-0.5 w-full" id="top-category-nav"></nav>
@@ -144,7 +157,7 @@ body { font-family: 'Mukta', sans-serif; background-color: #f4f5f7; color: #1118
     </div>
 </header>
 
-<!-- 3. Ticker -->
+<!-- 4. Ticker -->
 <div class="ticker-wrap">
     <div class="ticker-label"><span class="w-2 h-2 bg-yellow-300 rounded-full animate-ping mr-2"></span> TRENDING NEWS</div>
     <div class="ticker-track"><div class="ticker" id="ticker-content"><span class="ticker-item">Loading latest verified stories and job notifications...</span></div></div>
@@ -167,8 +180,8 @@ body { font-family: 'Mukta', sans-serif; background-color: #f4f5f7; color: #1118
             <input type="text" id="mobileSearchInput" onkeyup="searchNewsMobile()" placeholder="Search news..." class="w-full bg-transparent outline-none font-semibold text-sm">
             <i class="fa-solid fa-magnifying-glass text-[#d10000] text-sm"></i>
         </div>
-        <p class="text-[11px] font-black uppercase text-[#d10000] mb-2 border-b pb-1">All 25 News Categories</p>
-        <nav class="flex flex-col space-y-0.5 font-bold text-gray-800 text-sm mb-6" id="mobile-category-nav"></nav>
+        <p class="text-[11px] font-black uppercase text-[#d10000] mb-2 border-b pb-1">All 25 News Categories & Sub-Desks</p>
+        <nav class="flex flex-col space-y-1 font-bold text-gray-800 text-sm mb-6" id="mobile-category-nav"></nav>
         <p class="text-[11px] font-black uppercase text-[#d10000] mb-2 border-b pb-1">Legal & Portal Info</p>
         <div class="flex flex-col space-y-2 text-xs font-bold text-gray-600 pt-1">
             <a href="/about-us" onclick="event.preventDefault(); openStaticPage('about-us'); toggleMobileMenu();" class="hover:text-[#d10000] py-1">About Us</a>
@@ -316,13 +329,113 @@ function isRealPublisherImage(url) {
     return u.startsWith('http') && !u.includes('picsum.photos') && !u.includes('source.unsplash.com') && !u.includes('photo-150000') && !u.includes('editorial');
 }
 
-const categories = [
-    "Jobs & Careers", "Breaking News", "World News", "India News", "Politics", "Sports",
-    "Business", "Finance & Markets", "Technology", "Entertainment", "Education",
-    "Health & Medicine", "Science", "AI & Robotics", "Crime & Justice",
-    "Auto & EV", "Economy", "Environment & Climate", "Lifestyle", "Travel & Tourism",
-    "Real Estate", "Defence & Security", "Weather", "Opinion & Editorial", "Fact Check & Explainers"
-];
+// 25 CATEGORIES WITH 10-15 SUB-CATEGORIES HIERARCHY
+const CATEGORY_HIERARCHY = {
+    "Jobs & Careers": [
+        "Sarkari Naukri & Govt Vacancies", "UPSC & Civil Services", "SSC CGL CHSL MTS", "Railway RRB NTPC Group D",
+        "Banking SBI IBPS PO Clerk", "Police & Defence Bharti", "State PSC & Teacher Jobs", "India Post GDS Recruitment",
+        "PSU & Engineering Jobs", "International Visa Jobs", "Remote & Work From Home", "Admit Cards & Hall Tickets",
+        "Exam Results & Merit Lists", "Answer Keys & Cut-Offs", "Apprentice & Trainee Openings"
+    ],
+    "Breaking News": [
+        "National Flash", "Global Breaking", "Top Headlines", "Live Updates", "Urgent Bulletins",
+        "Editor's Pick", "Exclusive Reports", "In The Spotlight", "Major Announcements", "Day's Summary"
+    ],
+    "World News": [
+        "US & Americas", "Europe & UK", "Middle East & GCC", "Asia Pacific", "Africa Desk",
+        "UN & Global Diplomacy", "Cross-Border Affairs", "International Security", "Global Human Rights", "Foreign Policy"
+    ],
+    "India News": [
+        "National Capital Region", "North India States", "South India Bureau", "Western India Updates", "Eastern & Northeast",
+        "Central India Affairs", "Government Schemes", "Public Welfare", "Social Initiatives", "National Infrastructure"
+    ],
+    "Politics": [
+        "Parliament & Cabinet", "Election Commission", "State Assemblies", "Opposition Updates", "Policy & Legislation",
+        "Political Debates", "Campaign Trails", "Constitutional Affairs", "Party Strategies", "Governance Reforms"
+    ],
+    "Sports": [
+        "Cricket & IPL", "Football & ISL", "Badminton & Tennis", "Olympics & Athletics", "Hockey & Kabaddi",
+        "Motorsports & F1", "Chess & Esports", "Match Analysis", "Player Transfers", "Tournament Schedules"
+    ],
+    "Business": [
+        "Startup Ecosystem", "Corporate Earnings", "Mergers & Acquisitions", "Retail & FMCG", "Logistics & Supply Chain",
+        "MSME & Small Business", "Manufacturing Hubs", "Telecom & Energy", "Aviation & Tourism Biz", "Industrial Growth"
+    ],
+    "Finance & Markets": [
+        "Sensex & Nifty", "Wall Street & Global", "Mutual Funds & SIP", "Gold & Silver Rates", "RBI Monetary Policy",
+        "Cryptocurrency & Web3", "Taxation & Budget", "Insurance & Banking", "IPO & Share Market", "Foreign Institutional Flows"
+    ],
+    "Technology": [
+        "Smartphones & Gadgets", "Consumer Electronics", "Software & Cloud", "Cybersecurity & Privacy", "Semiconductors & Chips",
+        "Telecom & 6G", "Internet & Social Media", "Tech Policy & Antitrust", "Gadget Reviews", "Open Source & Dev"
+    ],
+    "Entertainment": [
+        "Bollywood Box Office", "Hollywood & Global", "OTT & Web Series", "Music & Albums", "Celebrity News",
+        "Television Serials", "Film Festivals", "Awards & Honours", "Trailers & Teasers", "Art & Theatre"
+    ],
+    "Education": [
+        "CBSE & State Boards", "NEET & JEE Main", "University Exams", "UGC NET & Ph.D.", "Study Abroad Guides",
+        "Scholarships & Grants", "EdTech & Online Learning", "Skill Development", "Vocational Training", "Academic Policies"
+    ],
+    "Health & Medicine": [
+        "Medical Breakthroughs", "Fitness & Nutrition", "Mental Wellness", "Diseases & Prevention", "Hospital & Pharma",
+        "Ayurveda & Yoga", "Public Health Advisories", "Pediatric Care", "Healthcare Policies", "Clinical Trials"
+    ],
+    "Science": [
+        "Space Exploration", "NASA & ISRO Updates", "Astronomy & Universe", "Physics & Quantum", "Biology & Genetics",
+        "Earth Sciences", "Archaeology & History", "Research Journals", "Scientific Innovations", "Laboratory Discoveries"
+    ],
+    "AI & Robotics": [
+        "Generative AI & LLMs", "OpenAI & Anthropic", "Humanoid Robotics", "Machine Learning", "AI Ethics & Law",
+        "Automation in Industry", "Computer Vision", "Neural Networks", "AI Chips & Hardware", "Future of Work"
+    ],
+    "Crime & Justice": [
+        "Supreme Court Verdicts", "High Court Rulings", "Police Investigations", "Cyber Crime Alerts", "Legal Reforms",
+        "CBI & ED Actions", "Forensic Science", "Human Rights Law", "Prison & Corrections", "Landmark Judgments"
+    ],
+    "Auto & EV": [
+        "Electric Vehicles (EV)", "New SUV Launches", "Bikes & Scooters", "Car Price & Mileage", "Battery & Charging Tech",
+        "Hybrid Vehicles", "Commercial Vehicles", "Luxury & Supercars", "Auto Component Industry", "Road Safety & Tests"
+    ],
+    "Economy": [
+        "GDP Growth & Forecast", "Inflation & CPI", "Fiscal & Revenue Deficit", "Export & Import", "Agriculture Economy",
+        "Employment & Labor", "Foreign Direct Investment", "Rural Economy", "Economic Surveys", "Global Trade Pacts"
+    ],
+    "Environment & Climate": [
+        "Climate Change & IPCC", "Renewable Energy", "Solar & Wind Power", "Wildlife Conservation", "Pollution Control",
+        "Water Resources", "Forest & Ecology", "Green Hydrogen", "Carbon Emissions", "Sustainable Living"
+    ],
+    "Lifestyle": [
+        "Fashion & Trends", "Interior Design", "Food & Culinary", "Relationships", "Parenting & Family",
+        "Luxury & Living", "Astrology & Horoscope", "Pet Care & Animals", "Personal Growth", "Festivals & Culture"
+    ],
+    "Travel & Tourism": [
+        "Destination Guides", "Airlines & Aviation", "Indian Tourism", "International Travel", "Railway Tourism",
+        "Hotel & Hospitality", "Visa Rules & Passports", "Adventure & Trekking", "Budget Travel", "Heritage Sites"
+    ],
+    "Real Estate": [
+        "Housing & Apartments", "Commercial Property", "Smart Cities", "RERA Regulations", "Home Loans & Interest",
+        "Architecture & Design", "Land & Plots", "Rental Markets", "Urban Infrastructure", "Property Investment"
+    ],
+    "Defence & Security": [
+        "Indian Army Updates", "Indian Navy & Maritime", "Indian Air Force", "DRDO & Missile Tech", "Border Security",
+        "Global Military & NATO", "Defense Procurement", "Indigenization & Make in India", "Counter-Terrorism", "Cyber Warfare"
+    ],
+    "Weather": [
+        "IMD Forecasts", "Monsoon Updates", "Heatwave Alerts", "Cyclone & Storms", "Winter & Fog Reports",
+        "Rainfall Statistics", "Global Climate Alerts", "Air Quality Index (AQI)", "Agricultural Weather", "Satellite Imaging"
+    ],
+    "Opinion & Editorial": [
+        "Editor's Desk", "Geopolitical Analysis", "Economic Viewpoints", "Social Commentaries", "Guest Columns",
+        "Policy Critiques", "Historical Perspectives", "Philosophical Essays", "Letters to Editor", "Expert Roundtables"
+    ],
+    "Fact Check & Explainers": [
+        "Viral Rumours Debunked", "Policy Explainers", "Historical Context", "Data Visualizations", "Scientific Myths",
+        "Deepfake Verification", "Economic Terminology", "Legal Rights Explained", "How Things Work", "In-Depth Q&A"
+    ]
+};
+
+const categories = Object.keys(CATEGORY_HIERARCHY);
 
 const categoryIcons = {
     "Jobs & Careers": "fa-solid fa-user-tie", "Breaking News": "fa-solid fa-bolt-lightning", "World News": "fa-solid fa-earth-americas",
@@ -342,98 +455,120 @@ categories.forEach(c => {
     slugToCategory[s] = c; categoryToSlug[c] = s;
 });
 
+// INITIALIZE NAVIGATION WITH SUB-CATEGORIES DROPDOWN & > ARROW
 function initCategoryNav() {
     let topH = `<a href="/" onclick="event.preventDefault(); goBackHome();" class="cat-pill active-cat px-3 py-2.5 font-extrabold text-xs md:text-[13px] uppercase shrink-0 inline-flex items-center gap-1.5"><i class="fa-solid fa-house text-[#d10000]"></i> Home</a>`;
     let mobH = `<a href="/" onclick="event.preventDefault(); filterCategoryAndClose('All');" class="px-3 py-2.5 rounded-lg hover:bg-red-50 flex items-center gap-3 border-b border-gray-50"><i class="fa-solid fa-house text-[#d10000] w-5"></i> <span>Home</span></a>`;
     let footH = '';
-    categories.forEach((c, i) => {
-        const s = categoryToSlug[c], ic = categoryIcons[c] || "fa-solid fa-newspaper";
-        topH += `<a href="/category/${s}" onclick="event.preventDefault(); filterCategory('${c}');" class="cat-pill px-3 py-2.5 font-bold text-xs md:text-[13px] uppercase shrink-0">${c}</a>`;
-        mobH += `<a href="/category/${s}" onclick="event.preventDefault(); filterCategoryAndClose('${c}');" class="px-3 py-2.5 rounded-lg hover:bg-red-50 flex items-center gap-3 border-b border-gray-50"><i class="${ic} text-[#d10000] w-5"></i><span>${c}</span></a>`;
-        if (i < 7) footH += `<li><a href="/category/${s}" onclick="event.preventDefault(); filterCategory('${c}');" class="hover:text-white flex items-center gap-2.5"><i class="${ic} text-[#d10000] w-4"></i><span>${c}</span></a></li>`;
+
+    categories.forEach((cat, idx) => {
+        const s = categoryToSlug[cat];
+        const ic = categoryIcons[cat] || "fa-solid fa-newspaper";
+        const subs = CATEGORY_HIERARCHY[cat] || [];
+
+        // Desktop Dropdown with > arrow
+        topH += `
+        <div class="dropdown shrink-0">
+            <a href="/category/${s}" onclick="event.preventDefault(); setActiveNav(this); filterCategory('${cat}');" class="cat-pill px-3 py-2.5 font-bold text-xs md:text-[13px] uppercase tracking-wide inline-flex items-center gap-1">
+                <span>${cat}</span>
+                <i class="fa-solid fa-chevron-down text-[9px] ml-0.5 text-gray-500"></i>
+            </a>
+            <div class="dropdown-content">
+                <a href="/category/${s}" onclick="event.preventDefault(); filterCategory('${cat}');" class="dropdown-item font-extrabold text-[#d10000] border-b border-gray-100 pb-2 mb-1">
+                    <span><i class="${ic} mr-2"></i> All ${cat}</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                ${subs.map(sub => `
+                    <a href="/category/${s}" onclick="event.preventDefault(); filterCategory('${cat}');" class="dropdown-item">
+                        <span>${sub}</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </a>
+                `).join('')}
+            </div>
+        </div>`;
+
+        // Mobile Menu View
+        mobH += `
+        <div class="border-b border-gray-100 py-1">
+            <a href="/category/${s}" onclick="event.preventDefault(); filterCategoryAndClose('${cat}');" class="px-3 py-2 rounded-lg hover:bg-red-50 flex items-center justify-between font-bold text-sm text-gray-800">
+                <span class="inline-flex items-center gap-2.5"><i class="${ic} text-[#d10000] w-5 text-center"></i> ${cat}</span>
+                <i class="fa-solid fa-chevron-right text-xs text-gray-400"></i>
+            </a>
+        </div>`;
+
+        if (idx < 7) {
+            footH += `<li><a href="/category/${s}" onclick="event.preventDefault(); filterCategory('${cat}');" class="hover:text-white flex items-center gap-2.5"><i class="${ic} text-[#d10000] w-4"></i><span>${cat}</span></a></li>`;
+        }
     });
+
     document.getElementById('top-category-nav').innerHTML = topH;
     document.getElementById('mobile-category-nav').innerHTML = mobH;
     document.getElementById('footer-categories').innerHTML = footH;
 }
 initCategoryNav();
 
+function setActiveNav(el) {
+    document.querySelectorAll('#top-category-nav .cat-pill').forEach(btn => btn.classList.remove('active-cat'));
+    if (el) el.classList.add('active-cat');
+}
+
 function buildLegalPageContent(key) {
     const commonFooter = `
         <h3>Institutional Governance, Compliance & Editorial Accountability (2026 Framework)</h3>
-        <p>Fast Job (<strong>https://fastjob.online</strong>) operates under strict digital media ethics, international journalism standards, and statutory compliance protocols. Across all 25 editorial verticals—including our flagship <strong>Jobs & Careers</strong> desk, Breaking News, Economy, Finance, Technology, Science, Auto & EV, Defence, and Fact-Checking bureaus—our primary obligation is to the public interest, reader safety, and factual accuracy.</p>
+        <p>Fast Job (<strong>https://fastjob.online</strong>) operates under strict digital media ethics, international journalism standards, and statutory compliance protocols across all 25 editorial verticals and their respective sub-desks.</p>
         <table class="article-table">
             <tr><th>Compliance Parameter</th><th>Fast Job (fastjob.online) Official Standard</th></tr>
             <tr><td><strong>Portal Identity & Domain</strong></td><td>Fast Job Global News & Career Network (https://fastjob.online)</td></tr>
-            <tr><td><strong>Editorial Footprint</strong></td><td>50+ Regional & International Correspondents across 25 Specialized Desks</td></tr>
-            <tr><td><strong>Recruitment Verification</strong></td><td>100% Free Public Information; Direct Cross-Verification with Official Gazettes</td></tr>
-            <tr><td><strong>Official Support & Grievance</strong></td><td>desk@fastjob.online (24×7 Editorial & Compliance Response Desk)</td></tr>
+            <tr><td><strong>Editorial Footprint</strong></td><td>50+ Regional & International Correspondents across 25 Desks & 250+ Sub-Desks</td></tr>
+            <tr><td><strong>Support & Grievance Desk</strong></td><td>desk@fastjob.online (24×7 Compliance Response)</td></tr>
         </table>
-        <p>Every reader, job aspirant, and stakeholder interacting with our platform is protected by our zero-tolerance policy against misinformation, paid clickbait, or unauthorized data harvesting. For any clarification or official assistance, reach out directly to <strong>desk@fastjob.online</strong>.</p>
     `;
     const pages = {
         'about-us': {
             title: 'About Fast Job (fastjob.online) — Global News & Career Network',
             body: `<div class="intro-box"><strong>Fast Job (https://fastjob.online)</strong> is India's premier 24×7 digital newsroom and verified global recruitment portal, powered by 50+ correspondents across 25 specialized desks.</div>
             <h3>1. Our Founding Vision & Public Mission</h3>
-            <p>Established to bridge the gap between complex government/corporate announcements and millions of citizens, <strong>Fast Job</strong> delivers real-time breaking news, Sarkari Naukri notifications, global career alerts, and deep-dive analytical journalism. We believe timely, verified information empowers youth, professionals, and decision-makers without paywalls or bias.</p>
+            <p>Established to bridge the gap between complex government/corporate announcements and millions of citizens, <strong>Fast Job</strong> delivers real-time breaking news, Sarkari Naukri notifications, global career alerts, and deep-dive analytical journalism.</p>
             <h3>2. What Sets Our 25 Editorial Desks Apart</h3>
             <ul>
-                <li><strong>Jobs & Careers Priority:</strong> Instant coverage of UPSC, SSC, Railway RRB, Banking (IBPS/SBI), State PSC, Police & Defence Bharti, admit cards, exam results, and international visa-sponsored jobs.</li>
+                <li><strong>Jobs & Careers Priority:</strong> Instant coverage of UPSC, SSC, Railway RRB, Banking, Police & Defence Bharti, admit cards, exam results, and international visa-sponsored jobs.</li>
                 <li><strong>Global & National Newsroom:</strong> 24×7 tracking of Parliament, Supreme Court, geopolitics, economy, stock markets, technology, AI, science, and automobiles.</li>
-                <li><strong>Structured 800+ Word Reports:</strong> Every article features executive summaries, specification tables, step-by-step application guides, and reader FAQs.</li>
             </ul>` + commonFooter
         },
         'privacy-policy': {
             title: 'Privacy Policy — User Data Protection & Cookie Standards',
             body: `<div class="intro-box"><strong>Effective Date: January 1, 2026 | Updated: October 2026</strong> — At Fast Job (https://fastjob.online), protecting visitor privacy under India's DPDP Act and global GDPR norms is our highest priority.</div>
             <h3>1. Information We Collect & Log Files</h3>
-            <p>Visitors can read all news and job notifications on Fast Job without creating an account. Standard non-personal log data (browser type, anonymized IP, timestamps, and pages visited) is processed solely to maintain cloud security and optimize mobile reading speed.</p>
-            <h3>2. Cookies, Google Analytics & Google AdSense</h3>
-            <p>To keep our journalism 100% free, we use Google Analytics (G-4ECBSC962B) and third-party advertising partners including <strong>Google AdSense</strong>. Google uses DART cookies to serve relevant ads based on prior visits. Users may opt out of personalized advertising anytime via <a href="https://adssettings.google.com" target="_blank" class="text-[#d10000] underline">Google Ads Settings</a>.</p>
-            <h3>3. Data Security & Third-Party Links</h3>
-            <p>We never sell, rent, or trade user data. External links to official government recruitment portals are provided for candidate convenience, and users are advised to review the privacy policies of those respective official domains.</p>` + commonFooter
+            <p>Visitors can read all news and job notifications on Fast Job without creating an account. Standard non-personal log data is processed solely to maintain cloud security and optimize mobile reading speed.</p>
+            <h3>2. Cookies & Google AdSense</h3>
+            <p>To keep our journalism 100% free, we use Google Analytics (G-4ECBSC962B) and Google AdSense. Users may opt out of personalized advertising via <a href="https://adssettings.google.com" target="_blank" class="text-[#d10000] underline">Google Ads Settings</a>.</p>` + commonFooter
         },
         'terms-and-conditions': {
             title: 'Terms & Conditions of Use — Fast Job Portal',
-            body: `<div class="intro-box">By accessing <strong>https://fastjob.online</strong>, you agree to abide by these Terms and Conditions of Use, our Privacy Policy, and statutory copyright laws.</div>
+            body: `<div class="intro-box">By accessing <strong>https://fastjob.online</strong>, you agree to abide by these Terms and Conditions of Use.</div>
             <h3>1. Intellectual Property & Permitted Sharing</h3>
-            <p>All original articles, tables, HTML layouts, and the <strong>FJ News / Fast Job</strong> emblem are the intellectual property of Fast Job. Readers may freely share article links on WhatsApp, Facebook, X, and Telegram for personal and educational use, but automated commercial scraping or verbatim republication is strictly prohibited.</p>
-            <h3>2. Candidate Verification Responsibility</h3>
-            <p>While our editors verify every recruitment notification, exam date, and eligibility criterion against official sources, candidates must always check the official government PDF notification before paying exam fees or submitting forms.</p>
-            <h3>3. Limitation of Liability</h3>
-            <p>All content is provided "as is" for informational utility. Fast Job shall not be liable for any direct or indirect loss arising from reliance on published schedules or external portal downtimes.</p>` + commonFooter
+            <p>All original articles, tables, HTML layouts, and the <strong>FJ News / Fast Job</strong> emblem are the intellectual property of Fast Job. Readers may freely share article links on social media for personal and educational use.</p>` + commonFooter
         },
         'disclaimer': {
             title: 'Official Disclaimer — Recruitment, Financial & News Coverage',
-            body: `<div class="intro-box"><strong>Important Reader Notice:</strong> Fast Job (https://fastjob.online) is an independent private digital news publication and is NOT affiliated with the Government of India or any State Government board.</div>
+            body: `<div class="intro-box"><strong>Important Reader Notice:</strong> Fast Job (https://fastjob.online) is an independent private digital news publication and is NOT affiliated with the Government of India.</div>
             <h3>1. Recruitment & Zero-Fee Advisory</h3>
-            <p>We summarize publicly released government and private job notifications for educational convenience. <strong>Fast Job never charges money for job alerts or placements.</strong> Never pay any unauthorized agent claiming guaranteed selection.</p>
-            <h3>2. Financial, Medical & Automobile Disclaimers</h3>
-            <ul>
-                <li><strong>Finance & Markets:</strong> Stock market, Sensex, Nifty, and economy reports are for informational awareness only and do not constitute SEBI-registered investment advice.</li>
-                <li><strong>Health & Medicine:</strong> Wellness and medical reports are not a substitute for consultation with a certified doctor.</li>
-                <li><strong>Auto & Tech:</strong> Ex-showroom prices and specifications are based on official manufacturer briefings and may vary by region.</li>
-            </ul>` + commonFooter
+            <p>We summarize publicly released government and private job notifications for educational convenience. <strong>Fast Job never charges money for job alerts or placements.</strong></p>` + commonFooter
         },
         'editorial-policy': {
             title: 'Editorial Policy, Fact-Checking & Corrections Protocol',
             body: `<div class="intro-box">Trust, speed, and verification govern every story published by our 50+ correspondents across all 25 desks at <strong>Fast Job (https://fastjob.online)</strong>.</div>
             <h3>1. Three-Tier Source Verification</h3>
-            <p>Every recruitment alert and breaking news report is cross-checked against official ministry gazettes, UPSC/SSC/RRB bulletins, court orders, and accredited international wire agencies before going live.</p>
-            <h3>2. Visual Authenticity & Original Synthesis</h3>
-            <p>We mandate authentic source imagery and strictly prohibit misleading thumbnails or third-party plagiarism. Each article is independently structured with clear tables and FAQs attributed to its respective desk correspondent.</p>
-            <h3>3. Rapid Corrections Policy</h3>
-            <p>If an official board issues a date extension or corrigendum, our desk updates the article immediately. Readers can flag any update by emailing <strong>desk@fastjob.online</strong>.</p>` + commonFooter
+            <p>Every recruitment alert and breaking news report is cross-checked against official ministry gazettes and accredited wire agencies before going live.</p>` + commonFooter
         },
         'contact-us': {
             title: 'Contact Desk & Grievance Redressal — Fast Job',
             body: `<div class="intro-box">Connect directly with the <strong>Fast Job Editorial, Recruitment & Compliance Desk</strong> for news tips, press releases, corrections, or advertising partnerships.</div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
                 <div class="bg-red-50 p-6 rounded-xl border border-red-200">
-                    <h4 class="text-lg font-black text-gray-900 mb-2"><i class="fa-solid fa-envelope text-[#d10000] mr-2"></i> Editorial & Grievance Email</h4>
+                    <h4 class="text-lg font-black text-gray-900 mb-2"><i class="fa-solid fa-envelope text-[#d10000] mr-2"></i> Editorial Email</h4>
                     <a href="mailto:desk@fastjob.online" class="text-xl font-black text-[#d10000] underline">desk@fastjob.online</a>
-                    <p class="text-xs font-bold text-gray-500 mt-2">24×7 Support | Response within 12–24 Hours</p>
+                    <p class="text-xs font-bold text-gray-500 mt-2">Response within 12–24 Hours</p>
                 </div>
                 <div class="bg-green-50 p-6 rounded-xl border border-green-200">
                     <h4 class="text-lg font-black text-gray-900 mb-2"><i class="fa-brands fa-whatsapp text-[#25d366] mr-2"></i> Official WhatsApp Channel</h4>
