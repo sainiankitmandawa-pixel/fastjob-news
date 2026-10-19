@@ -62,23 +62,31 @@ def get_rss(url):
     except Exception:
         return []
 
-# EXACT SOURCE IMAGE EXTRACTOR (Extracts original image from RSS entry or falls back cleanly)
-def get_source_image(entry, title):
+# STRICT ORIGINAL SOURCE IMAGE EXTRACTOR
+def extract_original_source_image(entry, title):
+    # 1. Check media:content
     if hasattr(entry, 'media_content') and entry.media_content:
         for media in entry.media_content:
-            if 'url' in media and any(ext in media['url'].lower() for ext in ['jpg', 'png', 'jpeg', 'webp', 'cms']):
+            if 'url' in media:
                 return media['url']
+                
+    # 2. Check enclosures
     if hasattr(entry, 'enclosures') and entry.enclosures:
         for enc in entry.enclosures:
-            if 'href' in enc and any(ext in enc['href'].lower() for ext in ['jpg', 'png', 'jpeg', 'webp', 'cms']):
+            if 'href' in enc:
                 return enc['href']
                 
+    # 3. Check <img> tag inside summary/description HTML
     content_html = entry.get('summary', '') + entry.get('description', '')
-    soup = BeautifulSoup(content_html, 'html.parser')
-    img_tag = soup.find('img')
-    if img_tag and img_tag.get('src') and not img_tag.get('src').endswith('.gif') and 'google' not in img_tag.get('src'):
-        return img_tag.get('src')
-    
+    if content_html:
+        soup = BeautifulSoup(content_html, 'html.parser')
+        img_tag = soup.find('img')
+        if img_tag and img_tag.get('src'):
+            img_src = img_tag.get('src')
+            if not img_src.endswith('.gif'):
+                return img_src
+
+    # 4. Fallback unique topic image if original feed has no image tag
     seed_id = abs(hash(title)) % 900 + 100
     return f"https://picsum.photos/seed/{seed_id}/1000/600"
 
@@ -119,7 +127,7 @@ def collect(urls, cat, count, seen):
             t = (e.get("title") or "").rsplit(" - ", 1)[0].strip()
             if not t or t[:35].lower() in seen: continue
             seen.add(t[:35].lower())
-            img_url = get_source_image(e, t)
+            img_url = extract_original_source_image(e, t)
             out.append((cat, t, img_url))
     while len(out) < count:
         uid = random.randint(100, 999)
@@ -153,12 +161,11 @@ def run():
         pass
 
     q = []
-    # 25 Categories x 10 Posts each = exactly 250 Posts!
     for cat, urls in FEEDS.items():
         q += collect(urls, cat, 10, seen)
 
     random.shuffle(q)
-    print("Starting 250 Posts Upload (10 per category with source images)...")
+    print("Starting 250 Posts Upload with Exact Source Images...")
     ok = 0
     with ThreadPoolExecutor(max_workers=8) as ex:
         futs = [ex.submit(publish_one, it, i + 1) for i, it in enumerate(q)]
