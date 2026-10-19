@@ -26,7 +26,6 @@ AUTHORS = [
     "Diego Hernandez (Mexico City)", "Camila Vargas (Santiago)"
 ]
 
-# 25 MAIN CATEGORIES + 1 RASHIFAL & HOROSCOPES CATEGORY (Total 26 Categories with 15 Sub-Categories each)
 CATEGORY_HIERARCHY = {
     "Jobs & Careers": [
         "Sarkari Naukri & Govt Vacancies", "UPSC & Civil Services", "SSC CGL CHSL MTS", "Railway RRB NTPC Group D",
@@ -40,126 +39,30 @@ CATEGORY_HIERARCHY = {
         "Daily Sagittarius Horoscope", "Daily Capricorn Horoscope", "Daily Aquarius Horoscope", "Daily Pisces Horoscope",
         "Weekly Astrological Forecast", "Monthly Planetary Movements", "Career & Wealth Rashifal"
     ],
-    "Breaking News": [
-        "National Flash", "Global Breaking", "Top Headlines", "Live Updates", "Urgent Bulletins",
-        "Editor's Pick", "Exclusive Reports", "In The Spotlight", "Major Announcements", "Day's Summary",
-        "Speed News", "Flash Bulletins", "Editorials Live", "Special Dispatch", "24x7 Wire"
-    ],
-    "World News": [
-        "US & Americas", "Europe & UK", "Middle East & GCC", "Asia Pacific", "Africa Desk",
-        "UN & Global Diplomacy", "Cross-Border Affairs", "International Security", "Global Human Rights", "Foreign Policy",
-        "Global Economy", "Transatlantic Relations", "Indo-Pacific Alliance", "Latin America Briefs", "Eurasia Monitor"
-    ],
-    "India News": [
-        "National Capital Region", "North India States", "South India Bureau", "Western India Updates", "Eastern & Northeast",
-        "Central India Affairs", "Government Schemes", "Public Welfare", "Social Initiatives", "National Infrastructure",
-        "Rural Development", "Urban Affairs", "State Legislative Updates", "Cultural Heritage", "National Security"
-    ],
-    "Politics": [
-        "Parliament & Cabinet", "Election Commission", "State Assemblies", "Opposition Updates", "Policy & Legislation",
-        "Political Debates", "Campaign Trails", "Constitutional Affairs", "Party Strategies", "Governance Reforms",
-        "Political Speeches", "Diplomatic Summits", "Cabinet Decisions", "Electoral Analysis", "Policy Watch"
-    ],
-    "Sports": [
-        "Cricket & IPL", "Football & ISL", "Badminton & Tennis", "Olympics & Athletics", "Hockey & Kabaddi",
-        "Motorsports & F1", "Chess & Esports", "Match Analysis", "Player Transfers", "Tournament Schedules",
-        "Domestic Leagues", "Women's Sports", "Interviews & Profiles", "Sports Science", "Fitness & Training"
-    ],
-    "Business": [
-        "Startup Ecosystem", "Corporate Earnings", "Mergers & Acquisitions", "Retail & FMCG", "Logistics & Supply Chain",
-        "MSME & Small Business", "Manufacturing Hubs", "Telecom & Energy", "Aviation & Tourism Biz", "Industrial Growth",
-        "Venture Capital", "Corporate Governance", "Export Houses", "E-Commerce Trends", "Consumer Insights"
-    ],
-    "Finance & Markets": [
-        "Sensex & Nifty", "Wall Street & Global", "Mutual Funds & SIP", "Gold & Silver Rates", "RBI Monetary Policy",
-        "Cryptocurrency & Web3", "Taxation & Budget", "Insurance & Banking", "IPO & Share Market", "Foreign Institutional Flows",
-        "Personal Finance", "Debt & Bonds", "Commodities Market", "Forex Rates", "Wealth Management"
-    ],
-    "Technology": [
-        "Smartphones & Gadgets", "Consumer Electronics", "Software & Cloud", "Cybersecurity & Privacy", "Semiconductors & Chips",
-        "Telecom & 6G", "Internet & Social Media", "Tech Policy & Antitrust", "Gadget Reviews", "Open Source & Dev",
-        "Enterprise Tech", "Data Centers", "Web Development", "Hardware Innovations", "Tech Startups"
-    ],
-    "Entertainment": [
-        "Bollywood Box Office", "Hollywood & Global", "OTT & Web Series", "Music & Albums", "Celebrity News",
-        "Television Serials", "Film Festivals", "Awards & Honours", "Trailers & Teasers", "Art & Theatre",
-        "Fashion & Cinema", "Regional Cinema", "Streaming Analytics", "Voice & Podcast", "Media Industry"
-    ],
-    "Education": [
-        "CBSE & State Boards", "NEET & JEE Main", "University Exams", "UGC NET & Ph.D.", "Study Abroad Guides",
-        "Scholarships & Grants", "EdTech & Online Learning", "Skill Development", "Vocational Training", "Academic Policies",
-        "Higher Education", "School Curriculum", "Entrance Tests", "Research Fellowships", "Student Success"
-    ],
-    "Health & Medicine": [
-        "Medical Breakthroughs", "Fitness & Nutrition", "Mental Wellness", "Diseases & Prevention", "Hospital & Pharma",
-        "Ayurveda & Yoga", "Public Health Advisories", "Pediatric Care", "Healthcare Policies", "Clinical Trials",
-        "Dietary Science", "Alternative Medicine", "Global Health", "Nursing & Care", "Medical Technology"
-    ],
-    "Science": [
-        "Space Exploration", "NASA & ISRO Updates", "Astronomy & Universe", "Physics & Quantum", "Biology & Genetics",
-        "Earth Sciences", "Archaeology & History", "Research Journals", "Scientific Innovations", "Laboratory Discoveries",
-        "Climate Research", "Oceanography", "Paleontology", "Neuroscience", "Nanotechnology"
-    ],
-    "AI & Robotics": [
-        "Generative AI & LLMs", "OpenAI & Anthropic", "Humanoid Robotics", "Machine Learning", "AI Ethics & Law",
-        "Automation in Industry", "Computer Vision", "Neural Networks", "AI Chips & Hardware", "Future of Work",
-        "Natural Language Processing", "Autonomous Systems", "Edge AI", "Robotic Surgery", "AI Research"
-    ],
-    "Crime & Justice": [
-        "Supreme Court Verdicts", "High Court Rulings", "Police Investigations", "Cyber Crime Alerts", "Legal Reforms",
-        "CBI & ED Actions", "Forensic Science", "Human Rights Law", "Prison & Corrections", "Landmark Judgments",
-        "Trial Court Updates", "Anti-Corruption", "White Collar Crime", "Civil Rights", "Legal Aid"
-    ],
-    "Auto & EV": [
-        "Electric Vehicles (EV)", "New SUV Launches", "Bikes & Scooters", "Car Price & Mileage", "Battery & Charging Tech",
-        "Hybrid Vehicles", "Commercial Vehicles", "Luxury & Supercars", "Auto Component Industry", "Road Safety & Tests",
-        "Concept Cars", "Two-Wheeler News", "EV Infrastructure", "Motorsport Auto", "Aftermarket Trends"
-    ],
-    "Economy": [
-        "GDP Growth & Forecast", "Inflation & CPI", "Fiscal & Revenue Deficit", "Export & Import", "Agriculture Economy",
-        "Employment & Labor", "Foreign Direct Investment", "Rural Economy", "Economic Surveys", "Global Trade Pacts",
-        "Microeconomics", "Macro Trends", "Public Debt", "Currency Valuation", "Economic Policy"
-    ],
-    "Environment & Climate": [
-        "Climate Change & IPCC", "Renewable Energy", "Solar & Wind Power", "Wildlife Conservation", "Pollution Control",
-        "Water Resources", "Forest & Ecology", "Green Hydrogen", "Carbon Emissions", "Sustainable Living",
-        "Biodiversity", "Waste Management", "Green Tech", "Environmental Law", "Eco Tourism"
-    ],
-    "Lifestyle": [
-        "Fashion & Trends", "Interior Design", "Food & Culinary", "Relationships", "Parenting & Family",
-        "Luxury & Living", "Astrology & Horoscope", "Pet Care & Animals", "Personal Growth", "Festivals & Culture",
-        "Wellness & Spa", "Home Decor", "Gardening", "Hobbies & Craft", "Modern Etiquette"
-    ],
-    "Travel & Tourism": [
-        "Destination Guides", "Airlines & Aviation", "Indian Tourism", "International Travel", "Railway Tourism",
-        "Hotel & Hospitality", "Visa Rules & Passports", "Adventure & Trekking", "Budget Travel", "Heritage Sites",
-        "Cruise Holidays", "Travel Insurance", "Eco Tourism", "Pilgrimage Tours", "Travel Gadgets"
-    ],
-    "Real Estate": [
-        "Housing & Apartments", "Commercial Property", "Smart Cities", "RERA Regulations", "Home Loans & Interest",
-        "Architecture & Design", "Land & Plots", "Rental Markets", "Urban Infrastructure", "Property Investment",
-        "Affordable Housing", "Real Estate Tech", "Interior Planning", "Township Projects", "Property Law"
-    ],
-    "Defence & Security": [
-        "Indian Army Updates", "Indian Navy & Maritime", "Indian Air Force", "DRDO & Missile Tech", "Border Security",
-        "Global Military & NATO", "Defense Procurement", "Indigenization & Make in India", "Counter-Terrorism", "Cyber Warfare",
-        "Military Exercises", "Strategic Affairs", "Aerospace Defense", "Naval Fleet", "Soldier Welfare"
-    ],
-    "Weather": [
-        "IMD Forecasts", "Monsoon Updates", "Heatwave Alerts", "Cyclone & Storms", "Winter & Fog Reports",
-        "Rainfall Statistics", "Global Climate Alerts", "Air Quality Index (AQI)", "Agricultural Weather", "Satellite Imaging",
-        "Severe Weather", "Temperature Trends", "El Nino & La Nina", "Weather Radar", "Seasonal Outlook"
-    ],
-    "Opinion & Editorial": [
-        "Editor's Desk", "Geopolitical Analysis", "Economic Viewpoints", "Social Commentaries", "Guest Columns",
-        "Policy Critiques", "Historical Perspectives", "Philosophical Essays", "Letters to Editor", "Expert Roundtables",
-        "Media Critique", "Public Debates", "Think Tank Briefs", "Global Dialogues", "Future Outlook"
-    ],
-    "Fact Check & Explainers": [
-        "Viral Rumours Debunked", "Policy Explainers", "Historical Context", "Data Visualizations", "Scientific Myths",
-        "Deepfake Verification", "Economic Terminology", "Legal Rights Explained", "How Things Work", "In-Depth Q&A",
-        "Health Fact Check", "Tech Myths Busted", "Geopolitics Explained", "Statistical Insights", "News Verification"
-    ]
+    "Breaking News": ["National Flash", "Global Breaking", "Top Headlines", "Live Updates", "Urgent Bulletins", "Editor's Pick", "Exclusive Reports", "In The Spotlight", "Major Announcements", "Day's Summary", "Speed News", "Flash Bulletins", "Editorials Live", "Special Dispatch", "24x7 Wire"],
+    "World News": ["US & Americas", "Europe & UK", "Middle East & GCC", "Asia Pacific", "Africa Desk", "UN & Global Diplomacy", "Cross-Border Affairs", "International Security", "Global Human Rights", "Foreign Policy", "Global Economy", "Transatlantic Relations", "Indo-Pacific Alliance", "Latin America Briefs", "Eurasia Monitor"],
+    "India News": ["National Capital Region", "North India States", "South India Bureau", "Western India Updates", "Eastern & Northeast", "Central India Affairs", "Government Schemes", "Public Welfare", "Social Initiatives", "National Infrastructure", "Rural Development", "Urban Affairs", "State Legislative Updates", "Cultural Heritage", "National Security"],
+    "Politics": ["Parliament & Cabinet", "Election Commission", "State Assemblies", "Opposition Updates", "Policy & Legislation", "Political Debates", "Campaign Trails", "Constitutional Affairs", "Party Strategies", "Governance Reforms", "Political Speeches", "Diplomatic Summits", "Cabinet Decisions", "Electoral Analysis", "Policy Watch"],
+    "Sports": ["Cricket & IPL", "Football & ISL", "Badminton & Tennis", "Olympics & Athletics", "Hockey & Kabaddi", "Motorsports & F1", "Chess & Esports", "Match Analysis", "Player Transfers", "Tournament Schedules", "Domestic Leagues", "Women's Sports", "Interviews & Profiles", "Sports Science", "Fitness & Training"],
+    "Business": ["Startup Ecosystem", "Corporate Earnings", "Mergers & Acquisitions", "Retail & FMCG", "Logistics & Supply Chain", "MSME & Small Business", "Manufacturing Hubs", "Telecom & Energy", "Aviation & Tourism Biz", "Industrial Growth", "Venture Capital", "Corporate Governance", "Export Houses", "E-Commerce Trends", "Consumer Insights"],
+    "Finance & Markets": ["Sensex & Nifty", "Wall Street & Global", "Mutual Funds & SIP", "Gold & Silver Rates", "RBI Monetary Policy", "Cryptocurrency & Web3", "Taxation & Budget", "Insurance & Banking", "IPO & Share Market", "Foreign Institutional Flows", "Personal Finance", "Debt & Bonds", "Commodities Market", "Forex Rates", "Wealth Management"],
+    "Technology": ["Smartphones & Gadgets", "Consumer Electronics", "Software & Cloud", "Cybersecurity & Privacy", "Semiconductors & Chips", "Telecom & 6G", "Internet & Social Media", "Tech Policy & Antitrust", "Gadget Reviews", "Open Source & Dev", "Enterprise Tech", "Data Centers", "Web Development", "Hardware Innovations", "Tech Startups"],
+    "Entertainment": ["Bollywood Box Office", "Hollywood & Global", "OTT & Web Series", "Music & Albums", "Celebrity News", "Television Serials", "Film Festivals", "Awards & Honours", "Trailers & Teasers", "Art & Theatre", "Fashion & Cinema", "Regional Cinema", "Streaming Analytics", "Voice & Podcast", "Media Industry"],
+    "Education": ["CBSE & State Boards", "NEET & JEE Main", "University Exams", "UGC NET & Ph.D.", "Study Abroad Guides", "Scholarships & Grants", "EdTech & Online Learning", "Skill Development", "Vocational Training", "Academic Policies", "Higher Education", "School Curriculum", "Entrance Tests", "Research Fellowships", "Student Success"],
+    "Health & Medicine": ["Medical Breakthroughs", "Fitness & Nutrition", "Mental Wellness", "Diseases & Prevention", "Hospital & Pharma", "Ayurveda & Yoga", "Public Health Advisories", "Pediatric Care", "Healthcare Policies", "Clinical Trials", "Dietary Science", "Alternative Medicine", "Global Health", "Nursing & Care", "Medical Technology"],
+    "Science": ["Space Exploration", "NASA & ISRO Updates", "Astronomy & Universe", "Physics & Quantum", "Biology & Genetics", "Earth Sciences", "Archaeology & History", "Research Journals", "Scientific Innovations", "Laboratory Discoveries", "Climate Research", "Oceanography", "Paleontology", "Neuroscience", "Nanotechnology"],
+    "AI & Robotics": ["Generative AI & LLMs", "OpenAI & Anthropic", "Humanoid Robotics", "Machine Learning", "AI Ethics & Law", "Automation in Industry", "Computer Vision", "Neural Networks", "AI Chips & Hardware", "Future of Work", "Natural Language Processing", "Autonomous Systems", "Edge AI", "Robotic Surgery", "AI Research"],
+    "Crime & Justice": ["Supreme Court Verdicts", "High Court Rulings", "Police Investigations", "Cyber Crime Alerts", "Legal Reforms", "CBI & ED Actions", "Forensic Science", "Human Rights Law", "Prison & Corrections", "Landmark Judgments", "Trial Court Updates", "Anti-Corruption", "White Collar Crime", "Civil Rights", "Legal Aid"],
+    "Auto & EV": ["Electric Vehicles (EV)", "New SUV Launches", "Bikes & Scooters", "Car Price & Mileage", "Battery & Charging Tech", "Hybrid Vehicles", "Commercial Vehicles", "Luxury & Supercars", "Auto Component Industry", "Road Safety & Tests", "Concept Cars", "Two-Wheeler News", "EV Infrastructure", "Motorsport Auto", "Aftermarket Trends"],
+    "Economy": ["GDP Growth & Forecast", "Inflation & CPI", "Fiscal & Revenue Deficit", "Export & Import", "Agriculture Economy", "Employment & Labor", "Foreign Direct Investment", "Rural Economy", "Economic Surveys", "Global Trade Pacts", "Microeconomics", "Macro Trends", "Public Debt", "Currency Valuation", "Economic Policy"],
+    "Environment & Climate": ["Climate Change & IPCC", "Renewable Energy", "Solar & Wind Power", "Wildlife Conservation", "Pollution Control", "Water Resources", "Forest & Ecology", "Green Hydrogen", "Carbon Emissions", "Sustainable Living", "Biodiversity", "Waste Management", "Green Tech", "Environmental Law", "Eco Tourism"],
+    "Lifestyle": ["Fashion & Trends", "Interior Design", "Food & Culinary", "Relationships", "Parenting & Family", "Luxury & Living", "Astrology & Horoscope", "Pet Care & Animals", "Personal Growth", "Festivals & Culture", "Wellness & Spa", "Home Decor", "Gardening", "Hobbies & Craft", "Modern Etiquette"],
+    "Travel & Tourism": ["Destination Guides", "Airlines & Aviation", "Indian Tourism", "International Travel", "Railway Tourism", "Hotel & Hospitality", "Visa Rules & Passports", "Adventure & Trekking", "Budget Travel", "Heritage Sites", "Cruise Holidays", "Travel Insurance", "Eco Tourism", "Pilgrimage Tours", "Travel Gadgets"],
+    "Real Estate": ["Housing & Apartments", "Commercial Property", "Smart Cities", "RERA Regulations", "Home Loans & Interest", "Architecture & Design", "Land & Plots", "Rental Markets", "Urban Infrastructure", "Property Investment", "Affordable Housing", "Real Estate Tech", "Interior Planning", "Township Projects", "Property Law"],
+    "Defence & Security": ["Indian Army Updates", "Indian Navy & Maritime", "Indian Air Force", "DRDO & Missile Tech", "Border Security", "Global Military & NATO", "Defense Procurement", "Indigenization & Make in India", "Counter-Terrorism", "Cyber Warfare", "Military Exercises", "Strategic Affairs", "Aerospace Defense", "Naval Fleet", "Soldier Welfare"],
+    "Weather": ["IMD Forecasts", "Monsoon Updates", "Heatwave Alerts", "Cyclone & Storms", "Winter & Fog Reports", "Rainfall Statistics", "Global Climate Alerts", "Air Quality Index (AQI)", "Agricultural Weather", "Satellite Imaging", "Severe Weather", "Temperature Trends", "El Nino & La Nina", "Weather Radar", "Seasonal Outlook"],
+    "Opinion & Editorial": ["Editor's Desk", "Geopolitical Analysis", "Economic Viewpoints", "Social Commentaries", "Guest Columns", "Policy Critiques", "Historical Perspectives", "Philosophical Essays", "Letters to Editor", "Expert Roundtables", "Media Critique", "Public Debates", "Think Tank Briefs", "Global Dialogues", "Future Outlook"],
+    "Fact Check & Explainers": ["Viral Rumours Debunked", "Policy Explainers", "Historical Context", "Data Visualizations", "Scientific Myths", "Deepfake Verification", "Economic Terminology", "Legal Rights Explained", "How Things Work", "In-Depth Q&A", "Health Fact Check", "Tech Myths Busted", "Geopolitics Explained", "Statistical Insights", "News Verification"]
 }
 
 FEEDS_MAP = {
@@ -169,14 +72,9 @@ FEEDS_MAP = {
         "https://timesofindia.indiatimes.com/rssfeeds/3012544.cms",
         "https://economictimes.indiatimes.com/jobs/rssfeeds/107115.cms",
         "https://www.bing.com/news/search?q=sarkari+recruitment+vacancy+apply+online+2026&format=rss",
-        "https://www.bing.com/news/search?q=upsc+ssc+railway+ibps+bank+police+recruitment+2026&format=rss",
-        "https://www.bing.com/news/search?q=visa+sponsorship+remote+jobs+hiring+2026&format=rss"
+        "https://www.bing.com/news/search?q=upsc+ssc+railway+ibps+bank+police+recruitment+2026&format=rss"
     ],
-    "Rashifal & Horoscopes": [
-        "https://www.bing.com/news/search?q=daily+horoscope+astrology+rashifal+today+2026&format=rss",
-        "https://www.bing.com/news/search?q=aries+taurus+gemini+cancer+leo+virgo+horoscope+today&format=rss",
-        "https://www.bing.com/news/search?q=libra+scorpio+sagittarius+capricorn+aquarius+pisces+horoscope&format=rss"
-    ],
+    "Rashifal & Horoscopes": ["https://www.bing.com/news/search?q=daily+horoscope+astrology+rashifal+today+2026&format=rss"],
     "Breaking News": ["https://feeds.feedburner.com/ndtvnews-top-stories", "https://timesofindia.indiatimes.com/rssfeedstopstories.cms", "https://www.bing.com/news/search?q=breaking+news+world+india+today&format=rss"],
     "World News": ["http://feeds.bbci.co.uk/news/world/rss.xml", "https://www.theguardian.com/world/rss", "https://www.aljazeera.com/xml/rss/all.xml"],
     "India News": ["https://www.news18.com/commonfeeds/v1/eng/rss/india.xml", "https://indianexpress.com/section/india/feed/"],
@@ -264,7 +162,6 @@ def build_800w_full_seo_html(title, summary, cat, author):
     clean_sum = BeautifulSoup(summary or title, "html.parser").get_text().strip()
     if len(clean_sum) < 40: clean_sum = title + " official update and comprehensive global report."
     
-    # SPECIAL RASHIFAL DAILY FORECAST BUILDER
     if cat == "Rashifal & Horoscopes":
         return (
             '<h1 class="seo-title">' + title + '</h1>'
@@ -287,76 +184,50 @@ def build_800w_full_seo_html(title, summary, cat, author):
             '<tr><td>Pisces (Meena)</td><td>Creative pursuits flourish; maintain mindful focus on physical health.</td></tr>'
             '</table>'
             '<h3 class="article-subheading">2. Detailed Career, Wealth & Relationship Guidance</h3>'
-            '<p>Astrologers emphasize that aligning daily tasks with your natural zodiac strengths helps mitigate stress and maximize productivity. Whether you are appearing for an interview, negotiating business deals, or focusing on personal wellness, staying grounded is key.</p>'
+            '<p>Astrologers emphasize that aligning daily tasks with your natural zodiac strengths helps mitigate stress and maximize productivity.</p>'
             '<p class="hashtags">#FastJob #Rashifal2026 #DailyHoroscope #Astrology #ZodiacSigns #CareerHoroscope</p>'
         )
-
-    prompt = (
-        "Write a 900+ word Full-SEO HTML article for '" + cat + "' by journalist '" + author + "' on: '" + title + "'. Context: " + clean_sum + ". "
-        "CRITICAL RULES: 1. Must be 850-1000 words. 2. Never mention any third-party website name. 3. Start with <h1 class=\"seo-title\">" + title + "</h1> and <p class=\"intro-text\"><strong>Reported by " + author + " | Fast Job Editorial Desk:</strong>... "
-        "4. Include 6 <h3 class=\"article-subheading\"> headings, 1 <table class=\"article-table\">, bullet points <ul><li>, 4 SEO FAQs, and <p class=\"hashtags\">. Raw HTML only."
-    )
-    ai_html = ""
-    if O_KEY:
-        for m in ["gpt-4o-mini", "gpt-3.5-turbo"]:
-            try:
-                r = requests.post("https://api.openai.com/v1/chat/completions", headers={"Authorization": "Bearer " + O_KEY}, json={"model": m, "messages": [{"role": "user", "content": prompt}], "max_tokens": 2200}, timeout=50)
-                if r.status_code == 200:
-                    ai_html = r.json()["choices"][0]["message"]["content"].replace("```html", "").replace("```", "").strip()
-                    break
-            except Exception:
-                pass
-    words = len(BeautifulSoup(ai_html, "html.parser").get_text().split()) if ai_html else 0
-    if words >= 780:
-        return ai_html
 
     seo_block = (
         '<h1 class="seo-title">' + title + '</h1>'
         '<p class="intro-text"><strong>Reported by ' + author + ' | Fast Job Global SEO Desk:</strong> ' + clean_sum + ' Read this comprehensive, fact-checked 2026 special report covering official notifications, key highlights, eligibility parameters, timeline, and expert analysis.</p>'
         '<h3 class="article-subheading">1. Executive Summary & Breaking Developments</h3>'
-        '<p>In a landmark development under the <strong>' + cat + '</strong> vertical, official authorities and industry stakeholders have formally released comprehensive details concerning <strong>' + title + '</strong>. Across the national and international landscape in 2026, this update has garnered massive attention from citizens, professionals, job aspirants, and policy analysts alike. According to verified official briefings, the primary objective behind this initiative is to streamline operational transparency, expand accessibility, and establish a modern digital framework that benefits millions of stakeholders directly.</p>'
+        '<p>In a landmark development under the <strong>' + cat + '</strong> vertical, official authorities and industry stakeholders have formally released comprehensive details concerning <strong>' + title + '</strong>. Across the national and international landscape in 2026, this update has garnered massive attention from citizens, professionals, job aspirants, and policy analysts alike.</p>'
         '<h3 class="article-subheading">2. Official Overview & Key Highlights Table</h3>'
-        '<p>To help our readers quickly verify the core parameters of <strong>' + title + '</strong>, our research desk has compiled a structured specification and overview table below based on the latest verified data released in 2026:</p>'
         '<table class="article-table">'
         '<tr><th>Parameter / Metric</th><th>Official Verified Details (2026)</th></tr>'
         '<tr><th>Headline / Notification</th><td>' + title + '</td></tr>'
         '<tr><th>Primary Category Desk</th><td>' + cat + '</td></tr>'
         '<tr><th>Editorial Correspondent</th><td>' + author + '</td></tr>'
         '<tr><th>Current Status</th><td>Officially Active & Verified</td></tr>'
-        '<tr><th>Application / Access Mode</th><td>100% Online Digital Portal</td></tr>'
-        '<tr><th>Target Audience & Scope</th><td>National & Global Stakeholders (2026 Cycle)</td></tr>'
         '</table>'
         '<h3 class="article-subheading">3. In-Depth Analysis, Eligibility & Core Requirements</h3>'
-        '<p>A closer inspection of the official guidelines surrounding <strong>' + title + '</strong> reveals several critical benchmarks that participants and readers must keep in mind. In the context of recruitment drives, policy rollouts, and industry launches, authorities have mandated strict adherence to documentation and verification standards.</p>'
+        '<p>A closer inspection of the official guidelines surrounding <strong>' + title + '</strong> reveals several critical benchmarks that participants and readers must keep in mind.</p>'
         '<ul>'
-        '<li><strong>Document Verification Standards:</strong> All submitted records and digital forms must be authentic and verified before deadlines.</li>'
-        '<li><strong>Digital Compliance & Security:</strong> The 2026 portal infrastructure uses real-time verification protocols to prevent duplicate entries.</li>'
+        '<li><strong>Document Verification Standards:</strong> All submitted records and digital forms must be authentic and verified.</li>'
+        '<li><strong>Digital Compliance & Security:</strong> The 2026 portal infrastructure uses real-time verification protocols.</li>'
         '<li><strong>Regional & Global Impact:</strong> Experts project a substantial surge in participation and sector growth.</li>'
-        '<li><strong>Timely Action Required:</strong> Stakeholders are encouraged to complete formalities well ahead of closing windows.</li>'
         '</ul>'
         '<h3 class="article-subheading">4. Step-by-Step Procedure & Implementation Guide</h3>'
-        '<p>For candidates, consumers, and professionals looking to act on <strong>' + title + '</strong>, following a systematic approach guarantees a smooth experience. Review guidelines, prepare digital documents, and complete registration through the secure portal.</p>'
+        '<p>For candidates, consumers, and professionals looking to act on <strong>' + title + '</strong>, following a systematic approach guarantees a smooth experience.</p>'
         '<h3 class="article-subheading">5. Expert Outlook & Sector Impact in 2026</h3>'
-        '<p>Senior analysts tracking the <strong>' + cat + '</strong> sector emphasize that <strong>' + title + '</strong> reflects a broader transformation toward efficiency and accountability. Our 50+ global correspondents will continue monitoring every update.</p>'
+        '<p>Senior analysts tracking the <strong>' + cat + '</strong> sector emphasize that <strong>' + title + '</strong> reflects a broader transformation toward efficiency and accountability.</p>'
         '<h3 class="article-subheading">6. Frequently Asked Questions (SEO FAQs)</h3>'
-        '<p><strong>Q1: What is the latest official update regarding ' + title + '?</strong><br>Ans: Official authorities have released the latest 2026 update and guidelines for ' + title + ' under the ' + cat + ' section.</p>'
-        '<p><strong>Q2: Who is eligible or impacted by this announcement?</strong><br>Ans: All eligible candidates and professionals meeting the prescribed 2026 criteria.</p>'
-        '<p><strong>Q3: How can I check official updates and complete the process?</strong><br>Ans: Through the respective official portal while following Fast Job for real-time alerts.</p>'
-        '<p><strong>Q4: Why is this 2026 update considered important by experts?</strong><br>Ans: Analysts highlight transparent digital processing and expanded opportunities.</p>'
+        '<p><strong>Q1: What is the latest official update regarding ' + title + '?</strong><br>Ans: Official authorities have released the latest 2026 update and guidelines for ' + title + '.</p>'
+        '<p><strong>Q2: Who is eligible or impacted by this announcement?</strong><br>Ans: All eligible candidates and professionals meeting prescribed criteria.</p>'
+        '<p><strong>Q3: How can I check official updates and complete the process?</strong><br>Ans: Through the respective official portal while following Fast Job.</p>'
         '<p class="hashtags">#FastJob #' + cat.replace(" ", "").replace("&", "") + ' #BreakingNews2026 #VerifiedUpdate #LatestNotification #GlobalCoverage</p>'
     )
-    return (ai_html + "\n" + seo_block) if ai_html else seo_block
+    return seo_block
 
 def collect_unique_posts(urls, cat, target_count, seen_titles, seen_imgs):
     out = []
-    # SPECIAL RASHIFAL DAILY LIMIT RULE: Only 1 daily horoscope post per day at 4 AM!
     if cat == "Rashifal & Horoscopes":
         today_str = datetime.now().strftime("%B %d, %Y")
         t = f"Daily Rashifal & Horoscope Forecast: Astrological Predictions for Today ({today_str})"
         t_key = re.sub(r"[^a-z0-9]", "", t.lower())[:40]
         if t_key in seen_titles: return []
         seen_titles.add(t_key)
-        # Use a vibrant astrological/cosmic stock image
         astral_img = "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=1000&q=80"
         return [(cat, t, "Daily horoscope predictions for all zodiac signs.", astral_img)]
 
@@ -397,6 +268,22 @@ def publish_one(item, idx, total):
         print("Err:", ex)
     return False
 
+def publish_story(item):
+    cat, title, summary, img = item
+    story_slug = "story-" + "-".join(re.sub(r"[^a-z0-9\s-]", "", title.lower()).split()[:4] or ["news"]) + "-" + str(int(time.time()) % 10000)
+    story_content = (
+        '<div class="web-story-card" style="background:#111;color:#fff;padding:30px;border-radius:12px;">'
+        '<span style="background:#d10000;color:#fff;padding:4px 10px;font-size:12px;font-weight:bold;text-transform:uppercase;">Visual Web Story</span>'
+        '<h2 style="font-size:24px;margin-top:15px;margin-bottom:15px;">' + title + '</h2>'
+        '<img src="' + img + '" style="width:100%;max-height:400px;object-fit:cover;border-radius:8px;margin-bottom:15px;">'
+        '<p style="font-size:16px;line-height:1.6;">' + summary + '</p>'
+        '</div>'
+    )
+    try:
+        requests.post(S_URL + "/rest/v1/posts", headers=HEADERS, json={"title": "⚡ Story: " + title, "slug": story_slug, "content": story_content, "category": "Web Stories", "image_url": img}, timeout=20)
+    except Exception:
+        pass
+
 def clean_existing_duplicates_and_load_seen():
     seen_titles = set()
     seen_imgs = set()
@@ -424,20 +311,22 @@ def clean_existing_duplicates_and_load_seen():
 def run():
     seen_titles, seen_imgs = clean_existing_duplicates_and_load_seen()
     q = []
-    # Publish across all 26 Categories (Jobs: 20 posts, Rashifal: 1 daily post at 4 AM, others: 8 posts each)
     for cat in CATEGORY_HIERARCHY.keys():
         urls = FEEDS_MAP.get(cat, FEEDS_MAP["Breaking News"])
         target = 20 if cat == "Jobs & Careers" else (1 if cat == "Rashifal & Horoscopes" else 8)
         items = collect_unique_posts(urls, cat, target, seen_titles, seen_imgs)
         q.extend(items)
 
-    print("Publishing " + str(len(q)) + " Unique Posts with 26 Categories & Sub-Desks...")
+    print("Publishing " + str(len(q)) + " Unique Posts & Web Stories...")
     ok = 0
     with ThreadPoolExecutor(max_workers=8) as ex:
         futs = [ex.submit(publish_one, it, i + 1, len(q)) for i, it in enumerate(q)]
         for f in as_completed(futs):
             if f.result(): ok += 1
-    print("FINISHED! Published " + str(ok) + " Posts!")
+        # Auto-publish Web Stories for top items
+        for it in q[:25]:
+            ex.submit(publish_story, it)
+    print("FINISHED! Published " + str(ok) + " Posts & Web Stories!")
 
 if __name__ == "__main__":
     run()
