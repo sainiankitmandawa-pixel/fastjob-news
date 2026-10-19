@@ -29,7 +29,6 @@
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* Perfectly Aligned Breaking News Ticker */
         .ticker-wrap { width: 100%; background-color: #ffffff; color: #111827; display: flex; align-items: stretch; border-bottom: 2px solid #e5e7eb; box-shadow: 0 2px 8px rgba(0,0,0,0.04); overflow: hidden; }
         .ticker-label { background: linear-gradient(90deg, #d10000 0%, #a80000 100%); color: #ffffff; padding: 8px 22px 8px 16px; font-weight: 900; font-size: 12px; z-index: 20; text-transform: uppercase; letter-spacing: 1px; clip-path: polygon(0 0, 100% 0, 92% 100%, 0% 100%); flex-shrink: 0; display: flex; align-items: center; }
         .ticker-track { flex-grow: 1; overflow: hidden; display: flex; align-items: center; }
@@ -39,17 +38,14 @@
         .ticker-item:hover { color: #d10000; cursor: pointer; }
         @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 
-        /* Category Navigation Ribbon */
         .cat-pill { position: relative; transition: all 0.2s ease; color: #1f2937; white-space: nowrap; }
         .cat-pill:hover { color: #d10000; background-color: #fff5f5; }
         .cat-pill::after { content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 3px; background: #d10000; transition: all 0.2s ease; transform: translateX(-50%); }
         .cat-pill:hover::after, .cat-pill.active-cat::after { width: 100%; }
         .cat-pill.active-cat { color: #d10000 !important; font-weight: 800; background-color: #fff5f5; }
 
-        /* Section Header Ribbon */
         .section-badge { background: #d10000; color: #ffffff; padding: 6px 20px 6px 14px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px; clip-path: polygon(0 0, 100% 0, 93% 100%, 0% 100%); display: inline-flex; align-items: center; gap: 8px; }
 
-        /* Article Formatting */
         #detail-content, #legal-page-content { color: #1f2937; line-height: 1.95; font-size: 1.15rem; }
         #detail-content p, #legal-page-content p { margin-bottom: 1.6rem; }
         #detail-content p:first-of-type::first-letter { font-size: 3.6rem; font-weight: 900; float: left; line-height: 0.85; margin-right: 0.7rem; margin-top: 0.15rem; color: #d10000; font-family: 'Playfair Display', serif; }
@@ -106,7 +102,7 @@
             <div class="w-full max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-3 md:gap-6">
                 
                 <div class="w-full md:w-auto flex items-center justify-between">
-                    <!-- Brand Logo (Fast Job) -->
+                    <!-- Brand Logo -->
                     <a href="/" onclick="event.preventDefault(); goBackHome();" class="flex items-center shrink-0 cursor-pointer group">
                         <div class="bg-white text-[#d10000] w-11 h-11 md:w-13 md:h-13 rounded-xl mr-3 flex items-center justify-center shadow-lg transform group-hover:scale-105 transition">
                             <i class="fa-solid fa-bolt text-2xl md:text-3xl text-yellow-500"></i>
@@ -138,7 +134,7 @@
                 <div class="w-full md:max-w-xl flex-grow">
                     <div class="bg-white rounded-full p-1 pl-4 flex items-center w-full shadow-inner focus-within:ring-2 focus-within:ring-yellow-400 transition">
                         <i class="fa-solid fa-magnifying-glass text-gray-400 mr-2.5 text-sm md:text-base"></i>
-                        <input type="text" id="searchInput" onkeyup="searchNews()" placeholder="Search breaking news, jobs, politics, sports..." class="w-full text-xs md:text-sm text-gray-900 outline-none font-semibold bg-transparent placeholder-gray-400 py-1.5">
+                        <input type="text" id="searchInput" onkeyup="searchNews()" placeholder="Search top global stories & job vacancies..." class="w-full text-xs md:text-sm text-gray-900 outline-none font-semibold bg-transparent placeholder-gray-400 py-1.5">
                         <button onclick="searchNews()" class="bg-[#d10000] hover:bg-[#a80000] text-white font-bold text-xs uppercase tracking-wider px-5 py-2 rounded-full transition shrink-0">
                             Search
                         </button>
@@ -158,7 +154,7 @@
             </div>
         </div>
 
-        <!-- 3. White Horizontal Category Bar -->
+        <!-- 3. White Horizontal Category Bar (Jobs & Careers First) -->
         <div class="bg-white border-b border-gray-200 px-2 md:px-6">
             <div class="w-full max-w-[1400px] mx-auto flex items-center">
                 <nav class="flex items-center space-x-1 overflow-x-auto no-scrollbar py-0.5 w-full" id="top-category-nav">
@@ -168,19 +164,19 @@
         </div>
     </header>
 
-    <!-- 4. Perfectly Aligned Breaking News Ticker -->
+    <!-- 4. Ticker -->
     <div class="ticker-wrap">
         <div class="ticker-label">
-            <span class="w-2 h-2 bg-yellow-300 rounded-full animate-ping mr-2"></span> BREAKING NEWS
+            <span class="w-2 h-2 bg-yellow-300 rounded-full animate-ping mr-2"></span> TRENDING NEWS
         </div>
         <div class="ticker-track">
             <div class="ticker" id="ticker-content">
-                <span class="ticker-item">Loading latest breaking news updates...</span>
+                <span class="ticker-item">Loading latest global trending news...</span>
             </div>
         </div>
     </div>
 
-    <!-- Mobile & All-Categories Drawer Menu (With Icons Instead of Numbers) -->
+    <!-- Mobile Drawer Menu -->
     <div id="mobileMenu" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex justify-end transition-opacity">
         <div class="w-80 bg-white text-gray-900 h-full shadow-2xl flex flex-col p-5 overflow-y-auto border-t-4 border-[#d10000]">
             <div class="flex items-center justify-between border-b border-gray-200 pb-3.5 mb-4">
@@ -200,7 +196,7 @@
             
             <p class="text-[11px] font-black uppercase tracking-wider text-[#d10000] mb-2 border-b border-gray-100 pb-1.5">All 25 News Categories</p>
             <nav class="flex flex-col space-y-0.5 font-bold text-gray-800 text-sm mb-6" id="mobile-category-nav">
-                <!-- 25 Categories with Unique Icons Injected Dynamically -->
+                <!-- Injected Dynamically -->
             </nav>
 
             <p class="text-[11px] font-black uppercase tracking-wider text-[#d10000] mb-2 border-b border-gray-100 pb-1.5">Legal & Portal Info</p>
@@ -273,7 +269,7 @@
                 </div>
             </div>
             
-            <!-- Category Sections -->
+            <!-- Category Sections (Jobs & Careers will render at the very top!) -->
             <div id="category-sections" class="space-y-10"></div>
         </div>
     </main>
@@ -372,15 +368,17 @@
             return WORLD_AUTHORS[(idNum * 7) % WORLD_AUTHORS.length];
         }
 
+        // "Jobs & Careers" IS NOW FORCED AT THE VERY TOP POSITION!
         const categories = [
-            "Breaking News", "World News", "India News", "Politics", "Sports", 
+            "Jobs & Careers", "Breaking News", "World News", "India News", "Politics", "Sports", 
             "Business", "Finance & Markets", "Technology", "Entertainment", "Education", 
-            "Jobs & Careers", "Health & Medicine", "Science", "AI & Robotics", "Crime & Justice", 
+            "Health & Medicine", "Science", "AI & Robotics", "Crime & Justice", 
             "Auto & EV", "Economy", "Environment & Climate", "Lifestyle", "Travel & Tourism", 
             "Real Estate", "Defence & Security", "Weather", "Opinion & Editorial", "Fact Check & Explainers"
         ];
 
         const categoryIcons = {
+            "Jobs & Careers": "fa-solid fa-user-tie",
             "Breaking News": "fa-solid fa-bolt-lightning",
             "World News": "fa-solid fa-earth-americas",
             "India News": "fa-solid fa-flag",
@@ -391,7 +389,6 @@
             "Technology": "fa-solid fa-laptop-code",
             "Entertainment": "fa-solid fa-film",
             "Education": "fa-solid fa-graduation-cap",
-            "Jobs & Careers": "fa-solid fa-user-tie",
             "Health & Medicine": "fa-solid fa-heart-pulse",
             "Science": "fa-solid fa-flask-vial",
             "AI & Robotics": "fa-solid fa-robot",
@@ -411,7 +408,7 @@
         function getPostsForCategory(newsList, cat) {
             const matched = newsList.filter(p => {
                 if (p.category === cat) return true;
-                if (cat === "Jobs & Careers" && p.category === "Jobs") return true;
+                if (cat === "Jobs & Careers" && (p.category === "Jobs" || p.category === "Jobs & Careers")) return true;
                 if (cat === "Auto & EV" && p.category === "Automobile") return true;
                 if ((cat === "Technology" || cat === "AI & Robotics") && p.category === "Tech & AI") return true;
                 return false;
@@ -494,7 +491,6 @@
 
         async function loadNews() {
             try {
-                // Fetch Exact Total Count
                 const countRes = await fetch(SUPABASE_URL + "/rest/v1/posts?select=id", {
                     headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + SUPABASE_KEY, "Prefer": "count=exact" }
                 });
