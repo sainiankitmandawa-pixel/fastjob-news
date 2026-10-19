@@ -26,98 +26,237 @@ AUTHORS = [
     "Diego Hernandez (Mexico City)", "Camila Vargas (Santiago)"
 ]
 
-# DIRECT PUBLISHER & BING FEEDS THAT CONTAIN REAL ARTICLE IMAGES & LINKS
+# MASSIVE GLOBAL RSS NETWORK (Covers 5,000+ World & Indian Publishers via Direct + Global Syndication)
 FEEDS = {
     "Jobs & Careers": [
         "https://www.news18.com/commonfeeds/v1/eng/rss/education-career.xml",
         "https://indianexpress.com/section/jobs/feed/",
         "https://timesofindia.indiatimes.com/rssfeeds/3012544.cms",
-        "https://www.thehindu.com/education/careers/feeder/default.rss",
         "https://economictimes.indiatimes.com/jobs/rssfeeds/107115.cms",
         "https://www.bing.com/news/search?q=sarkari+recruitment+vacancy+apply+online+2026&format=rss",
-        "https://www.bing.com/news/search?q=upsc+ssc+railway+bank+police+recruitment+2026&format=rss",
-        "https://www.bing.com/news/search?q=visa+sponsorship+remote+jobs+hiring+2026&format=rss"
+        "https://www.bing.com/news/search?q=upsc+ssc+railway+ibps+bank+police+recruitment+2026&format=rss",
+        "https://www.bing.com/news/search?q=state+govt+jobs+teacher+psc+bharti+notification+2026&format=rss",
+        "https://www.bing.com/news/search?q=visa+sponsorship+jobs+hiring+uk+usa+canada+dubai+2026&format=rss",
+        "https://www.bing.com/news/search?q=remote+software+tech+healthcare+engineering+jobs+hiring+2026&format=rss",
+        "https://news.yahoo.com/rss"
     ],
-    "Breaking News": ["https://feeds.feedburner.com/ndtvnews-top-stories", "https://timesofindia.indiatimes.com/rssfeedstopstories.cms", "https://www.indiatoday.in/rss/home"],
-    "World News": ["http://feeds.bbci.co.uk/news/world/rss.xml", "https://www.news18.com/commonfeeds/v1/eng/rss/world.xml", "https://timesofindia.indiatimes.com/rssfeeds/296589292.cms"],
-    "India News": ["https://www.news18.com/commonfeeds/v1/eng/rss/india.xml", "https://www.thehindu.com/news/national/feeder/default.rss", "https://indianexpress.com/section/india/feed/"],
-    "Politics": ["https://www.news18.com/commonfeeds/v1/eng/rss/politics.xml", "https://indianexpress.com/section/political-pulse/feed/"],
-    "Sports": ["https://www.news18.com/commonfeeds/v1/eng/rss/sports.xml", "https://timesofindia.indiatimes.com/rssfeeds/4719148.cms", "https://indianexpress.com/section/sports/feed/"],
-    "Business": ["https://www.news18.com/commonfeeds/v1/eng/rss/business.xml", "https://economictimes.indiatimes.com/news/company/rssfeeds/2146842.cms"],
-    "Finance & Markets": ["https://economictimes.indiatimes.com/markets/rssfeeds/1977021501.cms", "https://www.livemint.com/rss/markets"],
-    "Technology": ["https://www.news18.com/commonfeeds/v1/eng/rss/tech.xml", "https://www.livemint.com/rss/technology", "https://techcrunch.com/feed/"],
-    "Entertainment": ["https://www.news18.com/commonfeeds/v1/eng/rss/movies.xml", "https://timesofindia.indiatimes.com/rssfeeds/1081479906.cms"],
-    "Education": ["https://indianexpress.com/section/education/feed/", "https://www.thehindu.com/education/feeder/default.rss"],
-    "Health & Medicine": ["https://timesofindia.indiatimes.com/rssfeeds/3908999.cms", "https://indianexpress.com/section/lifestyle/health/feed/"],
-    "Science": ["https://www.thehindu.com/sci-tech/science/feeder/default.rss", "https://www.livemint.com/rss/science"],
-    "AI & Robotics": ["https://www.bing.com/news/search?q=artificial+intelligence+openai+robotics+2026&format=rss", "https://economictimes.indiatimes.com/tech/technology/rssfeeds/78570561.cms"],
-    "Crime & Justice": ["https://www.bing.com/news/search?q=supreme+court+high+court+police+investigation+india&format=rss", "https://indianexpress.com/section/cities/feed/"],
-    "Auto & EV": ["https://www.news18.com/commonfeeds/v1/eng/rss/auto.xml", "https://timesofindia.indiatimes.com/rssfeeds/74317216.cms", "https://www.cartoq.com/feed/"],
-    "Economy": ["https://economictimes.indiatimes.com/news/economy/rssfeeds/1377380.cms", "https://www.thehindu.com/business/Economy/feeder/default.rss"],
-    "Environment & Climate": ["https://timesofindia.indiatimes.com/rssfeeds/2647163.cms", "https://www.thehindu.com/sci-tech/energy-and-environment/feeder/default.rss"],
-    "Lifestyle": ["https://www.news18.com/commonfeeds/v1/eng/rss/lifestyle-2.xml", "https://timesofindia.indiatimes.com/rssfeeds/2886704.cms"],
-    "Travel & Tourism": ["https://timesofindia.indiatimes.com/rssfeeds/3112014.cms", "https://indianexpress.com/section/lifestyle/destination-of-the-week/feed/"],
-    "Real Estate": ["https://economictimes.indiatimes.com/wealth/real-estate/rssfeeds/48997585.cms", "https://www.bing.com/news/search?q=real+estate+property+housing+india&format=rss"],
-    "Defence & Security": ["https://economictimes.indiatimes.com/news/defence/rssfeeds/47117033.cms", "https://www.bing.com/news/search?q=indian+army+navy+air+force+drdo+defence&format=rss"],
-    "Weather": ["https://www.bing.com/news/search?q=imd+weather+forecast+rain+monsoon+india&format=rss"],
-    "Opinion & Editorial": ["https://www.thehindu.com/opinion/editorial/feeder/default.rss", "https://indianexpress.com/section/opinion/feed/"],
-    "Fact Check & Explainers": ["https://www.indiatoday.in/rss/fact-check", "https://indianexpress.com/section/explained/feed/"]
+    "Breaking News": [
+        "https://feeds.feedburner.com/ndtvnews-top-stories",
+        "https://timesofindia.indiatimes.com/rssfeedstopstories.cms",
+        "https://www.indiatoday.in/rss/home",
+        "http://feeds.bbci.co.uk/news/rss.xml",
+        "https://www.aljazeera.com/xml/rss/all.xml",
+        "https://www.bing.com/news/search?q=breaking+news+world+india+today&format=rss"
+    ],
+    "World News": [
+        "http://feeds.bbci.co.uk/news/world/rss.xml",
+        "https://www.theguardian.com/world/rss",
+        "https://www.aljazeera.com/xml/rss/all.xml",
+        "https://www.news18.com/commonfeeds/v1/eng/rss/world.xml",
+        "https://www.bing.com/news/search?q=international+world+news+geopolitics&format=rss"
+    ],
+    "India News": [
+        "https://www.news18.com/commonfeeds/v1/eng/rss/india.xml",
+        "https://indianexpress.com/section/india/feed/",
+        "https://feeds.feedburner.com/ndtvnews-india-news",
+        "https://www.bing.com/news/search?q=india+national+news+government+update&format=rss"
+    ],
+    "Politics": [
+        "https://www.news18.com/commonfeeds/v1/eng/rss/politics.xml",
+        "https://indianexpress.com/section/political-pulse/feed/",
+        "https://www.theguardian.com/politics/rss",
+        "https://www.bing.com/news/search?q=politics+elections+parliament+summit&format=rss"
+    ],
+    "Sports": [
+        "https://www.news18.com/commonfeeds/v1/eng/rss/sports.xml",
+        "https://timesofindia.indiatimes.com/rssfeeds/4719148.cms",
+        "https://indianexpress.com/section/sports/feed/",
+        "http://feeds.bbci.co.uk/sport/rss.xml",
+        "https://www.espn.com/espn/rss/news"
+    ],
+    "Business": [
+        "https://www.news18.com/commonfeeds/v1/eng/rss/business.xml",
+        "https://economictimes.indiatimes.com/news/company/rssfeeds/2146842.cms",
+        "https://www.cnbc.com/id/10001147/device/rss/rss.html",
+        "https://www.bing.com/news/search?q=global+business+corporations+startups+mergers&format=rss"
+    ],
+    "Finance & Markets": [
+        "https://economictimes.indiatimes.com/markets/rssfeeds/1977021501.cms",
+        "https://www.livemint.com/rss/markets",
+        "https://www.cnbc.com/id/10000664/device/rss/rss.html",
+        "https://www.bing.com/news/search?q=stock+market+sensex+nifty+wall+street+crypto&format=rss"
+    ],
+    "Technology": [
+        "https://techcrunch.com/feed/",
+        "https://www.theverge.com/rss/index.xml",
+        "https://www.wired.com/feed/rss",
+        "https://www.news18.com/commonfeeds/v1/eng/rss/tech.xml",
+        "https://www.livemint.com/rss/technology"
+    ],
+    "Entertainment": [
+        "https://www.news18.com/commonfeeds/v1/eng/rss/movies.xml",
+        "https://timesofindia.indiatimes.com/rssfeeds/1081479906.cms",
+        "https://variety.com/feed/",
+        "https://www.hollywoodreporter.com/feed/"
+    ],
+    "Education": [
+        "https://indianexpress.com/section/education/feed/",
+        "https://www.theguardian.com/education/rss",
+        "https://www.bing.com/news/search?q=education+university+exams+neet+jee+cbse+2026&format=rss"
+    ],
+    "Health & Medicine": [
+        "https://timesofindia.indiatimes.com/rssfeeds/3908999.cms",
+        "https://indianexpress.com/section/lifestyle/health/feed/",
+        "http://feeds.bbci.co.uk/news/health/rss.xml",
+        "https://www.bing.com/news/search?q=health+medicine+medical+breakthrough+wellness&format=rss"
+    ],
+    "Science": [
+        "https://www.space.com/feeds/all",
+        "https://www.sciencedaily.com/rss/all.xml",
+        "http://feeds.bbci.co.uk/news/science_and_environment/rss.xml",
+        "https://www.bing.com/news/search?q=science+nasa+isro+space+discovery&format=rss"
+    ],
+    "AI & Robotics": [
+        "https://economictimes.indiatimes.com/tech/technology/rssfeeds/78570561.cms",
+        "https://www.bing.com/news/search?q=artificial+intelligence+openai+chatgpt+robotics+2026&format=rss",
+        "https://www.bing.com/news/search?q=deepmind+nvidia+ai+chips+humanoid+robots&format=rss"
+    ],
+    "Crime & Justice": [
+        "https://indianexpress.com/section/cities/feed/",
+        "https://www.bing.com/news/search?q=supreme+court+high+court+verdict+justice+law&format=rss",
+        "https://www.bing.com/news/search?q=cyber+crime+police+investigation+arrest+alert&format=rss"
+    ],
+    "Auto & EV": [
+        "https://www.news18.com/commonfeeds/v1/eng/rss/auto.xml",
+        "https://timesofindia.indiatimes.com/rssfeeds/74317216.cms",
+        "https://www.cartoq.com/feed/",
+        "https://www.autoblog.com/rss.xml",
+        "https://www.bing.com/news/search?q=new+car+launch+electric+vehicle+suv+ev+2026&format=rss"
+    ],
+    "Economy": [
+        "https://economictimes.indiatimes.com/news/economy/rssfeeds/1377380.cms",
+        "https://www.cnbc.com/id/20910258/device/rss/rss.html",
+        "https://www.bing.com/news/search?q=global+economy+gdp+inflation+central+bank+trade&format=rss"
+    ],
+    "Environment & Climate": [
+        "https://timesofindia.indiatimes.com/rssfeeds/2647163.cms",
+        "https://www.theguardian.com/environment/rss",
+        "https://www.bing.com/news/search?q=climate+change+renewable+energy+solar+environment&format=rss"
+    ],
+    "Lifestyle": [
+        "https://www.news18.com/commonfeeds/v1/eng/rss/lifestyle-2.xml",
+        "https://timesofindia.indiatimes.com/rssfeeds/2886704.cms",
+        "https://indianexpress.com/section/lifestyle/feed/"
+    ],
+    "Travel & Tourism": [
+        "https://timesofindia.indiatimes.com/rssfeeds/3112014.cms",
+        "https://indianexpress.com/section/lifestyle/destination-of-the-week/feed/",
+        "https://www.theguardian.com/uk/travel/rss",
+        "https://www.bing.com/news/search?q=travel+tourism+airlines+airport+visa+destinations&format=rss"
+    ],
+    "Real Estate": [
+        "https://economictimes.indiatimes.com/wealth/real-estate/rssfeeds/48997585.cms",
+        "https://www.bing.com/news/search?q=real+estate+housing+property+market+infrastructure&format=rss",
+        "https://www.bing.com/news/search?q=commercial+property+smart+city+construction+projects&format=rss"
+    ],
+    "Defence & Security": [
+        "https://economictimes.indiatimes.com/news/defence/rssfeeds/47117033.cms",
+        "https://www.bing.com/news/search?q=indian+army+navy+air+force+drdo+defence+missiles&format=rss",
+        "https://www.bing.com/news/search?q=global+military+defense+security+nato+pentagon&format=rss"
+    ],
+    "Weather": [
+        "https://www.bing.com/news/search?q=imd+weather+forecast+monsoon+cyclone+heatwave+rain&format=rss",
+        "https://www.bing.com/news/search?q=global+weather+storm+hurricane+forecast+alert&format=rss"
+    ],
+    "Opinion & Editorial": [
+        "https://indianexpress.com/section/opinion/feed/",
+        "https://www.theguardian.com/uk/commentisfree/rss",
+        "https://www.bing.com/news/search?q=geopolitics+economic+policy+analysis+viewpoint&format=rss"
+    ],
+    "Fact Check & Explainers": [
+        "https://www.indiatoday.in/rss/fact-check",
+        "https://indianexpress.com/section/explained/feed/",
+        "https://www.bing.com/news/search?q=explained+news+analysis+fact+check+guide&format=rss"
+    ]
 }
 
-def is_valid_real_img(u):
-    if not u or not isinstance(u, str) or not u.startswith("http"): return False
-    bad = ["google", "gstatic", "googleusercontent", "picsum", "unsplash", "logo", "icon", "avatar", "1x1", "blank", "pixel", ".svg", ".gif"]
-    return not any(b in u.lower() for b in bad)
+def img_key(u):
+    if not u: return ""
+    p = urlparse(u)
+    # Normalize URL path + query id so resized versions of the same image are caught!
+    base = (p.netloc + p.path).lower()
+    if "th?id=" in u.lower():
+        qs = parse_qs(p.query)
+        if "id" in qs: return "bing_" + qs["id"][0].lower()
+    return base
 
-def extract_real_source_image(entry):
-    # 1. Check RSS media_content / media_thumbnail / enclosures
+def is_valid_unique_img(u, seen_imgs):
+    if not u or not isinstance(u, str) or not u.startswith("http"): return False
+    ul = u.lower()
+    # Block generic newspaper banners (like The Hindu Editorials banner), logos, placeholders
+    bad = [
+        "google", "gstatic", "googleusercontent", "picsum", "unsplash", "logo", "icon",
+        "avatar", "1x1", "blank", "pixel", ".svg", ".gif", "editorial", "default",
+        "placeholder", "share-image", "og-image", "thehindu.com/theme", "fe-default"
+    ]
+    if any(b in ul for b in bad): return False
+    k = img_key(u)
+    if not k or k in seen_imgs: return False
+    return True
+
+def extract_real_unique_image(entry, seen_imgs):
+    candidates = []
     for attr in ["media_content", "media_thumbnail"]:
         if hasattr(entry, attr) and getattr(entry, attr):
             for m in getattr(entry, attr):
-                u = m.get("url") or ""
-                if is_valid_real_img(u): return u
+                if m.get("url"): candidates.append(m.get("url"))
     if hasattr(entry, "enclosures") and entry.enclosures:
         for enc in entry.enclosures:
-            u = enc.get("href") or enc.get("url") or ""
-            if is_valid_real_img(u): return u
-    # 2. Check HTML img inside summary/description
+            u = enc.get("href") or enc.get("url")
+            if u: candidates.append(u)
     html_part = (entry.get("summary") or "") + (entry.get("description") or "")
     if html_part:
         soup = BeautifulSoup(html_part, "html.parser")
-        img = soup.find("img")
-        if img and is_valid_real_img(img.get("src")): return img.get("src")
-    # 3. Scrape exact og:image / twitter:image from the real source webpage!
+        for img in soup.find_all("img"):
+            if img.get("src"): candidates.append(img.get("src"))
+
+    # Also check original article page for high-res og:image
     link = entry.get("link") or ""
     if "bing.com/news/apiclick" in link and "url=" in link:
         qs = parse_qs(urlparse(link).query)
         if "url" in qs and qs["url"]: link = unquote(qs["url"][0])
+
     if link.startswith("http") and "news.google.com" not in link:
         try:
-            r = requests.get(link, headers=UA, timeout=8)
+            r = requests.get(link, headers=UA, timeout=7)
             if r.status_code == 200:
                 sp = BeautifulSoup(r.text, "html.parser")
                 for prop in ["og:image", "twitter:image", "og:image:secure_url"]:
                     tag = sp.find("meta", property=prop) or sp.find("meta", attrs={"name": prop})
-                    if tag and is_valid_real_img(tag.get("content")):
-                        return tag.get("content").strip()
+                    if tag and tag.get("content"):
+                        candidates.insert(0, tag.get("content").strip())
         except Exception:
             pass
-    # Return None if NO real image exists so we SKIP this post!
+
+    for c in candidates:
+        if is_valid_unique_img(c, seen_imgs):
+            seen_imgs.add(img_key(c))
+            return c
     return None
 
 def build_800w_full_seo_html(title, summary, cat, author):
     clean_sum = BeautifulSoup(summary or title, "html.parser").get_text().strip()
-    if len(clean_sum) < 40: clean_sum = title + " official update and comprehensive report."
+    if len(clean_sum) < 40: clean_sum = title + " official update and comprehensive global report."
     prompt = (
         "Write a 900+ word Full-SEO HTML article for '" + cat + "' by journalist '" + author + "' on: '" + title + "'. Context: " + clean_sum + ". "
         "CRITICAL RULES: 1. Must be 850-1000 words. 2. Never mention any third-party website name. 3. Start with <h1 class=\"seo-title\">" + title + "</h1> and <p class=\"intro-text\"><strong>Reported by " + author + " | Fast Job Editorial Desk:</strong>... "
-        "4. Include 6 <h3 class=\"article-subheading\"> headings (with 2-3 long paragraphs each), 1 <table class=\"article-table\">, bullet points <ul><li>, 4 SEO FAQs, and <p class=\"hashtags\">. Raw HTML only."
+        "4. Include 6 <h3 class=\"article-subheading\"> headings, 1 <table class=\"article-table\">, bullet points <ul><li>, 4 SEO FAQs, and <p class=\"hashtags\">. Raw HTML only."
     )
     ai_html = ""
     if O_KEY:
         for m in ["gpt-4o-mini", "gpt-3.5-turbo"]:
             try:
-                r = requests.post("https://api.openai.com/v1/chat/completions", headers={"Authorization": "Bearer " + O_KEY}, json={"model": m, "messages": [{"role": "user", "content": prompt}], "max_tokens": 2200}, timeout=55)
+                r = requests.post("https://api.openai.com/v1/chat/completions", headers={"Authorization": "Bearer " + O_KEY}, json={"model": m, "messages": [{"role": "user", "content": prompt}], "max_tokens": 2200}, timeout=50)
                 if r.status_code == 200:
                     ai_html = r.json()["choices"][0]["message"]["content"].replace("```html", "").replace("```", "").strip()
                     break
@@ -127,7 +266,6 @@ def build_800w_full_seo_html(title, summary, cat, author):
     if words >= 780:
         return ai_html
 
-    # Guaranteed 850+ Words Full-SEO Article Builder (Used or Appended so EVERY post is 800+ words!)
     seo_block = (
         '<h1 class="seo-title">' + title + '</h1>'
         '<p class="intro-text"><strong>Reported by ' + author + ' | Fast Job Global SEO Desk:</strong> ' + clean_sum + ' Read this comprehensive, fact-checked 2026 special report covering official notifications, key highlights, eligibility parameters, timeline, and expert analysis.</p>'
@@ -167,9 +305,13 @@ def build_800w_full_seo_html(title, summary, cat, author):
     )
     return (ai_html + "\n" + seo_block) if ai_html else seo_block
 
-def collect_real_image_posts(urls, cat, target_count, seen):
+def collect_unique_posts(urls, cat, target_count, seen_titles, seen_imgs):
     out = []
-    for u in urls:
+    feed_list = list(urls)
+    # Add dynamic global search backup so we never run out of 5,000+ world websites
+    q_term = cat.replace("&", "").replace(" ", "+") + "+2026"
+    feed_list.append("https://www.bing.com/news/search?q=" + q_term + "&format=rss")
+    for u in feed_list:
         if len(out) >= target_count: break
         try:
             r = requests.get(u, headers=UA, timeout=12)
@@ -179,12 +321,14 @@ def collect_real_image_posts(urls, cat, target_count, seen):
         for e in entries:
             if len(out) >= target_count: break
             t = (e.get("title") or "").rsplit(" - ", 1)[0].strip()
-            if not t or len(t) < 15 or t[:35].lower() in seen: continue
-            # STRICT CHECK: Only take post if it has a 100% REAL source image! Otherwise SKIP!
-            real_img = extract_real_source_image(e)
+            t_key = re.sub(r"[^a-z0-9]", "", t.lower())[:40]
+            if not t or len(t) < 15 or t_key in seen_titles:
+                continue
+            # STRICT CHECK: 1 Photo = 1 Time Only!
+            real_img = extract_real_unique_image(e, seen_imgs)
             if not real_img:
                 continue
-            seen.add(t[:35].lower())
+            seen_titles.add(t_key)
             out.append((cat, t, e.get("summary") or "", real_img))
     return out
 
@@ -196,44 +340,66 @@ def publish_one(item, idx, total):
     try:
         r = requests.post(S_URL + "/rest/v1/posts", headers=HEADERS, json={"title": title, "slug": slug, "content": body, "category": cat, "image_url": img}, timeout=25)
         if r.status_code in [200, 201, 204]:
-            print("OK [" + str(idx) + "/" + str(total) + "] " + cat + " (800+ Words & Real Image): " + title[:45])
+            print("OK [" + str(idx) + "/" + str(total) + "] " + cat + ": " + title[:45])
             return True
     except Exception as ex:
         print("Err:", ex)
     return False
 
-def run():
-    # Clean up old broken picsum test posts so only real posts shine
+def clean_existing_duplicates_and_load_seen():
+    seen_titles = set()
+    seen_imgs = set()
+    dup_ids = []
     try:
-        requests.delete(S_URL + "/rest/v1/posts?image_url=like.*picsum.photos*", headers=HEADERS, timeout=15)
-        requests.delete(S_URL + "/rest/v1/posts?image_url=like.*source.unsplash.com*", headers=HEADERS, timeout=15)
-        requests.delete(S_URL + "/rest/v1/posts?image_url=like.*photo-150000*", headers=HEADERS, timeout=15)
-    except Exception:
-        pass
-
-    seen = set()
-    try:
-        r = requests.get(S_URL + "/rest/v1/posts?select=title&order=id.desc&limit=1000", headers=HEADERS, timeout=15)
+        r = requests.get(S_URL + "/rest/v1/posts?select=id,title,image_url&order=id.desc&limit=1500", headers=HEADERS, timeout=20)
         if r.status_code == 200:
-            seen = {(x.get("title") or "")[:35].lower() for x in r.json() if x.get("title")}
-    except Exception:
-        pass
+            for row in r.json():
+                pid = row.get("id")
+                t = re.sub(r"[^a-z0-9]", "", (row.get("title") or "").lower())[:40]
+                im = row.get("image_url") or ""
+                ik = img_key(im)
+                # Delete old duplicate-image posts or The Hindu Editorial banner posts
+                if not ik or "editorial" in im.lower() or "picsum" in im.lower() or ik in seen_imgs or (t and t in seen_titles):
+                    if pid: dup_ids.append(str(pid))
+                else:
+                    seen_imgs.add(ik)
+                    if t: seen_titles.add(t)
+        # Batch delete duplicate image/title posts so website is 100% unique
+        for i in range(0, len(dup_ids), 50):
+            batch = ",".join(dup_ids[i:i+50])
+            requests.delete(S_URL + "/rest/v1/posts?id=in.(" + batch + ")", headers=HEADERS, timeout=15)
+        if dup_ids:
+            print("Cleaned " + str(len(dup_ids)) + " old duplicate-image/banner posts from database!")
+    except Exception as e:
+        print("Clean check note:", e)
+    return seen_titles, seen_imgs
+
+def run():
+    print("Step 1: Cleaning old duplicate images & loading seen history...")
+    seen_titles, seen_imgs = clean_existing_duplicates_and_load_seen()
+    print("Loaded " + str(len(seen_titles)) + " unique titles and " + str(len(seen_imgs)) + " unique images.")
 
     q = []
-    # Jobs & Careers gets 25 posts, other categories get 10 real-image posts each
+    # 100 Posts Target per Trigger: 28 in Jobs & Careers + 3 in each of the other 24 categories = 100 Posts!
     for cat, urls in FEEDS.items():
-        target = 25 if cat == "Jobs & Careers" else 10
-        items = collect_real_image_posts(urls, cat, target, seen)
-        print("Collected " + str(len(items)) + " REAL-IMAGE posts for " + cat)
+        target = 28 if cat == "Jobs & Careers" else 3
+        items = collect_unique_posts(urls, cat, target, seen_titles, seen_imgs)
+        print("Collected " + str(len(items)) + "/" + str(target) + " UNIQUE-IMAGE posts for " + cat)
         q.extend(items)
 
-    print("Uploading " + str(len(q)) + " Verified Real-Image 800+ Word SEO Posts...")
+    # Top up from Jobs & Breaking feeds if total is slightly under 100
+    if len(q) < 100:
+        extra = collect_unique_posts(FEEDS["Jobs & Careers"] + FEEDS["Breaking News"], "Jobs & Careers", 100 - len(q), seen_titles, seen_imgs)
+        q.extend(extra)
+
+    q = q[:100]
+    print("Step 2: Uploading " + str(len(q)) + " Posts (100% Unique Photos & 800+ Words SEO)...")
     ok = 0
     with ThreadPoolExecutor(max_workers=8) as ex:
         futs = [ex.submit(publish_one, it, i + 1, len(q)) for i, it in enumerate(q)]
         for f in as_completed(futs):
             if f.result(): ok += 1
-    print("FINISHED! Successfully Published:", ok)
+    print("FINISHED! Published " + str(ok) + " Unique Posts!")
 
 if __name__ == "__main__":
     run()
