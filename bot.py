@@ -24,15 +24,18 @@ AUTHORS = [
     "Diego Hernandez (Mexico City)", "Camila Vargas (Santiago)"
 ]
 
+# PREMIUM INDIA & INTERNATIONAL JOB SOURCES (Sarkari Results & Global Portals)
 FEEDS = {
     "in_job": [
-        "https://news.google.com/rss/search?q=sarkari+naukri+recruitment+2026+india&hl=en-IN&gl=IN&ceid=IN:en",
-        "https://news.google.com/rss/search?q=ssc+upsc+railway+ibps+bank+vacancy+2026&hl=en-IN&gl=IN&ceid=IN:en",
-        "https://news.google.com/rss/search?q=police+teacher+psc+govt+jobs+2026+india&hl=en-IN&gl=IN&ceid=IN:en"
+        "https://news.google.com/rss/search?q=sarkari+result+latest+jobs+recruitment+2026+apply+online&hl=en-IN&gl=IN&ceid=IN:en",
+        "https://news.google.com/rss/search?q=free+job+alert+government+vacancy+upsc+ssc+banking+2026&hl=en-IN&gl=IN&ceid=IN:en",
+        "https://news.google.com/rss/search?q=railway+rrb+police+teacher+defence+bharti+2026+notification&hl=en-IN&gl=IN&ceid=IN:en",
+        "https://news.google.com/rss/search?q=india+post+gds+state+psc+police+recruitment+2026&hl=en-IN&gl=IN&ceid=IN:en"
     ],
     "int_job": [
-        "https://news.google.com/rss/search?q=remote+jobs+hiring+2026+worldwide&hl=en-US&gl=US&ceid=US:en",
-        "https://news.google.com/rss/search?q=visa+sponsorship+jobs+2026+uk+canada+usa+dubai&hl=en-US&gl=US&ceid=US:en"
+        "https://news.google.com/rss/search?q=visa+sponsorship+jobs+2026+uk+usa+canada+europe+dubai+hiring&hl=en-US&gl=US&ceid=US:en",
+        "https://news.google.com/rss/search?q=remote+jobs+hiring+worldwide+2026+software+finance+healthcare&hl=en-US&gl=US&ceid=US:en",
+        "https://news.google.com/rss/search?q=global+careers+abroad+employment+opportunities+2026&hl=en-US&gl=US&ceid=US:en"
     ],
     "auto": [
         "https://news.google.com/rss/search?q=new+car+launch+india+suv+ev+2026&hl=en-IN&gl=IN&ceid=IN:en",
@@ -66,11 +69,18 @@ def get_rss(url):
         return []
 
 def ai_write(title, cat, author):
+    # Strict rule: Never mention source websites, only original Fast Job reporting
+    prompt = (
+        "Write a 700-word professional HTML career/news article for " + cat + " by journalist " + author + " on: " + title + ". "
+        "CRITICAL RULE: Never mention any third-party source website, Sarkari Result, Free Job Alert, or external brand names. "
+        "The article must look completely independent and published exclusively by Fast Job Desk. "
+        "Start with <h1 class=\"seo-title\">" + title + "</h1> and <p class=\"intro-text\"><strong>Reported by " + author + " | Fast Job Recruitment Desk:</strong>... "
+        "Use 3 <h3 class=\"article-subheading\"> tags, 1 <table class=\"article-table\"> summarizing vacancies/details, and <p class=\"hashtags\">#FastJob #SarkariNaukri #GovtJobs</p>. Raw HTML only."
+    )
     if O_KEY:
-        prompt = "Write a 650-word HTML news/recruitment article for " + cat + " by " + author + " on: " + title + ". Start with <h1 class=\"seo-title\">" + title + "</h1> and <p class=\"intro-text\"><strong>Reported by " + author + ":</strong>... Use 3 <h3 class=\"article-subheading\">, 1 <table class=\"article-table\">, and <p class=\"hashtags\">. Raw HTML only."
         for m in ["gpt-4o-mini", "gpt-3.5-turbo"]:
             try:
-                r = requests.post("https://api.openai.com/v1/chat/completions", headers={"Authorization": "Bearer " + O_KEY}, json={"model": m, "messages": [{"role": "user", "content": prompt}]}, timeout=40)
+                r = requests.post("https://api.openai.com/v1/chat/completions", headers={"Authorization": "Bearer " + O_KEY}, json={"model": m, "messages": [{"role": "user", "content": prompt}]}, timeout=45)
                 if r.status_code == 200:
                     txt = r.json()["choices"][0]["message"]["content"].strip()
                     return txt.replace("```html", "").replace("```", "").strip()
@@ -78,13 +88,13 @@ def ai_write(title, cat, author):
                 pass
     return (
         '<h1 class="seo-title">' + title + '</h1>'
-        '<p class="intro-text"><strong>Reported by ' + author + ' | Fast Job Desk:</strong> Official live update and complete details regarding ' + title + '.</p>'
-        '<h3 class="article-subheading">Official Notification & Key Highlights</h3>'
-        '<p>The <strong>' + cat + '</strong> desk has released verified updates on <strong>' + title + '</strong>. Applicants and readers are advised to check the key parameters in the table below.</p>'
-        '<table class="article-table"><tr><th>Category</th><td>' + cat + '</td></tr><tr><th>Title</th><td>' + title + '</td></tr><tr><th>Bureau</th><td>' + author + '</td></tr><tr><th>Year</th><td>2026 Live Update</td></tr></table>'
-        '<h3 class="article-subheading">Important Guidelines & Next Steps</h3>'
-        '<p>Candidates and readers should verify all official dates, eligibility criteria, and documentation on the official portal before applying.</p>'
-        '<p class="hashtags">#FastJob #' + cat.replace(" ", "").replace("&", "") + ' #LiveUpdate2026</p>'
+        '<p class="intro-text"><strong>Reported by ' + author + ' | Fast Job Recruitment Desk:</strong> Official notification and complete vacancy details regarding ' + title + '.</p>'
+        '<h3 class="article-subheading">Vacancy Overview & Key Highlights</h3>'
+        '<p>The official recruitment board has announced new career opportunities under the <strong>' + cat + '</strong> category for <strong>' + title + '</strong>. Eligible candidates can review the official parameters below.</p>'
+        '<table class="article-table"><tr><th>Recruitment Board</th><td>Fast Job Verified Desk</td></tr><tr><th>Position Title</th><td>' + title + '</td></tr><tr><th>Reporting Editor</th><td>' + author + '</td></tr><tr><th>Session</th><td>2026 Active Vacancy</td></tr></table>'
+        '<h3 class="article-subheading">Eligibility Criteria & Important Dates</h3>'
+        '<p>Applicants must check all educational qualifications, age relaxation norms, and application deadlines before submitting their forms on the official portal.</p>'
+        '<p class="hashtags">#FastJob #GovtJobs #Recruitment2026 #JobAlerts</p>'
     )
 
 def collect(urls, cat, count, kind, seen):
@@ -100,9 +110,9 @@ def collect(urls, cat, count, kind, seen):
         uid = random.randint(100, 999)
         dt = datetime.now().strftime("%b %d")
         if kind == "job":
-            t = cat + " Recruitment 2026: Apply Online for Latest Vacancies (" + dt + " Alert #" + str(uid) + ")"
+            t = "Latest Recruitment 2026: Apply Online for Major Vacancies (" + dt + " Alert #" + str(uid) + ")"
         elif kind == "auto":
-            t = "New 2026 SUV & EV Launch: Price, Mileage, Specs & Review (" + dt + " Update #" + str(uid) + ")"
+            t = "New 2026 SUV & EV Launch: Price, Specs & Official Review (" + dt + " Update #" + str(uid) + ")"
         else:
             t = cat + " Special Report: Major Developments Announced (" + dt + " #" + str(uid) + ")"
         out.append((cat, t, random.choice(IMGS[kind])))
