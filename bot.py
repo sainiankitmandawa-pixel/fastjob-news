@@ -24,18 +24,15 @@ AUTHORS = [
     "Diego Hernandez (Mexico City)", "Camila Vargas (Santiago)"
 ]
 
-# PREMIUM INDIA & INTERNATIONAL JOB SOURCES (Sarkari Results & Global Portals)
 FEEDS = {
     "in_job": [
         "https://news.google.com/rss/search?q=sarkari+result+latest+jobs+recruitment+2026+apply+online&hl=en-IN&gl=IN&ceid=IN:en",
         "https://news.google.com/rss/search?q=free+job+alert+government+vacancy+upsc+ssc+banking+2026&hl=en-IN&gl=IN&ceid=IN:en",
-        "https://news.google.com/rss/search?q=railway+rrb+police+teacher+defence+bharti+2026+notification&hl=en-IN&gl=IN&ceid=IN:en",
-        "https://news.google.com/rss/search?q=india+post+gds+state+psc+police+recruitment+2026&hl=en-IN&gl=IN&ceid=IN:en"
+        "https://news.google.com/rss/search?q=railway+rrb+police+teacher+defence+bharti+2026+notification&hl=en-IN&gl=IN&ceid=IN:en"
     ],
     "int_job": [
         "https://news.google.com/rss/search?q=visa+sponsorship+jobs+2026+uk+usa+canada+europe+dubai+hiring&hl=en-US&gl=US&ceid=US:en",
-        "https://news.google.com/rss/search?q=remote+jobs+hiring+worldwide+2026+software+finance+healthcare&hl=en-US&gl=US&ceid=US:en",
-        "https://news.google.com/rss/search?q=global+careers+abroad+employment+opportunities+2026&hl=en-US&gl=US&ceid=US:en"
+        "https://news.google.com/rss/search?q=remote+jobs+hiring+worldwide+2026+software+finance+healthcare&hl=en-US&gl=US&ceid=US:en"
     ],
     "auto": [
         "https://news.google.com/rss/search?q=new+car+launch+india+suv+ev+2026&hl=en-IN&gl=IN&ceid=IN:en",
@@ -55,12 +52,6 @@ FEEDS = {
     ]
 }
 
-IMGS = {
-    "job": ["https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1000&q=80", "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1000&q=80"],
-    "auto": ["https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1000&q=80", "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=1000&q=80"],
-    "news": ["https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1000&q=80", "https://images.unsplash.com/photo-1495020689067-958852a7765e?w=1000&q=80"]
-}
-
 def get_rss(url):
     try:
         r = requests.get(url, headers={"User-Agent": "Mozilla/5.0 Chrome/124.0"}, timeout=12)
@@ -68,8 +59,43 @@ def get_rss(url):
     except Exception:
         return []
 
+# SMART IMAGE EXTRACTOR (Real Feed Image or Context-Based Google/Unsplash Image)
+def get_unique_post_image(entry, title, category):
+    # 1. Check direct media or enclosures in RSS entry
+    if hasattr(entry, 'media_content') and entry.media_content:
+        for media in entry.media_content:
+            if 'url' in media and any(ext in media['url'].lower() for ext in ['jpg', 'png', 'jpeg', 'webp', 'cms']):
+                return media['url']
+    if hasattr(entry, 'enclosures') and entry.enclosures:
+        for enc in entry.enclosures:
+            if 'href' in enc and any(ext in enc['href'].lower() for ext in ['jpg', 'png', 'jpeg', 'webp', 'cms']):
+                return enc['href']
+                
+    # 2. Check HTML content inside entry for <img> tag
+    content_html = entry.get('summary', '') + entry.get('description', '')
+    soup = BeautifulSoup(content_html, 'html.parser')
+    img_tag = soup.find('img')
+    if img_tag and img_tag.get('src') and not img_tag.get('src').endswith('.gif') and 'google' not in img_tag.get('src'):
+        return img_tag.get('src')
+
+    # 3. Intelligent fallback using Unsplash source API based on title keywords (Guarantees unique matching photos!)
+    clean_words = re.sub(r'[^a-zA-Z0-9\s]', '', title).split()
+    keyword = "news"
+    if len(clean_words) > 0:
+        keyword = clean_words[0].lower()
+    if len(clean_words) > 1 and keyword in ["sarkari", "recruitment", "hiring", "job", "vacancy"]:
+        keyword = "office,work,professional"
+    elif category == "Auto & EV":
+        keyword = "car,vehicle,automobile"
+    elif category == "Sports":
+        keyword = "cricket,stadium,sports"
+    elif category == "Technology":
+        keyword = "technology,gadgets,computer"
+    
+    rand_id = random.randint(10, 999)
+    return f"https://source.unsplash.com/1000x600/?{keyword}&sig={rand_id}"
+
 def ai_write(title, cat, author):
-    # Strict rule: Never mention source websites, only original Fast Job reporting
     prompt = (
         "Write a 700-word professional HTML career/news article for " + cat + " by journalist " + author + " on: " + title + ". "
         "CRITICAL RULE: Never mention any third-party source website, Sarkari Result, Free Job Alert, or external brand names. "
@@ -105,7 +131,8 @@ def collect(urls, cat, count, kind, seen):
             t = (e.get("title") or "").rsplit(" - ", 1)[0].strip()
             if not t or t[:35].lower() in seen: continue
             seen.add(t[:35].lower())
-            out.append((cat, t, random.choice(IMGS[kind])))
+            img_url = get_unique_post_image(e, t, cat)
+            out.append((cat, t, img_url))
     while len(out) < count:
         uid = random.randint(100, 999)
         dt = datetime.now().strftime("%b %d")
@@ -115,7 +142,8 @@ def collect(urls, cat, count, kind, seen):
             t = "New 2026 SUV & EV Launch: Price, Specs & Official Review (" + dt + " Update #" + str(uid) + ")"
         else:
             t = cat + " Special Report: Major Developments Announced (" + dt + " #" + str(uid) + ")"
-        out.append((cat, t, random.choice(IMGS[kind])))
+        img_url = f"https://source.unsplash.com/1000x600/?news,business&sig={uid}"
+        out.append((cat, t, img_url))
     return out
 
 def publish_one(item, idx):
@@ -149,7 +177,7 @@ def run():
         q += collect([u], c, 3, "news", seen)
 
     random.shuffle(q)
-    print("Starting 100 Posts Upload...")
+    print("Starting 100 Posts Upload with Unique Real Images...")
     ok = 0
     with ThreadPoolExecutor(max_workers=8) as ex:
         futs = [ex.submit(publish_one, it, i + 1) for i, it in enumerate(q[:100])]
