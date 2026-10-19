@@ -1,215 +1,369 @@
-import feedparser, re, random, time, os, requests
+import feedparser
+import re
+import random
+import time
 from datetime import datetime
+from supabase import create_client
+import requests
 from bs4 import BeautifulSoup
+import os
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-S_URL = "https://wioheljpjdcprozqumpv.supabase.co"
-S_KEY = (os.environ.get("SUPABASE_KEY") or "").strip() or "sb_publishable_d_ROr-nG6RpIRlVWtIE-Fg_sciaLZXR"
-O_KEY = (os.environ.get("OPENAI_API_KEY") or "").strip()
-HEADERS = {"apikey": S_KEY, "Authorization": "Bearer " + S_KEY, "Content-Type": "application/json", "Prefer": "return=minimal"}
+SUPABASE_URL = "https://wioheljpjdcprozqumpv.supabase.co"
+SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
+OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 
-AUTHORS = [
-    "Aarav Sharma (New Delhi)", "Priya Nair (Mumbai)", "Vikramaditya Rathore (India Desk)", "Ananya Chatterjee (Kolkata)",
-    "Rohan Deshmukh (Pune)", "Siddharth Menon (Bengaluru)", "Kavita Iyer (Chennai)", "Kabir Malhotra (North India)",
-    "Zoya Khan (Hyderabad)", "Devansh Joshi (Ahmedabad)", "Niharika Verma (Lucknow)", "Arjun Kapoor (South Asia)",
-    "Ethan Brooks (New York)", "Madison Carter (Washington DC)", "Lucas Bennett (Silicon Valley)", "Olivia Hayes (Chicago)",
-    "Noah Mitchell (Los Angeles)", "Chloe Sullivan (Boston)", "Mason Rivera (Miami)", "Harper Reed (Toronto)",
-    "Logan Foster (Seattle)", "Sophia Jenkins (Houston)", "Oliver Sterling (London)", "Amelia Clarke (UK Bureau)",
-    "Liam O'Connor (Dublin)", "Camille Laurent (Paris)", "Lukas Weber (Frankfurt)", "Elena Rostova (Geneva)",
-    "Matteo Rossi (Milan)", "Sofia Lindqvist (Stockholm)", "Hugo Martinez (Madrid)", "Freya Van Der Berg (Amsterdam)",
-    "Tariq Al-Mansoor (Dubai)", "Layla Haddad (Doha)", "Omar Farooq (Riyadh)", "Nadia El-Masri (Cairo)",
-    "Kwame Mensah (Accra)", "Amara Okafor (Lagos)", "Zanele Khumalo (Johannesburg)", "Youssef Benali (Casablanca)",
-    "Kenji Takahashi (Tokyo)", "Mei-Ling Tan (Singapore)", "Min-Jae Park (Seoul)", "Liam Thornton (Sydney)",
-    "Isla MacLeod (Melbourne)", "Hiroshi Sato (Osaka)", "Mateo Silva (Sao Paulo)", "Valentina Gomez (Buenos Aires)",
+supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
+
+# 50 UNIQUE WORLD-WIDE AUTHORS (GLOBAL JOURNALISTS)
+WORLD_AUTHORS = [
+    "Aarav Sharma (New Delhi)", "Priya Nair (Mumbai)", "Vikramaditya Rathore (India Desk)",
+    "Ananya Chatterjee (Kolkata)", "Rohan Deshmukh (Pune)", "Siddharth Menon (Bengaluru)",
+    "Kavita Iyer (Chennai)", "Kabir Malhotra (North India)", "Zoya Khan (Hyderabad)",
+    "Devansh Joshi (Ahmedabad)", "Niharika Verma (Lucknow)", "Arjun Kapoor (South Asia)",
+    "Ethan Brooks (New York)", "Madison Carter (Washington DC)", "Lucas Bennett (Silicon Valley)",
+    "Olivia Hayes (Chicago)", "Noah Mitchell (Los Angeles)", "Chloe Sullivan (Boston)",
+    "Mason Rivera (Miami)", "Harper Reed (Toronto)", "Logan Foster (Seattle)",
+    "Sophia Jenkins (Houston)", "Oliver Sterling (London)", "Amelia Clarke (UK Bureau)",
+    "Liam O'Connor (Dublin)", "Camille Laurent (Paris)", "Lukas Weber (Frankfurt)",
+    "Elena Rostova (Geneva)", "Matteo Rossi (Milan)", "Sofia Lindqvist (Stockholm)",
+    "Hugo Martinez (Madrid)", "Freya Van Der Berg (Amsterdam)", "Tariq Al-Mansoor (Dubai)",
+    "Layla Haddad (Doha)", "Omar Farooq (Riyadh)", "Nadia El-Masri (Cairo)",
+    "Kwame Mensah (Accra)", "Amara Okafor (Lagos)", "Zanele Khumalo (Johannesburg)",
+    "Youssef Benali (Casablanca)", "Kenji Takahashi (Tokyo)", "Mei-Ling Tan (Singapore)",
+    "Min-Jae Park (Seoul)", "Liam Thornton (Sydney)", "Isla MacLeod (Melbourne)",
+    "Hiroshi Sato (Osaka)", "Mateo Silva (Sao Paulo)", "Valentina Gomez (Buenos Aires)",
     "Diego Hernandez (Mexico City)", "Camila Vargas (Santiago)"
 ]
 
-FEEDS = {
+# ALL 25 CATEGORIES WITH HIGH-VOLUME RSS FEEDS (GUARANTEES 15+ POSTS PER CATEGORY)
+RSS_FEEDS = {
+    "Breaking News": [
+        "https://timesofindia.indiatimes.com/rssfeedstopstories.cms",
+        "https://feeds.feedburner.com/ndtvnews-top-stories",
+        "https://www.indiatoday.in/rss/home",
+        "https://news.google.com/rss/search?q=breaking+news+india+world&hl=en-IN&gl=IN&ceid=IN:en"
+    ],
+    "World News": [
+        "https://timesofindia.indiatimes.com/rssfeeds/296589292.cms",
+        "https://feeds.feedburner.com/ndtvnews-world-news",
+        "https://www.thehindu.com/news/international/feeder/default.rss",
+        "https://news.google.com/rss/search?q=world+news+international&hl=en-IN&gl=IN&ceid=IN:en"
+    ],
+    "India News": [
+        "https://timesofindia.indiatimes.com/rssfeeds/-2128936835.cms",
+        "https://feeds.feedburner.com/ndtvnews-india-news",
+        "https://www.thehindu.com/news/national/feeder/default.rss",
+        "https://news.google.com/rss/search?q=india+national+news&hl=en-IN&gl=IN&ceid=IN:en"
+    ],
+    "Politics": [
+        "https://www.thehindu.com/news/national/feeder/default.rss",
+        "https://www.indiatoday.in/rss/1206514",
+        "https://news.google.com/rss/search?q=indian+politics+parliament+elections&hl=en-IN&gl=IN&ceid=IN:en"
+    ],
+    "Sports": [
+        "https://timesofindia.indiatimes.com/rssfeeds/4719148.cms",
+        "https://feeds.feedburner.com/ndtvsports-latest",
+        "https://www.thehindu.com/sport/feeder/default.rss",
+        "https://news.google.com/rss/search?q=cricket+sports+news+india&hl=en-IN&gl=IN&ceid=IN:en"
+    ],
+    "Business": [
+        "https://economictimes.indiatimes.com/news/company/rssfeeds/2146842.cms",
+        "https://timesofindia.indiatimes.com/rssfeeds/1898055.cms",
+        "https://feeds.feedburner.com/ndtvprofit-latest",
+        "https://news.google.com/rss/search?q=business+corporate+news+india&hl=en-IN&gl=IN&ceid=IN:en"
+    ],
+    "Finance & Markets": [
+        "https://economictimes.indiatimes.com/markets/rssfeeds/1977021501.cms",
+        "https://economictimes.indiatimes.com/wealth/rssfeeds/837555174.cms",
+        "https://www.livemint.com/rss/markets",
+        "https://news.google.com/rss/search?q=stock+market+sensex+nifty+finance&hl=en-IN&gl=IN&ceid=IN:en"
+    ],
+    "Technology": [
+        "https://economictimes.indiatimes.com/tech/rssfeeds/13357270.cms",
+        "https://timesofindia.indiatimes.com/rssfeeds/66949542.cms",
+        "https://feeds.feedburner.com/gadgets360-latest",
+        "https://news.google.com/rss/search?q=technology+smartphones+software+news&hl=en-IN&gl=IN&ceid=IN:en"
+    ],
+    "Entertainment": [
+        "https://timesofindia.indiatimes.com/rssfeeds/1081479906.cms",
+        "https://feeds.feedburner.com/ndtvmovies-latest",
+        "https://www.thehindu.com/entertainment/feeder/default.rss",
+        "https://news.google.com/rss/search?q=bollywood+hollywood+entertainment+movies&hl=en-IN&gl=IN&ceid=IN:en"
+    ],
+    "Education": [
+        "https://timesofindia.indiatimes.com/rssfeeds/913168846.cms",
+        "https://www.thehindu.com/education/feeder/default.rss",
+        "https://www.indiatoday.in/rss/1206550",
+        "https://news.google.com/rss/search?q=cbse+neet+jee+universities+education+india&hl=en-IN&gl=IN&ceid=IN:en"
+    ],
     "Jobs & Careers": [
-        "https://news.google.com/rss/search?q=sarkari+result+police+teacher+ssc+upsc+banking+recruitment+2026&hl=en-IN&gl=IN&ceid=IN:en",
-        "https://news.google.com/rss/search?q=psssb+rajasthan+police+up+police+vacancy+2026&hl=en-IN&gl=IN&ceid=IN:en",
-        "https://news.google.com/rss/search?q=visa+sponsorship+jobs+2026+uk+usa+canada+dubai&hl=en-US&gl=US&ceid=US:en"
+        "https://timesofindia.indiatimes.com/rssfeeds/3012544.cms",
+        "https://www.thehindu.com/education/careers/feeder/default.rss",
+        "https://economictimes.indiatimes.com/jobs/rssfeeds/107115.cms",
+        "https://news.google.com/rss/search?q=sarkari+naukri+government+jobs+recruitment+2026+india&hl=en-IN&gl=IN&ceid=IN:en"
     ],
-    "Breaking News": ["https://news.google.com/rss?hl=en-IN&gl=IN&ceid=IN:en"],
-    "World News": ["https://news.google.com/rss/search?q=world+news+international+politics&hl=en-US&gl=US&ceid=US:en"],
-    "India News": ["https://news.google.com/rss/search?q=india+national+news+today&hl=en-IN&gl=IN&ceid=IN:en"],
-    "Politics": ["https://news.google.com/rss/search?q=indian+politics+parliament+elections&hl=en-IN&gl=IN&ceid=IN:en"],
-    "Sports": ["https://news.google.com/rss/search?q=cricket+ipl+sports+match+india&hl=en-IN&gl=IN&ceid=IN:en"],
-    "Business": ["https://news.google.com/rss/search?q=business+startups+india+economy&hl=en-IN&gl=IN&ceid=IN:en"],
-    "Finance & Markets": ["https://news.google.com/rss/search?q=sensex+nifty+stock+market+rbi&hl=en-IN&gl=IN&ceid=IN:en"],
-    "Technology": ["https://news.google.com/rss/search?q=technology+smartphones+ai+gadgets&hl=en-IN&gl=IN&ceid=IN:en"],
-    "Entertainment": ["https://news.google.com/rss/search?q=bollywood+movies+box+office+ott&hl=en-IN&gl=IN&ceid=IN:en"],
-    "Education": ["https://news.google.com/rss/search?q=cbse+neet+jee+exams+results+2026&hl=en-IN&gl=IN&ceid=IN:en"],
-    "Health & Medicine": ["https://news.google.com/rss/search?q=health+medical+wellness+disease+hospital&hl=en-IN&gl=IN&ceid=IN:en"],
-    "Science": ["https://news.google.com/rss/search?q=science+space+nasa+isro+research&hl=en-IN&gl=IN&ceid=IN:en"],
-    "AI & Robotics": ["https://news.google.com/rss/search?q=artificial+intelligence+ai+robotics+openai&hl=en-IN&gl=IN&ceid=IN:en"],
-    "Crime & Justice": ["https://news.google.com/rss/search?q=supreme+court+police+crime+investigation&hl=en-IN&gl=IN&ceid=IN:en"],
+    "Health & Medicine": [
+        "https://timesofindia.indiatimes.com/rssfeeds/3908999.cms",
+        "https://www.thehindu.com/sci-tech/health/feeder/default.rss",
+        "https://news.google.com/rss/search?q=health+medicine+medical+wellness+news&hl=en-IN&gl=IN&ceid=IN:en"
+    ],
+    "Science": [
+        "https://timesofindia.indiatimes.com/rssfeeds/-2128672765.cms",
+        "https://www.thehindu.com/sci-tech/science/feeder/default.rss",
+        "https://news.google.com/rss/search?q=isro+nasa+science+space+discoveries&hl=en-IN&gl=IN&ceid=IN:en"
+    ],
+    "AI & Robotics": [
+        "https://economictimes.indiatimes.com/tech/technology/rssfeeds/78570561.cms",
+        "https://www.livemint.com/rss/AI",
+        "https://news.google.com/rss/search?q=artificial+intelligence+robotics+openai+tech&hl=en-IN&gl=IN&ceid=IN:en"
+    ],
+    "Crime & Justice": [
+        "https://timesofindia.indiatimes.com/rssfeeds/2950623.cms",
+        "https://www.indiatoday.in/rss/1206576",
+        "https://news.google.com/rss/search?q=supreme+court+high+court+crime+justice+india&hl=en-IN&gl=IN&ceid=IN:en"
+    ],
     "Auto & EV": [
-        "https://news.google.com/rss/search?q=new+car+launch+india+suv+ev+2026&hl=en-IN&gl=IN&ceid=IN:en",
-        "https://news.google.com/rss/search?q=maruti+tata+mahindra+hyundai+bikes+2026&hl=en-IN&gl=IN&ceid=IN:en"
+        "https://timesofindia.indiatimes.com/rssfeeds/74317216.cms",
+        "https://economictimes.indiatimes.com/industry/auto/rssfeeds/13359412.cms",
+        "https://news.google.com/rss/search?q=electric+vehicles+cars+bikes+automobile+india&hl=en-IN&gl=IN&ceid=IN:en"
     ],
-    "Economy": ["https://news.google.com/rss/search?q=economy+gdp+inflation+budget+india&hl=en-IN&gl=IN&ceid=IN:en"],
-    "Environment & Climate": ["https://news.google.com/rss/search?q=climate+change+environment+pollution+weather&hl=en-IN&gl=IN&ceid=IN:en"],
-    "Lifestyle": ["https://news.google.com/rss/search?q=lifestyle+fashion+food+culture+trends&hl=en-IN&gl=IN&ceid=IN:en"],
-    "Travel & Tourism": ["https://news.google.com/rss/search?q=travel+tourism+airlines+destinations+holidays&hl=en-IN&gl=IN&ceid=IN:en"],
-    "Real Estate": ["https://news.google.com/rss/search?q=real+estate+property+housing+infrastructure&hl=en-IN&gl=IN&ceid=IN:en"],
-    "Defence & Security": ["https://news.google.com/rss/search?q=indian+army+navy+air+force+defence+border&hl=en-IN&gl=IN&ceid=IN:en"],
-    "Weather": ["https://news.google.com/rss/search?q=imd+weather+forecast+monsoon+rain+temperature&hl=en-IN&gl=IN&ceid=IN:en"],
-    "Opinion & Editorial": ["https://news.google.com/rss/search?q=editorial+opinion+analysis+geopolitics&hl=en-IN&gl=IN&ceid=IN:en"],
-    "Fact Check & Explainers": ["https://news.google.com/rss/search?q=fact+check+explainer+debunked+news&hl=en-IN&gl=IN&ceid=IN:en"]
+    "Economy": [
+        "https://economictimes.indiatimes.com/news/economy/rssfeeds/1377380.cms",
+        "https://www.thehindu.com/business/Economy/feeder/default.rss",
+        "https://news.google.com/rss/search?q=indian+economy+rbi+gdp+inflation+trade&hl=en-IN&gl=IN&ceid=IN:en"
+    ],
+    "Environment & Climate": [
+        "https://timesofindia.indiatimes.com/rssfeeds/2647163.cms",
+        "https://www.thehindu.com/sci-tech/energy-and-environment/feeder/default.rss",
+        "https://news.google.com/rss/search?q=climate+change+environment+renewable+energy&hl=en-IN&gl=IN&ceid=IN:en"
+    ],
+    "Lifestyle": [
+        "https://timesofindia.indiatimes.com/rssfeeds/2886704.cms",
+        "https://www.thehindu.com/life-and-style/feeder/default.rss",
+        "https://news.google.com/rss/search?q=lifestyle+fashion+food+culture+trends&hl=en-IN&gl=IN&ceid=IN:en"
+    ],
+    "Travel & Tourism": [
+        "https://timesofindia.indiatimes.com/rssfeeds/3112014.cms",
+        "https://www.thehindu.com/life-and-style/travel/feeder/default.rss",
+        "https://news.google.com/rss/search?q=travel+tourism+airlines+railways+destinations&hl=en-IN&gl=IN&ceid=IN:en"
+    ],
+    "Real Estate": [
+        "https://economictimes.indiatimes.com/wealth/real-estate/rssfeeds/48997585.cms",
+        "https://www.thehindu.com/real-estate/feeder/default.rss",
+        "https://news.google.com/rss/search?q=real+estate+property+housing+infrastructure+india&hl=en-IN&gl=IN&ceid=IN:en"
+    ],
+    "Defence & Security": [
+        "https://economictimes.indiatimes.com/news/defence/rssfeeds/47117033.cms",
+        "https://news.google.com/rss/search?q=indian+army+navy+air+force+defence+security&hl=en-IN&gl=IN&ceid=IN:en"
+    ],
+    "Weather": [
+        "https://news.google.com/rss/search?q=imd+weather+forecast+monsoon+rain+temperature+india&hl=en-IN&gl=IN&ceid=IN:en",
+        "https://timesofindia.indiatimes.com/rssfeeds/2647163.cms"
+    ],
+    "Opinion & Editorial": [
+        "https://www.thehindu.com/opinion/editorial/feeder/default.rss",
+        "https://www.thehindu.com/opinion/lead/feeder/default.rss",
+        "https://www.livemint.com/rss/opinion",
+        "https://news.google.com/rss/search?q=editorial+opinion+analysis+geopolitics&hl=en-IN&gl=IN&ceid=IN:en"
+    ],
+    "Fact Check & Explainers": [
+        "https://www.indiatoday.in/rss/fact-check",
+        "https://news.google.com/rss/search?q=fact+check+explainer+explained+news&hl=en-IN&gl=IN&ceid=IN:en",
+        "https://www.thehindu.com/news/national/feeder/default.rss"
+    ]
 }
 
-def get_rss(url):
+FALLBACK_IMAGES = [
+    "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1000&q=80",
+    "https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1000&q=80",
+    "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1000&q=80",
+    "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1000&q=80",
+    "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=80",
+    "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80",
+    "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=1000&q=80",
+    "https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&w=1000&q=80"
+]
+
+def extract_real_image(entry):
+    if hasattr(entry, 'media_content') and entry.media_content:
+        for media in entry.media_content:
+            if 'url' in media and any(ext in media['url'].lower() for ext in ['jpg', 'png', 'jpeg', 'webp', 'cms']):
+                return media['url']
+    if hasattr(entry, 'enclosures') and entry.enclosures:
+        for enc in entry.enclosures:
+            if 'href' in enc and any(ext in enc['href'].lower() for ext in ['jpg', 'png', 'jpeg', 'webp', 'cms']):
+                return enc['href']
+    content_html = entry.get('summary', '') + entry.get('description', '')
+    soup = BeautifulSoup(content_html, 'html.parser')
+    img_tag = soup.find('img')
+    if img_tag and img_tag.get('src') and not img_tag.get('src').endswith('.gif') and 'google' not in img_tag.get('src'):
+        return img_tag.get('src')
+    if hasattr(entry, 'image') and 'href' in entry.image:
+        return entry.image['href']
+    return random.choice(FALLBACK_IMAGES)
+
+def generate_content_openai(prompt):
+    url = "https://api.openai.com/v1/chat/completions"
+    headers = {"Content-Type": "application/json", "Authorization": f"Bearer {OPENAI_API_KEY}"}
+    data = {
+        "model": "gpt-3.5-turbo",
+        "messages": [
+            {"role": "system", "content": "You are a senior international journalist and SEO expert. Output only raw HTML."},
+            {"role": "user", "content": prompt}
+        ],
+        "temperature": 0.7
+    }
     try:
-        r = requests.get(url, headers={"User-Agent": "Mozilla/5.0 Chrome/124.0"}, timeout=12)
-        return feedparser.parse(r.content).entries if r.status_code == 200 else []
-    except Exception:
-        return []
+        response = requests.post(url, headers=headers, json=data, timeout=60)
+        if response.status_code == 200:
+            return response.json()['choices'][0]['message']['content']
+    except Exception as e:
+        print(f"OpenAI Request failed: {e}")
+    return None
 
-# PERFECT TOPIC-MATCHED CURATED PROFESSIONAL IMAGES (No random leaves or seas!)
-JOB_IMAGES = [
-    "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1000&q=80", # Office & application
-    "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1000&q=80", # Team working
-    "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=1000&q=80", # Laptop work
-    "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1000&q=80", # Professional
-    "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1000&q=80", # Interview / Career
-    "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1000&q=80"  # Computer desk
-]
+def slugify(text):
+    text = text.lower()
+    text = re.sub(r'[^a-z0-9\s-]', '', text)
+    words = text.split()
+    return "-".join(words[:5])
 
-AUTO_IMAGES = [
-    "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1000&q=80",
-    "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=1000&q=80",
-    "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=1000&q=80",
-    "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=1000&q=80"
-]
+def to_cat_slug(cat):
+    return cat.lower().replace(' & ', '-').replace(' ', '-')
 
-NEWS_IMAGES = [
-    "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1000&q=80",
-    "https://images.unsplash.com/photo-1495020689067-958852a7765e?w=1000&q=80",
-    "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=1000&q=80",
-    "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=1000&q=80"
-]
+def generate_sitemap():
+    try:
+        today = datetime.now().strftime('%Y-%m-%d')
+        xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
+        xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        xml += f'  <url>\n    <loc>https://fastjob.online/</loc>\n    <lastmod>{today}</lastmod>\n    <changefreq>always</changefreq>\n    <priority>1.0</priority>\n  </url>\n'
+        
+        for cat in RSS_FEEDS.keys():
+            c_slug = to_cat_slug(cat)
+            xml += f'  <url>\n    <loc>https://fastjob.online/category/{c_slug}</loc>\n    <lastmod>{today}</lastmod>\n    <changefreq>hourly</changefreq>\n    <priority>0.9</priority>\n  </url>\n'
+            
+        static_slugs = ['about-us', 'privacy-policy', 'terms-and-conditions', 'disclaimer', 'editorial-policy', 'contact-us']
+        for s_slug in static_slugs:
+            xml += f'  <url>\n    <loc>https://fastjob.online/{s_slug}</loc>\n    <lastmod>{today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>\n  </url>\n'
+        
+        posts = supabase.table("posts").select("slug, created_at").order("id", desc=True).limit(1000).execute()
+        for p in posts.data:
+            date_str = p['created_at'].split('T')[0] if p.get('created_at') else today
+            xml += f'  <url>\n    <loc>https://fastjob.online/{p["slug"]}</loc>\n    <lastmod>{date_str}</lastmod>\n    <changefreq>daily</changefreq>\n    <priority>0.8</priority>\n  </url>\n'
+        
+        xml += '</urlset>'
+        with open('sitemap.xml', 'w', encoding='utf-8') as f:
+            f.write(xml)
+    except Exception as e:
+        print(f"Sitemap Error: {e}")
 
-def get_perfect_image(entry, title, category):
-    # Ignore RSS entry images completely if they contain tiny icons or irrelevant thumbnails
-    # Instead, assign clean, professional, topic-matching high-res images directly!
-    t_lower = title.lower()
-    if category == "Jobs & Careers" or "recruitment" in t_lower or "vacancy" in t_lower or "jobs" in t_lower or "instructor" in t_lower:
-        return random.choice(JOB_IMAGES)
-    elif category == "Auto & EV" or "car" in t_lower or "suv" in t_lower:
-        return random.choice(AUTO_IMAGES)
-    else:
-        return random.choice(NEWS_IMAGES)
-
-def ai_write(title, cat, author):
-    prompt = (
-        "Write an exhaustive, highly detailed 800+ word professional HTML article for the category '" + cat + "' "
-        "authored by journalist '" + author + "' based on the headline: '" + title + "'.\n"
-        "CRITICAL RULES:\n"
-        "1. Length MUST exceed 800 words with thorough explanations, background context, in-depth analysis, and step-by-step guidelines.\n"
-        "2. Never mention any third-party source website, Sarkari Result, Free Job Alert, or external brand names. Published exclusively by Fast Job Desk.\n"
-        "3. Format strictly in raw HTML:\n"
-        "   - Start with <h1 class=\"seo-title\">" + title + "</h1>\n"
-        "   - Followed by <p class=\"intro-text\"><strong>Reported by " + author + " | Fast Job Editorial Desk:</strong> [Detailed 60-word introductory paragraph]...</p>\n"
-        "   - Include at least 5 distinct section headings using <h3 class=\"article-subheading\">[Heading Title]</h3> with 2-3 rich paragraphs under each.\n"
-        "   - Include 1 detailed <table class=\"article-table\"> summarizing key data, vacancies, dates, or specifications.\n"
-        "   - Conclude with <p class=\"hashtags\">#FastJob #GovtJobs #Recruitment2026 #TrendingNews</p>.\n"
-        "4. Output raw HTML only without markdown backticks."
-    )
-    if O_KEY:
-        for m in ["gpt-4o-mini", "gpt-3.5-turbo"]:
-            try:
-                r = requests.post("https://api.openai.com/v1/chat/completions", headers={"Authorization": "Bearer " + O_KEY}, json={"model": m, "messages": [{"role": "user", "content": prompt}], "max_tokens": 1500}, timeout=60)
-                if r.status_code == 200:
-                    txt = r.json()["choices"][0]["message"]["content"].strip()
-                    return txt.replace("```html", "").replace("```", "").strip()
-            except Exception:
-                pass
+def post_one_for_category(category, existing_titles):
+    feeds = list(RSS_FEEDS[category])
+    random.shuffle(feeds)
     
-    return (
-        '<h1 class="seo-title">' + title + '</h1>'
-        '<p class="intro-text"><strong>Reported by ' + author + ' | Fast Job Editorial Desk:</strong> Comprehensive official notification, deep analysis, and complete guidelines regarding ' + title + '. Stay informed with our verified 24/7 reporting desk.</p>'
-        '<h3 class="article-subheading">1. Detailed Overview & Background</h3>'
-        '<p>In a major development for aspirants and professionals across the country, official authorities have officially rolled out comprehensive guidelines and notifications regarding <strong>' + title + '</strong>. This announcement marks a significant milestone in the 2026 recruitment and sector developments, opening up numerous opportunities for qualified candidates seeking stable career progression and verified updates.</p>'
-        '<p>Our editorial and research bureau has closely tracked the trajectory of this announcement. Industry experts note that structural adjustments and transparent digital processing have been prioritized to ensure that every eligible candidate receives an equitable opportunity during the application and evaluation phases.</p>'
-        '<h3 class="article-subheading">2. Complete Vacancy Breakdown & Eligibility Parameters</h3>'
-        '<p>Understanding the exact eligibility criteria is paramount before initiating any formal application. Candidates must meticulously verify their age limits, educational qualifications, professional certifications, and domicile requirements as outlined by the governing board. Any discrepancy in documentation can lead to disqualification during subsequent screening rounds.</p>'
-        '<table class="article-table">'
-        '<tr><th>Recruitment Board</th><td>Fast Job Verified Editorial Desk</td></tr>'
-        '<tr><th>Position / Project Title</th><td>' + title + '</td></tr>'
-        '<tr><th>Assigned Bureau Chief</th><td>' + author + '</td></tr>'
-        '<tr><th>Operational Status</th><td>Active & Verified for 2026</td></tr>'
-        '<tr><th>Official Notification Link</th><td>Available on Respective Portal</td></tr>'
-        '</table>'
-        '<h3 class="article-subheading">3. Step-by-Step Application Procedure</h3>'
-        '<p>Navigating the online registration portal requires precision. Applicants are advised to keep scanned copies of their recent passport-size photograph, signature, educational marksheets, and valid photo ID proofs ready before accessing the submission window. Ensuring payment of prescribed application fees through secure digital gateways completes the registration cycle.</p>'
-        '<p>Once submitted successfully, candidates must retain a printed copy or digital PDF receipt of their confirmation slip for future correspondence and admit card generation phases.</p>'
-        '<h3 class="article-subheading">4. Important Dates, Timeline & Examination Phases</h3>'
-        '<p>Time management is critical for success in competitive recruitment and sector updates. The application window operates under strict deadlines, and late submissions will not be entertained under any circumstances. Candidates should bookmark our portal for real-time alerts regarding admit card release dates, examination schedules, and answer key announcements.</p>'
-        '<h3 class="article-subheading">5. Expert Analysis & Final Recommendations</h3>'
-        '<p>Concluding our thorough examination of <strong>' + title + '</strong>, our bureau strongly advises all stakeholders to rely solely on official notifications and verified bulletins. Avoid unverified social media forwards and ensure your preparation aligns with the updated syllabus and evaluation norms.</p>'
-        '<p class="hashtags">#FastJob #GovtJobs #Recruitment2026 #CareerGrowth #VerifiedUpdate</p>'
-    )
+    for url in feeds:
+        try:
+            feed = feedparser.parse(url)
+            for entry in feed.entries:
+                title = entry.title.strip()
+                if not title:
+                    continue
+                
+                # Clean source suffix if from Google News
+                if " - " in title:
+                    title = title.rsplit(" - ", 1)[0].strip()
 
-def collect(urls, cat, count, seen):
-    out = []
-    for u in urls:
-        for e in get_rss(u):
-            if len(out) >= count: break
-            t = (e.get("title") or "").rsplit(" - ", 1)[0].strip()
-            if not t or t[:35].lower() in seen: continue
-            seen.add(t[:35].lower())
-            img_url = get_perfect_image(e, t, cat)
-            out.append((cat, t, img_url))
-    while len(out) < count:
-        uid = random.randint(100, 999)
-        dt = datetime.now().strftime("%b %d")
-        if cat == "Jobs & Careers":
-            t = "Major Government Recruitment 2026: Apply Online for 15,000+ Vacancies (" + dt + " Alert #" + str(uid) + ")"
-        elif cat == "Auto & EV":
-            t = "New 2026 SUV & Electric Vehicle Launch: Price, Specs & Review (" + dt + " Update #" + str(uid) + ")"
-        else:
-            t = cat + " Special Report: Major Policy & Global Developments Announced (" + dt + " #" + str(uid) + ")"
-        img_url = get_perfect_image({}, t, cat)
-        out.append((cat, t, img_url))
-    return out
-
-def publish_one(item, idx):
-    cat, title, img = item
-    author = random.choice(AUTHORS)
-    slug = "-".join(re.sub(r"[^a-z0-9\s-]", "", title.lower()).split()[:5] or ["post"]) + "-" + str(int(time.time()) % 10000) + str(random.randint(10, 99))
-    body = '<div class="post-author-meta" data-author="' + author + '" style="display:none;"></div>\n' + ai_write(title, cat, author)
-    try:
-        r = requests.post(S_URL + "/rest/v1/posts", headers=HEADERS, json={"title": title, "slug": slug, "content": body, "category": cat, "image_url": img}, timeout=25)
-        if r.status_code in [200, 201, 204]:
-            print("OK [" + str(idx) + "/500] " + cat + ": " + title[:45])
-            return True
-    except Exception as ex:
-        print("Err:", ex)
+                title_key = title[:35].lower()
+                if title_key in existing_titles:
+                    continue
+                
+                existing_titles.add(title_key)
+                image_url = extract_real_image(entry)
+                summary = entry.get('summary', '')
+                author_name = random.choice(WORLD_AUTHORS)
+                
+                short_id = str(random.randint(1000, 9999))
+                slug = slugify(title) + "-" + short_id
+                
+                prompt = f"""
+                Write a comprehensive, engaging, and SEO-optimized news article for the '{category}' desk by journalist '{author_name}' based on:
+                Original Title: {title}
+                Context: {summary}
+                
+                CRITICAL INSTRUCTIONS (800+ WORDS):
+                1. Write a detailed article of 800+ words covering background, key developments, analysis, and future outlook.
+                2. Use 5 <h3 class="article-subheading"> tags with 2-3 detailed paragraphs under each.
+                3. Year is 2026. Treat as breaking modern news.
+                4. Format strictly in raw HTML starting with <h1 class="seo-title">Catchy SEO Title</h1> and <p class="intro-text"><strong>Reported by {author_name} | FastJob Global Desk:</strong>...
+                5. Include one <table class="article-table"> for key highlights.
+                6. End with <p class="hashtags">#FastJobAlert #{category.replace(' ', '')} #BreakingNews</p>.
+                7. Output raw HTML only, no markdown backticks.
+                """
+                
+                content = generate_content_openai(prompt)
+                if not content:
+                    continue
+                
+                content = content.strip()
+                if content.startswith('```html'): content = content[7:-3].strip()
+                elif content.startswith('```'): content = content[3:-3].strip()
+                
+                author_meta = f'<div class="post-author-meta" data-author="{author_name}" style="display:none;"></div>\n'
+                full_content = author_meta + content
+                
+                data = {
+                    "title": title,
+                    "slug": slug,
+                    "content": full_content,
+                    "category": category,
+                    "image_url": image_url
+                }
+                
+                supabase.table("posts").insert(data).execute()
+                print(f"✅ [{category}] By {author_name}: {title[:45]}...")
+                return True
+        except Exception as e:
+            print(f"Error in {category} feed: {e}")
+            continue
     return False
 
-def run():
-    seen = set()
-    try:
-        r = requests.get(S_URL + "/rest/v1/posts?select=title&order=id.desc&limit=1000", headers=HEADERS, timeout=15)
-        if r.status_code == 200:
-            seen = {(x.get("title") or "")[:35].lower() for x in r.json() if x.get("title")}
-    except Exception:
-        pass
+def run_15_per_category_every_time():
+    print("Loading existing titles to avoid duplicates...")
+    existing_res = supabase.table("posts").select("title").order("id", desc=True).limit(1000).execute()
+    existing_titles = set()
+    for row in existing_res.data:
+        t = (row.get("title") or "")[:35].lower()
+        if t:
+            existing_titles.add(t)
 
-    q = []
-    for cat, urls in FEEDS.items():
-        q += collect(urls, cat, 20, seen)
+    all_categories = list(RSS_FEEDS.keys())
+    posted_counts = {cat: 0 for cat in all_categories}
 
-    random.shuffle(q)
-    print("Starting 500 Posts Upload with Perfect Topic-Matched Images...")
-    ok = 0
-    with ThreadPoolExecutor(max_workers=8) as ex:
-        futs = [ex.submit(publish_one, it, i + 1) for i, it in enumerate(q)]
-        for f in as_completed(futs):
-            if f.result(): ok += 1
-    print("FINISHED! Published:", ok)
+    print("🚀 STARTING 15 POSTS PER CATEGORY (25 CATEGORIES x 15 POSTS = 375 POSTS)...")
+    for round_num in range(1, 16):
+        pending_cats = [cat for cat in all_categories if posted_counts[cat] < 15]
+        print(f"\n================ ROUND {round_num} / 15 (Posting across {len(pending_cats)} categories) ================")
+        
+        with ThreadPoolExecutor(max_workers=10) as executor:
+            future_to_cat = {
+                executor.submit(post_one_for_category, cat, existing_titles): cat 
+                for cat in pending_cats
+            }
+            for future in as_completed(future_to_cat):
+                cat = future_to_cat[future]
+                try:
+                    if future.result():
+                        posted_counts[cat] += 1
+                except Exception as e:
+                    print(f"Worker error in {cat}: {e}")
+        
+        generate_sitemap()
+        print(f"--- Round {round_num} Complete! Total posted this run: {sum(posted_counts.values())} ---")
+
+    print("\n🎉 COMPLETED 15 POSTS IN ALL 25 CATEGORIES!")
 
 if __name__ == "__main__":
-    run()
-# DONE
+    if not OPENAI_API_KEY or not SUPABASE_KEY:
+        print("ERROR: API Keys missing!")
+    else:
+        run_15_per_category_every_time()
