@@ -204,7 +204,7 @@ body { font-family: 'Mukta', sans-serif; background-color: #f4f5f7; color: #1118
                 <button onclick="shareWebsite('facebook')" class="bg-[#1877f2] text-white px-4 py-2 rounded-full shadow inline-flex items-center gap-1.5 text-xs font-bold"><i class="fa-brands fa-facebook-f"></i> Share</button>
             </div>
         </div>
-        <img id="detail-image" src="" class="w-full h-auto object-cover max-h-[550px] mb-8 rounded-xl shadow">
+        <div id="detail-image-container"></div>
         <div id="detail-content" class="w-full overflow-x-auto text-gray-800"></div>
     </div>
 
@@ -417,7 +417,7 @@ function buildLegalPageContent(key) {
 
 function getPostsForCategory(newsList, cat) {
     if (cat === "Web Stories") {
-        return newsList.filter(p => p.category === "Web Stories" || p.title.startsWith("⚡ Story:"));
+        return newsList.filter(p => p.category === "Web Stories");
     }
     const matched = newsList.filter(p => {
         if (p.category === cat) return true;
@@ -617,7 +617,7 @@ function renderWebStoriesFullPage(newsList, pushState = true) {
     document.getElementById('home-view').classList.remove('hidden');
     document.getElementById('hero-top-section').classList.add('hidden');
 
-    const stories = newsList.filter(p => p.category === "Web Stories" || p.title.startsWith("⚡ Story:"));
+    const stories = newsList.filter(p => p.category === "Web Stories");
     document.title = "Google Web Stories - Fast Job";
 
     let h = `
@@ -635,7 +635,7 @@ function renderWebStoriesFullPage(newsList, pushState = true) {
             <img src="${st.image_url}" onerror="this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=80'" class="w-full h-full object-cover opacity-85 transform group-hover:scale-110 transition duration-500">
             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
             <div class="absolute top-2.5 left-2.5 bg-[#d10000] text-white text-[9px] font-black px-2 py-0.5 rounded uppercase flex items-center gap-1"><span class="w-1.5 h-1.5 bg-yellow-300 rounded-full animate-ping"></span> Video Story</div>
-            <div class="absolute bottom-3 left-3 right-3"><h4 class="text-white text-xs font-extrabold line-clamp-3 leading-snug drop-shadow">${st.title.replace('⚡ Story: ', '')}</h4></div>
+            <div class="absolute bottom-3 left-3 right-3"><h4 class="text-white text-xs font-extrabold line-clamp-3 leading-snug drop-shadow">${st.title}</h4></div>
         </div>`;
     });
     h += `</div></div>`;
@@ -706,6 +706,7 @@ async function openArticle(rawSlug, pushState = true) {
     document.getElementById('legal-view').classList.add('hidden');
     document.getElementById('article-view').classList.remove('hidden');
     document.getElementById('detail-title').innerText = "Loading Story...";
+    document.getElementById('detail-image-container').innerHTML = "";
     document.getElementById('detail-content').innerHTML = `<div class="py-12 text-center text-gray-500 font-bold"><i class="fa-solid fa-spinner fa-spin mr-2 text-[#d10000]"></i> Loading verified article...</div>`;
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
@@ -735,7 +736,22 @@ async function openArticle(rawSlug, pushState = true) {
         document.getElementById('detail-author-name').innerHTML = `<i class="fa-solid fa-pen-nib mr-1.5"></i> Reported by ${au}`;
         document.getElementById('detail-author-avatar').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(au.split('(')[0].trim())}&background=d10000&color=fff&bold=true`;
         document.getElementById('detail-date').innerHTML = `<i class="fa-regular fa-clock mr-1"></i> Published on ${new Date(post.created_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}`;
-        document.getElementById('detail-image').src = post.image_url;
+        
+        if (post.category === "Web Stories") {
+            document.getElementById('detail-image-container').innerHTML = `
+            <div class="my-6 bg-black rounded-2xl overflow-hidden shadow-2xl border-4 border-red-600 relative p-6 text-white">
+                <div class="flex items-center justify-between mb-4"><span class="bg-red-600 px-3 py-1 rounded text-xs font-black uppercase">▶ Interactive Video Story Player</span><span class="text-xs text-yellow-400 font-bold">Fast Job Visual Desk</span></div>
+                <div class="relative aspect-video max-h-[480px] w-full flex items-center justify-center bg-gray-900 rounded-xl overflow-hidden mb-4">
+                    <img src="${post.image_url}" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                        <div class="w-16 h-16 bg-[#d10000] text-white rounded-full flex items-center justify-center text-2xl shadow-2xl animate-pulse cursor-pointer"><i class="fa-solid fa-play ml-1"></i></div>
+                    </div>
+                </div>
+                <p class="text-gray-300 text-sm md:text-base leading-relaxed">${post.title}</p>
+            </div>`;
+        } else {
+            document.getElementById('detail-image-container').innerHTML = `<img src="${post.image_url}" class="w-full h-auto object-cover max-h-[550px] mb-8 rounded-xl shadow">`;
+        }
         document.getElementById('detail-content').innerHTML = post.content || "";
     } else {
         goBackHome();
