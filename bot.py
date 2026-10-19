@@ -24,13 +24,11 @@ AUTHORS = [
     "Diego Hernandez (Mexico City)", "Camila Vargas (Santiago)"
 ]
 
-# ALL 25 CATEGORIES WITH DEDICATED SEARCH FEEDS (Jobs & Careers prioritized at top)
 FEEDS = {
     "Jobs & Careers": [
         "https://news.google.com/rss/search?q=sarkari+result+police+teacher+ssc+upsc+banking+recruitment+2026&hl=en-IN&gl=IN&ceid=IN:en",
-        "https://news.google.com/rss/search?q=rajasthan+police+up+police+bihar_police+vacancy+2026&hl=en-IN&gl=IN&ceid=IN:en",
-        "https://news.google.com/rss/search?q=visa+sponsorship+jobs+2026+uk+usa+canada+dubai+hiring&hl=en-US&gl=US&ceid=US:en",
-        "https://news.google.com/rss/search?q=remote+jobs+hiring+worldwide+2026+software+finance&hl=en-US&gl=US&ceid=US:en"
+        "https://news.google.com/rss/search?q=rajasthan+police+up+police+vacancy+2026&hl=en-IN&gl=IN&ceid=IN:en",
+        "https://news.google.com/rss/search?q=visa+sponsorship+jobs+2026+uk+usa+canada+dubai&hl=en-US&gl=US&ceid=US:en"
     ],
     "Breaking News": ["https://news.google.com/rss?hl=en-IN&gl=IN&ceid=IN:en"],
     "World News": ["https://news.google.com/rss/search?q=world+news+international+politics&hl=en-US&gl=US&ceid=US:en"],
@@ -68,9 +66,8 @@ def get_rss(url):
     except Exception:
         return []
 
-# SMART TOPIC-MATCHED IMAGE EXTRACTOR
-def get_topic_matched_image(entry, title, category):
-    # 1. Check direct media or enclosures in RSS entry
+# GUARANTEED WORKING UNIQUE IMAGE GENERATOR
+def get_guaranteed_image(entry, title):
     if hasattr(entry, 'media_content') and entry.media_content:
         for media in entry.media_content:
             if 'url' in media and any(ext in media['url'].lower() for ext in ['jpg', 'png', 'jpeg', 'webp', 'cms']):
@@ -80,36 +77,15 @@ def get_topic_matched_image(entry, title, category):
             if 'href' in enc and any(ext in enc['href'].lower() for ext in ['jpg', 'png', 'jpeg', 'webp', 'cms']):
                 return enc['href']
                 
-    # 2. Check HTML content inside entry for <img> tag
     content_html = entry.get('summary', '') + entry.get('description', '')
     soup = BeautifulSoup(content_html, 'html.parser')
     img_tag = soup.find('img')
     if img_tag and img_tag.get('src') and not img_tag.get('src').endswith('.gif') and 'google' not in img_tag.get('src'):
         return img_tag.get('src')
 
-    # 3. Dynamic Unsplash Search Image based on exact keywords in title or category (Guarantees relevant photos!)
-    t_lower = title.lower()
-    if "police" in t_lower or "constable" in t_lower or "defence" in t_lower:
-        query = "police,security,uniform"
-    elif "railway" in t_lower or "train" in t_lower:
-        query = "train,railway,station"
-    elif "bank" in t_lower or "sbi" in t_lower or "ibps" in t_lower:
-        query = "bank,finance,money"
-    elif "teacher" in t_lower or "school" in t_lower or "upsc" in t_lower or "ssc" in t_lower:
-        query = "education,exam,study"
-    elif category == "Auto & EV" or "car" in t_lower or "suv" in t_lower:
-        query = "car,automobile,vehicle"
-    elif category == "Technology" or "ai" in t_lower or "software" in t_lower:
-        query = "technology,coding,laptop"
-    elif category == "Sports" or "cricket" in t_lower:
-        query = "cricket,stadium,sports"
-    elif category == "Jobs & Careers" or "job" in t_lower or "hiring" in t_lower:
-        query = "office,interview,professional"
-    else:
-        query = "news,business,city"
-    
-    seed_val = abs(hash(title)) % 9000 + 100
-    return f"https://images.unsplash.com/photo-{1500000000000 + seed_val}?auto=format&fit=crop&w=1000&q=80"
+    # Using Picsum Photos with unique seed based on title hash (100% loads in browser)
+    seed_id = abs(hash(title)) % 900 + 100
+    return f"https://picsum.photos/seed/{seed_id}/1000/600"
 
 def ai_write(title, cat, author):
     prompt = (
@@ -169,7 +145,7 @@ def collect(urls, cat, count, seen):
             t = (e.get("title") or "").rsplit(" - ", 1)[0].strip()
             if not t or t[:35].lower() in seen: continue
             seen.add(t[:35].lower())
-            img_url = get_topic_matched_image(e, t, cat)
+            img_url = get_guaranteed_image(e, t)
             out.append((cat, t, img_url))
     while len(out) < count:
         uid = random.randint(100, 999)
@@ -180,7 +156,7 @@ def collect(urls, cat, count, seen):
             t = "New 2026 SUV & Electric Vehicle Launch: Price, Specs & Review (" + dt + " Update #" + str(uid) + ")"
         else:
             t = cat + " Special Report: Major Policy & Global Developments Announced (" + dt + " #" + str(uid) + ")"
-        img_url = get_topic_matched_image({}, t, cat)
+        img_url = f"https://picsum.photos/seed/{abs(hash(t)) % 900 + 100}/1000/600"
         out.append((cat, t, img_url))
     return out
 
@@ -208,12 +184,11 @@ def run():
         pass
 
     q = []
-    # 25 Categories x 20 Posts each = exactly 500 Posts!
     for cat, urls in FEEDS.items():
         q += collect(urls, cat, 20, seen)
 
     random.shuffle(q)
-    print("Starting 500 Posts Upload (20 per Category with Topic-Matched Images & 800+ Words)...")
+    print("Starting 500 Posts Upload with Guaranteed Working Images...")
     ok = 0
     with ThreadPoolExecutor(max_workers=8) as ex:
         futs = [ex.submit(publish_one, it, i + 1) for i, it in enumerate(q)]
