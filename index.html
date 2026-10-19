@@ -140,7 +140,7 @@ body { font-family: 'Mukta', sans-serif; background-color: #f4f5f7; color: #1118
         </div>
     </div>
 
-    <!-- 3. Direct Category Navigation Bar (No Sub-Menus) -->
+    <!-- 3. Navigation Bar -->
     <div class="bg-white border-b border-gray-200 px-2 md:px-6 relative z-30">
         <div class="w-full max-w-[1400px] mx-auto flex items-center">
             <nav class="flex items-center space-x-1 overflow-x-auto no-scrollbar py-0.5 w-full" id="top-category-nav"></nav>
@@ -623,18 +623,18 @@ function renderWebStoriesFullPage(newsList, pushState = true) {
     let h = `
     <div class="bg-white p-6 md:p-8 rounded-xl shadow-sm border border-gray-200">
         <div class="border-b-2 border-[#d10000] pb-3 mb-6 flex justify-between items-center">
-            <span class="section-badge text-lg"><i class="fa-solid fa-bolt text-yellow-300"></i> Google Web Stories (${stories.length})</span>
+            <span class="section-badge text-lg"><i class="fa-solid fa-bolt text-yellow-300"></i> Google Web Stories Video Player (${stories.length})</span>
             <button onclick="goBackHome()" class="text-xs font-bold text-gray-600 hover:text-[#d10000]"><i class="fa-solid fa-house mr-1"></i> Back Home</button>
         </div>
-        <p class="text-gray-600 font-semibold mb-6">Explore our immersive visual story player format. Swipe or click through breaking updates instantly.</p>
+        <p class="text-gray-600 font-semibold mb-6">Explore our immersive video story player format. Click any video story to watch and read live updates instantly.</p>
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5">`;
     
     stories.forEach(st => {
         h += `
-        <div onclick="openArticle('${st.slug}')" class="h-72 rounded-xl overflow-hidden relative cursor-pointer shadow-lg group border-2 border-red-500">
-            <img src="${st.image_url}" onerror="this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=80'" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+        <div onclick="openArticle('${st.slug}')" class="h-72 rounded-xl overflow-hidden relative cursor-pointer shadow-lg group border-2 border-red-500 bg-black">
+            <img src="${st.image_url}" onerror="this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=80'" class="w-full h-full object-cover opacity-85 transform group-hover:scale-110 transition duration-500">
             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-            <div class="absolute top-2.5 left-2.5 bg-[#d10000] text-white text-[9px] font-black px-2 py-0.5 rounded uppercase">Story ⚡</div>
+            <div class="absolute top-2.5 left-2.5 bg-[#d10000] text-white text-[9px] font-black px-2 py-0.5 rounded uppercase flex items-center gap-1"><span class="w-1.5 h-1.5 bg-yellow-300 rounded-full animate-ping"></span> Video Story</div>
             <div class="absolute bottom-3 left-3 right-3"><h4 class="text-white text-xs font-extrabold line-clamp-3 leading-snug drop-shadow">${st.title.replace('⚡ Story: ', '')}</h4></div>
         </div>`;
     });
