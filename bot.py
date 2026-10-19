@@ -15,7 +15,6 @@ OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
-# 50 UNIQUE WORLD-WIDE AUTHORS (GLOBAL JOURNALISTS)
 WORLD_AUTHORS = [
     "Aarav Sharma (New Delhi)", "Priya Nair (Mumbai)", "Vikramaditya Rathore (India Desk)",
     "Ananya Chatterjee (Kolkata)", "Rohan Deshmukh (Pune)", "Siddharth Menon (Bengaluru)",
@@ -36,141 +35,112 @@ WORLD_AUTHORS = [
     "Diego Hernandez (Mexico City)", "Camila Vargas (Santiago)"
 ]
 
-# ALL 25 CATEGORIES WITH HIGH-VOLUME RSS FEEDS (GUARANTEES 15+ POSTS PER CATEGORY)
+# 25 CATEGORIES WITH GOOGLE TRENDS & HIGH-VOLUME GLOBAL FEEDS ("Jobs & Careers" prioritized)
 RSS_FEEDS = {
-    "Breaking News": [
-        "https://timesofindia.indiatimes.com/rssfeedstopstories.cms",
-        "https://feeds.feedburner.com/ndtvnews-top-stories",
-        "https://www.indiatoday.in/rss/home",
-        "https://news.google.com/rss/search?q=breaking+news+india+world&hl=en-IN&gl=IN&ceid=IN:en"
-    ],
-    "World News": [
-        "https://timesofindia.indiatimes.com/rssfeeds/296589292.cms",
-        "https://feeds.feedburner.com/ndtvnews-world-news",
-        "https://www.thehindu.com/news/international/feeder/default.rss",
-        "https://news.google.com/rss/search?q=world+news+international&hl=en-IN&gl=IN&ceid=IN:en"
-    ],
-    "India News": [
-        "https://timesofindia.indiatimes.com/rssfeeds/-2128936835.cms",
-        "https://feeds.feedburner.com/ndtvnews-india-news",
-        "https://www.thehindu.com/news/national/feeder/default.rss",
-        "https://news.google.com/rss/search?q=india+national+news&hl=en-IN&gl=IN&ceid=IN:en"
-    ],
-    "Politics": [
-        "https://www.thehindu.com/news/national/feeder/default.rss",
-        "https://www.indiatoday.in/rss/1206514",
-        "https://news.google.com/rss/search?q=indian+politics+parliament+elections&hl=en-IN&gl=IN&ceid=IN:en"
-    ],
-    "Sports": [
-        "https://timesofindia.indiatimes.com/rssfeeds/4719148.cms",
-        "https://feeds.feedburner.com/ndtvsports-latest",
-        "https://www.thehindu.com/sport/feeder/default.rss",
-        "https://news.google.com/rss/search?q=cricket+sports+news+india&hl=en-IN&gl=IN&ceid=IN:en"
-    ],
-    "Business": [
-        "https://economictimes.indiatimes.com/news/company/rssfeeds/2146842.cms",
-        "https://timesofindia.indiatimes.com/rssfeeds/1898055.cms",
-        "https://feeds.feedburner.com/ndtvprofit-latest",
-        "https://news.google.com/rss/search?q=business+corporate+news+india&hl=en-IN&gl=IN&ceid=IN:en"
-    ],
-    "Finance & Markets": [
-        "https://economictimes.indiatimes.com/markets/rssfeeds/1977021501.cms",
-        "https://economictimes.indiatimes.com/wealth/rssfeeds/837555174.cms",
-        "https://www.livemint.com/rss/markets",
-        "https://news.google.com/rss/search?q=stock+market+sensex+nifty+finance&hl=en-IN&gl=IN&ceid=IN:en"
-    ],
-    "Technology": [
-        "https://economictimes.indiatimes.com/tech/rssfeeds/13357270.cms",
-        "https://timesofindia.indiatimes.com/rssfeeds/66949542.cms",
-        "https://feeds.feedburner.com/gadgets360-latest",
-        "https://news.google.com/rss/search?q=technology+smartphones+software+news&hl=en-IN&gl=IN&ceid=IN:en"
-    ],
-    "Entertainment": [
-        "https://timesofindia.indiatimes.com/rssfeeds/1081479906.cms",
-        "https://feeds.feedburner.com/ndtvmovies-latest",
-        "https://www.thehindu.com/entertainment/feeder/default.rss",
-        "https://news.google.com/rss/search?q=bollywood+hollywood+entertainment+movies&hl=en-IN&gl=IN&ceid=IN:en"
-    ],
-    "Education": [
-        "https://timesofindia.indiatimes.com/rssfeeds/913168846.cms",
-        "https://www.thehindu.com/education/feeder/default.rss",
-        "https://www.indiatoday.in/rss/1206550",
-        "https://news.google.com/rss/search?q=cbse+neet+jee+universities+education+india&hl=en-IN&gl=IN&ceid=IN:en"
-    ],
     "Jobs & Careers": [
+        "https://news.google.com/rss/search?q=sarkari+naukri+government+jobs+recruitment+vacancy+2026&hl=en-IN&gl=IN&ceid=IN:en",
+        "https://news.google.com/rss/search?q=upsc+ssc+banking+railway+jobs+notification&hl=en-IN&gl=IN&ceid=IN:en",
         "https://timesofindia.indiatimes.com/rssfeeds/3012544.cms",
         "https://www.thehindu.com/education/careers/feeder/default.rss",
-        "https://economictimes.indiatimes.com/jobs/rssfeeds/107115.cms",
-        "https://news.google.com/rss/search?q=sarkari+naukri+government+jobs+recruitment+2026+india&hl=en-IN&gl=IN&ceid=IN:en"
+        "https://economictimes.indiatimes.com/jobs/rssfeeds/107115.cms"
+    ],
+    "Breaking News": [
+        "https://news.google.com/rss?hl=en-IN&gl=IN&ceid=IN:en",
+        "https://timesofindia.indiatimes.com/rssfeedstopstories.cms",
+        "https://feeds.feedburner.com/ndtvnews-top-stories",
+        "https://www.indiatoday.in/rss/home"
+    ],
+    "World News": [
+        "https://news.google.com/rss/search?q=world+news+international+trending&hl=en-US&gl=US&ceid=US:en",
+        "https://timesofindia.indiatimes.com/rssfeeds/296589292.cms",
+        "https://www.thehindu.com/news/international/feeder/default.rss"
+    ],
+    "India News": [
+        "https://news.google.com/rss/search?q=india+national+news+trending&hl=en-IN&gl=IN&ceid=IN:en",
+        "https://www.thehindu.com/news/national/feeder/default.rss"
+    ],
+    "Politics": [
+        "https://news.google.com/rss/search?q=politics+government+elections+parliament&hl=en-IN&gl=IN&ceid=IN:en",
+        "https://www.thehindu.com/news/national/feeder/default.rss"
+    ],
+    "Sports": [
+        "https://news.google.com/rss/search?q=cricket+sports+football+match+live&hl=en-IN&gl=IN&ceid=IN:en",
+        "https://timesofindia.indiatimes.com/rssfeeds/4719148.cms"
+    ],
+    "Business": [
+        "https://news.google.com/rss/search?q=business+companies+startups+economy&hl=en-IN&gl=IN&ceid=IN:en",
+        "https://economictimes.indiatimes.com/news/company/rssfeeds/2146842.cms"
+    ],
+    "Finance & Markets": [
+        "https://news.google.com/rss/search?q=stock+market+sensex+nifty+investment+finance&hl=en-IN&gl=IN&ceid=IN:en",
+        "https://economictimes.indiatimes.com/markets/rssfeeds/1977021501.cms"
+    ],
+    "Technology": [
+        "https://news.google.com/rss/search?q=technology+gadgets+smartphones+innovation&hl=en-IN&gl=IN&ceid=IN:en",
+        "https://economictimes.indiatimes.com/tech/rssfeeds/13357270.cms"
+    ],
+    "Entertainment": [
+        "https://news.google.com/rss/search?q=entertainment+bollywood+hollywood+movies+ott&hl=en-IN&gl=IN&ceid=IN:en",
+        "https://timesofindia.indiatimes.com/rssfeeds/1081479906.cms"
+    ],
+    "Education": [
+        "https://news.google.com/rss/search?q=education+exams+results+university+admit+card&hl=en-IN&gl=IN&ceid=IN:en",
+        "https://www.thehindu.com/education/feeder/default.rss"
     ],
     "Health & Medicine": [
-        "https://timesofindia.indiatimes.com/rssfeeds/3908999.cms",
-        "https://www.thehindu.com/sci-tech/health/feeder/default.rss",
-        "https://news.google.com/rss/search?q=health+medicine+medical+wellness+news&hl=en-IN&gl=IN&ceid=IN:en"
+        "https://news.google.com/rss/search?q=health+medical+wellness+fitness+disease&hl=en-IN&gl=IN&ceid=IN:en",
+        "https://timesofindia.indiatimes.com/rssfeeds/3908999.cms"
     ],
     "Science": [
-        "https://timesofindia.indiatimes.com/rssfeeds/-2128672765.cms",
-        "https://www.thehindu.com/sci-tech/science/feeder/default.rss",
-        "https://news.google.com/rss/search?q=isro+nasa+science+space+discoveries&hl=en-IN&gl=IN&ceid=IN:en"
+        "https://news.google.com/rss/search?q=science+space+nasa+isro+discoveries&hl=en-IN&gl=IN&ceid=IN:en",
+        "https://www.thehindu.com/sci-tech/science/feeder/default.rss"
     ],
     "AI & Robotics": [
-        "https://economictimes.indiatimes.com/tech/technology/rssfeeds/78570561.cms",
-        "https://www.livemint.com/rss/AI",
-        "https://news.google.com/rss/search?q=artificial+intelligence+robotics+openai+tech&hl=en-IN&gl=IN&ceid=IN:en"
+        "https://news.google.com/rss/search?q=artificial+intelligence+ai+openai+robotics+tech&hl=en-IN&gl=IN&ceid=IN:en",
+        "https://economictimes.indiatimes.com/tech/technology/rssfeeds/78570561.cms"
     ],
     "Crime & Justice": [
-        "https://timesofindia.indiatimes.com/rssfeeds/2950623.cms",
-        "https://www.indiatoday.in/rss/1206576",
-        "https://news.google.com/rss/search?q=supreme+court+high+court+crime+justice+india&hl=en-IN&gl=IN&ceid=IN:en"
+        "https://news.google.com/rss/search?q=supreme+court+court+crime+police+investigation+india&hl=en-IN&gl=IN&ceid=IN:en",
+        "https://timesofindia.indiatimes.com/rssfeeds/2950623.cms"
     ],
     "Auto & EV": [
-        "https://timesofindia.indiatimes.com/rssfeeds/74317216.cms",
-        "https://economictimes.indiatimes.com/industry/auto/rssfeeds/13359412.cms",
-        "https://news.google.com/rss/search?q=electric+vehicles+cars+bikes+automobile+india&hl=en-IN&gl=IN&ceid=IN:en"
+        "https://news.google.com/rss/search?q=electric+vehicles+cars+bikes+automobile+launches&hl=en-IN&gl=IN&ceid=IN:en",
+        "https://timesofindia.indiatimes.com/rssfeeds/74317216.cms"
     ],
     "Economy": [
-        "https://economictimes.indiatimes.com/news/economy/rssfeeds/1377380.cms",
-        "https://www.thehindu.com/business/Economy/feeder/default.rss",
-        "https://news.google.com/rss/search?q=indian+economy+rbi+gdp+inflation+trade&hl=en-IN&gl=IN&ceid=IN:en"
+        "https://news.google.com/rss/search?q=economy+gdp+inflation+rbi+budget+finance&hl=en-IN&gl=IN&ceid=IN:en",
+        "https://economictimes.indiatimes.com/news/economy/rssfeeds/1377380.cms"
     ],
     "Environment & Climate": [
-        "https://timesofindia.indiatimes.com/rssfeeds/2647163.cms",
-        "https://www.thehindu.com/sci-tech/energy-and-environment/feeder/default.rss",
-        "https://news.google.com/rss/search?q=climate+change+environment+renewable+energy&hl=en-IN&gl=IN&ceid=IN:en"
-    ],
-    "Lifestyle": [
-        "https://timesofindia.indiatimes.com/rssfeeds/2886704.cms",
-        "https://www.thehindu.com/life-and-style/feeder/default.rss",
-        "https://news.google.com/rss/search?q=lifestyle+fashion+food+culture+trends&hl=en-IN&gl=IN&ceid=IN:en"
-    ],
-    "Travel & Tourism": [
-        "https://timesofindia.indiatimes.com/rssfeeds/3112014.cms",
-        "https://www.thehindu.com/life-and-style/travel/feeder/default.rss",
-        "https://news.google.com/rss/search?q=travel+tourism+airlines+railways+destinations&hl=en-IN&gl=IN&ceid=IN:en"
-    ],
-    "Real Estate": [
-        "https://economictimes.indiatimes.com/wealth/real-estate/rssfeeds/48997585.cms",
-        "https://www.thehindu.com/real-estate/feeder/default.rss",
-        "https://news.google.com/rss/search?q=real+estate+property+housing+infrastructure+india&hl=en-IN&gl=IN&ceid=IN:en"
-    ],
-    "Defence & Security": [
-        "https://economictimes.indiatimes.com/news/defence/rssfeeds/47117033.cms",
-        "https://news.google.com/rss/search?q=indian+army+navy+air+force+defence+security&hl=en-IN&gl=IN&ceid=IN:en"
-    ],
-    "Weather": [
-        "https://news.google.com/rss/search?q=imd+weather+forecast+monsoon+rain+temperature+india&hl=en-IN&gl=IN&ceid=IN:en",
+        "https://news.google.com/rss/search?q=climate+change+environment+pollution+green+energy&hl=en-IN&gl=IN&ceid=IN:en",
         "https://timesofindia.indiatimes.com/rssfeeds/2647163.cms"
     ],
+    "Lifestyle": [
+        "https://news.google.com/rss/search?q=lifestyle+fashion+food+culture+living+trends&hl=en-IN&gl=IN&ceid=IN:en",
+        "https://timesofindia.indiatimes.com/rssfeeds/2886704.cms"
+    ],
+    "Travel & Tourism": [
+        "https://news.google.com/rss/search?q=travel+tourism+airlines+railways+destinations+holidays&hl=en-IN&gl=IN&ceid=IN:en",
+        "https://timesofindia.indiatimes.com/rssfeeds/3112014.cms"
+    ],
+    "Real Estate": [
+        "https://news.google.com/rss/search?q=real+estate+property+housing+infrastructure+market&hl=en-IN&gl=IN&ceid=IN:en",
+        "https://economictimes.indiatimes.com/wealth/real-estate/rssfeeds/48997585.cms"
+    ],
+    "Defence & Security": [
+        "https://news.google.com/rss/search?q=indian+army+navy+air+force+defence+geopolitics&hl=en-IN&gl=IN&ceid=IN:en",
+        "https://economictimes.indiatimes.com/news/defence/rssfeeds/47117033.cms"
+    ],
+    "Weather": [
+        "https://news.google.com/rss/search?q=imd+weather+forecast+monsoon+rain+temperature&hl=en-IN&gl=IN&ceid=IN:en"
+    ],
     "Opinion & Editorial": [
-        "https://www.thehindu.com/opinion/editorial/feeder/default.rss",
-        "https://www.thehindu.com/opinion/lead/feeder/default.rss",
-        "https://www.livemint.com/rss/opinion",
-        "https://news.google.com/rss/search?q=editorial+opinion+analysis+geopolitics&hl=en-IN&gl=IN&ceid=IN:en"
+        "https://news.google.com/rss/search?q=editorial+opinion+analysis+world+affairs&hl=en-IN&gl=IN&ceid=IN:en",
+        "https://www.thehindu.com/opinion/editorial/feeder/default.rss"
     ],
     "Fact Check & Explainers": [
-        "https://www.indiatoday.in/rss/fact-check",
-        "https://news.google.com/rss/search?q=fact+check+explainer+explained+news&hl=en-IN&gl=IN&ceid=IN:en",
-        "https://www.thehindu.com/news/national/feeder/default.rss"
+        "https://news.google.com/rss/search?q=fact+check+explainer+debunked+news&hl=en-IN&gl=IN&ceid=IN:en",
+        "https://www.indiatoday.in/rss/fact-check"
     ]
 }
 
@@ -180,9 +150,7 @@ FALLBACK_IMAGES = [
     "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1000&q=80",
     "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1000&q=80",
     "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=80",
-    "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80",
-    "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=1000&q=80",
-    "https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&w=1000&q=80"
+    "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80"
 ]
 
 def extract_real_image(entry):
@@ -199,8 +167,6 @@ def extract_real_image(entry):
     img_tag = soup.find('img')
     if img_tag and img_tag.get('src') and not img_tag.get('src').endswith('.gif') and 'google' not in img_tag.get('src'):
         return img_tag.get('src')
-    if hasattr(entry, 'image') and 'href' in entry.image:
-        return entry.image['href']
     return random.choice(FALLBACK_IMAGES)
 
 def generate_content_openai(prompt):
@@ -268,8 +234,6 @@ def post_one_for_category(category, existing_titles):
                 title = entry.title.strip()
                 if not title:
                     continue
-                
-                # Clean source suffix if from Google News
                 if " - " in title:
                     title = title.rsplit(" - ", 1)[0].strip()
 
@@ -286,7 +250,7 @@ def post_one_for_category(category, existing_titles):
                 slug = slugify(title) + "-" + short_id
                 
                 prompt = f"""
-                Write a comprehensive, engaging, and SEO-optimized news article for the '{category}' desk by journalist '{author_name}' based on:
+                Write a comprehensive, engaging, and SEO-optimized global news article for the '{category}' desk by journalist '{author_name}' based on:
                 Original Title: {title}
                 Context: {summary}
                 
@@ -294,9 +258,9 @@ def post_one_for_category(category, existing_titles):
                 1. Write a detailed article of 800+ words covering background, key developments, analysis, and future outlook.
                 2. Use 5 <h3 class="article-subheading"> tags with 2-3 detailed paragraphs under each.
                 3. Year is 2026. Treat as breaking modern news.
-                4. Format strictly in raw HTML starting with <h1 class="seo-title">Catchy SEO Title</h1> and <p class="intro-text"><strong>Reported by {author_name} | FastJob Global Desk:</strong>...
+                4. Format strictly in raw HTML starting with <h1 class="seo-title">Catchy SEO Title</h1> and <p class="intro-text"><strong>Reported by {author_name} | Fast Job Global Desk:</strong>...
                 5. Include one <table class="article-table"> for key highlights.
-                6. End with <p class="hashtags">#FastJobAlert #{category.replace(' ', '')} #BreakingNews</p>.
+                6. End with <p class="hashtags">#FastJob #{category.replace(' ', '')} #TrendingNews</p>.
                 7. Output raw HTML only, no markdown backticks.
                 """
                 
@@ -327,22 +291,33 @@ def post_one_for_category(category, existing_titles):
             continue
     return False
 
-def run_15_per_category_every_time():
+def run_bulk_workflow():
     print("Loading existing titles to avoid duplicates...")
-    existing_res = supabase.table("posts").select("title").order("id", desc=True).limit(1000).execute()
+    existing_res = supabase.table("posts").select("title, category").order("id", desc=True).limit(2000).execute()
     existing_titles = set()
+    cat_counts = {cat: 0 for cat in RSS_FEEDS.keys()}
+    
     for row in existing_res.data:
+        c = row.get("category")
         t = (row.get("title") or "")[:35].lower()
         if t:
             existing_titles.add(t)
+        if c in cat_counts:
+            cat_counts[c] += 1
 
-    all_categories = list(RSS_FEEDS.keys())
-    posted_counts = {cat: 0 for cat in all_categories}
+    print(f"Current category post counts: {cat_counts}")
 
-    print("🚀 STARTING 15 POSTS PER CATEGORY (25 CATEGORIES x 15 POSTS = 375 POSTS)...")
-    for round_num in range(1, 16):
-        pending_cats = [cat for cat in all_categories if posted_counts[cat] < 15]
-        print(f"\n================ ROUND {round_num} / 15 (Posting across {len(pending_cats)} categories) ================")
+    # Jobs gets 30 posts, others get 15 posts each
+    target_counts = {cat: 30 if cat == "Jobs & Careers" else 15 for cat in RSS_FEEDS.keys()}
+
+    print("🚀 STARTING BULK POSTING (Jobs & Careers prioritized at top with 30 posts!)...")
+    for round_num in range(1, 31):
+        pending_cats = [cat for cat in RSS_FEEDS.keys() if cat_counts[cat] < target_counts[cat]]
+        if not pending_cats:
+            print("All categories have reached their target post count!")
+            break
+
+        print(f"\n================ ROUND {round_num} / 30 (Remaining: {len(pending_cats)} categories) ================")
         
         with ThreadPoolExecutor(max_workers=10) as executor:
             future_to_cat = {
@@ -353,17 +328,17 @@ def run_15_per_category_every_time():
                 cat = future_to_cat[future]
                 try:
                     if future.result():
-                        posted_counts[cat] += 1
+                        cat_counts[cat] += 1
                 except Exception as e:
                     print(f"Worker error in {cat}: {e}")
         
         generate_sitemap()
-        print(f"--- Round {round_num} Complete! Total posted this run: {sum(posted_counts.values())} ---")
+        print(f"--- Round {round_num} Complete! ---")
 
-    print("\n🎉 COMPLETED 15 POSTS IN ALL 25 CATEGORIES!")
+    print("\n🎉 BULK POSTING FINISHED SUCCESSFULLY!")
 
 if __name__ == "__main__":
     if not OPENAI_API_KEY or not SUPABASE_KEY:
         print("ERROR: API Keys missing!")
     else:
-        run_15_per_category_every_time()
+        run_bulk_workflow()
