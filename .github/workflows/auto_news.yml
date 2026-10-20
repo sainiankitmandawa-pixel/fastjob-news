@@ -1,40 +1,30 @@
-name: FastJob Auto News Bot
+name: Run Auto News Script (4 AM Daily)
 
 on:
-  workflow_dispatch:
   schedule:
-    - cron: '0 */6 * * *'
-
-permissions:
-  contents: write
+    - cron: '30 22 * * *' # Roz subah 4:00 AM IST (22:30 UTC) par automatically run hoga
+  workflow_dispatch:
 
 jobs:
-  run-bot:
+  build:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
           python-version: '3.10'
 
-      - name: Install Requirements
+      - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install feedparser supabase requests beautifulsoup4
+          python -m empower --upgrade pip || true
+          pip install feedparser beautifulsoup4 requests
 
-      - name: Run Auto News Script (15 Posts Per Category)
+      - name: Run bot script
         env:
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: python -u bot.py
-
-      - name: Commit and Push Updated Sitemap
         run: |
-          git config --global user.name "FastJob Bot"
-          git config --global user.email "bot@fastjob.online"
-          git add sitemap.xml
-          git diff --staged --quiet || (git commit -m "Auto-update clean sitemap.xml" && git pull --rebase origin main && git push origin main)
+          python bot.py
