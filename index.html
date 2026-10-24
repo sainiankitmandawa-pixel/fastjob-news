@@ -646,8 +646,8 @@ function renderWebStoriesFullPage(newsList, pushState = true) {
         const cleanTitle = st.title.replace('⚡ Story: ', '');
         h += `
         <div onclick="openArticle('${st.slug}')" class="insta-story-card relative group">
-            <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-90"><source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-screens-and-numbers-31917-large.mp4" type="video/mp4"></video>
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-black/60"></div>
+            <img src="${st.image_url}" onerror="this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=80'" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
             <div class="absolute top-3 left-3 bg-[#d10000] text-white text-[10px] font-black px-2.5 py-1 rounded-full uppercase flex items-center gap-1.5 shadow"><span class="w-2 h-2 bg-yellow-300 rounded-full animate-ping"></span> REEL STORY</div>
             <div class="absolute bottom-4 left-4 right-4"><h4 class="text-white text-sm md:text-base font-black line-clamp-3 leading-snug drop-shadow">${cleanTitle}</h4></div>
         </div>`;
@@ -756,12 +756,12 @@ async function openArticle(rawSlug, pushState = true) {
             document.getElementById('detail-image-container').innerHTML = `
             <div class="reel-player relative flex flex-col justify-between p-5 text-white my-4">
                 <div class="absolute inset-0 z-0">
-                    <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-90"><source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-screens-and-numbers-31917-large.mp4" type="video/mp4"></video>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-black/70"></div>
+                    <img src="${post.image_url}" class="w-full h-full object-cover opacity-90">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/80"></div>
                 </div>
                 <div class="flex justify-between items-center z-10"><span class="bg-red-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider">⚡ 9:16 Video Reel</span><span class="text-xs text-yellow-300 font-bold">Fast Job Video Desk</span></div>
                 <div class="z-10 my-auto text-center"><img src="${post.image_url}" class="w-20 h-20 mx-auto rounded-full object-cover border-2 border-yellow-400 shadow-xl mb-3 animate-pulse"></div>
-                <div class="z-10 bg-black/80 backdrop-blur-md p-4 rounded-xl border border-white/20 text-center">
+                <div class="z-10 bg-black/85 backdrop-blur-md p-4 rounded-xl border border-white/20 text-center">
                     <h3 class="text-base md:text-lg font-black leading-snug text-white mb-3">${post.title.replace('⚡ Story: ', '')}</h3>
                     <a href="/${mainSlug}" onclick="event.preventDefault(); openArticle('${mainSlug}');" class="inline-block bg-[#d10000] hover:bg-[#a80000] text-white font-black text-xs uppercase px-6 py-2.5 rounded-full shadow-2xl transition transform hover:scale-105">
                         🔗 Read More (Puri Post Dekhein)
