@@ -140,69 +140,42 @@ def build_800w_full_seo_html(title, summary, cat, author, img_url):
             '<h1 class="seo-title">' + title + '</h1>'
             '<p class="intro-text"><strong>Astrology Bureau | Fast Job Daily Rashifal (' + today_date + '):</strong> Daily astrological horoscope forecast and planetary transit predictions for all 12 zodiac signs.</p>'
             '<h3 class="article-subheading">1. Introduction to Daily Planetary Alignments (2026)</h3>'
-            '<p>Welcome to your comprehensive astrological forecast for <strong>' + title + '</strong>. As planetary transits shift across the celestial sphere, individuals across all zodiac signs will experience distinct energetic influences.</p>'
-            '<h3 class="article-subheading">2. Comprehensive Zodiac-Wise Horoscope Forecast (Aries to Pisces)</h3>'
-            '<p>Our expert astrological desk has synthesized planetary movements to bring you detailed daily insights across all twelve zodiac signs for ' + today_date + ':</p>'
-            '<table class="article-table">'
-            '<tr><th>Zodiac Sign (Rashi)</th><th>Cosmic Focus & Detailed Astrological Prediction (2026)</th></tr>'
-            '<tr><td><strong>Aries (Mesha)</strong></td><td>High vitality and dynamic energy define your day. Favorable celestial alignments make this an ideal time for launching new career projects and financial planning.</td></tr>'
-            '<tr><td><strong>Taurus (Vrishabha)</strong></td><td>Focus shifts toward stability, asset consolidation, and long-term financial planning. Professional networks will offer unexpected support.</td></tr>'
-            '<tr><td><strong>Gemini (Mithuna)</strong></td><td>Communication is your greatest asset today. Collaborative projects and academic pursuits will yield stellar results.</td></tr>'
-            '<tr><td><strong>Cancer (Karka)</strong></td><td>Emotional clarity brings profound inner peace. Dedicate quality time to family bonding and domestic harmony.</td></tr>'
-            '<tr><td><strong>Leo (Simha)</strong></td><td>Your natural leadership qualities shine brightly. Workplace recognition and appreciation from superiors are on the horizon.</td></tr>'
-            '<tr><td><strong>Virgo (Kanya)</strong></td><td>Meticulous planning and analytical rigor ensure success in complex tasks. Health and vitality remain robust.</td></tr>'
-            '<tr><td><strong>Libra (Tula)</strong></td><td>Equilibrium and diplomacy guide your interactions today. Partnerships flourish under harmonious planetary aspects.</td></tr>'
-            '<tr><td><strong>Scorpio (Vrischika)</strong></td><td>Intuition reaches a peak, guiding you through strategic decisions and confidential matters.</td></tr>'
-            '<tr><td><strong>Sagittarius (Dhanu)</strong></td><td>Optimism and adventurous spirit drive your day. Opportunities for higher learning and travel emerge.</td></tr>'
-            '<tr><td><strong>Capricorn (Makara)</strong></td><td>Disciplined effort and unwavering focus yield tangible career milestones. Senior mentors recognize your dedication.</td></tr>'
-            '<tr><td><strong>Aquarius (Kumbha)</strong></td><td>Innovative concepts and forward-thinking ideas attract appreciation from peers.</td></tr>'
-            '<tr><td><strong>Pisces (Meena)</strong></td><td>Spiritual awareness and artistic creativity flourish. Prioritize restorative rest and mindful relaxation.</td></tr>'
-            '</table>'
-            '<h3 class="article-subheading">3. Frequently Asked Questions</h3>'
-            '<p><strong>Q1: How accurate are daily horoscopes?</strong><br>Ans: They offer general cosmic guidance and reflections.</p>'
+            '<p>Welcome to your comprehensive astrological forecast for <strong>' + title + '</strong>.</p>'
             '<p class="hashtags">#FastJob #Rashifal2026 #DailyHoroscope #Astrology</p>'
         )
 
     if cat == "Web Stories":
+        durations = [10, 30, 40, 60]
+        selected_duration = random.choice(durations)
         return (
             '<h1 class="seo-title">' + title + '</h1>'
             '<div class="web-story-reel-container my-6 mx-auto max-w-[360px] bg-black rounded-[24px] overflow-hidden shadow-2xl border-4 border-red-600 relative aspect-[9/16] flex flex-col justify-between p-5 text-white">'
             '<div class="absolute inset-0 z-0"><video autoplay muted loop playsinline class="w-full h-full object-cover opacity-90"><source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-screens-and-numbers-31917-large.mp4" type="video/mp4"></video><div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-black/60"></div></div>'
-            '<div class="flex justify-between items-center z-10"><span class="bg-red-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider flex items-center gap-1.5 shadow"><span class="w-2 h-2 bg-yellow-300 rounded-full animate-ping"></span> 9:16 Video Story</span><span class="text-xs text-yellow-400 font-bold">Fast Job Reel</span></div>'
-            '<div class="z-10 my-auto text-center"><img src="' + img_url + '" class="w-24 h-24 mx-auto rounded-full object-cover border-2 border-yellow-400 shadow-xl mb-4 animate-bounce"></div>'
-            '<div class="z-10 bg-black/70 backdrop-blur-md p-4 rounded-xl border border-white/20"><h3 class="text-lg font-black leading-snug text-white mb-2">' + title + '</h3><p class="text-xs text-gray-300 line-clamp-3">' + clean_sum + '</p></div>'
+            '<div class="flex justify-between items-center z-10"><span class="bg-red-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider flex items-center gap-1.5 shadow"><span class="w-2 h-2 bg-yellow-300 rounded-full animate-ping"></span> 9:16 Video Story (' + str(selected_duration) + 's)</span><span class="text-xs text-yellow-400 font-bold">Fast Job Reel</span></div>'
+            '<div class="z-10 my-auto text-center"><img src="' + img_url + '" class="w-24 h-24 mx-auto rounded-full object-cover border-2 border-yellow-400 shadow-xl mb-3 animate-bounce"></div>'
+            '<div class="z-10 bg-black/70 backdrop-blur-md p-4 rounded-xl border border-white/20"><h3 class="text-base font-black leading-snug text-white mb-2">' + title + '</h3><p class="text-xs text-gray-300 line-clamp-2 mb-3">' + clean_sum + '</p>'
+            '<a href="#" class="block bg-[#d10000] text-white font-black text-xs uppercase text-center py-2 rounded-full shadow-lg">🔗 Read More (Puri Post Dekhein)</a></div>'
             '</div>'
             '<h3 class="article-subheading">Complete Video Story Coverage</h3>'
-            '<p>This 9:16 vertical video story provides instant visual insights into <strong>' + title + '</strong>.</p>'
-            '<p class="hashtags">#FastJob #WebStories #VerticalVideo</p>'
+            '<p>This 9:16 vertical video story (' + str(selected_duration) + ' seconds loop) provides instant visual insights into <strong>' + title + '</strong>.</p>'
+            '<p class="hashtags">#FastJob #WebStories #VerticalVideo #Reels2026</p>'
         )
 
     return (
         '<h1 class="seo-title">' + title + '</h1>'
         '<p class="intro-text"><strong>Reported by ' + author + ' | Fast Job Global SEO Desk:</strong> ' + clean_sum + ' Read this comprehensive, fact-checked report covering official notifications, key highlights, and expert analysis.</p>'
         '<h3 class="article-subheading">1. Executive Summary & Breaking Developments</h3>'
-        '<p>In a landmark development under the <strong>' + cat + '</strong> vertical, official authorities and industry stakeholders have formally released comprehensive details concerning <strong>' + title + '</strong>. Across the national and international landscape, this update has garnered massive attention from citizens, professionals, and policy analysts alike.</p>'
+        '<p>In a landmark development under the <strong>' + cat + '</strong> vertical, official authorities and industry stakeholders have formally released comprehensive details concerning <strong>' + title + '</strong>.</p>'
         '<h3 class="article-subheading">2. Official Overview & Key Highlights Table</h3>'
         '<table class="article-table">'
         '<tr><th>Parameter / Metric</th><th>Official Verified Details (2026)</th></tr>'
         '<tr><th>Headline / Notification</th><td>' + title + '</td></tr>'
         '<tr><th>Primary Category Desk</th><td>' + cat + '</td></tr>'
         '<tr><th>Editorial Correspondent</th><td>' + author + '</td></tr>'
-        '<tr><th>Current Status</th><td>Officially Active & Verified</td></tr>'
         '</table>'
         '<h3 class="article-subheading">3. In-Depth Analysis & Core Requirements</h3>'
-        '<p>A closer inspection of the guidelines surrounding <strong>' + title + '</strong> reveals several critical benchmarks that participants and readers must keep in mind.</p>'
-        '<ul>'
-        '<li><strong>Verification Standards:</strong> All submitted records and digital forms must be authentic and verified.</li>'
-        '<li><strong>Compliance & Security:</strong> Uses real-time verification protocols for maximum safety.</li>'
-        '<li><strong>Sector Impact:</strong> Experts project a substantial surge in participation and market growth.</li>'
-        '</ul>'
-        '<h3 class="article-subheading">4. Step-by-Step Procedure & Implementation Guide</h3>'
-        '<p>For candidates, consumers, and professionals looking to act on <strong>' + title + '</strong>, following a systematic approach guarantees a smooth experience.</p>'
-        '<h3 class="article-subheading">5. Frequently Asked Questions (SEO FAQs)</h3>'
-        '<p><strong>Q1: What is the latest update regarding ' + title + '?</strong><br>Ans: Official authorities have released comprehensive guidelines.</p>'
-        '<p><strong>Q2: Who is eligible or impacted?</strong><br>Ans: All eligible candidates and professionals meeting prescribed criteria.</p>'
-        '<p class="hashtags">#FastJob #' + cat.replace(" ", "").replace("&", "") + ' #BreakingNews2026 #VerifiedUpdate</p>'
+        '<p>A closer inspection of the guidelines surrounding <strong>' + title + '</strong> reveals several critical benchmarks.</p>'
+        '<p class="hashtags">#FastJob #' + cat.replace(" ", "").replace("&", "") + ' #BreakingNews2026</p>'
     )
 
 def collect_unique_posts(urls, cat, target_count, seen_titles, seen_imgs):
@@ -248,7 +221,6 @@ def publish_one(item, idx, total):
         if r.status_code in [200, 201, 204]:
             print("OK [" + str(idx) + "/" + str(total) + "] " + cat + ": " + title[:45])
             
-            # INSTANT WEB STORY CREATION FOR EVERY SINGLE POST
             if cat != "Web Stories":
                 story_slug = "story-" + slug
                 story_title = "⚡ Story: " + title
@@ -288,9 +260,8 @@ def run():
     seen_titles, seen_imgs = clean_existing_duplicates_and_load_seen()
     q = []
     for cat in CATEGORIES:
-        if cat == "Web Stories": continue # Generated instantly for every post
+        if cat == "Web Stories": continue
         urls = FEEDS_MAP.get(cat, FEEDS_MAP["Breaking News"])
-        # Automobile and Technology: 5 posts per hourly run, Others: 10 posts per hourly run
         if cat in ["Automobile", "Technology"]:
             target = 5
         elif cat == "Jobs & Careers":
@@ -303,7 +274,7 @@ def run():
         items = collect_unique_posts(urls, cat, target, seen_titles, seen_imgs)
         q.extend(items)
 
-    print("Publishing Hourly Batch with Instant Web Stories...")
+    print("Publishing Hourly Batch with 9:16 Video Web Stories...")
     ok = 0
     with ThreadPoolExecutor(max_workers=8) as ex:
         futs = [ex.submit(publish_one, it, i + 1, len(q)) for i, it in enumerate(q)]
