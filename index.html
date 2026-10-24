@@ -11,13 +11,13 @@
 
 <!-- FJ NEWS FAVICON -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='96' fill='%23d10000'/%3E%3Crect x='20' y='20' width='472' height='472' rx='80' fill='none' stroke='%23facc15' stroke-width='16'/%3E%3Ctext x='256' y='320' font-family='Arial Black,sans-serif' font-weight='900' font-size='245' fill='%23ffffff' text-anchor='middle'%3EFJ%3C/text%3E%3Crect x='56' y='382' width='400' height='80' rx='18' fill='%23facc15'/%3E%3Ctext x='256' y='438' font-family='Arial,sans-serif' font-weight='900' font-size='46' fill='%23111827' text-anchor='middle' letter-spacing='5'%3ENEWS%3C/text%3E%3C/svg%3E">
-<link rel="shortcut icon" href="/logo.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/logo.svg">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"NewsMediaOrganization","name":"Fast Job","url":"https://fastjob.online","logo":{"@type":"ImageObject","url":"https://fastjob.online/logo.svg","width":512,"height":512}}
 </script>
 
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4ECBSC962B"></script>
+<script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
@@ -42,14 +42,6 @@ body { font-family: 'Mukta', sans-serif; background-color: #f4f5f7; color: #1118
 .ticker-item:hover { color: #d10000; }
 @keyframes ticker { 0% { transform: translate3d(0,0,0); } 100% { transform: translate3d(-100%,0,0); } }
 
-/* INSTAGRAM REEL VERTICAL 9:16 STORY CARD & PLAYER */
-.insta-story-card { width: 100%; max-width: 280px; height: 500px; border-radius: 18px; overflow: hidden; position: relative; cursor: pointer; box-shadow: 0 12px 30px rgba(0,0,0,0.3); border: 2px solid #d10000; background: #000; transition: transform 0.3s; }
-.insta-story-card:hover { transform: translateY(-5px); }
-
-.reel-player { width: 100%; max-width: 360px; height: 640px; border-radius: 24px; overflow: hidden; position: relative; background: #000; box-shadow: 0 20px 50px rgba(0,0,0,0.5); margin: 0 auto; border: 3px solid #d10000; }
-@keyframes fadeInText { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-.animate-reel-text { animation: fadeInText 0.8s ease-out forwards; }
-
 .cat-pill { position: relative; transition: all 0.2s; color: #1f2937; white-space: nowrap; cursor: pointer; }
 .cat-pill:hover, .cat-pill.active-cat { color: #d10000 !important; font-weight: 800; background: #fff5f5; }
 .cat-pill.active-cat::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: #d10000; }
@@ -70,11 +62,13 @@ body { font-family: 'Mukta', sans-serif; background-color: #f4f5f7; color: #1118
 .slider-container { position: relative; overflow: hidden; border-radius: 0.75rem; }
 .slide { display: none; }
 .slide.active { display: block; }
+.insta-story-card { width: 100%; max-width: 280px; height: 500px; border-radius: 18px; overflow: hidden; position: relative; cursor: pointer; box-shadow: 0 12px 30px rgba(0,0,0,0.3); border: 2px solid #d10000; background: #000; transition: transform 0.3s; }
+.insta-story-card:hover { transform: translateY(-5px); }
+.reel-player { width: 100%; max-width: 360px; height: 640px; border-radius: 24px; overflow: hidden; position: relative; background: #000; box-shadow: 0 20px 50px rgba(0,0,0,0.5); margin: 0 auto; border: 3px solid #d10000; }
 </style>
 </head>
 <body class="flex flex-col min-h-screen overflow-x-hidden">
 
-<!-- 1. Top Utility Bar -->
 <div class="bg-[#990000] text-white text-[11px] py-1.5 px-3 md:px-6 w-full border-b border-red-800 relative z-50">
     <div class="w-full max-w-[1400px] mx-auto flex justify-between items-center">
         <div class="flex items-center gap-2.5 md:gap-4">
@@ -83,7 +77,7 @@ body { font-family: 'Mukta', sans-serif; background-color: #f4f5f7; color: #1118
             </span>
             <span class="bg-black/35 text-yellow-300 px-3 py-0.5 rounded-full font-bold text-[10px] md:text-xs inline-flex items-center border border-yellow-400/30">
                 <i class="fa-regular fa-calendar-days text-yellow-300 mr-1.5"></i>
-                <span id="live-date">Tuesday, October 20, 2026</span>
+                <span id="live-date">Saturday, October 24, 2026</span>
             </span>
         </div>
         <div class="flex items-center gap-4">
@@ -99,7 +93,6 @@ body { font-family: 'Mukta', sans-serif; background-color: #f4f5f7; color: #1118
     </div>
 </div>
 
-<!-- 2. Main Header -->
 <header class="sticky top-0 z-40 shadow-md bg-white">
     <div class="bg-[#d10000] text-white py-3 px-3 md:px-6">
         <div class="w-full max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
@@ -146,7 +139,6 @@ body { font-family: 'Mukta', sans-serif; background-color: #f4f5f7; color: #1118
         </div>
     </div>
 
-    <!-- 3. Navigation Bar -->
     <div class="bg-white border-b border-gray-200 px-2 md:px-6 relative z-30">
         <div class="w-full max-w-[1400px] mx-auto flex items-center">
             <nav class="flex items-center space-x-1 overflow-x-auto no-scrollbar py-0.5 w-full" id="top-category-nav"></nav>
@@ -154,13 +146,11 @@ body { font-family: 'Mukta', sans-serif; background-color: #f4f5f7; color: #1118
     </div>
 </header>
 
-<!-- 4. Ticker -->
 <div class="ticker-wrap">
     <div class="ticker-label"><span class="w-2 h-2 bg-yellow-300 rounded-full animate-ping mr-2"></span> TRENDING NEWS</div>
     <div class="ticker-track"><div class="ticker" id="ticker-content"><span class="ticker-item">Loading latest verified stories and job notifications...</span></div></div>
 </div>
 
-<!-- Mobile Drawer -->
 <div id="mobileMenu" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex justify-end">
     <div class="w-80 bg-white text-gray-900 h-full shadow-2xl flex flex-col p-5 overflow-y-auto border-t-4 border-[#d10000]">
         <div class="flex items-center justify-between border-b border-gray-200 pb-3 mb-4">
@@ -177,7 +167,7 @@ body { font-family: 'Mukta', sans-serif; background-color: #f4f5f7; color: #1118
             <input type="text" id="mobileSearchInput" onkeyup="searchNewsMobile()" placeholder="Search news..." class="w-full bg-transparent outline-none font-semibold text-sm">
             <i class="fa-solid fa-magnifying-glass text-[#d10000] text-sm"></i>
         </div>
-        <p class="text-[11px] font-black uppercase text-[#d10000] mb-2 border-b pb-1">All 27 News Categories</p>
+        <p class="text-[11px] font-black uppercase text-[#d10000] mb-2 border-b pb-1">All News Categories</p>
         <nav class="flex flex-col space-y-1 font-bold text-gray-800 text-sm mb-6" id="mobile-category-nav"></nav>
         <p class="text-[11px] font-black uppercase text-[#d10000] mb-2 border-b pb-1">Legal & Portal Info</p>
         <div class="flex flex-col space-y-2 text-xs font-bold text-gray-600 pt-1">
@@ -191,9 +181,7 @@ body { font-family: 'Mukta', sans-serif; background-color: #f4f5f7; color: #1118
     </div>
 </div>
 
-<!-- MAIN CONTENT -->
 <main class="w-full max-w-[1400px] mx-auto px-3 md:px-6 py-6 flex-grow">
-    <!-- Article View -->
     <div id="article-view" class="hidden bg-white p-5 md:p-10 w-full max-w-5xl mx-auto shadow-md rounded-xl border-t-4 border-[#d10000]">
         <button onclick="goBackHome()" class="mb-6 bg-gray-100 hover:bg-[#d10000] text-gray-800 hover:text-white font-bold uppercase text-xs py-2.5 px-5 rounded-full inline-flex items-center transition"><i class="fa-solid fa-arrow-left mr-2"></i> Back to News</button>
         <h1 id="detail-title" class="text-2xl md:text-4xl font-black text-gray-900 leading-tight mb-6 heading-font"></h1>
@@ -214,14 +202,12 @@ body { font-family: 'Mukta', sans-serif; background-color: #f4f5f7; color: #1118
         <div id="detail-content" class="w-full overflow-x-auto text-gray-800"></div>
     </div>
 
-    <!-- Legal Page View -->
     <div id="legal-view" class="hidden bg-white p-6 md:p-12 w-full max-w-5xl mx-auto shadow-md rounded-xl border-t-4 border-[#d10000]">
         <button onclick="goBackHome()" class="mb-6 bg-gray-100 hover:bg-[#d10000] text-gray-800 hover:text-white font-bold uppercase text-xs py-2.5 px-5 rounded-full inline-flex items-center transition"><i class="fa-solid fa-arrow-left mr-2"></i> Back to Home</button>
         <h1 id="legal-page-title" class="text-2xl md:text-4xl font-black text-gray-900 heading-font mb-6 border-b-2 border-gray-100 pb-4 uppercase"></h1>
         <div id="legal-page-content" class="w-full text-gray-800"></div>
     </div>
 
-    <!-- Home View -->
     <div id="home-view">
         <div id="hero-top-section" class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-10 items-stretch">
             <div class="lg:col-span-8 flex flex-col">
@@ -241,7 +227,6 @@ body { font-family: 'Mukta', sans-serif; background-color: #f4f5f7; color: #1118
     </div>
 </main>
 
-<!-- FOOTER -->
 <footer class="bg-[#111827] text-gray-300 pt-14 pb-8 mt-12 border-t-4 border-[#d10000]">
     <div class="w-full max-w-[1400px] mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
         <div>
@@ -304,12 +289,7 @@ const WORLD_AUTHORS = [
     "Noah Mitchell (Los Angeles)", "Chloe Sullivan (Boston)", "Mason Rivera (Miami)", "Harper Reed (Toronto)",
     "Logan Foster (Seattle)", "Sophia Jenkins (Houston)", "Oliver Sterling (London)", "Amelia Clarke (UK Bureau)",
     "Liam O'Connor (Dublin)", "Camille Laurent (Paris)", "Lukas Weber (Frankfurt)", "Elena Rostova (Geneva)",
-    "Matteo Rossi (Milan)", "Sofia Lindqvist (Stockholm)", "Hugo Martinez (Madrid)", "Freya Van Der Berg (Amsterdam)",
-    "Tariq Al-Mansoor (Dubai)", "Layla Haddad (Doha)", "Omar Farooq (Riyadh)", "Nadia El-Masri (Cairo)",
-    "Kwame Mensah (Accra)", "Amara Okafor (Lagos)", "Zanele Khumalo (Johannesburg)", "Youssef Benali (Casablanca)",
-    "Kenji Takahashi (Tokyo)", "Mei-Ling Tan (Singapore)", "Min-Jae Park (Seoul)", "Liam Thornton (Sydney)",
-    "Isla MacLeod (Melbourne)", "Hiroshi Sato (Osaka)", "Mateo Silva (Sao Paulo)", "Valentina Gomez (Buenos Aires)",
-    "Diego Hernandez (Mexico City)", "Camila Vargas (Santiago)"
+    "Matteo Rossi (Milan)", "Sofia Lindqvist (Stockholm)", "Hugo Martinez (Madrid)", "Freya Van Der Berg (Amsterdam)"
 ];
 
 function getPostAuthor(post) {
@@ -327,20 +307,20 @@ function isRealPublisherImage(url) {
 }
 
 const CATEGORIES = [
-    "Jobs & Careers", "Rashifal & Horoscopes", "Web Stories", "Breaking News", "World News", "India News", 
-    "Politics", "Sports", "Business", "Finance & Markets", "Technology", "Entertainment", 
-    "Education", "Health & Medicine", "Science", "AI & Robotics", "Crime & Justice", 
-    "Auto & EV", "Economy", "Environment & Climate", "Lifestyle", "Travel & Tourism", 
-    "Real Estate", "Defence & Security", "Weather", "Opinion & Editorial", "Fact Check & Explainers"
+    "Automobile", "Technology", "Jobs & Careers", "Rashifal & Horoscopes", "Web Stories", "Breaking News", 
+    "World News", "India News", "Politics", "Sports", "Business", "Finance & Markets", 
+    "Entertainment", "Education", "Health & Medicine", "Science", "AI & Robotics", "Crime & Justice", 
+    "Economy", "Environment & Climate", "Lifestyle", "Travel & Tourism", "Real Estate", 
+    "Defence & Security", "Weather", "Opinion & Editorial", "Fact Check & Explainers"
 ];
 
 const categoryIcons = {
-    "Jobs & Careers": "fa-solid fa-user-tie", "Rashifal & Horoscopes": "fa-solid fa-star-and-crescent", "Web Stories": "fa-solid fa-bolt", "Breaking News": "fa-solid fa-bolt-lightning", "World News": "fa-solid fa-earth-americas",
+    "Automobile": "fa-solid fa-car-side", "Technology": "fa-solid fa-laptop-code", "Jobs & Careers": "fa-solid fa-user-tie", "Rashifal & Horoscopes": "fa-solid fa-star-and-crescent", "Web Stories": "fa-solid fa-bolt", "Breaking News": "fa-solid fa-bolt-lightning", "World News": "fa-solid fa-earth-americas",
     "India News": "fa-solid fa-flag", "Politics": "fa-solid fa-landmark-dome", "Sports": "fa-solid fa-trophy",
-    "Business": "fa-solid fa-briefcase", "Finance & Markets": "fa-solid fa-chart-line", "Technology": "fa-solid fa-laptop-code",
+    "Business": "fa-solid fa-briefcase", "Finance & Markets": "fa-solid fa-chart-line",
     "Entertainment": "fa-solid fa-film", "Education": "fa-solid fa-graduation-cap", "Health & Medicine": "fa-solid fa-heart-pulse",
     "Science": "fa-solid fa-flask-vial", "AI & Robotics": "fa-solid fa-robot", "Crime & Justice": "fa-solid fa-scale-balanced",
-    "Auto & EV": "fa-solid fa-car-side", "Economy": "fa-solid fa-indian-rupee-sign", "Environment & Climate": "fa-solid fa-leaf",
+    "Economy": "fa-solid fa-indian-rupee-sign", "Environment & Climate": "fa-solid fa-leaf",
     "Lifestyle": "fa-solid fa-mug-hot", "Travel & Tourism": "fa-solid fa-plane-departure", "Real Estate": "fa-solid fa-building-columns",
     "Defence & Security": "fa-solid fa-shield-halved", "Weather": "fa-solid fa-cloud-sun-rain", "Opinion & Editorial": "fa-solid fa-pen-fancy",
     "Fact Check & Explainers": "fa-solid fa-magnifying-glass-chart"
@@ -382,40 +362,37 @@ function setActiveNav(el) {
 function buildLegalPageContent(key) {
     const commonFooter = `
         <h3>Institutional Governance, Compliance & Editorial Accountability (2026 Framework)</h3>
-        <p>Fast Job (<strong>https://fastjob.online</strong>) operates under strict digital media ethics, international journalism standards, and statutory compliance protocols across all 27 editorial verticals.</p>
+        <p>Fast Job (<strong>https://fastjob.online</strong>) operates under strict digital media ethics, international journalism standards, and statutory compliance protocols across all editorial verticals.</p>
         <table class="article-table">
             <tr><th>Compliance Parameter</th><th>Fast Job (fastjob.online) Official Standard</th></tr>
             <tr><td><strong>Portal Identity & Domain</strong></td><td>Fast Job Global News & Career Network (https://fastjob.online)</td></tr>
-            <tr><td><strong>Editorial Footprint</strong></td><td>50+ Regional & International Correspondents across 27 Specialized Desks</td></tr>
             <tr><td><strong>Support & Grievance Desk</strong></td><td>desk@fastjob.online (24×7 Compliance Response)</td></tr>
         </table>
     `;
     const pages = {
         'about-us': {
             title: 'About Fast Job (fastjob.online) — Global News & Career Network',
-            body: `<div class="intro-box"><strong>Fast Job (https://fastjob.online)</strong> is India's premier 24×7 digital newsroom and verified global recruitment & horoscope portal, powered by 50+ correspondents across 27 specialized desks.</div>
-            <h3>1. Our Founding Vision & Public Mission</h3>
-            <p>Established to bridge the gap between complex government/corporate announcements and millions of citizens, <strong>Fast Job</strong> delivers real-time breaking news, Sarkari Naukri notifications, daily Rashifal, and global career alerts.</p>` + commonFooter
+            body: `<div class="intro-box"><strong>Fast Job (https://fastjob.online)</strong> is India's premier 24×7 digital newsroom and verified global recruitment & tech portal.</div>` + commonFooter
         },
         'privacy-policy': {
             title: 'Privacy Policy — User Data Protection & Cookie Standards',
-            body: `<div class="intro-box"><strong>Effective Date: January 1, 2026 | Updated: October 2026</strong> — At Fast Job (https://fastjob.online), protecting visitor privacy under India's DPDP Act and global GDPR norms is our highest priority.</div>` + commonFooter
+            body: `<div class="intro-box"><strong>Effective Date: January 1, 2026</strong> — At Fast Job, protecting visitor privacy is our highest priority.</div>` + commonFooter
         },
         'terms-and-conditions': {
             title: 'Terms & Conditions of Use — Fast Job Portal',
-            body: `<div class="intro-box">By accessing <strong>https://fastjob.online</strong>, you agree to abide by these Terms and Conditions of Use.</div>` + commonFooter
+            body: `<div class="intro-box">By accessing <strong>https://fastjob.online</strong>, you agree to abide by these Terms and Conditions.</div>` + commonFooter
         },
         'disclaimer': {
-            title: 'Official Disclaimer — Recruitment, Financial, Rashifal & News Coverage',
-            body: `<div class="intro-box"><strong>Important Reader Notice:</strong> Fast Job (https://fastjob.online) is an independent private digital news publication and is NOT affiliated with the Government of India.</div>` + commonFooter
+            title: 'Official Disclaimer — Recruitment, Financial & News Coverage',
+            body: `<div class="intro-box"><strong>Important Reader Notice:</strong> Fast Job is an independent private digital news publication.</div>` + commonFooter
         },
         'editorial-policy': {
             title: 'Editorial Policy, Fact-Checking & Corrections Protocol',
-            body: `<div class="intro-box">Trust, speed, and verification govern every story published by our 50+ correspondents across all 27 desks at <strong>Fast Job (https://fastjob.online)</strong>.</div>` + commonFooter
+            body: `<div class="intro-box">Trust, speed, and verification govern every story published at <strong>Fast Job</strong>.</div>` + commonFooter
         },
         'contact-us': {
             title: 'Contact Desk & Grievance Redressal — Fast Job',
-            body: `<div class="intro-box">Connect directly with the <strong>Fast Job Editorial, Recruitment & Compliance Desk</strong> for news tips, press releases, corrections, or advertising partnerships.</div>` + commonFooter
+            body: `<div class="intro-box">Connect directly with the <strong>Fast Job Editorial & Compliance Desk</strong>.</div>` + commonFooter
         }
     };
     return pages[key] || null;
@@ -423,19 +400,16 @@ function buildLegalPageContent(key) {
 
 function getPostsForCategory(newsList, cat) {
     if (cat === "Web Stories") {
-        return newsList.filter(p => p.category === "Web Stories");
+        return newsList.filter(p => p.category === "Web Stories" || p.title.startsWith("⚡ Story:"));
     }
     const matched = newsList.filter(p => {
         if (p.category === cat) return true;
         if (cat === "Jobs & Careers" && (p.category === "Jobs" || p.category === "Jobs & Careers")) return true;
-        if (cat === "Auto & EV" && (p.category === "Automobile" || p.category === "Auto & EV")) return true;
-        if ((cat === "Technology" || cat === "AI & Robotics") && p.category === "Tech & AI") return true;
+        if (cat === "Automobile" && (p.category === "Auto & EV" || p.category === "Automobile")) return true;
+        if (cat === "Technology" && (p.category === "Tech & AI" || p.category === "Technology")) return true;
         return false;
     });
-    const realImg = matched.filter(p => isRealPublisherImage(p.image_url));
-    const otherImg = matched.filter(p => !isRealPublisherImage(p.image_url));
-    const comb = realImg.concat(otherImg);
-    return (cat === "Breaking News" && comb.length === 0) ? newsList.slice(0, 20) : comb;
+    return matched;
 }
 
 function getActiveRouteSlug() {
@@ -623,16 +597,16 @@ function renderWebStoriesFullPage(newsList, pushState = true) {
     document.getElementById('home-view').classList.remove('hidden');
     document.getElementById('hero-top-section').classList.add('hidden');
 
-    const stories = newsList.filter(p => p.category === "Web Stories");
+    const stories = newsList.filter(p => p.category === "Web Stories" || p.title.startsWith("⚡ Story:"));
     document.title = "Google Web Stories - Fast Job";
 
     let h = `
     <div class="bg-white p-6 md:p-8 rounded-xl shadow-sm border border-gray-200">
         <div class="border-b-2 border-[#d10000] pb-3 mb-6 flex justify-between items-center">
-            <span class="section-badge text-lg"><i class="fa-solid fa-bolt text-yellow-300"></i> Instagram Style Web Stories (${stories.length})</span>
+            <span class="section-badge text-lg"><i class="fa-solid fa-bolt text-yellow-300"></i> Google Web Stories Reels (${stories.length})</span>
             <button onclick="goBackHome()" class="text-xs font-bold text-gray-600 hover:text-[#d10000]"><i class="fa-solid fa-house mr-1"></i> Back Home</button>
         </div>
-        <p class="text-gray-600 font-semibold mb-6">Explore our immersive vertical Reel / Story player format. Tap any story card to play the interactive slideshow.</p>
+        <p class="text-gray-600 font-semibold mb-6">Explore our immersive vertical Reel / Story player format. Tap any story card to play instantly.</p>
         <div class="flex flex-wrap justify-center gap-6">`;
     
     stories.forEach(st => {
@@ -641,7 +615,7 @@ function renderWebStoriesFullPage(newsList, pushState = true) {
             <img src="${st.image_url}" onerror="this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=80'" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
             <div class="absolute top-3 left-3 bg-[#d10000] text-white text-[10px] font-black px-2.5 py-1 rounded-full uppercase flex items-center gap-1.5 shadow"><span class="w-2 h-2 bg-yellow-300 rounded-full animate-ping"></span> REEL STORY</div>
-            <div class="absolute bottom-4 left-4 right-4"><h4 class="text-white text-sm md:text-base font-black line-clamp-3 leading-snug drop-shadow">${st.title}</h4></div>
+            <div class="absolute bottom-4 left-4 right-4"><h4 class="text-white text-sm md:text-base font-black line-clamp-3 leading-snug drop-shadow">${st.title.replace('⚡ Story: ', '')}</h4></div>
         </div>`;
     });
     h += `</div></div>`;
@@ -743,12 +717,12 @@ async function openArticle(rawSlug, pushState = true) {
         document.getElementById('detail-author-avatar').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(au.split('(')[0].trim())}&background=d10000&color=fff&bold=true`;
         document.getElementById('detail-date').innerHTML = `<i class="fa-regular fa-clock mr-1"></i> Published on ${new Date(post.created_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}`;
         
-        if (post.category === "Web Stories") {
+        if (post.category === "Web Stories" || post.title.startsWith("⚡ Story:")) {
             document.getElementById('detail-image-container').innerHTML = `
             <div class="reel-player relative flex flex-col justify-between p-5 text-white my-4">
                 <div class="absolute inset-0 z-0"><img src="${post.image_url}" class="w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-black/50"></div></div>
                 <div class="flex justify-between items-center z-10"><span class="bg-red-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider">⚡ Live Reel</span><span class="text-xs text-yellow-300 font-bold">Fast Job Video Desk</span></div>
-                <div class="z-10 bg-black/60 backdrop-blur-md p-5 rounded-xl border border-white/20 animate-reel-text"><h3 class="text-lg md:text-xl font-black leading-snug text-white">${post.title}</h3></div>
+                <div class="z-10 bg-black/60 backdrop-blur-md p-5 rounded-xl border border-white/20"><h3 class="text-lg md:text-xl font-black leading-snug text-white">${post.title.replace('⚡ Story: ', '')}</h3></div>
             </div>`;
         } else {
             document.getElementById('detail-image-container').innerHTML = `<img src="${post.image_url}" class="w-full h-auto object-cover max-h-[550px] mb-8 rounded-xl shadow">`;
