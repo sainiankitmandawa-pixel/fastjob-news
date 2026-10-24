@@ -1,8 +1,8 @@
-name: Run Auto News Script (4 AM Daily)
+name: Run Auto News Script (Hourly)
 
 on:
   schedule:
-    - cron: '30 22 * * *' # Roz subah 4:00 AM IST (22:30 UTC) par automatically run hoga
+    - cron: '0 * * * *' # हर 1 घंटे पर ऑटोमैटिक रन होगा
   workflow_dispatch:
 
 jobs:
@@ -19,7 +19,6 @@ jobs:
 
       - name: Install dependencies
         run: |
-          python -m empower --upgrade pip || true
           pip install feedparser beautifulsoup4 requests
 
       - name: Run bot script
