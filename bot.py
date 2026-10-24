@@ -1,8 +1,10 @@
-import feedparser, re, random, time, os, requests
+import feedparser, re, random, time, os, requests, json
 from datetime import datetime
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse, parse_qs, unquote
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from google.oauth2 import service_account
+from googleapiclient.discovery import build
 
 S_URL = "https://wioheljpjdcprozqumpv.supabase.co"
 S_KEY = (os.environ.get("SUPABASE_KEY") or "").strip() or "sb_publishable_d_ROr-nG6RpIRlVWtIE-Fg_sciaLZXR"
@@ -72,6 +74,22 @@ FEEDS_MAP = {
     "Opinion & Editorial": ["https://indianexpress.com/section/opinion/feed/"],
     "Fact Check & Explainers": ["https://www.indiatoday.in/rss/fact-check"]
 }
+
+def notify_google_indexing(url):
+    try:
+        sa_json = os.environ.get("GCP_SA_KEY")
+        if not sa_json:
+            return
+        service_account_info = json.loads(sa_json)
+        credentials = service_account.Credentials.from_service_account_info(
+            service_account_info, scopes=["https://www.googleapis.com/auth/indexing"]
+        )
+        service = build('indexing', 'v3', credentials=credentials)
+        body = {"url": url, "type": "URL_UPDATED"}
+        service.urlNotifications().publish(body=body).execute()
+        print("Instant Indexed:", url)
+    except Exception as e:
+        print("Indexing Error:", e)
 
 def img_key(u):
     if not u: return ""
@@ -220,12 +238,15 @@ def publish_one(item, idx, total):
         r = requests.post(S_URL + "/rest/v1/posts", headers=HEADERS, json={"title": title, "slug": slug, "content": body, "category": cat, "image_url": img}, timeout=25)
         if r.status_code in [200, 201, 204]:
             print("OK [" + str(idx) + "/" + str(total) + "] " + cat + ": " + title[:45])
+            notify_google_indexing(f"https://fastjob.online/{slug}")
             
             if cat != "Web Stories":
                 story_slug = "story-" + slug
                 story_title = "⚡ Story: " + title
                 story_body = build_800w_full_seo_html(title, summary, "Web Stories", author, img)
-                requests.post(S_URL + "/rest/v1/posts", headers=HEADERS, json={"title": story_title, "slug": story_slug, "content": story_body, "category": "Web Stories", "image_url": img}, timeout=15)
+                res_story = requests.post(S_URL + "/rest/v1/posts", headers=HEADERS, json={"title": story_title, "slug": story_slug, "content": story_body, "category": "Web Stories", "image_url": img}, timeout=15)
+                if res_story.status_code in [200, 201, 204]:
+                    notify_google_indexing(f"https://fastjob.online/{story_slug}")
 
             return True
     except Exception as ex:
@@ -274,13 +295,13 @@ def run():
         items = collect_unique_posts(urls, cat, target, seen_titles, seen_imgs)
         q.extend(items)
 
-    print("Publishing Hourly Batch with 9:16 Video Web Stories...")
+    print("Publishing Hourly Batch with Instant Google Indexing & 9:16 Video Web Stories...")
     ok = 0
     with ThreadPoolExecutor(max_workers=8) as ex:
         futs = [ex.submit(publish_one, it, i + 1, len(q)) for i, it in enumerate(q)]
         for f in as_completed(futs):
             if f.result(): ok += 1
-    print("FINISHED! Published " + str(ok) + " Posts & Stories!")
+    print("FINISHED! Published " + str(ok) + " Posts & Stories with Instant Indexing!")
 
 if __name__ == "__main__":
     run()
