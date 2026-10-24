@@ -342,7 +342,7 @@ function initCategoryNav() {
         const ic = categoryIcons[cat] || "fa-solid fa-newspaper";
 
         topH += `<a href="/category/${s}" onclick="event.preventDefault(); setActiveNav(this); filterCategory('${cat}');" class="cat-pill px-3 py-2.5 font-bold text-xs md:text-[13px] uppercase tracking-wide shrink-0 inline-flex items-center gap-1.5"><i class="${ic} text-[#d10000]"></i> ${cat}</a>`;
-        mobH += `<a href="/category/${s}" onclick="event.preventDefault(); filterCategoryAndClose('${cat}');" class="px-3 py-2.5 rounded-lg hover:bg-red-50 flex items-center gap-3 border-b border-gray-50"><i class="${ic} text-[#d10000] w-5 text-center"></i> <span>${cat}</span></a>`;
+        mobH += `<a href="/category/${s}" onclick="event.preventDefault(); filterCategoryAndClose('${cat}');" class="px-3 py-2.5 rounded-lg hover:bg-red-50 flex items-center gap-2 font-bold text-sm text-gray-800"><i class="${ic} text-[#d10000] w-5 text-center"></i> <span>${cat}</span></a>`;
         if (idx < 7) {
             footH += `<li><a href="/category/${s}" onclick="event.preventDefault(); filterCategory('${cat}');" class="hover:text-white flex items-center gap-2.5"><i class="${ic} text-[#d10000] w-4"></i><span>${cat}</span></a></li>`;
         }
@@ -507,7 +507,7 @@ function renderTicker(items) {
 }
 
 function renderSliderAndSidebar(items) {
-    const top5 = items.filter(p => p.category !== "Web Stories").slice(0, 5);
+    const top5 = items.filter(p => p.category !== "Web Stories" && !p.title.startsWith("⚡ Story:")).slice(0, 5);
     if (!top5.length) return;
     document.getElementById('slider-wrapper').innerHTML = top5.map((it, idx) => `
         <div class="slide ${idx === 0 ? 'active' : ''} cursor-pointer w-full h-full relative group" onclick="openArticle('${it.slug}')">
@@ -522,7 +522,7 @@ function renderSliderAndSidebar(items) {
             </div>
         </div>`).join('');
 
-    const side = items.filter(p => p.category !== "Web Stories").slice(5, 15);
+    const side = items.filter(p => p.category !== "Web Stories" && !p.title.startsWith("⚡ Story:")).slice(5, 15);
     document.getElementById('top-sidebar-list').innerHTML = side.map(it => `
         <div onclick="openArticle('${it.slug}')" class="py-2.5 flex gap-3 items-center cursor-pointer group">
             <img src="${it.image_url}" onerror="this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&q=80'" class="w-20 h-14 object-cover rounded-lg shrink-0">
@@ -606,16 +606,18 @@ function renderWebStoriesFullPage(newsList, pushState = true) {
             <span class="section-badge text-lg"><i class="fa-solid fa-bolt text-yellow-300"></i> Google Web Stories Reels (${stories.length})</span>
             <button onclick="goBackHome()" class="text-xs font-bold text-gray-600 hover:text-[#d10000]"><i class="fa-solid fa-house mr-1"></i> Back Home</button>
         </div>
-        <p class="text-gray-600 font-semibold mb-6">Explore our immersive vertical Reel / Story player format. Tap any story card to play instantly.</p>
+        <p class="text-gray-600 font-semibold mb-6">Explore our immersive vertical Reel / Story player format. Tap any story card to go directly to its original post.</p>
         <div class="flex flex-wrap justify-center gap-6">`;
     
     stories.forEach(st => {
+        const originalSlug = st.slug.replace('story-', '');
+        const cleanTitle = st.title.replace('⚡ Story: ', '');
         h += `
-        <div onclick="openArticle('${st.slug}')" class="insta-story-card relative group">
+        <div onclick="openArticle('${originalSlug}')" class="insta-story-card relative group">
             <img src="${st.image_url}" onerror="this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=80'" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
             <div class="absolute top-3 left-3 bg-[#d10000] text-white text-[10px] font-black px-2.5 py-1 rounded-full uppercase flex items-center gap-1.5 shadow"><span class="w-2 h-2 bg-yellow-300 rounded-full animate-ping"></span> REEL STORY</div>
-            <div class="absolute bottom-4 left-4 right-4"><h4 class="text-white text-sm md:text-base font-black line-clamp-3 leading-snug drop-shadow">${st.title.replace('⚡ Story: ', '')}</h4></div>
+            <div class="absolute bottom-4 left-4 right-4"><h4 class="text-white text-sm md:text-base font-black line-clamp-3 leading-snug drop-shadow">${cleanTitle}</h4></div>
         </div>`;
     });
     h += `</div></div>`;
@@ -717,16 +719,7 @@ async function openArticle(rawSlug, pushState = true) {
         document.getElementById('detail-author-avatar').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(au.split('(')[0].trim())}&background=d10000&color=fff&bold=true`;
         document.getElementById('detail-date').innerHTML = `<i class="fa-regular fa-clock mr-1"></i> Published on ${new Date(post.created_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}`;
         
-        if (post.category === "Web Stories" || post.title.startsWith("⚡ Story:")) {
-            document.getElementById('detail-image-container').innerHTML = `
-            <div class="reel-player relative flex flex-col justify-between p-5 text-white my-4">
-                <div class="absolute inset-0 z-0"><img src="${post.image_url}" class="w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-black/50"></div></div>
-                <div class="flex justify-between items-center z-10"><span class="bg-red-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider">⚡ Live Reel</span><span class="text-xs text-yellow-300 font-bold">Fast Job Video Desk</span></div>
-                <div class="z-10 bg-black/60 backdrop-blur-md p-5 rounded-xl border border-white/20"><h3 class="text-lg md:text-xl font-black leading-snug text-white">${post.title.replace('⚡ Story: ', '')}</h3></div>
-            </div>`;
-        } else {
-            document.getElementById('detail-image-container').innerHTML = `<img src="${post.image_url}" class="w-full h-auto object-cover max-h-[550px] mb-8 rounded-xl shadow">`;
-        }
+        document.getElementById('detail-image-container').innerHTML = `<img src="${post.image_url}" class="w-full h-auto object-cover max-h-[550px] mb-8 rounded-xl shadow">`;
         document.getElementById('detail-content').innerHTML = post.content || "";
     } else {
         goBackHome();
