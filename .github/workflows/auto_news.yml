@@ -19,11 +19,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install feedparser beautifulsoup4 requests
+          pip install feedparser beautifulsoup4 requests google-api-python-client google-auth
 
       - name: Run bot script
         env:
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
         run: |
           python bot.py
