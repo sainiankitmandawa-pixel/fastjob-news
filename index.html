@@ -638,16 +638,16 @@ function renderWebStoriesFullPage(newsList, pushState = true) {
             <span class="section-badge text-lg"><i class="fa-solid fa-bolt text-yellow-300"></i> Google Web Stories Reels (${stories.length})</span>
             <button onclick="goBackHome()" class="text-xs font-bold text-gray-600 hover:text-[#d10000]"><i class="fa-solid fa-house mr-1"></i> Back Home</button>
         </div>
-        <p class="text-gray-600 font-semibold mb-6">Explore our immersive vertical Reel / Story player format. Tap any story card to go directly to its complete post.</p>
+        <p class="text-gray-600 font-semibold mb-6">Explore our immersive vertical Reel / Story player format. Tap any story card to play the video reel and read full news.</p>
         <div class="flex flex-wrap justify-center gap-6">`;
     
     stories.forEach(st => {
         const originalSlug = st.slug.replace('story-', '');
         const cleanTitle = st.title.replace('⚡ Story: ', '');
         h += `
-        <div onclick="openArticle('${originalSlug}')" class="insta-story-card relative group">
-            <img src="${st.image_url}" onerror="this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=80'" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+        <div onclick="openArticle('${st.slug}')" class="insta-story-card relative group">
+            <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-90"><source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-screens-and-numbers-31917-large.mp4" type="video/mp4"></video>
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-black/60"></div>
             <div class="absolute top-3 left-3 bg-[#d10000] text-white text-[10px] font-black px-2.5 py-1 rounded-full uppercase flex items-center gap-1.5 shadow"><span class="w-2 h-2 bg-yellow-300 rounded-full animate-ping"></span> REEL STORY</div>
             <div class="absolute bottom-4 left-4 right-4"><h4 class="text-white text-sm md:text-base font-black line-clamp-3 leading-snug drop-shadow">${cleanTitle}</h4></div>
         </div>`;
@@ -751,20 +751,28 @@ async function openArticle(rawSlug, pushState = true) {
         document.getElementById('detail-author-avatar').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(au.split('(')[0].trim())}&background=d10000&color=fff&bold=true`;
         document.getElementById('detail-date').innerHTML = `<i class="fa-regular fa-clock mr-1"></i> Published on ${new Date(post.created_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}`;
         
-        document.getElementById('detail-image-container').innerHTML = `<img src="${post.image_url}" class="w-full h-auto object-cover max-h-[550px] mb-8 rounded-xl shadow">`;
-        
-        let contentHtml = post.content || "";
-        // If this is a web story post, append a prominent 'Read Full Complete Post' button
         if (post.category === "Web Stories" || post.title.startsWith("⚡ Story:")) {
             const mainSlug = post.slug.replace('story-', '');
-            contentHtml += `
-            <div class="my-8 p-6 bg-red-50 border-2 border-red-500 rounded-2xl text-center shadow-lg">
-                <h3 class="text-xl font-black text-gray-900 mb-3">⚡ Yeh Story Pasand Aayi? Iski Complete Post Padhein!</h3>
-                <p class="text-sm text-gray-600 mb-4">Is breaking news aur detailed report ki poori jankari ke liye niche diye gaye button par click karein.</p>
-                <a href="/${mainSlug}" onclick="event.preventDefault(); openArticle('${mainSlug}');" class="inline-block bg-[#d10000] hover:bg-[#a80000] text-white font-black text-sm uppercase px-8 py-3.5 rounded-full shadow-xl transition transform hover:scale-105">🔗 Read Full Complete Post</a>
+            document.getElementById('detail-image-container').innerHTML = `
+            <div class="reel-player relative flex flex-col justify-between p-5 text-white my-4">
+                <div class="absolute inset-0 z-0">
+                    <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-90"><source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-screens-and-numbers-31917-large.mp4" type="video/mp4"></video>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-black/70"></div>
+                </div>
+                <div class="flex justify-between items-center z-10"><span class="bg-red-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider">⚡ 9:16 Video Reel</span><span class="text-xs text-yellow-300 font-bold">Fast Job Video Desk</span></div>
+                <div class="z-10 my-auto text-center"><img src="${post.image_url}" class="w-20 h-20 mx-auto rounded-full object-cover border-2 border-yellow-400 shadow-xl mb-3 animate-pulse"></div>
+                <div class="z-10 bg-black/80 backdrop-blur-md p-4 rounded-xl border border-white/20 text-center">
+                    <h3 class="text-base md:text-lg font-black leading-snug text-white mb-3">${post.title.replace('⚡ Story: ', '')}</h3>
+                    <a href="/${mainSlug}" onclick="event.preventDefault(); openArticle('${mainSlug}');" class="inline-block bg-[#d10000] hover:bg-[#a80000] text-white font-black text-xs uppercase px-6 py-2.5 rounded-full shadow-2xl transition transform hover:scale-105">
+                        🔗 Read More (Puri Post Dekhein)
+                    </a>
+                </div>
             </div>`;
+        } else {
+            document.getElementById('detail-image-container').innerHTML = `<img src="${post.image_url}" class="w-full h-auto object-cover max-h-[550px] mb-8 rounded-xl shadow">`;
         }
-
+        
+        let contentHtml = post.content || "";
         document.getElementById('detail-content').innerHTML = contentHtml;
     } else {
         goBackHome();
