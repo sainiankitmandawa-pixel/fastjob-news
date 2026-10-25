@@ -268,4 +268,540 @@ body { font-family: 'Mukta', sans-serif; background-color: #f4f5f7; color: #1118
                     <span class="text-[7px] font-black text-yellow-300 uppercase">NEWS</span>
                 </div>
                 <div class="flex flex-col">
-                    <span
+                    <span class="text-3xl font-black text-white tracking-tight leading-none">FAST JOB</span>
+                    <span class="text-[10px] font-bold text-yellow-400 tracking-widest uppercase mt-1">GLOBAL NEWS & CAREERS</span>
+                </div>
+            </a>
+            <p class="text-gray-400 text-sm leading-relaxed">Fast Job (fastjob.online) brings you 24/7 verified breaking news, government job notifications, economy, sports, technology, and global updates in real time.</p>
+        </div>
+        <div>
+            <h4 class="text-base font-black mb-5 border-b-2 border-[#d10000] pb-2 text-white uppercase inline-block">Legal & Info</h4>
+            <ul class="space-y-2.5 text-sm font-semibold text-gray-400">
+                <li><a href="/about-us" onclick="event.preventDefault(); openStaticPage('about-us');" class="hover:text-white"><i class="fa-solid fa-angle-right text-[#d10000] mr-2"></i>About Us</a></li>
+                <li><a href="/privacy-policy" onclick="event.preventDefault(); openStaticPage('privacy-policy');" class="hover:text-white"><i class="fa-solid fa-angle-right text-[#d10000] mr-2"></i>Privacy Policy</a></li>
+                <li><a href="/terms-and-conditions" onclick="event.preventDefault(); openStaticPage('terms-and-conditions');" class="hover:text-white"><i class="fa-solid fa-angle-right text-[#d10000] mr-2"></i>Terms & Conditions</a></li>
+                <li><a href="/disclaimer" onclick="event.preventDefault(); openStaticPage('disclaimer');" class="hover:text-white"><i class="fa-solid fa-angle-right text-[#d10000] mr-2"></i>Disclaimer</a></li>
+                <li><a href="/editorial-policy" onclick="event.preventDefault(); openStaticPage('editorial-policy');" class="hover:text-white"><i class="fa-solid fa-angle-right text-[#d10000] mr-2"></i>Editorial Policy</a></li>
+                <li><a href="/contact-us" onclick="event.preventDefault(); openStaticPage('contact-us');" class="hover:text-white"><i class="fa-solid fa-angle-right text-[#d10000] mr-2"></i>Contact Desk</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="text-base font-black mb-5 border-b-2 border-[#d10000] pb-2 text-white uppercase inline-block">Popular Desks</h4>
+            <ul class="space-y-2.5 text-sm font-semibold text-gray-400" id="footer-categories"></ul>
+        </div>
+        <div>
+            <h4 class="text-base font-black mb-5 border-b-2 border-[#d10000] pb-2 text-white uppercase inline-block">Follow Us</h4>
+            <p class="text-sm text-gray-400 mb-5">Join our official channels for instant breaking news and job alerts on your phone.</p>
+            <div class="flex gap-3">
+                <a href="https://whatsapp.com/channel/0029VbDajQV8PgsNA1lLhW0i" target="_blank" class="bg-[#25d366] text-white w-11 h-11 flex items-center justify-center rounded-full shadow-lg text-2xl"><i class="fa-brands fa-whatsapp"></i></a>
+                <button onclick="shareWebsite('facebook')" class="bg-[#1877f2] text-white w-11 h-11 flex items-center justify-center rounded-full shadow-lg text-lg"><i class="fa-brands fa-facebook-f"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="w-full max-w-[1400px] mx-auto px-6 border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400 font-semibold">
+        <p>&copy; 2026 Fast Job Portal (fastjob.online). All rights reserved.</p>
+        <p class="mt-2 md:mt-0">Designed for Fast & Verified Journalism</p>
+    </div>
+</footer>
+
+<a href="https://whatsapp.com/channel/0029VbDajQV8PgsNA1lLhW0i" target="_blank" class="fixed bottom-6 right-6 bg-[#25d366] text-white rounded-full w-14 h-14 flex items-center justify-center text-3xl shadow-2xl z-40 animate-bounce"><i class="fa-brands fa-whatsapp"></i></a>
+
+<script>
+document.getElementById('live-date').innerText = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+const SUPABASE_URL = "https://wioheljpjdcprozqumpv.supabase.co";
+const SUPABASE_KEY = "sb_publishable_d_ROr-nG6RpIRlVWtIE-Fg_sciaLZXR";
+let allNews = [], currentFilteredList = [], currentDisplayLimit = 60, currentActiveCategory = "", isViewingArticleOrLegal = false, slideIndex = 0, slideInterval, totalSupabasePostsCount = 7000;
+
+const WORLD_AUTHORS = [
+    "Aarav Sharma (New Delhi)", "Priya Nair (Mumbai)", "Vikramaditya Rathore (India Desk)", "Ananya Chatterjee (Kolkata)",
+    "Rohan Deshmukh (Pune)", "Siddharth Menon (Bengaluru)", "Kavita Iyer (Chennai)", "Kabir Malhotra (North India)",
+    "Zoya Khan (Hyderabad)", "Devansh Joshi (Ahmedabad)", "Niharika Verma (Lucknow)", "Arjun Kapoor (South Asia)",
+    "Ethan Brooks (New York)", "Madison Carter (Washington DC)", "Lucas Bennett (Silicon Valley)", "Olivia Hayes (Chicago)",
+    "Noah Mitchell (Los Angeles)", "Chloe Sullivan (Boston)", "Mason Rivera (Miami)", "Harper Reed (Toronto)",
+    "Logan Foster (Seattle)", "Sophia Jenkins (Houston)", "Oliver Sterling (London)", "Amelia Clarke (UK Bureau)",
+    "Liam O'Connor (Dublin)", "Camille Laurent (Paris)", "Lukas Weber (Frankfurt)", "Elena Rostova (Geneva)",
+    "Matteo Rossi (Milan)", "Sofia Lindqvist (Stockholm)", "Hugo Martinez (Madrid)", "Freya Van Der Berg (Amsterdam)"
+];
+
+function getPostAuthor(post) {
+    if (post && post.content) {
+        const m = post.content.match(/data-author="([^"]+)"/);
+        if (m && m[1]) return m[1];
+    }
+    return WORLD_AUTHORS[((post && post.id ? Number(post.id) : 1) * 7) % WORLD_AUTHORS.length];
+}
+
+function isRealPublisherImage(url) {
+    if (!url || typeof url !== 'string') return false;
+    const u = url.toLowerCase();
+    return u.startsWith('http') && !u.includes('picsum.photos') && !u.includes('source.unsplash.com') && !u.includes('photo-150000') && !u.includes('editorial');
+}
+
+const CATEGORIES = [
+    "Automobile", "Technology", "Jobs & Careers", "Rashifal & Horoscopes", "Web Stories", "Breaking News", 
+    "World News", "India News", "Politics", "Sports", "Business", "Finance & Markets", 
+    "Entertainment", "Education", "Health & Medicine", "Science", "AI & Robotics", "Crime & Justice", 
+    "Economy", "Environment & Climate", "Lifestyle", "Travel & Tourism", "Real Estate", 
+    "Defence & Security", "Weather", "Opinion & Editorial", "Fact Check & Explainers"
+];
+
+const categoryIcons = {
+    "Automobile": "fa-solid fa-car-side", "Technology": "fa-solid fa-laptop-code", "Jobs & Careers": "fa-solid fa-user-tie", "Rashifal & Horoscopes": "fa-solid fa-star-and-crescent", "Web Stories": "fa-solid fa-bolt", "Breaking News": "fa-solid fa-bolt-lightning", "World News": "fa-solid fa-earth-americas",
+    "India News": "fa-solid fa-flag", "Politics": "fa-solid fa-landmark-dome", "Sports": "fa-solid fa-trophy",
+    "Business": "fa-solid fa-briefcase", "Finance & Markets": "fa-solid fa-chart-line",
+    "Entertainment": "fa-solid fa-film", "Education": "fa-solid fa-graduation-cap", "Health & Medicine": "fa-solid fa-heart-pulse",
+    "Science": "fa-solid fa-flask-vial", "AI & Robotics": "fa-solid fa-robot", "Crime & Justice": "fa-solid fa-scale-balanced",
+    "Economy": "fa-solid fa-indian-rupee-sign", "Environment & Climate": "fa-solid fa-leaf",
+    "Lifestyle": "fa-solid fa-mug-hot", "Travel & Tourism": "fa-solid fa-plane-departure", "Real Estate": "fa-solid fa-building-columns",
+    "Defence & Security": "fa-solid fa-shield-halved", "Weather": "fa-solid fa-cloud-sun-rain", "Opinion & Editorial": "fa-solid fa-pen-fancy",
+    "Fact Check & Explainers": "fa-solid fa-magnifying-glass-chart"
+};
+
+const slugToCategory = {}, categoryToSlug = {};
+CATEGORIES.forEach(c => {
+    const s = c.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-');
+    slugToCategory[s] = c; categoryToSlug[c] = s;
+});
+
+function initCategoryNav() {
+    let topH = `<a href="/" onclick="event.preventDefault(); goBackHome();" class="cat-pill active-cat px-3 py-2.5 font-extrabold text-xs md:text-[13px] uppercase shrink-0 inline-flex items-center gap-1.5"><i class="fa-solid fa-house text-[#d10000]"></i> Home</a>`;
+    let mobH = `<a href="/" onclick="event.preventDefault(); filterCategoryAndClose('All');" class="px-3 py-2.5 rounded-lg hover:bg-red-50 flex items-center gap-3 border-b border-gray-50"><i class="fa-solid fa-house text-[#d10000] w-5"></i> <span>Home</span></a>`;
+    let footH = '';
+
+    CATEGORIES.forEach((cat, idx) => {
+        const s = categoryToSlug[cat];
+        const ic = categoryIcons[cat] || "fa-solid fa-newspaper";
+
+        topH += `<a href="/category/${s}" onclick="event.preventDefault(); setActiveNav(this); filterCategory('${cat}');" class="cat-pill px-3 py-2.5 font-bold text-xs md:text-[13px] uppercase tracking-wide shrink-0 inline-flex items-center gap-1.5"><i class="${ic} text-[#d10000]"></i> ${cat}</a>`;
+        mobH += `<a href="/category/${s}" onclick="event.preventDefault(); filterCategoryAndClose('${cat}');" class="px-3 py-2.5 rounded-lg hover:bg-red-50 flex items-center gap-2 font-bold text-sm text-gray-800"><i class="${ic} text-[#d10000] w-5 text-center"></i> <span>${cat}</span></a>`;
+        if (idx < 7) {
+            footH += `<li><a href="/category/${s}" onclick="event.preventDefault(); filterCategory('${cat}');" class="hover:text-white flex items-center gap-2.5"><i class="${ic} text-[#d10000] w-4"></i><span>${cat}</span></a></li>`;
+        }
+    });
+
+    document.getElementById('top-category-nav').innerHTML = topH;
+    document.getElementById('mobile-category-nav').innerHTML = mobH;
+    document.getElementById('footer-categories').innerHTML = footH;
+}
+initCategoryNav();
+
+function setActiveNav(el) {
+    document.querySelectorAll('#top-category-nav .cat-pill').forEach(btn => btn.classList.remove('active-cat'));
+    if (el) el.classList.add('active-cat');
+}
+
+function buildLegalPageContent(key) {
+    const commonFooter = `
+        <h3>Institutional Governance, Compliance & Editorial Accountability (2026 Framework)</h3>
+        <p>Fast Job (<strong>https://fastjob.online</strong>) operates under strict digital media ethics, international journalism standards, and statutory compliance protocols across all editorial verticals.</p>
+        <table class="article-table">
+            <tr><th>Compliance Parameter</th><th>Fast Job (fastjob.online) Official Standard</th></tr>
+            <tr><td><strong>Portal Identity & Domain</strong></td><td>Fast Job Global News & Career Network (https://fastjob.online)</td></tr>
+            <tr><td><strong>Support & Grievance Desk</strong></td><td>desk@fastjob.online (24×7 Compliance Response)</td></tr>
+        </table>
+    `;
+    const pages = {
+        'about-us': {
+            title: 'About Fast Job (fastjob.online) — Global News & Career Network',
+            body: `<div class="intro-box"><strong>Fast Job (https://fastjob.online)</strong> is India's premier 24×7 digital newsroom and verified global recruitment & tech portal.</div>` + commonFooter
+        },
+        'privacy-policy': {
+            title: 'Privacy Policy — User Data Protection & Cookie Standards',
+            body: `<div class="intro-box"><strong>Effective Date: January 1, 2026</strong> — At Fast Job, protecting visitor privacy is our highest priority.</div>` + commonFooter
+        },
+        'terms-and-conditions': {
+            title: 'Terms & Conditions of Use — Fast Job Portal',
+            body: `<div class="intro-box">By accessing <strong>https://fastjob.online</strong>, you agree to abide by these Terms and Conditions.</div>` + commonFooter
+        },
+        'disclaimer': {
+            title: 'Official Disclaimer — Recruitment, Financial & News Coverage',
+            body: `<div class="intro-box"><strong>Important Reader Notice:</strong> Fast Job is an independent private digital news publication.</div>` + commonFooter
+        },
+        'editorial-policy': {
+            title: 'Editorial Policy, Fact-Checking & Corrections Protocol',
+            body: `<div class="intro-box">Trust, speed, and verification govern every story published at <strong>Fast Job</strong>.</div>` + commonFooter
+        },
+        'contact-us': {
+            title: 'Contact Desk & Grievance Redressal — Fast Job',
+            body: `<div class="intro-box">Connect directly with the <strong>Fast Job Editorial & Compliance Desk</strong>.</div>` + commonFooter
+        },
+        'game': {
+            title: 'Water Puzzle: Bottle Game — Official Play Store Download',
+            body: `<div class="max-w-xl mx-auto text-center bg-gray-900 text-white p-8 rounded-2xl shadow-2xl border-2 border-red-600 my-6">
+                <div class="w-20 h-20 mx-auto bg-gradient-to-br from-red-600 to-red-800 rounded-2xl flex items-center justify-center border-2 border-yellow-400 shadow-xl mb-4">
+                    <i class="fa-solid fa-gamepad text-3xl text-yellow-300"></i>
+                </div>
+                <span class="bg-red-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest shadow mb-3 inline-block">Exclusive Game</span>
+                <h2 class="text-2xl md:text-3xl font-black mb-3">Water Puzzle: Bottle Game</h2>
+                <p class="text-gray-300 text-sm md:text-base mb-6 leading-relaxed">Experience the ultimate relaxing and addictive water sorting puzzle game. Train your brain and challenge your friends today!</p>
+                <a href="https://play.google.com/store/apps/details?id=com.webo1.watersort&pcampaignid=web_share" target="_blank" class="inline-flex items-center justify-center gap-3 bg-[#d10000] hover:bg-[#b91c1c] text-white font-black uppercase text-sm md:text-base px-8 py-4 rounded-full shadow-2xl transition transform hover:scale-105">
+                    <i class="fa-brands fa-google-play text-xl"></i> Install Now (Play Store)
+                </a>
+            </div>`
+        }
+    };
+    return pages[key] || null;
+}
+
+function getPostsForCategory(newsList, cat) {
+    if (cat === "Web Stories") {
+        return newsList.filter(p => p.category === "Web Stories" || p.title.startsWith("⚡ Story:"));
+    }
+    const matched = newsList.filter(p => {
+        if (p.category === cat) return true;
+        if (cat === "Jobs & Careers" && (p.category === "Jobs" || p.category === "Jobs & Careers")) return true;
+        if (cat === "Automobile" && (p.category === "Auto & EV" || p.category === "Automobile")) return true;
+        if (cat === "Technology" && (p.category === "Tech & AI" || p.category === "Technology")) return true;
+        return false;
+    });
+    return matched;
+}
+
+function getActiveRouteSlug() {
+    const params = new URLSearchParams(window.location.search);
+    for (const k of ['slug', 'post', 'article', 'p', 'id']) {
+        if (params.get(k)) return decodeURIComponent(params.get(k)).replace(/^\/|\/$/g, '').replace(/^slug=/i, '').trim();
+    }
+    if (window.location.search && window.location.search.toLowerCase().includes('slug=')) {
+        return decodeURIComponent(window.location.search.split(/slug=/i)[1].split('&')[0]).replace(/^\/|\/$/g, '').trim();
+    }
+    let p = decodeURIComponent(window.location.pathname).replace(/^\/|\/$/g, '').replace(/\.html$/, '');
+    if (p.toLowerCase().startsWith('slug=')) p = p.substring(5);
+    return p.trim();
+}
+
+async function loadNews() {
+    try {
+        const initSlug = getActiveRouteSlug();
+        if (initSlug && initSlug !== 'index') {
+            if (buildLegalPageContent(initSlug)) { openStaticPage(initSlug, false); }
+            else if (!initSlug.startsWith('category/')) { isViewingArticleOrLegal = true; openArticle(initSlug, false); }
+        }
+
+        const firstRes = await fetch(SUPABASE_URL + "/rest/v1/posts?select=id,title,slug,category,image_url,created_at&order=id.desc&limit=1000&offset=0", {
+            headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + SUPABASE_KEY }
+        });
+        const firstBatch = await firstRes.json();
+        if (Array.isArray(firstBatch) && firstBatch.length > 0) {
+            allNews = firstBatch.filter(p => isRealPublisherImage(p.image_url));
+            renderTicker(allNews);
+            if (!isViewingArticleOrLegal) handleRoute(false);
+        }
+
+        const countRes = await fetch(SUPABASE_URL + "/rest/v1/posts?select=id&limit=1", {
+            headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + SUPABASE_KEY, "Prefer": "count=exact" }
+        });
+        const range = countRes.headers.get("content-range");
+        if (range && range.includes('/')) {
+            totalSupabasePostsCount = parseInt(range.split('/')[1], 10) || allNews.length;
+        }
+
+        const batchPromises = [];
+        for (let offset = 1000; offset <= Math.min(totalSupabasePostsCount, 12000); offset += 1000) {
+            batchPromises.push(
+                fetch(SUPABASE_URL + `/rest/v1/posts?select=id,title,slug,category,image_url,created_at&order=id.desc&limit=1000&offset=${offset}`, {
+                    headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + SUPABASE_KEY }
+                }).then(r => r.json()).catch(() => [])
+            );
+        }
+        const olderBatches = await Promise.all(batchPromises);
+        let comb = Array.isArray(firstBatch) ? [...firstBatch] : [];
+        olderBatches.forEach(b => { if (Array.isArray(b)) comb = comb.concat(b); });
+        allNews = comb.filter(p => isRealPublisherImage(p.image_url));
+        renderTicker(allNews);
+        if (!isViewingArticleOrLegal && !currentActiveCategory) renderHome(allNews, false);
+    } catch (err) { console.error(err); }
+}
+
+function handleRoute(pushState = false) {
+    const t = getActiveRouteSlug();
+    if (!t || t === 'index') { isViewingArticleOrLegal = false; renderHome(allNews, pushState); return; }
+    if (buildLegalPageContent(t)) { openStaticPage(t, pushState); return; }
+    if (t.startsWith('category/')) {
+        const cn = slugToCategory[t.replace('category/', '')];
+        if (cn) { 
+            isViewingArticleOrLegal = false; 
+            if (cn === "Web Stories") {
+                renderWebStoriesFullPage(allNews, pushState);
+            } else {
+                filterCategory(cn, pushState); 
+            }
+            return; 
+        }
+    }
+    openArticle(t, pushState);
+}
+
+function openStaticPage(key, pushState = true) {
+    const p = buildLegalPageContent(key);
+    if (!p) return;
+    isViewingArticleOrLegal = true;
+    if (pushState) history.pushState({ type: 'static', key: key }, "", "/" + key);
+    clearInterval(slideInterval);
+    document.getElementById('home-view').classList.add('hidden');
+    document.getElementById('article-view').classList.add('hidden');
+    document.getElementById('legal-view').classList.remove('hidden');
+    document.getElementById('legal-page-title').innerText = p.title;
+    document.getElementById('legal-page-content').innerHTML = p.body;
+    document.title = p.title;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function renderTicker(items) {
+    document.getElementById('ticker-content').innerHTML = items.slice(0, 15).map(i => `<span class="ticker-item" onclick="openArticle('${i.slug}')"><span class="text-[#d10000] font-black mr-1.5">&#9679;</span> ${i.title}</span>`).join(' &nbsp;|&nbsp; ');
+}
+
+function renderSliderAndSidebar(items) {
+    const top5 = items.filter(p => p.category !== "Web Stories" && !p.title.startsWith("⚡ Story:")).slice(0, 5);
+    if (!top5.length) return;
+    document.getElementById('slider-wrapper').innerHTML = top5.map((it, idx) => `
+        <div class="slide ${idx === 0 ? 'active' : ''} cursor-pointer w-full h-full relative group" onclick="openArticle('${it.slug}')">
+            <img src="${it.image_url}" onerror="this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1000&q=80'" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-5 md:p-8">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="bg-[#d10000] text-white text-[10px] px-3 py-1 rounded font-black uppercase">${it.category}</span>
+                    <span class="text-gray-200 text-xs font-bold"><i class="fa-solid fa-user-pen text-yellow-400 mr-1"></i>${getPostAuthor(it)}</span>
+                </div>
+                <h2 class="text-white text-xl sm:text-2xl md:text-4xl font-black leading-tight line-clamp-3">${it.title}</h2>
+            </div>
+        </div>`).join('');
+
+    const side = items.filter(p => p.category !== "Web Stories" && !p.title.startsWith("⚡ Story:")).slice(5, 15);
+    document.getElementById('top-sidebar-list').innerHTML = side.map(it => `
+        <div onclick="openArticle('${it.slug}')" class="py-2.5 flex gap-3 items-center cursor-pointer group">
+            <img src="${it.image_url}" onerror="this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&q=80'" class="w-20 h-14 object-cover rounded-lg shrink-0">
+            <div class="flex-grow min-w-0">
+                <span class="text-[10px] font-extrabold text-[#d10000] uppercase block truncate">${it.category}</span>
+                <h4 class="text-xs md:text-sm font-bold text-gray-900 group-hover:text-[#d10000] line-clamp-2">${it.title}</h4>
+            </div>
+        </div>`).join('');
+    document.getElementById('hero-top-section').classList.remove('hidden');
+
+    clearInterval(slideInterval);
+    slideIndex = 0;
+    slideInterval = setInterval(() => {
+        const s = document.querySelectorAll('.slide');
+        if (!s.length) return;
+        s[slideIndex].classList.remove('active');
+        slideIndex = (slideIndex + 1) % s.length;
+        s[slideIndex].classList.add('active');
+    }, 4000);
+}
+
+function renderHome(newsList, pushState = false) {
+    isViewingArticleOrLegal = false; currentActiveCategory = "";
+    if (pushState) history.pushState({ type: 'home' }, "", "/");
+    document.getElementById('article-view').classList.add('hidden');
+    document.getElementById('legal-view').classList.add('hidden');
+    document.getElementById('home-view').classList.remove('hidden');
+    document.getElementById('hero-top-section').classList.remove('hidden');
+    document.title = "Fast Job - Live Breaking News, Jobs & Global Coverage";
+    renderSliderAndSidebar(newsList);
+
+    let html = '';
+    CATEGORIES.filter(c => c !== "Web Stories").forEach(cat => {
+        const posts = getPostsForCategory(newsList, cat);
+        if (!posts.length) return;
+        const f = posts[0], r = posts.slice(1, 5), ic = categoryIcons[cat] || "fa-solid fa-newspaper";
+        html += `
+        <section class="bg-white p-5 md:p-7 rounded-xl shadow-sm border border-gray-200">
+            <div class="flex justify-between items-center mb-6 border-b-2 border-[#d10000] pb-2">
+                <span class="section-badge text-sm md:text-base"><i class="${ic} text-yellow-300"></i> ${cat}</span>
+                <a href="/category/${categoryToSlug[cat]}" onclick="event.preventDefault(); filterCategory('${cat}');" class="text-xs md:text-sm font-extrabold text-[#d10000] hover:underline uppercase">More News <i class="fa-solid fa-angle-right ml-1"></i></a>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+                <div onclick="openArticle('${f.slug}')" class="lg:col-span-5 bg-gray-50 border rounded-xl overflow-hidden cursor-pointer flex flex-col justify-between group">
+                    <div>
+                        <div class="aspect-video relative overflow-hidden"><img src="${f.image_url}" onerror="this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80'" class="w-full h-full object-cover"></div>
+                        <div class="p-4"><h4 class="font-extrabold text-lg md:text-2xl text-gray-900 group-hover:text-[#d10000] line-clamp-3">${f.title}</h4></div>
+                    </div>
+                    <div class="px-4 pb-4 pt-2 border-t text-xs font-semibold text-gray-500 flex justify-between"><span><i class="fa-solid fa-pen-nib text-[#d10000] mr-1"></i>${getPostAuthor(f)}</span><span class="text-[#d10000] font-bold">Read &rarr;</span></div>
+                </div>
+                <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    ${r.map(it => `
+                    <div onclick="openArticle('${it.slug}')" class="bg-white border rounded-xl overflow-hidden cursor-pointer flex flex-col justify-between group">
+                        <div>
+                            <div class="h-36 overflow-hidden"><img src="${it.image_url}" onerror="this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80'" class="w-full h-full object-cover"></div>
+                            <div class="p-3.5"><h4 class="font-bold text-sm md:text-base text-gray-900 group-hover:text-[#d10000] line-clamp-2">${it.title}</h4></div>
+                        </div>
+                        <div class="px-3.5 pb-3 pt-2 border-t text-[11px] font-semibold text-gray-500 truncate"><i class="fa-solid fa-pen-nib text-[#d10000] mr-1"></i>${getPostAuthor(it)}</div>
+                    </div>`).join('')}
+                </div>
+            </div>
+        </section>`;
+    });
+    document.getElementById('category-sections').innerHTML = html;
+}
+
+function renderWebStoriesFullPage(newsList, pushState = true) {
+    isViewingArticleOrLegal = false; currentActiveCategory = "Web Stories";
+    if (pushState) history.pushState({ type: 'category', cat: 'Web Stories' }, "", "/category/web-stories");
+    document.getElementById('article-view').classList.add('hidden');
+    document.getElementById('legal-view').classList.add('hidden');
+    document.getElementById('home-view').classList.remove('hidden');
+    document.getElementById('hero-top-section').classList.add('hidden');
+
+    const stories = newsList.filter(p => p.category === "Web Stories" || p.title.startsWith("⚡ Story:"));
+    document.title = "Google Web Stories - Fast Job";
+
+    let h = `
+    <div class="bg-white p-6 md:p-8 rounded-xl shadow-sm border border-gray-200">
+        <div class="border-b-2 border-[#d10000] pb-3 mb-6 flex justify-between items-center">
+            <span class="section-badge text-lg"><i class="fa-solid fa-bolt text-yellow-300"></i> Google Web Stories Reels (${stories.length})</span>
+            <button onclick="goBackHome()" class="text-xs font-bold text-gray-600 hover:text-[#d10000]"><i class="fa-solid fa-house mr-1"></i> Back Home</button>
+        </div>
+        <p class="text-gray-600 font-semibold mb-6">Explore our immersive vertical Reel / Story player format. Tap any story card to play the video reel and read full news.</p>
+        <div class="flex flex-wrap justify-center gap-6">`;
+    
+    stories.forEach(st => {
+        const originalSlug = st.slug.replace('story-', '');
+        const cleanTitle = st.title.replace('⚡ Story: ', '');
+        h += `
+        <div onclick="openArticle('${st.slug}')" class="insta-story-card relative group">
+            <img src="${st.image_url}" onerror="this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=80'" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+            <div class="absolute top-3 left-3 bg-[#d10000] text-white text-[10px] font-black px-2.5 py-1 rounded-full uppercase flex items-center gap-1.5 shadow"><span class="w-2 h-2 bg-yellow-300 rounded-full animate-ping"></span> REEL STORY</div>
+            <div class="absolute bottom-4 left-4 right-4"><h4 class="text-white text-sm md:text-base font-black line-clamp-3 leading-snug drop-shadow">${cleanTitle}</h4></div>
+        </div>`;
+    });
+    h += `</div></div>`;
+    document.getElementById('category-sections').innerHTML = h;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function renderCategoryGrid() {
+    const cat = currentActiveCategory, ic = categoryIcons[cat] || "fa-solid fa-newspaper", vis = currentFilteredList.slice(0, currentDisplayLimit);
+    let h = `<div class="bg-white p-5 md:p-7 rounded-xl shadow-sm border border-gray-200"><div class="border-b-2 border-[#d10000] pb-2 mb-6 flex justify-between items-center"><span class="section-badge text-base"><i class="${ic} text-yellow-300"></i> ${cat} (${currentFilteredList.length} Posts)</span><button onclick="goBackHome()" class="text-xs font-bold text-gray-600 hover:text-[#d10000]"><i class="fa-solid fa-house mr-1"></i> Back Home</button></div><div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">`;
+    vis.forEach(it => {
+        h += `<div onclick="openArticle('${it.slug}')" class="bg-white border rounded-xl overflow-hidden cursor-pointer flex flex-col justify-between group"><div><div class="aspect-video overflow-hidden"><img src="${it.image_url}" onerror="this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80'" class="w-full h-full object-cover"></div><div class="p-4"><h4 class="font-bold text-base text-gray-900 group-hover:text-[#d10000] line-clamp-3">${it.title}</h4></div></div><div class="px-4 pb-3 pt-2 border-t text-[11px] font-semibold text-gray-500 truncate"><i class="fa-solid fa-pen-nib text-[#d10000] mr-1"></i>${getPostAuthor(it)}</div></div>`;
+    });
+    h += `</div>`;
+    if (currentDisplayLimit < currentFilteredList.length) {
+        h += `<div class="mt-8 text-center"><button onclick="currentDisplayLimit+=80;renderCategoryGrid();" class="bg-[#d10000] text-white font-black text-xs uppercase px-8 py-3 rounded-full shadow-lg">Load More Posts</button></div>`;
+    }
+    document.getElementById('category-sections').innerHTML = h + `</div>`;
+}
+
+function filterCategory(cat, pushState = true) {
+    if (cat === 'All') { goBackHome(); return; }
+    if (cat === "Web Stories") { renderWebStoriesFullPage(allNews, pushState); return; }
+    isViewingArticleOrLegal = false; currentActiveCategory = cat;
+    if (pushState) history.pushState({ type: 'category', cat: cat }, "", "/category/" + (categoryToSlug[cat] || 'all'));
+    document.getElementById('article-view').classList.add('hidden');
+    document.getElementById('legal-view').classList.add('hidden');
+    document.getElementById('home-view').classList.remove('hidden');
+    document.getElementById('hero-top-section').classList.add('hidden');
+    currentFilteredList = getPostsForCategory(allNews, cat); currentDisplayLimit = 60;
+    renderCategoryGrid();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function searchNews() {
+    const q = document.getElementById('searchInput').value.toLowerCase().trim();
+    if (!q) { renderHome(allNews); return; }
+    searchCore(q);
+}
+function searchNewsMobile() {
+    const q = document.getElementById('mobileSearchInput').value.toLowerCase().trim();
+    toggleMobileMenu();
+    if (!q) { renderHome(allNews); return; }
+    searchCore(q);
+}
+function searchCore(q) {
+    let filtered = [];
+    if (/^\d+$/.test(q)) {
+        filtered = allNews;
+    } else {
+        filtered = allNews.filter(i => (i.title || "").toLowerCase().includes(q) || (i.category || "").toLowerCase().includes(q));
+    }
+    currentActiveCategory = `Search: "${q}" (Total Site Posts: ${totalSupabasePostsCount.toLocaleString()})`;
+    currentFilteredList = filtered;
+    currentDisplayLimit = 80;
+    document.getElementById('article-view').classList.add('hidden');
+    document.getElementById('legal-view').classList.add('hidden');
+    document.getElementById('home-view').classList.remove('hidden');
+    document.getElementById('hero-top-section').classList.add('hidden');
+    renderCategoryGrid();
+}
+
+async function openArticle(rawSlug, pushState = true) {
+    isViewingArticleOrLegal = true;
+    let slug = decodeURIComponent(rawSlug || "").replace(/^\/|\/$/g, '').replace(/^slug=/i, '').trim();
+    if (!slug) { goBackHome(); return; }
+    document.getElementById('home-view').classList.add('hidden');
+    document.getElementById('legal-view').classList.add('hidden');
+    document.getElementById('article-view').classList.remove('hidden');
+    document.getElementById('detail-title').innerText = "Loading Story...";
+    document.getElementById('detail-image-container').innerHTML = "";
+    document.getElementById('detail-content').innerHTML = `<div class="py-12 text-center text-gray-500 font-bold"><i class="fa-solid fa-spinner fa-spin mr-2 text-[#d10000]"></i> Loading verified article...</div>`;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    let post = null;
+    try {
+        const r1 = await fetch(SUPABASE_URL + "/rest/v1/posts?select=*&slug=eq." + encodeURIComponent(slug) + "&limit=1", { headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + SUPABASE_KEY } });
+        const d1 = await r1.json();
+        if (Array.isArray(d1) && d1.length) post = d1[0];
+    } catch (e) {}
+
+    if (!post) {
+        const pref = slug.replace(/-\d+$/, '').split('-').slice(0, 4).join('-');
+        if (pref.length >= 4) {
+            try {
+                const r2 = await fetch(SUPABASE_URL + "/rest/v1/posts?select=*&slug=ilike.*" + encodeURIComponent(pref) + "*&order=id.desc&limit=1", { headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + SUPABASE_KEY } });
+                const d2 = await r2.json();
+                if (Array.isArray(d2) && d2.length) post = d2[0];
+            } catch (e) {}
+        }
+    }
+
+    if (post) {
+        if (pushState) history.pushState({ type: 'article', slug: post.slug }, "", "/" + post.slug);
+        document.getElementById('detail-title').innerText = post.title;
+        document.title = post.title + " - Fast Job";
+        const au = getPostAuthor(post);
+        document.getElementById('detail-author-name').innerHTML = `<i class="fa-solid fa-pen-nib mr-1.5"></i> Reported by ${au}`;
+        document.getElementById('detail-author-avatar').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(au.split('(')[0].trim())}&background=d10000&color=fff&bold=true`;
+        document.getElementById('detail-date').innerHTML = `<i class="fa-regular fa-clock mr-1"></i> Published on ${new Date(post.created_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}`;
+        
+        if (post.category === "Web Stories" || post.title.startsWith("⚡ Story:")) {
+            const mainSlug = post.slug.replace('story-', '');
+            document.getElementById('detail-image-container').innerHTML = `
+            <div class="reel-player relative flex flex-col justify-between p-5 text-white my-4">
+                <div class="absolute inset-0 z-0">
+                    <img src="${post.image_url}" class="w-full h-full object-cover opacity-90">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/80"></div>
+                </div>
+                <div class="flex justify-between items-center z-10"><span class="bg-red-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider">⚡ 9:16 Video Reel</span><span class="text-xs text-yellow-300 font-bold">Fast Job Video Desk</span></div>
+                <div class="z-10 my-auto text-center"><img src="${post.image_url}" class="w-20 h-20 mx-auto rounded-full object-cover border-2 border-yellow-400 shadow-xl mb-3 animate-pulse"></div>
+                <div class="z-10 bg-black/85 backdrop-blur-md p-4 rounded-xl border border-white/20 text-center">
+                    <h3 class="text-base md:text-lg font-black leading-snug text-white mb-3">${post.title.replace('⚡ Story: ', '')}</h3>
+                    <a href="/${mainSlug}" onclick="event.preventDefault(); openArticle('${mainSlug}');" class="inline-block bg-[#d10000] hover:bg-[#a80000] text-white font-black text-xs uppercase px-6 py-2.5 rounded-full shadow-2xl transition transform hover:scale-105">
+                        🔗 Read More (Puri Post Dekhein)
+                    </a>
+                </div>
+            </div>`;
+        } else {
+            document.getElementById('detail-image-container').innerHTML = `<img src="${post.image_url}" class="w-full h-auto object-cover max-h-[550px] mb-8 rounded-xl shadow">`;
+        }
+        
+        let contentHtml = post.content || "";
+        document.getElementById('detail-content').innerHTML = contentHtml;
+    } else {
+        goBackHome();
+    }
+}
+
+function goBackHome() { isViewingArticleOrLegal = false; history.pushState({ type: 'home' }, "", "/"); renderHome(allNews, false); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
+function filterCategoryAndClose(c) { filterCategory(c); toggleMobileMenu(); }
+window.addEventListener('popstate', () => handleRoute(false));
+function shareWebsite(p) {
+    const u = encodeURIComponent(window.location.href);
+    window.open(p === 'facebook' ? `https://www.facebook.com/sharer/sharer.php?u=${u}` : `https://api.whatsapp.com/send?text=Breaking News from Fast Job: ${u}`, '_blank');
+}
+loadNews();
+</script>
+</body>
+</html>
