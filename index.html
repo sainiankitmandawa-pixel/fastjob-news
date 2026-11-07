@@ -40,11 +40,11 @@ body { font-family: 'Mukta', sans-serif; background-color: #f4f5f7; color: #1118
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
 .ticker-wrap { width: 100%; background: #fff; color: #111827; display: flex; align-items: stretch; border-bottom: 2px solid #e5e7eb; overflow: hidden; position: relative; z-index: 10; }
-.ticker-label { background: linear-gradient(90deg, #d10000, #a80000); color: #fff; padding: 8px 20px 8px 14px; font-weight: 900; font-size: 12px; text-transform: uppercase; clip-path: polygon(0 0, 100% 0, 92% 100%, 0% 100%); flex-shrink: 0; display: flex; align-items: center; }
+.ticker-label { background: linear-gradient(90deg, #d10000, #a80000); color: #fff; padding: 6px 16px 6px 12px; font-weight: 900; font-size: 11px; text-transform: uppercase; clip-path: polygon(0 0, 100% 0, 92% 100%, 0% 100%); flex-shrink: 0; display: flex; align-items: center; }
 .ticker-track { flex-grow: 1; overflow: hidden; display: flex; align-items: center; }
 .ticker { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 70s linear infinite; }
 .ticker:hover { animation-play-state: paused; }
-.ticker-item { display: inline-block; padding: 0 2rem; font-size: 14px; font-weight: 700; color: #111827; cursor: pointer; }
+.ticker-item { display: inline-block; padding: 0 2rem; font-size: 13px; font-weight: 700; color: #111827; cursor: pointer; }
 .ticker-item:hover { color: #d10000; }
 @keyframes ticker { 0% { transform: translate3d(0,0,0); } 100% { transform: translate3d(-100%,0,0); } }
 
@@ -52,103 +52,106 @@ body { font-family: 'Mukta', sans-serif; background-color: #f4f5f7; color: #1118
 .cat-pill:hover, .cat-pill.active-cat { color: #d10000 !important; font-weight: 800; background: #fff5f5; }
 .cat-pill.active-cat::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: #d10000; }
 
-.section-badge { background: #d10000; color: #fff; padding: 6px 20px 6px 14px; font-weight: 900; text-transform: uppercase; clip-path: polygon(0 0, 100% 0, 93% 100%, 0% 100%); display: inline-flex; align-items: center; gap: 8px; }
-#detail-content, #legal-page-content { color: #1f2937; line-height: 1.9; font-size: 1.12rem; }
-#detail-content p, #legal-page-content p { margin-bottom: 1.4rem; }
-#detail-content ul, #legal-page-content ul { list-style-type: disc; padding-left: 1.8rem; margin-bottom: 1.5rem; }
-#detail-content li, #legal-page-content li { margin-bottom: 0.5rem; }
-#detail-content .seo-title { font-size: 1.9rem; font-weight: 900; color: #111827; margin-bottom: 1.2rem; border-bottom: 3px solid #d10000; padding-bottom: 8px; display: block; }
-#detail-content .intro-text, #legal-page-content .intro-box { font-weight: 600; color: #111827; border-left: 4px solid #d10000; padding: 14px 18px; background: #fff5f5; border-radius: 0 8px 8px 0; margin-bottom: 1.6rem; }
-#detail-content .article-subheading, #legal-page-content h3 { font-size: 1.4rem; font-weight: 800; color: #111827; margin-top: 2rem; margin-bottom: 0.9rem; display: flex; align-items: center; }
-#detail-content .article-subheading::before, #legal-page-content h3::before { content: ""; display: inline-block; width: 6px; height: 22px; background: #d10000; margin-right: 10px; border-radius: 2px; flex-shrink: 0; }
-#detail-content .hashtags { margin-top: 2rem; font-weight: 700; color: #1d4ed8; background: #eff6ff; padding: 12px 16px; border-radius: 8px; border: 1px solid #bfdbfe; }
-.article-table { width: 100%; border-collapse: collapse; margin: 1.6rem 0; font-size: 0.98rem; }
-.article-table th, .article-table td { border: 1px solid #e5e7eb; padding: 10px 14px; text-align: left; }
+.section-badge { background: #d10000; color: #fff; padding: 4px 14px 4px 10px; font-weight: 900; text-transform: uppercase; clip-path: polygon(0 0, 100% 0, 93% 100%, 0% 100%); display: inline-flex; align-items: center; gap: 6px; }
+#detail-content, #legal-page-content { color: #1f2937; line-height: 1.7; font-size: 1.05rem; }
+#detail-content p, #legal-page-content p { margin-bottom: 0.8rem; }
+#detail-content ul, #legal-page-content ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+#detail-content li, #legal-page-content li { margin-bottom: 0.3rem; }
+#detail-content .seo-title { font-size: 1.6rem; font-weight: 900; color: #111827; margin-bottom: 0.8rem; border-bottom: 2px solid #d10000; padding-bottom: 6px; display: block; }
+#detail-content .intro-text, #legal-page-content .intro-box { font-weight: 600; color: #111827; border-left: 4px solid #d10000; padding: 10px 14px; background: #fff5f5; border-radius: 0 6px 6px 0; margin-bottom: 1rem; }
+#detail-content .article-subheading, #legal-page-content h3 { font-size: 1.2rem; font-weight: 800; color: #111827; margin-top: 1.2rem; margin-bottom: 0.5rem; display: flex; align-items: center; }
+#detail-content .article-subheading::before, #legal-page-content h3::before { content: ""; display: inline-block; width: 5px; height: 18px; background: #d10000; margin-right: 8px; border-radius: 2px; flex-shrink: 0; }
+#detail-content .hashtags { margin-top: 1rem; font-weight: 700; color: #1d4ed8; background: #eff6ff; padding: 8px 12px; border-radius: 6px; border: 1px solid #bfdbfe; }
+.article-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.95rem; }
+.article-table th, .article-table td { border: 1px solid #e5e7eb; padding: 8px 10px; text-align: left; }
 .article-table th { background: #d10000; font-weight: 800; color: #fff; text-transform: uppercase; }
-.slider-container { position: relative; overflow: hidden; border-radius: 0.75rem; }
+.slider-container { position: relative; overflow: hidden; border-radius: 0.5rem; }
 .slide { display: none; }
 .slide.active { display: block; }
-.insta-story-card { width: 100%; max-width: 280px; height: 500px; border-radius: 18px; overflow: hidden; position: relative; cursor: pointer; box-shadow: 0 12px 30px rgba(0,0,0,0.3); border: 2px solid #d10000; background: #000; transition: transform 0.3s; }
-.insta-story-card:hover { transform: translateY(-5px); }
-.reel-player { width: 100%; max-width: 360px; height: 640px; border-radius: 24px; overflow: hidden; position: relative; background: #000; box-shadow: 0 20px 50px rgba(0,0,0,0.5); margin: 0 auto; border: 3px solid #d10000; }
+.insta-story-card { width: 100%; max-width: 260px; height: 440px; border-radius: 14px; overflow: hidden; position: relative; cursor: pointer; box-shadow: 0 8px 20px rgba(0,0,0,0.3); border: 2px solid #d10000; background: #000; transition: transform 0.3s; }
+.insta-story-card:hover { transform: translateY(-3px); }
+.reel-player { width: 100%; max-width: 320px; height: 560px; border-radius: 18px; overflow: hidden; position: relative; background: #000; box-shadow: 0 15px 35px rgba(0,0,0,0.5); margin: 0 auto; border: 2px solid #d10000; }
 
-/* Responsive Ad Container Fix */
-.adsterra-native-box { width: 100%; max-width: 100%; overflow: hidden; margin: 15px auto; display: flex; justify-content: center; }
+/* Tight Spacing Adjustments */
+.adsterra-native-box { width: 100%; max-width: 100%; overflow: hidden; margin: 8px auto; display: flex; justify-content: center; }
+main { padding-top: 12px !important; padding-bottom: 12px !important; }
+section { margin-bottom: 16px !important; }
+footer { padding-top: 30px !important; padding-bottom: 16px !important; margin-top: 20px !important; }
 </style>
 </head>
 <body class="flex flex-col min-h-screen overflow-x-hidden">
 
-<div class="bg-[#990000] text-white text-[11px] py-1.5 px-3 md:px-6 w-full border-b border-red-800 relative z-50">
+<div class="bg-[#990000] text-white text-[11px] py-1 px-3 md:px-6 w-full border-b border-red-800 relative z-50">
     <div class="w-full max-w-[1400px] mx-auto flex justify-between items-center">
-        <div class="flex items-center gap-2.5 md:gap-4">
-            <span class="bg-white text-[#d10000] px-2.5 py-0.5 rounded font-black uppercase tracking-wider text-[9px] md:text-[10px] inline-flex items-center shadow-sm">
-                <span class="w-2 h-2 bg-[#d10000] rounded-full mr-1.5 animate-ping"></span> LIVE NEWS
+        <div class="flex items-center gap-2 md:gap-3">
+            <span class="bg-white text-[#d10000] px-2 py-0.5 rounded font-black uppercase tracking-wider text-[9px] inline-flex items-center shadow-sm">
+                <span class="w-1.5 h-1.5 bg-[#d10000] rounded-full mr-1 animate-ping"></span> LIVE
             </span>
-            <span class="bg-black/35 text-yellow-300 px-3 py-0.5 rounded-full font-bold text-[10px] md:text-xs inline-flex items-center border border-yellow-400/30">
-                <i class="fa-regular fa-calendar-days text-yellow-300 mr-1.5"></i>
+            <span class="text-yellow-300 font-bold text-[10px] md:text-xs">
+                <i class="fa-regular fa-calendar-days mr-1"></i>
                 <span id="live-date">Saturday, November 7, 2026</span>
             </span>
         </div>
-        <div class="flex items-center gap-4">
-            <div class="hidden md:flex items-center gap-5 font-bold uppercase tracking-wider text-[10px] text-red-100">
+        <div class="flex items-center gap-3">
+            <div class="hidden md:flex items-center gap-4 font-bold uppercase tracking-wider text-[10px] text-red-100">
                 <a href="/about-us" onclick="event.preventDefault(); openStaticPage('about-us');" class="hover:text-yellow-300">About Us</a>
                 <a href="/editorial-policy" onclick="event.preventDefault(); openStaticPage('editorial-policy');" class="hover:text-yellow-300">Editorial Policy</a>
                 <a href="/contact-us" onclick="event.preventDefault(); openStaticPage('contact-us');" class="hover:text-yellow-300">Contact Desk</a>
             </div>
-            <a href="https://whatsapp.com/channel/0029VbDajQV8PgsNA1lLhW0i" target="_blank" class="bg-[#25d366] hover:bg-[#1da851] text-white px-3 py-0.5 rounded-full font-bold text-[10px] uppercase inline-flex items-center gap-1.5 shadow">
-                <i class="fa-brands fa-whatsapp text-xs"></i> <span>Join WhatsApp</span>
+            <a href="https://whatsapp.com/channel/0029VbDajQV8PgsNA1lLhW0i" target="_blank" class="bg-[#25d366] text-white px-2.5 py-0.5 rounded-full font-bold text-[10px] uppercase inline-flex items-center gap-1 shadow">
+                <i class="fa-brands fa-whatsapp text-xs"></i> <span>WhatsApp</span>
             </a>
         </div>
     </div>
 </div>
 
 <header class="sticky top-0 z-40 shadow-md bg-white">
-    <div class="bg-[#d10000] text-white py-3 px-3 md:px-6">
-        <div class="w-full max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
+    <div class="bg-[#d10000] text-white py-2 px-3 md:px-6">
+        <div class="w-full max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-2">
             <div class="w-full md:w-auto flex items-center justify-between">
                 <a href="/" onclick="event.preventDefault(); goBackHome();" class="flex items-center shrink-0 cursor-pointer group">
-                    <div class="w-11 h-11 md:w-14 md:h-14 rounded-xl mr-2.5 flex flex-col items-center justify-center bg-gradient-to-br from-[#b91c1c] to-[#7f1d1d] border-2 border-yellow-400 shadow-xl transform group-hover:scale-105 transition">
-                        <span class="text-white font-black text-lg md:text-2xl leading-none tracking-tighter">FJ</span>
-                        <span class="bg-yellow-400 text-gray-900 font-black text-[6px] md:text-[7px] px-1 rounded-sm uppercase mt-0.5">NEWS</span>
+                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-lg mr-2 flex flex-col items-center justify-center bg-gradient-to-br from-[#b91c1c] to-[#7f1d1d] border-2 border-yellow-400 shadow">
+                        <span class="text-white font-black text-base md:text-xl leading-none">FJ</span>
+                        <span class="bg-yellow-400 text-gray-900 font-black text-[5px] px-1 rounded uppercase mt-0.5">NEWS</span>
                     </div>
                     <div class="flex flex-col">
-                        <div class="flex items-center gap-1.5">
-                            <span class="text-xl sm:text-2xl md:text-4xl font-black tracking-tight text-white leading-none">FAST JOB</span>
-                            <span class="bg-yellow-400 text-gray-900 text-[8px] md:text-[10px] font-black px-1.5 py-0.2 rounded uppercase shadow-sm">24×7</span>
+                        <div class="flex items-center gap-1">
+                            <span class="text-lg sm:text-xl md:text-3xl font-black tracking-tight text-white leading-none">FAST JOB</span>
+                            <span class="bg-yellow-400 text-gray-900 text-[8px] font-black px-1 rounded uppercase">24×7</span>
                         </div>
-                        <span class="text-[8px] md:text-[11px] font-semibold text-red-100 tracking-widest uppercase mt-0.5">VERIFIED GLOBAL COVERAGE</span>
+                        <span class="text-[7px] md:text-[9px] font-semibold text-red-100 tracking-wider uppercase">VERIFIED GLOBAL COVERAGE</span>
                     </div>
                 </a>
                 <div class="flex items-center gap-2 md:hidden">
-                    <button onclick="filterCategory('Jobs & Careers')" class="bg-yellow-400 text-gray-900 px-2.5 py-1 rounded-lg font-black text-[11px] uppercase inline-flex items-center gap-1 shadow">
+                    <button onclick="filterCategory('Jobs & Careers')" class="bg-yellow-400 text-gray-900 px-2 py-1 rounded font-black text-[10px] uppercase inline-flex items-center gap-1">
                         <i class="fa-solid fa-briefcase text-[#d10000]"></i> Jobs
                     </button>
-                    <button onclick="toggleMobileMenu()" class="bg-[#a80000] text-white w-9 h-9 rounded-lg flex items-center justify-center text-lg border border-red-400/30">
+                    <button onclick="toggleMobileMenu()" class="bg-[#a80000] text-white w-8 h-8 rounded flex items-center justify-center text-base border border-red-400/30">
                         <i class="fa-solid fa-bars"></i>
                     </button>
                 </div>
             </div>
 
-            <div class="w-full md:max-w-md lg:max-w-xl flex-grow">
-                <div class="bg-white rounded-full p-1 pl-3.5 flex items-center w-full shadow-inner">
-                    <i class="fa-solid fa-magnifying-glass text-gray-400 mr-2 text-xs md:text-sm"></i>
-                    <input type="text" id="searchInput" onkeyup="searchNews()" placeholder="Search breaking news, Sarkari jobs, admit cards..." class="w-full text-xs md:text-sm text-gray-900 outline-none font-semibold bg-transparent py-1">
-                    <button onclick="searchNews()" class="bg-[#d10000] hover:bg-[#a80000] text-white font-bold text-[11px] md:text-xs uppercase px-4 py-1.5 rounded-full shrink-0">Search</button>
+            <div class="w-full md:max-w-md lg:max-w-lg flex-grow">
+                <div class="bg-white rounded-full p-0.5 pl-3 flex items-center w-full shadow-inner">
+                    <i class="fa-solid fa-magnifying-glass text-gray-400 mr-2 text-xs"></i>
+                    <input type="text" id="searchInput" onkeyup="searchNews()" placeholder="Search news, jobs, admit cards..." class="w-full text-xs text-gray-900 outline-none font-semibold bg-transparent py-1">
+                    <button onclick="searchNews()" class="bg-[#d10000] hover:bg-[#a80000] text-white font-bold text-[10px] uppercase px-3 py-1 rounded-full shrink-0">Search</button>
                 </div>
             </div>
 
-            <div class="hidden md:flex items-center gap-3 shrink-0">
-                <button onclick="filterCategory('Jobs & Careers')" class="bg-yellow-400 hover:bg-yellow-300 text-gray-900 font-black text-xs uppercase px-4 py-2.5 rounded-full shadow-md inline-flex items-center gap-1.5">
+            <div class="hidden md:flex items-center gap-2 shrink-0">
+                <button onclick="filterCategory('Jobs & Careers')" class="bg-yellow-400 hover:bg-yellow-300 text-gray-900 font-black text-xs uppercase px-3 py-1.5 rounded-full shadow inline-flex items-center gap-1">
                     <i class="fa-solid fa-briefcase text-[#d10000]"></i> Job Alerts
                 </button>
-                <button onclick="toggleMobileMenu()" class="bg-[#a80000] hover:bg-[#8f0000] text-white px-4 py-2.5 rounded-full inline-flex items-center gap-2 text-xs font-bold uppercase border border-red-400/30 shadow">
-                    <i class="fa-solid fa-bars text-sm"></i> <span>All Sections</span>
+                <button onclick="toggleMobileMenu()" class="bg-[#a80000] text-white px-3 py-1.5 rounded-full inline-flex items-center gap-1.5 text-xs font-bold uppercase shadow">
+                    <i class="fa-solid fa-bars"></i> <span>Menu</span>
                 </button>
             </div>
         </div>
     </div>
 
-    <div class="bg-white border-b border-gray-200 px-2 md:px-6 relative z-30">
+    <div class="bg-white border-b border-gray-200 px-2 md:px-6">
         <div class="w-full max-w-[1400px] mx-auto flex items-center">
             <nav class="flex items-center space-x-1 overflow-x-auto no-scrollbar py-0.5 w-full" id="top-category-nav"></nav>
         </div>
@@ -156,114 +159,106 @@ body { font-family: 'Mukta', sans-serif; background-color: #f4f5f7; color: #1118
 </header>
 
 <div class="ticker-wrap">
-    <div class="ticker-label"><span class="w-2 h-2 bg-yellow-300 rounded-full animate-ping mr-2"></span> TRENDING NEWS</div>
+    <div class="ticker-label"><span class="w-1.5 h-1.5 bg-yellow-300 rounded-full animate-ping mr-1.5"></span> TRENDING</div>
     <div class="ticker-track"><div class="ticker" id="ticker-content"><span class="ticker-item">Loading latest verified stories and job notifications...</span></div></div>
 </div>
 
 <div id="mobileMenu" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex justify-end">
-    <div class="w-80 bg-white text-gray-900 h-full shadow-2xl flex flex-col p-5 overflow-y-auto border-t-4 border-[#d10000]">
-        <div class="flex items-center justify-between border-b border-gray-200 pb-3 mb-4">
-            <div class="flex items-center gap-2">
-                <div class="bg-[#d10000] w-9 h-9 rounded-lg flex flex-col items-center justify-center border border-yellow-400">
-                    <span class="text-white font-black text-sm leading-none">FJ</span>
-                    <span class="text-yellow-300 font-black text-[6px]">NEWS</span>
-                </div>
-                <span class="text-xl font-black text-gray-900">FAST JOB</span>
-            </div>
-            <button onclick="toggleMobileMenu()" class="text-gray-500 hover:text-[#d10000] text-xl"><i class="fa-solid fa-xmark"></i></button>
+    <div class="w-72 bg-white text-gray-900 h-full shadow-2xl flex flex-col p-4 overflow-y-auto border-t-4 border-[#d10000]">
+        <div class="flex items-center justify-between border-b border-gray-200 pb-2 mb-3">
+            <span class="text-base font-black text-gray-900">FAST JOB MENU</span>
+            <button onclick="toggleMobileMenu()" class="text-gray-500 hover:text-[#d10000] text-lg"><i class="fa-solid fa-xmark"></i></button>
         </div>
-        <div class="bg-gray-100 rounded-full px-4 py-2 mb-4 flex items-center border">
-            <input type="text" id="mobileSearchInput" onkeyup="searchNewsMobile()" placeholder="Search news..." class="w-full bg-transparent outline-none font-semibold text-sm">
-            <i class="fa-solid fa-magnifying-glass text-[#d10000] text-sm"></i>
+        <div class="bg-gray-100 rounded-full px-3 py-1.5 mb-3 flex items-center border">
+            <input type="text" id="mobileSearchInput" onkeyup="searchNewsMobile()" placeholder="Search..." class="w-full bg-transparent outline-none font-semibold text-xs">
+            <i class="fa-solid fa-magnifying-glass text-[#d10000] text-xs"></i>
         </div>
-        <p class="text-[11px] font-black uppercase text-[#d10000] mb-2 border-b pb-1">All News Categories</p>
-        <nav class="flex flex-col space-y-1 font-bold text-gray-800 text-sm mb-6" id="mobile-category-nav"></nav>
-        <p class="text-[11px] font-black uppercase text-[#d10000] mb-2 border-b pb-1">Legal & Portal Info</p>
-        <div class="flex flex-col space-y-2 text-xs font-bold text-gray-600 pt-1">
-            <a href="/about-us" onclick="event.preventDefault(); openStaticPage('about-us'); toggleMobileMenu();" class="hover:text-[#d10000] py-1">About Us</a>
-            <a href="/privacy-policy" onclick="event.preventDefault(); openStaticPage('privacy-policy'); toggleMobileMenu();" class="hover:text-[#d10000] py-1">Privacy Policy</a>
-            <a href="/terms-and-conditions" onclick="event.preventDefault(); openStaticPage('terms-and-conditions'); toggleMobileMenu();" class="hover:text-[#d10000] py-1">Terms & Conditions</a>
-            <a href="/disclaimer" onclick="event.preventDefault(); openStaticPage('disclaimer'); toggleMobileMenu();" class="hover:text-[#d10000] py-1">Disclaimer</a>
-            <a href="/editorial-policy" onclick="event.preventDefault(); openStaticPage('editorial-policy'); toggleMobileMenu();" class="hover:text-[#d10000] py-1">Editorial Policy</a>
-            <a href="/contact-us" onclick="event.preventDefault(); openStaticPage('contact-us'); toggleMobileMenu();" class="hover:text-[#d10000] py-1">Contact Desk</a>
+        <p class="text-[10px] font-black uppercase text-[#d10000] mb-1 border-b pb-0.5">Categories</p>
+        <nav class="flex flex-col space-y-0.5 font-bold text-gray-800 text-xs mb-4" id="mobile-category-nav"></nav>
+        <p class="text-[10px] font-black uppercase text-[#d10000] mb-1 border-b pb-0.5">Legal Info</p>
+        <div class="flex flex-col space-y-1 text-xs font-bold text-gray-600">
+            <a href="/about-us" onclick="event.preventDefault(); openStaticPage('about-us'); toggleMobileMenu();" class="hover:text-[#d10000]">About Us</a>
+            <a href="/privacy-policy" onclick="event.preventDefault(); openStaticPage('privacy-policy'); toggleMobileMenu();" class="hover:text-[#d10000]">Privacy Policy</a>
+            <a href="/terms-and-conditions" onclick="event.preventDefault(); openStaticPage('terms-and-conditions'); toggleMobileMenu();" class="hover:text-[#d10000]">Terms & Conditions</a>
+            <a href="/disclaimer" onclick="event.preventDefault(); openStaticPage('disclaimer'); toggleMobileMenu();" class="hover:text-[#d10000]">Disclaimer</a>
+            <a href="/contact-us" onclick="event.preventDefault(); openStaticPage('contact-us'); toggleMobileMenu();" class="hover:text-[#d10000]">Contact Desk</a>
         </div>
     </div>
 </div>
 
-<main class="w-full max-w-[1400px] mx-auto px-3 md:px-6 py-6 flex-grow">
+<main class="w-full max-w-[1400px] mx-auto px-2 md:px-6 py-3 flex-grow">
     <!-- AdSense In-Article Ad Unit -->
-    <div class="mb-6">
+    <div class="mb-3">
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9843997950905685" crossorigin="anonymous"></script>
         <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-9843997950905685" data-ad-slot="2392009329"></ins>
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
-    <!-- RESPONSIVE ADSTERRA NATIVE BANNER CONTAINER -->
+    <!-- ADSTERRA NATIVE BANNER CONTAINER -->
     <div class="adsterra-native-box">
         <script async="async" data-cfasync="false" src="https://bicea.org/21/1c4d631d26423feb50dbeed8c889a7c5"></script>
         <div id="container-1c4d631d26423feb50dbeed8c889a7c5"></div>
     </div>
 
-    <div id="article-view" class="hidden bg-white p-5 md:p-10 w-full max-w-5xl mx-auto shadow-md rounded-xl border-t-4 border-[#d10000]">
-        <button onclick="goBackHome()" class="mb-6 bg-gray-100 hover:bg-[#d10000] text-gray-800 hover:text-white font-bold uppercase text-xs py-2.5 px-5 rounded-full inline-flex items-center transition"><i class="fa-solid fa-arrow-left mr-2"></i> Back to News</button>
-        <h1 id="detail-title" class="text-2xl md:text-4xl font-black text-gray-900 leading-tight mb-6 heading-font"></h1>
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between border-y border-gray-200 py-4 mb-8 bg-gray-50 px-4 rounded-lg gap-4">
-            <div class="flex items-center gap-3.5">
-                <img id="detail-author-avatar" src="https://ui-avatars.com/api/?name=Fast+Job&background=d10000&color=fff&bold=true" class="w-12 h-12 rounded-full shadow border-2 border-white">
+    <div id="article-view" class="hidden bg-white p-4 md:p-8 w-full max-w-5xl mx-auto shadow-sm rounded-lg border-t-4 border-[#d10000]">
+        <button onclick="goBackHome()" class="mb-4 bg-gray-100 hover:bg-[#d10000] text-gray-800 hover:text-white font-bold uppercase text-xs py-2 px-4 rounded-full inline-flex items-center transition"><i class="fa-solid fa-arrow-left mr-1.5"></i> Back to News</button>
+        <h1 id="detail-title" class="text-xl md:text-3xl font-black text-gray-900 leading-tight mb-4 heading-font"></h1>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between border-y border-gray-200 py-2.5 mb-5 bg-gray-50 px-3 rounded gap-2">
+            <div class="flex items-center gap-3">
+                <img id="detail-author-avatar" src="https://ui-avatars.com/api/?name=Fast+Job&background=d10000&color=fff&bold=true" class="w-10 h-10 rounded-full shadow border border-white">
                 <div>
-                    <p id="detail-author-name" class="font-extrabold text-sm text-[#d10000] uppercase">Fast Job Desk</p>
-                    <p id="detail-date" class="text-xs font-semibold text-gray-500 mt-0.5"></p>
+                    <p id="detail-author-name" class="font-extrabold text-xs text-[#d10000] uppercase">Fast Job Desk</p>
+                    <p id="detail-date" class="text-[11px] font-semibold text-gray-500"></p>
                 </div>
             </div>
-            <div class="flex items-center gap-2.5">
-                <button onclick="shareWebsite('whatsapp')" class="bg-[#25d366] text-white px-4 py-2 rounded-full shadow inline-flex items-center gap-1.5 text-xs font-bold"><i class="fa-brands fa-whatsapp"></i> Share</button>
-                <button onclick="shareWebsite('facebook')" class="bg-[#1877f2] text-white px-4 py-2 rounded-full shadow inline-flex items-center gap-1.5 text-xs font-bold"><i class="fa-brands fa-facebook-f"></i> Share</button>
+            <div class="flex items-center gap-2">
+                <button onclick="shareWebsite('whatsapp')" class="bg-[#25d366] text-white px-3 py-1.5 rounded-full shadow text-[11px] font-bold"><i class="fa-brands fa-whatsapp"></i> Share</button>
+                <button onclick="shareWebsite('facebook')" class="bg-[#1877f2] text-white px-3 py-1.5 rounded-full shadow text-[11px] font-bold"><i class="fa-brands fa-facebook-f"></i> Share</button>
             </div>
         </div>
-        <div id="detail-image-container" class="flex justify-center mb-8"></div>
+        <div id="detail-image-container" class="flex justify-center mb-5"></div>
         <div id="detail-content" class="w-full overflow-x-auto text-gray-800"></div>
 
-        <!-- AdSense Job/Auto Ad Unit Inside Article -->
-        <div class="mt-8">
+        <div class="mt-5">
             <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9843997950905685" crossorigin="anonymous"></script>
             <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9843997950905685" data-ad-slot="8550315457" data-ad-format="auto" data-full-width-responsive="true"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
     </div>
 
-    <div id="legal-view" class="hidden bg-white p-6 md:p-12 w-full max-w-5xl mx-auto shadow-md rounded-xl border-t-4 border-[#d10000]">
-        <button onclick="goBackHome()" class="mb-6 bg-gray-100 hover:bg-[#d10000] text-gray-800 hover:text-white font-bold uppercase text-xs py-2.5 px-5 rounded-full inline-flex items-center transition"><i class="fa-solid fa-arrow-left mr-2"></i> Back to Home</button>
-        <h1 id="legal-page-title" class="text-2xl md:text-4xl font-black text-gray-900 heading-font mb-6 border-b-2 border-gray-100 pb-4 uppercase"></h1>
+    <div id="legal-view" class="hidden bg-white p-5 md:p-8 w-full max-w-5xl mx-auto shadow-sm rounded-lg border-t-4 border-[#d10000]">
+        <button onclick="goBackHome()" class="mb-4 bg-gray-100 hover:bg-[#d10000] text-gray-800 hover:text-white font-bold uppercase text-xs py-2 px-4 rounded-full inline-flex items-center transition"><i class="fa-solid fa-arrow-left mr-1.5"></i> Back to Home</button>
+        <h1 id="legal-page-title" class="text-xl md:text-3xl font-black text-gray-900 heading-font mb-4 border-b border-gray-100 pb-3 uppercase"></h1>
         <div id="legal-page-content" class="w-full text-gray-800"></div>
     </div>
 
     <div id="home-view">
-        <div id="hero-top-section" class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-10 items-stretch">
+        <div id="hero-top-section" class="grid grid-cols-1 lg:grid-cols-12 gap-4 mb-6 items-stretch">
             <div class="lg:col-span-8 flex flex-col">
-                <div id="slider-wrapper" class="slider-container bg-gray-900 shadow-sm h-[280px] sm:h-[380px] lg:h-[460px] w-full rounded-xl overflow-hidden">
-                    <div class="h-full w-full flex items-center justify-center text-white font-bold text-lg"><i class="fa-solid fa-spinner fa-spin mr-2 text-yellow-400"></i> Loading Verified Stories...</div>
+                <div id="slider-wrapper" class="slider-container bg-gray-900 shadow-sm h-[260px] sm:h-[340px] lg:h-[400px] w-full rounded-lg overflow-hidden">
+                    <div class="h-full w-full flex items-center justify-center text-white font-bold text-sm"><i class="fa-solid fa-spinner fa-spin mr-2 text-yellow-400"></i> Loading Stories...</div>
                 </div>
             </div>
-            <div class="lg:col-span-4 bg-white rounded-xl shadow-sm border border-gray-200 p-4 flex flex-col h-[380px] lg:h-[460px]">
-                <div class="flex items-center justify-between border-b-2 border-[#d10000] pb-2 mb-3 shrink-0">
-                    <span class="section-badge text-xs"><i class="fa-solid fa-fire text-yellow-300"></i> TOP HEADLINES</span>
-                    <span class="text-[11px] font-bold text-[#d10000] inline-flex items-center"><span class="w-2 h-2 bg-[#d10000] rounded-full animate-ping mr-1.5"></span> LIVE</span>
+            <div class="lg:col-span-4 bg-white rounded-lg shadow-sm border border-gray-200 p-3 flex flex-col h-[340px] lg:h-[400px]">
+                <div class="flex items-center justify-between border-b-2 border-[#d10000] pb-1.5 mb-2 shrink-0">
+                    <span class="section-badge text-[11px]"><i class="fa-solid fa-fire text-yellow-300"></i> HEADLINES</span>
+                    <span class="text-[10px] font-bold text-[#d10000] inline-flex items-center"><span class="w-1.5 h-1.5 bg-[#d10000] rounded-full animate-ping mr-1"></span> LIVE</span>
                 </div>
                 <div id="top-sidebar-list" class="divide-y divide-gray-100 flex-grow overflow-y-auto pr-1"></div>
             </div>
         </div>
 
         <!-- AdSense Fluid Ad Unit -->
-        <div class="my-6">
+        <div class="my-4">
             <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9843997950905685" crossorigin="anonymous"></script>
             <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-6t+ed+2i-1n-4w" data-ad-client="ca-pub-9843997950905685" data-ad-slot="7672382471"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
-        <div id="category-sections" class="space-y-10"></div>
+        <div id="category-sections" class="space-y-6"></div>
 
         <!-- AdSense Autorelaxed Ad Unit -->
-        <div class="my-8">
+        <div class="my-5">
             <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9843997950905685" crossorigin="anonymous"></script>
             <ins class="adsbygoogle" style="display:block" data-ad-format="autorelaxed" data-ad-client="ca-pub-9843997950905685" data-ad-slot="6622898371"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
@@ -271,52 +266,52 @@ body { font-family: 'Mukta', sans-serif; background-color: #f4f5f7; color: #1118
     </div>
 </main>
 
-<footer class="bg-[#111827] text-gray-300 pt-14 pb-8 mt-12 border-t-4 border-[#d10000]">
-    <div class="w-full max-w-[1400px] mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+<footer class="bg-[#111827] text-gray-300 pt-8 pb-4 mt-8 border-t-4 border-[#d10000]">
+    <div class="w-full max-w-[1400px] mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
         <div>
-            <a href="/" onclick="event.preventDefault(); goBackHome();" class="flex items-center shrink-0 cursor-pointer mb-4">
-                <div class="bg-[#d10000] border-2 border-yellow-400 text-white w-12 h-12 rounded-xl mr-3 flex flex-col items-center justify-center shadow-md">
-                    <span class="font-black text-lg leading-none">FJ</span>
-                    <span class="text-[7px] font-black text-yellow-300 uppercase">NEWS</span>
+            <a href="/" onclick="event.preventDefault(); goBackHome();" class="flex items-center shrink-0 cursor-pointer mb-2.5">
+                <div class="bg-[#d10000] border-2 border-yellow-400 text-white w-10 h-10 rounded-lg mr-2.5 flex flex-col items-center justify-center shadow">
+                    <span class="font-black text-base leading-none">FJ</span>
+                    <span class="text-[6px] font-black text-yellow-300 uppercase">NEWS</span>
                 </div>
                 <div class="flex flex-col">
-                    <span class="text-3xl font-black text-white tracking-tight leading-none">FAST JOB</span>
-                    <span class="text-[10px] font-bold text-yellow-400 tracking-widest uppercase mt-1">GLOBAL NEWS & CAREERS</span>
+                    <span class="text-2xl font-black text-white tracking-tight leading-none">FAST JOB</span>
+                    <span class="text-[9px] font-bold text-yellow-400 tracking-wider uppercase mt-0.5">GLOBAL NEWS & CAREERS</span>
                 </div>
             </a>
-            <p class="text-gray-400 text-sm leading-relaxed">Fast Job (fastjob.online) brings you 24/7 verified breaking news, government job notifications, economy, sports, technology, and global updates in real time.</p>
+            <p class="text-gray-400 text-xs leading-relaxed">Fast Job (fastjob.online) brings you 24/7 verified breaking news, government job notifications, economy, sports, technology, and global updates in real time.</p>
         </div>
         <div>
-            <h4 class="text-base font-black mb-5 border-b-2 border-[#d10000] pb-2 text-white uppercase inline-block">Legal & Info</h4>
-            <ul class="space-y-2.5 text-sm font-semibold text-gray-400">
-                <li><a href="/about-us" onclick="event.preventDefault(); openStaticPage('about-us');" class="hover:text-white"><i class="fa-solid fa-angle-right text-[#d10000] mr-2"></i>About Us</a></li>
-                <li><a href="/privacy-policy" onclick="event.preventDefault(); openStaticPage('privacy-policy');" class="hover:text-white"><i class="fa-solid fa-angle-right text-[#d10000] mr-2"></i>Privacy Policy</a></li>
-                <li><a href="/terms-and-conditions" onclick="event.preventDefault(); openStaticPage('terms-and-conditions');" class="hover:text-white"><i class="fa-solid fa-angle-right text-[#d10000] mr-2"></i>Terms & Conditions</a></li>
-                <li><a href="/disclaimer" onclick="event.preventDefault(); openStaticPage('disclaimer');" class="hover:text-white"><i class="fa-solid fa-angle-right text-[#d10000] mr-2"></i>Disclaimer</a></li>
-                <li><a href="/editorial-policy" onclick="event.preventDefault(); openStaticPage('editorial-policy');" class="hover:text-white"><i class="fa-solid fa-angle-right text-[#d10000] mr-2"></i>Editorial Policy</a></li>
-                <li><a href="/contact-us" onclick="event.preventDefault(); openStaticPage('contact-us');" class="hover:text-white"><i class="fa-solid fa-angle-right text-[#d10000] mr-2"></i>Contact Desk</a></li>
+            <h4 class="text-sm font-black mb-3 border-b-2 border-[#d10000] pb-1 text-white uppercase inline-block">Legal & Info</h4>
+            <ul class="space-y-1.5 text-xs font-semibold text-gray-400">
+                <li><a href="/about-us" onclick="event.preventDefault(); openStaticPage('about-us');" class="hover:text-white"><i class="fa-solid fa-angle-right text-[#d10000] mr-1.5"></i>About Us</a></li>
+                <li><a href="/privacy-policy" onclick="event.preventDefault(); openStaticPage('privacy-policy');" class="hover:text-white"><i class="fa-solid fa-angle-right text-[#d10000] mr-1.5"></i>Privacy Policy</a></li>
+                <li><a href="/terms-and-conditions" onclick="event.preventDefault(); openStaticPage('terms-and-conditions');" class="hover:text-white"><i class="fa-solid fa-angle-right text-[#d10000] mr-1.5"></i>Terms & Conditions</a></li>
+                <li><a href="/disclaimer" onclick="event.preventDefault(); openStaticPage('disclaimer');" class="hover:text-white"><i class="fa-solid fa-angle-right text-[#d10000] mr-1.5"></i>Disclaimer</a></li>
+                <li><a href="/editorial-policy" onclick="event.preventDefault(); openStaticPage('editorial-policy');" class="hover:text-white"><i class="fa-solid fa-angle-right text-[#d10000] mr-1.5"></i>Editorial Policy</a></li>
+                <li><a href="/contact-us" onclick="event.preventDefault(); openStaticPage('contact-us');" class="hover:text-white"><i class="fa-solid fa-angle-right text-[#d10000] mr-1.5"></i>Contact Desk</a></li>
             </ul>
         </div>
         <div>
-            <h4 class="text-base font-black mb-5 border-b-2 border-[#d10000] pb-2 text-white uppercase inline-block">Popular Desks</h4>
-            <ul class="space-y-2.5 text-sm font-semibold text-gray-400" id="footer-categories"></ul>
+            <h4 class="text-sm font-black mb-3 border-b-2 border-[#d10000] pb-1 text-white uppercase inline-block">Popular Desks</h4>
+            <ul class="space-y-1.5 text-xs font-semibold text-gray-400" id="footer-categories"></ul>
         </div>
         <div>
-            <h4 class="text-base font-black mb-5 border-b-2 border-[#d10000] pb-2 text-white uppercase inline-block">Follow Us</h4>
-            <p class="text-sm text-gray-400 mb-5">Join our official channels for instant breaking news and job alerts on your phone.</p>
-            <div class="flex gap-3">
-                <a href="https://whatsapp.com/channel/0029VbDajQV8PgsNA1lLhW0i" target="_blank" class="bg-[#25d366] text-white w-11 h-11 flex items-center justify-center rounded-full shadow-lg text-2xl"><i class="fa-brands fa-whatsapp"></i></a>
-                <button onclick="shareWebsite('facebook')" class="bg-[#1877f2] text-white w-11 h-11 flex items-center justify-center rounded-full shadow-lg text-lg"><i class="fa-brands fa-facebook-f"></i></button>
+            <h4 class="text-sm font-black mb-3 border-b-2 border-[#d10000] pb-1 text-white uppercase inline-block">Follow Us</h4>
+            <p class="text-xs text-gray-400 mb-3">Join our official channels for instant breaking news and job alerts on your phone.</p>
+            <div class="flex gap-2.5">
+                <a href="https://whatsapp.com/channel/0029VbDajQV8PgsNA1lLhW0i" target="_blank" class="bg-[#25d366] text-white w-9 h-9 flex items-center justify-center rounded-full shadow text-xl"><i class="fa-brands fa-whatsapp"></i></a>
+                <button onclick="shareWebsite('facebook')" class="bg-[#1877f2] text-white w-9 h-9 flex items-center justify-center rounded-full shadow text-sm"><i class="fa-brands fa-facebook-f"></i></button>
             </div>
         </div>
     </div>
-    <div class="w-full max-w-[1400px] mx-auto px-6 border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400 font-semibold">
+    <div class="w-full max-w-[1400px] mx-auto px-4 border-t border-gray-800 pt-4 flex flex-col md:flex-row justify-between items-center text-[11px] text-gray-400 font-semibold">
         <p>&copy; 2026 Fast Job Portal (fastjob.online). All rights reserved.</p>
-        <p class="mt-2 md:mt-0">Designed for Fast & Verified Journalism</p>
+        <p class="mt-1 md:mt-0">Designed for Fast & Verified Journalism</p>
     </div>
 </footer>
 
-<a href="https://whatsapp.com/channel/0029VbDajQV8PgsNA1lLhW0i" target="_blank" class="fixed bottom-6 right-6 bg-[#25d366] text-white rounded-full w-14 h-14 flex items-center justify-center text-3xl shadow-2xl z-40 animate-bounce"><i class="fa-brands fa-whatsapp"></i></a>
+<a href="https://whatsapp.com/channel/0029VbDajQV8PgsNA1lLhW0i" target="_blank" class="fixed bottom-4 right-4 bg-[#25d366] text-white rounded-full w-12 h-12 flex items-center justify-center text-2xl shadow-xl z-40 animate-bounce"><i class="fa-brands fa-whatsapp"></i></a>
 
 <script>
 document.getElementById('live-date').innerText = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
@@ -377,18 +372,18 @@ CATEGORIES.forEach(c => {
 });
 
 function initCategoryNav() {
-    let topH = `<a href="/" onclick="event.preventDefault(); goBackHome();" class="cat-pill active-cat px-3 py-2.5 font-extrabold text-xs md:text-[13px] uppercase shrink-0 inline-flex items-center gap-1.5"><i class="fa-solid fa-house text-[#d10000]"></i> Home</a>`;
-    let mobH = `<a href="/" onclick="event.preventDefault(); filterCategoryAndClose('All');" class="px-3 py-2.5 rounded-lg hover:bg-red-50 flex items-center gap-3 border-b border-gray-50"><i class="fa-solid fa-house text-[#d10000] w-5"></i> <span>Home</span></a>`;
+    let topH = `<a href="/" onclick="event.preventDefault(); goBackHome();" class="cat-pill active-cat px-2.5 py-1.5 font-extrabold text-xs uppercase shrink-0 inline-flex items-center gap-1"><i class="fa-solid fa-house text-[#d10000]"></i> Home</a>`;
+    let mobH = `<a href="/" onclick="event.preventDefault(); filterCategoryAndClose('All');" class="px-2.5 py-2 rounded hover:bg-red-50 flex items-center gap-2.5 border-b border-gray-50"><i class="fa-solid fa-house text-[#d10000] w-4"></i> <span>Home</span></a>`;
     let footH = '';
 
     CATEGORIES.forEach((cat, idx) => {
         const s = categoryToSlug[cat];
         const ic = categoryIcons[cat] || "fa-solid fa-newspaper";
 
-        topH += `<a href="/category/${s}" onclick="event.preventDefault(); setActiveNav(this); filterCategory('${cat}');" class="cat-pill px-3 py-2.5 font-bold text-xs md:text-[13px] uppercase tracking-wide shrink-0 inline-flex items-center gap-1.5"><i class="${ic} text-[#d10000]"></i> ${cat}</a>`;
-        mobH += `<a href="/category/${s}" onclick="event.preventDefault(); filterCategoryAndClose('${cat}');" class="px-3 py-2.5 rounded-lg hover:bg-red-50 flex items-center gap-2 font-bold text-sm text-gray-800"><i class="${ic} text-[#d10000] w-5 text-center"></i> <span>${cat}</span></a>`;
+        topH += `<a href="/category/${s}" onclick="event.preventDefault(); setActiveNav(this); filterCategory('${cat}');" class="cat-pill px-2.5 py-1.5 font-bold text-xs uppercase tracking-wide shrink-0 inline-flex items-center gap-1"><i class="${ic} text-[#d10000]"></i> ${cat}</a>`;
+        mobH += `<a href="/category/${s}" onclick="event.preventDefault(); filterCategoryAndClose('${cat}');" class="px-2.5 py-2 rounded hover:bg-red-50 flex items-center gap-2 font-bold text-xs text-gray-800"><i class="${ic} text-[#d10000] w-4 text-center"></i> <span>${cat}</span></a>`;
         if (idx < 7) {
-            footH += `<li><a href="/category/${s}" onclick="event.preventDefault(); filterCategory('${cat}');" class="hover:text-white flex items-center gap-2.5"><i class="${ic} text-[#d10000] w-4"></i><span>${cat}</span></a></li>`;
+            footH += `<li><a href="/category/${s}" onclick="event.preventDefault(); filterCategory('${cat}');" class="hover:text-white flex items-center gap-2"><i class="${ic} text-[#d10000] w-3.5"></i><span>${cat}</span></a></li>`;
         }
     });
 
@@ -440,15 +435,15 @@ function buildLegalPageContent(key) {
         },
         'game': {
             title: 'Water Puzzle: Bottle Game — Official Play Store Download',
-            body: `<div class="max-w-xl mx-auto text-center bg-gray-900 text-white p-8 rounded-2xl shadow-2xl border-2 border-red-600 my-6">
-                <div class="w-20 h-20 mx-auto bg-gradient-to-br from-red-600 to-red-800 rounded-2xl flex items-center justify-center border-2 border-yellow-400 shadow-xl mb-4">
-                    <i class="fa-solid fa-gamepad text-3xl text-yellow-300"></i>
+            body: `<div class="max-w-xl mx-auto text-center bg-gray-900 text-white p-6 rounded-xl shadow-lg border-2 border-red-600 my-4">
+                <div class="w-16 h-16 mx-auto bg-gradient-to-br from-red-600 to-red-800 rounded-xl flex items-center justify-center border border-yellow-400 shadow mb-3">
+                    <i class="fa-solid fa-gamepad text-2xl text-yellow-300"></i>
                 </div>
-                <span class="bg-red-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest shadow mb-3 inline-block">Exclusive Game</span>
-                <h2 class="text-2xl md:text-3xl font-black mb-3">Water Puzzle: Bottle Game</h2>
-                <p class="text-gray-300 text-sm md:text-base mb-6 leading-relaxed">Experience the ultimate relaxing and addictive water sorting puzzle game. Train your brain and challenge your friends today!</p>
-                <a href="https://play.google.com/store/apps/details?id=com.webo1.watersort&pcampaignid=web_share" target="_blank" class="inline-flex items-center justify-center gap-3 bg-[#d10000] hover:bg-[#b91c1c] text-white font-black uppercase text-sm md:text-base px-8 py-4 rounded-full shadow-2xl transition transform hover:scale-105">
-                    <i class="fa-brands fa-google-play text-xl"></i> Install Now (Play Store)
+                <span class="bg-red-600 text-white text-[9px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-widest shadow mb-2 inline-block">Exclusive Game</span>
+                <h2 class="text-xl md:text-2xl font-black mb-2">Water Puzzle: Bottle Game</h2>
+                <p class="text-gray-300 text-xs md:text-sm mb-4 leading-relaxed">Experience the ultimate relaxing and addictive water sorting puzzle game. Train your brain and challenge your friends today!</p>
+                <a href="https://play.google.com/store/apps/details?id=com.webo1.watersort&pcampaignid=web_share" target="_blank" class="inline-flex items-center justify-center gap-2 bg-[#d10000] hover:bg-[#b91c1c] text-white font-black uppercase text-xs px-6 py-3 rounded-full shadow transition transform hover:scale-105">
+                    <i class="fa-brands fa-google-play text-lg"></i> Install Now (Play Store)
                 </a>
             </div>`
         }
@@ -561,7 +556,7 @@ function openStaticPage(key, pushState = true) {
 }
 
 function renderTicker(items) {
-    document.getElementById('ticker-content').innerHTML = items.slice(0, 15).map(i => `<span class="ticker-item" onclick="openArticle('${i.slug}')"><span class="text-[#d10000] font-black mr-1.5">&#9679;</span> ${i.title}</span>`).join(' &nbsp;|&nbsp; ');
+    document.getElementById('ticker-content').innerHTML = items.slice(0, 15).map(i => `<span class="ticker-item" onclick="openArticle('${i.slug}')"><span class="text-[#d10000] font-black mr-1">&#9679;</span> ${i.title}</span>`).join(' &nbsp;|&nbsp; ');
 }
 
 function renderSliderAndSidebar(items) {
@@ -570,23 +565,23 @@ function renderSliderAndSidebar(items) {
     document.getElementById('slider-wrapper').innerHTML = top5.map((it, idx) => `
         <div class="slide ${idx === 0 ? 'active' : ''} cursor-pointer w-full h-full relative group" onclick="openArticle('${it.slug}')">
             <img src="${it.image_url}" onerror="this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1000&q=80'" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-            <div class="absolute bottom-0 left-0 right-0 p-5 md:p-8">
-                <div class="flex items-center gap-2 mb-2">
-                    <span class="bg-[#d10000] text-white text-[10px] px-3 py-1 rounded font-black uppercase">${it.category}</span>
-                    <span class="text-gray-200 text-xs font-bold"><i class="fa-solid fa-user-pen text-yellow-400 mr-1"></i>${getPostAuthor(it)}</span>
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-3.5 md:p-6">
+                <div class="flex items-center gap-2 mb-1.5">
+                    <span class="bg-[#d10000] text-white text-[9px] px-2.5 py-0.5 rounded font-black uppercase">${it.category}</span>
+                    <span class="text-gray-200 text-[11px] font-bold"><i class="fa-solid fa-user-pen text-yellow-400 mr-1"></i>${getPostAuthor(it)}</span>
                 </div>
-                <h2 class="text-white text-xl sm:text-2xl md:text-4xl font-black leading-tight line-clamp-3">${it.title}</h2>
+                <h2 class="text-white text-lg sm:text-xl md:text-3xl font-black leading-tight line-clamp-2">${it.title}</h2>
             </div>
         </div>`).join('');
 
     const side = items.filter(p => p.category !== "Web Stories" && !p.title.startsWith("⚡ Story:")).slice(5, 15);
     document.getElementById('top-sidebar-list').innerHTML = side.map(it => `
-        <div onclick="openArticle('${it.slug}')" class="py-2.5 flex gap-3 items-center cursor-pointer group">
-            <img src="${it.image_url}" onerror="this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&q=80'" class="w-20 h-14 object-cover rounded-lg shrink-0">
+        <div onclick="openArticle('${it.slug}')" class="py-1.5 flex gap-2.5 items-center cursor-pointer group">
+            <img src="${it.image_url}" onerror="this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&q=80'" class="w-16 h-11 object-cover rounded shrink-0">
             <div class="flex-grow min-w-0">
-                <span class="text-[10px] font-extrabold text-[#d10000] uppercase block truncate">${it.category}</span>
-                <h4 class="text-xs md:text-sm font-bold text-gray-900 group-hover:text-[#d10000] line-clamp-2">${it.title}</h4>
+                <span class="text-[9px] font-extrabold text-[#d10000] uppercase block truncate">${it.category}</span>
+                <h4 class="text-xs font-bold text-gray-900 group-hover:text-[#d10000] line-clamp-2">${it.title}</h4>
             </div>
         </div>`).join('');
     document.getElementById('hero-top-section').classList.remove('hidden');
@@ -618,27 +613,27 @@ function renderHome(newsList, pushState = false) {
         if (!posts.length) return;
         const f = posts[0], r = posts.slice(1, 5), ic = categoryIcons[cat] || "fa-solid fa-newspaper";
         html += `
-        <section class="bg-white p-5 md:p-7 rounded-xl shadow-sm border border-gray-200">
-            <div class="flex justify-between items-center mb-6 border-b-2 border-[#d10000] pb-2">
-                <span class="section-badge text-sm md:text-base"><i class="${ic} text-yellow-300"></i> ${cat}</span>
-                <a href="/category/${categoryToSlug[cat]}" onclick="event.preventDefault(); filterCategory('${cat}');" class="text-xs md:text-sm font-extrabold text-[#d10000] hover:underline uppercase">More News <i class="fa-solid fa-angle-right ml-1"></i></a>
+        <section class="bg-white p-3.5 md:p-5 rounded-lg shadow-sm border border-gray-200">
+            <div class="flex justify-between items-center mb-3 border-b-2 border-[#d10000] pb-1.5">
+                <span class="section-badge text-xs md:text-sm"><i class="${ic} text-yellow-300"></i> ${cat}</span>
+                <a href="/category/${categoryToSlug[cat]}" onclick="event.preventDefault(); filterCategory('${cat}');" class="text-xs font-extrabold text-[#d10000] hover:underline uppercase">More <i class="fa-solid fa-angle-right ml-0.5"></i></a>
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
-                <div onclick="openArticle('${f.slug}')" class="lg:col-span-5 bg-gray-50 border rounded-xl overflow-hidden cursor-pointer flex flex-col justify-between group">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5">
+                <div onclick="openArticle('${f.slug}')" class="lg:col-span-5 bg-gray-50 border rounded-lg overflow-hidden cursor-pointer flex flex-col justify-between group">
                     <div>
                         <div class="aspect-video relative overflow-hidden"><img src="${f.image_url}" onerror="this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80'" class="w-full h-full object-cover"></div>
-                        <div class="p-4"><h4 class="font-extrabold text-lg md:text-2xl text-gray-900 group-hover:text-[#d10000] line-clamp-3">${f.title}</h4></div>
+                        <div class="p-3"><h4 class="font-extrabold text-base md:text-xl text-gray-900 group-hover:text-[#d10000] line-clamp-3">${f.title}</h4></div>
                     </div>
-                    <div class="px-4 pb-4 pt-2 border-t text-xs font-semibold text-gray-500 flex justify-between"><span><i class="fa-solid fa-pen-nib text-[#d10000] mr-1"></i>${getPostAuthor(f)}</span><span class="text-[#d10000] font-bold">Read &rarr;</span></div>
+                    <div class="px-3 pb-2.5 pt-1 border-t text-[11px] font-semibold text-gray-500 flex justify-between"><span><i class="fa-solid fa-pen-nib text-[#d10000] mr-1"></i>${getPostAuthor(f)}</span><span class="text-[#d10000] font-bold">Read &rarr;</span></div>
                 </div>
-                <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-3">
                     ${r.map(it => `
-                    <div onclick="openArticle('${it.slug}')" class="bg-white border rounded-xl overflow-hidden cursor-pointer flex flex-col justify-between group">
+                    <div onclick="openArticle('${it.slug}')" class="bg-white border rounded-lg overflow-hidden cursor-pointer flex flex-col justify-between group">
                         <div>
-                            <div class="h-36 overflow-hidden"><img src="${it.image_url}" onerror="this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80'" class="w-full h-full object-cover"></div>
-                            <div class="p-3.5"><h4 class="font-bold text-sm md:text-base text-gray-900 group-hover:text-[#d10000] line-clamp-2">${it.title}</h4></div>
+                            <div class="h-28 overflow-hidden"><img src="${it.image_url}" onerror="this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80'" class="w-full h-full object-cover"></div>
+                            <div class="p-2.5"><h4 class="font-bold text-xs md:text-sm text-gray-900 group-hover:text-[#d10000] line-clamp-2">${it.title}</h4></div>
                         </div>
-                        <div class="px-3.5 pb-3 pt-2 border-t text-[11px] font-semibold text-gray-500 truncate"><i class="fa-solid fa-pen-nib text-[#d10000] mr-1"></i>${getPostAuthor(it)}</div>
+                        <div class="px-2.5 pb-2 pt-1 border-t text-[10px] font-semibold text-gray-500 truncate"><i class="fa-solid fa-pen-nib text-[#d10000] mr-1"></i>${getPostAuthor(it)}</div>
                     </div>`).join('')}
                 </div>
             </div>
@@ -659,13 +654,13 @@ function renderWebStoriesFullPage(newsList, pushState = true) {
     document.title = "Google Web Stories - Fast Job";
 
     let h = `
-    <div class="bg-white p-6 md:p-8 rounded-xl shadow-sm border border-gray-200">
-        <div class="border-b-2 border-[#d10000] pb-3 mb-6 flex justify-between items-center">
-            <span class="section-badge text-lg"><i class="fa-solid fa-bolt text-yellow-300"></i> Google Web Stories Reels (${stories.length})</span>
-            <button onclick="goBackHome()" class="text-xs font-bold text-gray-600 hover:text-[#d10000]"><i class="fa-solid fa-house mr-1"></i> Back Home</button>
+    <div class="bg-white p-4 md:p-6 rounded-lg shadow-sm border border-gray-200">
+        <div class="border-b-2 border-[#d10000] pb-2 mb-4 flex justify-between items-center">
+            <span class="section-badge text-sm"><i class="fa-solid fa-bolt text-yellow-300"></i> Google Web Stories Reels (${stories.length})</span>
+            <button onclick="goBackHome()" class="text-xs font-bold text-gray-600 hover:text-[#d10000]"><i class="fa-solid fa-house mr-1"></i> Back</button>
         </div>
-        <p class="text-gray-600 font-semibold mb-6">Explore our immersive vertical Reel / Story player format. Tap any story card to play the video reel and read full news.</p>
-        <div class="flex flex-wrap justify-center gap-6">`;
+        <p class="text-gray-600 text-xs font-semibold mb-4">Explore our immersive vertical Reel / Story player format. Tap any story card to play video reel.</p>
+        <div class="flex flex-wrap justify-center gap-4">`;
     
     stories.forEach(st => {
         const originalSlug = st.slug.replace('story-', '');
@@ -674,8 +669,8 @@ function renderWebStoriesFullPage(newsList, pushState = true) {
         <div onclick="openArticle('${st.slug}')" class="insta-story-card relative group">
             <img src="${st.image_url}" onerror="this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=80'" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-            <div class="absolute top-3 left-3 bg-[#d10000] text-white text-[10px] font-black px-2.5 py-1 rounded-full uppercase flex items-center gap-1.5 shadow"><span class="w-2 h-2 bg-yellow-300 rounded-full animate-ping"></span> REEL STORY</div>
-            <div class="absolute bottom-4 left-4 right-4"><h4 class="text-white text-sm md:text-base font-black line-clamp-3 leading-snug drop-shadow">${cleanTitle}</h4></div>
+            <div class="absolute top-2.5 left-2.5 bg-[#d10000] text-white text-[9px] font-black px-2 py-0.5 rounded-full uppercase flex items-center gap-1 shadow"><span class="w-1.5 h-1.5 bg-yellow-300 rounded-full animate-ping"></span> REEL</div>
+            <div class="absolute bottom-3 left-3 right-3"><h4 class="text-white text-xs md:text-sm font-black line-clamp-3 leading-snug drop-shadow">${cleanTitle}</h4></div>
         </div>`;
     });
     h += `</div></div>`;
@@ -685,13 +680,13 @@ function renderWebStoriesFullPage(newsList, pushState = true) {
 
 function renderCategoryGrid() {
     const cat = currentActiveCategory, ic = categoryIcons[cat] || "fa-solid fa-newspaper", vis = currentFilteredList.slice(0, currentDisplayLimit);
-    let h = `<div class="bg-white p-5 md:p-7 rounded-xl shadow-sm border border-gray-200"><div class="border-b-2 border-[#d10000] pb-2 mb-6 flex justify-between items-center"><span class="section-badge text-base"><i class="${ic} text-yellow-300"></i> ${cat} (${currentFilteredList.length} Posts)</span><button onclick="goBackHome()" class="text-xs font-bold text-gray-600 hover:text-[#d10000]"><i class="fa-solid fa-house mr-1"></i> Back Home</button></div><div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">`;
+    let h = `<div class="bg-white p-4 md:p-6 rounded-lg shadow-sm border border-gray-200"><div class="border-b-2 border-[#d10000] pb-2 mb-4 flex justify-between items-center"><span class="section-badge text-sm"><i class="${ic} text-yellow-300"></i> ${cat} (${currentFilteredList.length})</span><button onclick="goBackHome()" class="text-xs font-bold text-gray-600 hover:text-[#d10000]"><i class="fa-solid fa-house mr-1"></i> Back</button></div><div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">`;
     vis.forEach(it => {
-        h += `<div onclick="openArticle('${it.slug}')" class="bg-white border rounded-xl overflow-hidden cursor-pointer flex flex-col justify-between group"><div><div class="aspect-video overflow-hidden"><img src="${it.image_url}" onerror="this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80'" class="w-full h-full object-cover"></div><div class="p-4"><h4 class="font-bold text-base text-gray-900 group-hover:text-[#d10000] line-clamp-3">${it.title}</h4></div></div><div class="px-4 pb-3 pt-2 border-t text-[11px] font-semibold text-gray-500 truncate"><i class="fa-solid fa-pen-nib text-[#d10000] mr-1"></i>${getPostAuthor(it)}</div></div>`;
+        h += `<div onclick="openArticle('${it.slug}')" class="bg-white border rounded-lg overflow-hidden cursor-pointer flex flex-col justify-between group"><div><div class="aspect-video overflow-hidden"><img src="${it.image_url}" onerror="this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80'" class="w-full h-full object-cover"></div><div class="p-3"><h4 class="font-bold text-xs md:text-sm text-gray-900 group-hover:text-[#d10000] line-clamp-3">${it.title}</h4></div></div><div class="px-3 pb-2 pt-1 border-t text-[10px] font-semibold text-gray-500 truncate"><i class="fa-solid fa-pen-nib text-[#d10000] mr-1"></i>${getPostAuthor(it)}</div></div>`;
     });
     h += `</div>`;
     if (currentDisplayLimit < currentFilteredList.length) {
-        h += `<div class="mt-8 text-center"><button onclick="currentDisplayLimit+=80;renderCategoryGrid();" class="bg-[#d10000] text-white font-black text-xs uppercase px-8 py-3 rounded-full shadow-lg">Load More Posts</button></div>`;
+        h += `<div class="mt-6 text-center"><button onclick="currentDisplayLimit+=80;renderCategoryGrid();" class="bg-[#d10000] text-white font-black text-xs uppercase px-6 py-2.5 rounded-full shadow">Load More</button></div>`;
     }
     document.getElementById('category-sections').innerHTML = h + `</div>`;
 }
@@ -728,7 +723,7 @@ function searchCore(q) {
     } else {
         filtered = allNews.filter(i => (i.title || "").toLowerCase().includes(q) || (i.category || "").toLowerCase().includes(q));
     }
-    currentActiveCategory = `Search: "${q}" (Total Site Posts: ${totalSupabasePostsCount.toLocaleString()})`;
+    currentActiveCategory = `Search: "${q}"`;
     currentFilteredList = filtered;
     currentDisplayLimit = 80;
     document.getElementById('article-view').classList.add('hidden');
@@ -747,7 +742,7 @@ async function openArticle(rawSlug, pushState = true) {
     document.getElementById('article-view').classList.remove('hidden');
     document.getElementById('detail-title').innerText = "Loading Story...";
     document.getElementById('detail-image-container').innerHTML = "";
-    document.getElementById('detail-content').innerHTML = `<div class="py-12 text-center text-gray-500 font-bold"><i class="fa-solid fa-spinner fa-spin mr-2 text-[#d10000]"></i> Loading verified article...</div>`;
+    document.getElementById('detail-content').innerHTML = `<div class="py-8 text-center text-gray-500 font-bold"><i class="fa-solid fa-spinner fa-spin mr-2 text-[#d10000]"></i> Loading article...</div>`;
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     let post = null;
@@ -773,29 +768,29 @@ async function openArticle(rawSlug, pushState = true) {
         document.getElementById('detail-title').innerText = post.title;
         document.title = post.title + " - Fast Job";
         const au = getPostAuthor(post);
-        document.getElementById('detail-author-name').innerHTML = `<i class="fa-solid fa-pen-nib mr-1.5"></i> Reported by ${au}`;
+        document.getElementById('detail-author-name').innerHTML = `<i class="fa-solid fa-pen-nib mr-1"></i> Reported by ${au}`;
         document.getElementById('detail-author-avatar').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(au.split('(')[0].trim())}&background=d10000&color=fff&bold=true`;
         document.getElementById('detail-date').innerHTML = `<i class="fa-regular fa-clock mr-1"></i> Published on ${new Date(post.created_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}`;
         
         if (post.category === "Web Stories" || post.title.startsWith("⚡ Story:")) {
             const mainSlug = post.slug.replace('story-', '');
             document.getElementById('detail-image-container').innerHTML = `
-            <div class="reel-player relative flex flex-col justify-between p-5 text-white my-4">
+            <div class="reel-player relative flex flex-col justify-between p-4 text-white my-3">
                 <div class="absolute inset-0 z-0">
                     <img src="${post.image_url}" class="w-full h-full object-cover opacity-90">
                     <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/80"></div>
                 </div>
-                <div class="flex justify-between items-center z-10"><span class="bg-red-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider">⚡ 9:16 Video Reel</span><span class="text-xs text-yellow-300 font-bold">Fast Job Video Desk</span></div>
-                <div class="z-10 my-auto text-center"><img src="${post.image_url}" class="w-20 h-20 mx-auto rounded-full object-cover border-2 border-yellow-400 shadow-xl mb-3 animate-pulse"></div>
-                <div class="z-10 bg-black/85 backdrop-blur-md p-4 rounded-xl border border-white/20 text-center">
-                    <h3 class="text-base md:text-lg font-black leading-snug text-white mb-3">${post.title.replace('⚡ Story: ', '')}</h3>
-                    <a href="/${mainSlug}" onclick="event.preventDefault(); openArticle('${mainSlug}');" class="inline-block bg-[#d10000] hover:bg-[#a80000] text-white font-black text-xs uppercase px-6 py-2.5 rounded-full shadow-2xl transition transform hover:scale-105">
+                <div class="flex justify-between items-center z-10"><span class="bg-red-600 text-white text-[9px] font-black px-2.5 py-0.5 rounded-full uppercase">⚡ Video Reel</span><span class="text-[11px] text-yellow-300 font-bold">Fast Job Desk</span></div>
+                <div class="z-10 my-auto text-center"><img src="${post.image_url}" class="w-16 h-16 mx-auto rounded-full object-cover border-2 border-yellow-400 shadow mb-2"></div>
+                <div class="z-10 bg-black/85 backdrop-blur-md p-3 rounded-lg border border-white/20 text-center">
+                    <h3 class="text-sm md:text-base font-black leading-snug text-white mb-2">${post.title.replace('⚡ Story: ', '')}</h3>
+                    <a href="/${mainSlug}" onclick="event.preventDefault(); openArticle('${mainSlug}');" class="inline-block bg-[#d10000] hover:bg-[#a80000] text-white font-black text-[11px] uppercase px-5 py-2 rounded-full shadow transition">
                         🔗 Read More (Puri Post Dekhein)
                     </a>
                 </div>
             </div>`;
         } else {
-            document.getElementById('detail-image-container').innerHTML = `<img src="${post.image_url}" class="w-full h-auto object-cover max-h-[550px] mb-8 rounded-xl shadow">`;
+            document.getElementById('detail-image-container').innerHTML = `<img src="${post.image_url}" class="w-full h-auto object-cover max-h-[450px] mb-4 rounded-lg shadow-sm">`;
         }
         
         let contentHtml = post.content || "";
